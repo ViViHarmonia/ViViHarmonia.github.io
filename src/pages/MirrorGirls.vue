@@ -25,8 +25,8 @@
                         <div class="row flex-center"><q-btn class="button" :disabled="section == 4"
                                 @click="section = 4">Affiliates</q-btn></div>
                     </div>
-                    <!--
-                    <div class="col-xs-auto q-pa-sm">
+                    
+                    <!--<div class="col-xs-auto q-pa-sm">
                         <div class="row flex-center"><q-btn class="button" :disabled="section == 5"
                                 @click="section = 5">Kinks</q-btn></div>
                     </div>-->
@@ -252,23 +252,23 @@
                         </div>-->
                         <div v-if="museDataCheck == 1">
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-2"><b>Name:</b></div>
-                                <div class="col-xs-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span></div>
-                                <div class="col-xs-2"><b>Species:</b></div>
-                                <div class="col-xs-4">{{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
+                                <div class="col-xs-6 col-sm-2"><b>Name:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span></div>
+                                <div class="col-xs-6 col-sm-2"><b>Species:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
                                 </div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-2"><b>Dom/Sub:</b></div>
-                                <div class="col-xs-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span></div>
-                                <div class="col-xs-2"><b>Nature:</b></div>
-                                <div class="col-xs-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span></div>
+                                <div class="col-xs-6 col-sm-2"><b>Dom/Sub:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span></div>
+                                <div class="col-xs-6 col-sm-2"><b>Nature:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span></div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-2"><b>Universe:</b></div>
-                                <div class="col-xs-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span></div>
-                                <div class="col-xs-2"><b>Region:</b></div>
-                                <div class="col-xs-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span></div>
+                                <div class="col-xs-6 col-sm-2"><b>Universe:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span></div>
+                                <div class="col-xs-6 col-sm-2"><b>Region:</b></div>
+                                <div class="col-xs-6 col-sm-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span></div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-sm-12 col-md-2"><b>Bio:</b></div>
@@ -291,7 +291,7 @@
                             <div class="row q-pa-sm justify-start">
                                 <q-card class="kinklist">
                                     <q-card-section>
-                                        <div class="row q-pa-sm justify-start">
+                                        <div class="row justify-start">
                                             <div class="col-xs-6">
                                                 <q-expansion-item group="kinks" label="Relation" dense>
                                                     <q-card class="kinkitem">
@@ -525,17 +525,22 @@
                         <div class="row justify-center">
                             <div class="col-xs-auto q-pa-sm">
                                 <div class="row flex-center"><q-btn class="button" flat @click="museSwitch(1)">
-                                        ↑ Previous </q-btn>
+                                        <q-icon left size="1rem" name="arrow_upward" />
+                                        <div>Prev</div>
+                                    </q-btn>
                                 </div>
                             </div>
                             <div class="col-xs-auto q-pa-sm">
                                 <div class="row flex-center"><q-btn class="button" flat @click="museDialog = false">
-                                        Close × </q-btn>
+                                        <q-icon left size="1rem" name="close" />
+                                        <div>Close</div>
+                                    </q-btn>
                                 </div>
                             </div>
                             <div class="col-xs-auto q-pa-sm">
                                 <div class="row flex-center"><q-btn class="button" flat @click="museSwitch(2)">
-                                        Next ↓
+                                        <q-icon left size="1rem" name="arrow_downward" />
+                                        <div>Next</div>
                                     </q-btn></div>
                             </div>
                         </div>
@@ -570,9 +575,12 @@ export default defineComponent({
         museSect: 0,
         museDialog: false,
         section: 0,
+        kinkCat: 0,
+        
         museDataCheck: 1,
         currentMuseCode: "",
-        kinkCat: 0,
+
+
         charArray: {
             emptyblank: [],
             gamenintendobtn: [
