@@ -252,23 +252,23 @@
                         </div>-->
                         <div v-if="museDataCheck == 1">
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-6 col-sm-2"><b>Name:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span></div>
-                                <div class="col-xs-6 col-sm-2"><b>Species:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
+                                <div class="col-xs-3 col-sm-2"><b>Name:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span></div>
+                                <div class="col-xs-3 col-sm-2"><b>Species:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
                                 </div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-6 col-sm-2"><b>Dom/Sub:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span></div>
-                                <div class="col-xs-6 col-sm-2"><b>Nature:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span></div>
+                                <div class="col-xs-3 col-sm-2"><b>Dom/Sub:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span></div>
+                                <div class="col-xs-3 col-sm-2"><b>Nature:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span></div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
-                                <div class="col-xs-6 col-sm-2"><b>Universe:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span></div>
-                                <div class="col-xs-6 col-sm-2"><b>Region:</b></div>
-                                <div class="col-xs-6 col-sm-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span></div>
+                                <div class="col-xs-3 col-sm-2"><b>Universe:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span></div>
+                                <div class="col-xs-3 col-sm-2"><b>Region:</b></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span></div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-sm-12 col-md-2"><b>Bio:</b></div>
