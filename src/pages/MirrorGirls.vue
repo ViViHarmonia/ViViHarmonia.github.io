@@ -9,27 +9,26 @@
                 </div>
                 <div class="row flex-center">
                     <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :disabled="section == 1"
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 1"
                                 @click="section = 1">Rules</q-btn>
                         </div>
                     </div>
                     <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :disabled="section == 2"
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 2"
                                 @click="section = 2">Lore</q-btn></div>
                     </div>
                     <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :disabled="section == 3"
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 3"
                                 @click="section = 3">Muses</q-btn></div>
                     </div>
                     <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :disabled="section == 4"
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 4"
                                 @click="section = 4">Affiliates</q-btn></div>
                     </div>
-                    
-                    <!--<div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :disabled="section == 5"
+                    <div class="col-xs-auto q-pa-sm">
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 5"
                                 @click="section = 5">Kinks</q-btn></div>
-                    </div>-->
+                    </div>
                 </div>
             </q-card-section>
         </q-card>
@@ -106,7 +105,7 @@
         </q-card>
     </div>
     <div class="cardHolder flex-center q-pt-sm" v-if="section == 3">
-        <q-card id="cardMuse">
+        <q-card :class="{ cardMuse: museSect != 5, cardAllMuse: museSect == 5 }">
             <q-card-section>
                 <div class="row flex-center q-pa-xs">
                     <q-btn-group class="button">
@@ -114,36 +113,14 @@
                         <q-btn class="button" @click="museSect = 2" :disabled="museSect == 2" label="Games" />
                         <q-btn class="button" @click="museSect = 3" :disabled="museSect == 3" label="MHA" />
                         <q-btn class="button" @click="museSect = 4" :disabled="museSect == 4" label="Anime" />
+                        <q-btn class="button" @click="museSect = 5" :disabled="museSect == 5" label="All" />
                     </q-btn-group>
                 </div>
-                <div class="row flex-center q-pa-sm" v-if="museSect == 1">
-                    <q-btn v-for="(char, c) in charArray.gamenintendobtn" :name="c" :key="c" square padding="xs" flat
-                        @click="museProfileOpen(museSect, char.code)">
-                        <q-avatar square class="musebutton">
-                            <img :src="char.avatar">
-                        </q-avatar>
-                    </q-btn>
-                </div>
-                <div class="row flex-center q-pa-sm" v-if="museSect == 2">
-                    <q-btn v-for="(char, c) in charArray.gameotherbtn" :name="c" :key="c" square padding="xs" flat
-                        @click="museProfileOpen(museSect, char.code)">
-                        <q-avatar square class="musebutton">
-                            <img :src="char.avatar">
-                        </q-avatar>
-                    </q-btn>
-                </div>
-                <div class="row flex-center q-pa-sm" v-if="museSect == 3">
-                    <q-btn v-for="(char, c) in charArray.animemhabtn" :name="c" :key="c" square padding="xs" flat
-                        @click="museProfileOpen(museSect, char.code)">
-                        <q-avatar square class="musebutton">
-                            <img :src="char.avatar">
-                        </q-avatar>
-                    </q-btn>
-                </div>
-                <div class="row flex-center q-pa-sm" v-if="museSect == 4">
-                    <q-btn v-for="(char, c) in charArray.animeotherbtn" :name="c" :key="c" square padding="xs" flat
-                        @click="museProfileOpen(museSect, char.code)">
-                        <q-avatar square class="musebutton">
+                <div class="row flex-center q-pa-xs" v-if="museSect != 0"></div>
+                <div class="row flex-center" v-for="(media) in charArray">
+                    <q-btn v-for="(char, c) in media" square padding="xs" flat
+                        v-show="char.sect == museSect || museSect == 5" @click="museProfileOpen(char.sect, char.code)">
+                        <q-avatar square :class="{ musebutton: museSect != 5, allmusebtn: museSect == 5 }">
                             <img :src="char.avatar">
                         </q-avatar>
                     </q-btn>
@@ -179,41 +156,15 @@
         <q-card class="card">
             <q-card-section>
                 <div class="row text-body2 q-pa-sm justify-start"> A glossary and definition of kinks shared by the members
-                    of the Mirror, albeit in diverse intensities </div>
+                    of the Mirror, albeit in diverse intensities per member (To Be Included)</div>
                 <div class="row q-pa-sm justify-center">
                     <div class="col-xs-3 col-md-3">
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 1"
-                                @click="kinkGlossary(1)">Relation</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 2"
-                                @click="kinkGlossary(2)">Partner</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 3"
-                                @click="kinkGlossary(3)">Clothing</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 4"
-                                @click="kinkGlossary(4)">Body Modification</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 5"
-                                @click="kinkGlossary(5)">Mind Modification</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 6"
-                                @click="kinkGlossary(6)">Transformation</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 7"
-                                @click="kinkGlossary(7)">Treatment</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 8"
-                                @click="kinkGlossary(8)">Consent/Visibility</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 9"
-                                @click="kinkGlossary(9)">Substances</q-btn>
-                        </div>
-                        <div class="row flex-center"><q-btn style="width: 150px" class="button" :disabled="kinkCat == 10"
-                                @click="kinkGlossary(10)">Bondage</q-btn>
+                        <div class="row flex-center" v-for="(term, t) in knkGlosBtn"><q-btn style="width: 150px"
+                                class="button" :disabled="kinkCat == term.index" @click="kinkGlossary(term.index)">{{
+                                    term.label }}</q-btn>
                         </div>
                     </div>
-                    <div class="col-xs-9 col-md-9">
+                    <div class="col-xs-9 col-md-9" v-if="kinkGloss.catDescription != ''">
                         <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catDescription != ''"> {{
                             kinkGloss.catDescription }}</div>
                         <q-separator dark v-if="kinkGloss.catDescription != ''" />
@@ -253,22 +204,27 @@
                         <div v-if="museDataCheck == 1">
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-xs-3 col-sm-2"><b>Name:</b></div>
-                                <div class="col-xs-9 col-sm-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span>
+                                </div>
                                 <div class="col-xs-3 col-sm-2"><b>Species:</b></div>
                                 <div class="col-xs-9 col-sm-4">{{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
                                 </div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-xs-3 col-sm-2"><b>Dom/Sub:</b></div>
-                                <div class="col-xs-9 col-sm-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.SD }}<span class="secret">{{ muse.SDSh }}</span>
+                                </div>
                                 <div class="col-xs-3 col-sm-2"><b>Nature:</b></div>
-                                <div class="col-xs-9 col-sm-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Nat }}<span class="secret">{{ muse.NatSh }}</span>
+                                </div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-xs-3 col-sm-2"><b>Universe:</b></div>
-                                <div class="col-xs-9 col-sm-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Uni }}<span class="secret">{{ muse.UniSh }}</span>
+                                </div>
                                 <div class="col-xs-3 col-sm-2"><b>Region:</b></div>
-                                <div class="col-xs-9 col-sm-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span></div>
+                                <div class="col-xs-9 col-sm-4">{{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span>
+                                </div>
                             </div>
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-sm-12 col-md-2"><b>Bio:</b></div>
@@ -293,226 +249,29 @@
                                     <q-card-section>
                                         <div class="row justify-start">
                                             <div class="col-xs-6">
-                                                <q-expansion-item group="kinks" label="Relation" dense>
+                                                <q-expansion-item v-for="(content, cat) in kinkA" group="kinks" :label="cat"
+                                                    dense>
                                                     <q-card class="kinkitem">
                                                         <q-card-section>
                                                             <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.cultist != ''">Cultist: {{
-                                                                    kink.relation.cultist }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.pet != ''">Pet: {{ kink.relation.pet }}
+                                                                v-for="(kink) in content" v-show="kink.d != ''">
+                                                                <p>{{ kink.l }}<span v-if="kink.d != 'YES'">: {{
+                                                                    kink.d }}</span></p>
                                                             </div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.slave != ''">Slave: {{
-                                                                    kink.relation.slave }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.assist != ''">Assistant: {{
-                                                                    kink.relation.assist }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.lover != ''">Lover</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.relation.family != ''">Family: {{
-                                                                    kink.relation.family }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Partner" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.partner.person != ''">{{
-                                                                    kink.partner.person }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.partner.group != ''">Group</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.partner.machine != ''">Machine</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.partner.monster != ''">Monster: {{
-                                                                    kink.partner.monster }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.partner.animal != ''">Animal: {{
-                                                                    kink.partner.animal }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Clothing" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.clothing.none != ''">None: {{
-                                                                    kink.clothing.none }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.clothing.animal != ''">Animal: {{
-                                                                    kink.clothing.animal }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.clothing.material != ''">Material: {{
-                                                                    kink.clothing.material }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.clothing.uniform != ''">Uniform: {{
-                                                                    kink.clothing.uniform }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.clothing.fashion != ''">Fashion: {{
-                                                                    kink.clothing.fashion }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Body Modification" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.physMod.breeding != ''">Breeding: {{
-                                                                    kink.physMod.breeding }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.physMod.piercing != ''">Piercing: {{
-                                                                    kink.physMod.piercing }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.physMod.branding != ''">Branding: {{
-                                                                    kink.physMod.branding }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.physMod.growth != ''">Growth: {{
-                                                                    kink.physMod.growth }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Mind Modification" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.mindMod.corruption != ''">Corruption: {{
-                                                                    kink.mindMod.corruption }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.mindMod.mindBreak != ''">Mind Break: {{
-                                                                    kink.mindMod.mindBreak }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.mindMod.brainWash != ''">Brainwash: {{
-                                                                    kink.mindMod.brainWash }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.mindMod.brainBlank != ''">Blank State: {{
-                                                                    kink.mindMod.brainBlank }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.mindMod.brainHive != ''">Hivemind: {{
-                                                                    kink.mindMod.brainHive }}</div>
                                                         </q-card-section>
                                                     </q-card>
                                                 </q-expansion-item>
                                             </div>
                                             <div class="col-xs-6">
-                                                <q-expansion-item group="kinks" label="Transformation" dense>
+                                                <q-expansion-item v-for="(content, cat) in kinkB" group="kinks" :label="cat"
+                                                    dense>
                                                     <q-card class="kinkitem">
                                                         <q-card-section>
                                                             <div class="row text-body2 justify-start"
-                                                                v-if="kink.transform.bimbo != ''">Bimbofication: {{
-                                                                    kink.transform.bimbo }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.transform.goth != ''">Gothification: {{
-                                                                    kink.transform.goth }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.transform.mecha != ''">Mechanization: {{
-                                                                    kink.transform.mecha }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.transform.twin != ''">Twinning: {{
-                                                                    kink.transform.twin }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Treatment" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.treat.praise != ''">Praise: {{
-                                                                    kink.treat.praise }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.treat.degrade != ''">Degradation: {{
-                                                                    kink.treat.degrade }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.treat.hurt != ''">Ryona: {{
-                                                                    kink.treat.hurt }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.treat.object != ''">Objectification: {{
-                                                                    kink.treat.object }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.treat.humiliate != ''">Humiliation: {{
-                                                                    kink.treat.humiliate }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Consent/Visibility" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.consent.free != ''">Free Consent: {{
-                                                                    kink.consent.free }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.consent.dub != ''">Dub-Con: {{
-                                                                    kink.consent.dub }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.consent.none != ''">Non-Con: {{
-                                                                    kink.consent.none }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.visibility.watch != ''">Voyeur: {{
-                                                                    kink.visibility.watch }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.visibility.stealth != ''">Stealthing: {{
-                                                                    kink.visibility.stealth }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.visibility.exhibit != ''">Exhibitionism: {{
-                                                                    kink.visibility.exhibit }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Substances" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.milk != ''">Milk: {{
-                                                                    kink.substance.milk }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.sweat != ''">Sweat: {{
-                                                                    kink.substance.sweat }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.cum != ''">Semen: {{
-                                                                    kink.substance.cum }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.piss != ''">Urine: {{
-                                                                    kink.substance.piss }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.food != ''">Food: {{
-                                                                    kink.substance.food }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.substance.drug != ''">Drugs: {{
-                                                                    kink.substance.drug }}</div>
-                                                        </q-card-section>
-                                                    </q-card>
-                                                </q-expansion-item>
-                                                <q-separator />
-                                                <q-expansion-item group="kinks" label="Bondage" dense>
-                                                    <q-card class="kinkitem">
-                                                        <q-card-section>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.tentacle != ''">Tentacles: {{
-                                                                    kink.bondage.tentacle }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.hypno != ''">Hypnosis: {{
-                                                                    kink.bondage.hypno }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.hold != ''">Grappling: {{
-                                                                    kink.bondage.hold }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.world != ''">Environment: {{
-                                                                    kink.bondage.world }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.sense != ''">Sensory Deprivation: {{
-                                                                    kink.bondage.sense }}</div>
-                                                            <div class="row text-body2 justify-start"
-                                                                v-if="kink.bondage.tie != ''">Bindings: {{
-                                                                    kink.bondage.tie }}</div>
+                                                                v-for="(kink) in content" v-show="kink.d != ''">
+                                                                <p>{{ kink.l }}<span v-if="kink.d != 'YES'">: {{
+                                                                    kink.d }}</span></p>
+                                                            </div>
                                                         </q-card-section>
                                                     </q-card>
                                                 </q-expansion-item>
@@ -576,68 +335,65 @@ export default defineComponent({
         museDialog: false,
         section: 0,
         kinkCat: 0,
-        
         museDataCheck: 1,
         currentMuseCode: "",
-
-
         charArray: {
             emptyblank: [],
             gamenintendobtn: [
-                { code: "rosa", avatar: "/vue carrd muse icon/nintendo/rosa.jpg", },
-                { code: "nem", avatar: "/vue carrd muse icon/nintendo/nemona.png", },
-                { code: "marn", avatar: "/vue carrd muse icon/nintendo/marnie.jpg", },
-                { code: "ida", avatar: "/vue carrd muse icon/nintendo/irida.jpg", },
-                { code: "iris", avatar: "/vue carrd muse icon/nintendo/iris.jpeg", },
-                { code: "sam", avatar: "/vue carrd muse icon/nintendo/samus.jpg", },
-                { code: "bow", avatar: "/vue carrd muse icon/nintendo/bowsette.jpg", },
-                { code: "pich", avatar: "/vue carrd muse icon/nintendo/peach.jpg", },
-                { code: "lina", avatar: "/vue carrd muse icon/nintendo/rosalina.jpg", },
-                { code: "lin", avatar: "/vue carrd muse icon/nintendo/linkle.jpeg", },
-                { code: "pura", avatar: "/vue carrd muse icon/nintendo/purah.jpeg", },
-                { code: "edel", avatar: "/vue carrd muse icon/nintendo/edelgard.jpg", },
+                { code: "rosa", sect: 1, avatar: "/vue carrd muse icon/nintendo/rosa.jpg", },
+                { code: "nem", sect: 1, avatar: "/vue carrd muse icon/nintendo/nemona.png", },
+                { code: "marn", sect: 1, avatar: "/vue carrd muse icon/nintendo/marnie.jpg", },
+                { code: "ida", sect: 1, avatar: "/vue carrd muse icon/nintendo/irida.jpg", },
+                { code: "iris", sect: 1, avatar: "/vue carrd muse icon/nintendo/iris.jpeg", },
+                { code: "sam", sect: 1, avatar: "/vue carrd muse icon/nintendo/samus.jpg", },
+                { code: "bow", sect: 1, avatar: "/vue carrd muse icon/nintendo/bowsette.jpg", },
+                { code: "pich", sect: 1, avatar: "/vue carrd muse icon/nintendo/peach.jpg", },
+                { code: "lina", sect: 1, avatar: "/vue carrd muse icon/nintendo/rosalina.jpg", },
+                { code: "lin", sect: 1, avatar: "/vue carrd muse icon/nintendo/linkle.jpeg", },
+                { code: "pura", sect: 1, avatar: "/vue carrd muse icon/nintendo/purah.jpeg", },
+                { code: "edel", sect: 1, avatar: "/vue carrd muse icon/nintendo/edelgard.jpg", },
             ],
             gameotherbtn: [
-                { code: "lisa", avatar: "/vue carrd muse icon/genshin/lisa.jpg", },
-                { code: "mira", avatar: "/vue carrd muse icon/genshin/mirror.jpeg", },
-                //{ code: "lumi", avatar: "/vue carrd muse icon/genshin/lumi.jpeg", },
-                //{ code: "saria", avatar: "/vue carrd muse icon/genshin/.jpeg", },
-                //{ code: "yelan", avatar: "/vue carrd muse icon/genshin/yelan.jpeg", },
-                { code: "luci", avatar: "/vue carrd muse icon/games/lucifer.jpg", },
-                { code: "tae", avatar: "/vue carrd muse icon/games/tae.png", },
-                { code: "ann", avatar: "/vue carrd muse icon/games/ann.png", },
-                { code: "sae", avatar: "/vue carrd muse icon/games/sae1.jpeg", },
-                { code: "moni", avatar: "/vue carrd muse icon/games/monika.png", },
-                { code: "roty", avatar: "/vue carrd muse icon/games/rotty.png", },
-                { code: "shan", avatar: "/vue carrd muse icon/games/shantae.jpeg", },
-                { code: "junko", avatar: "/vue carrd muse icon/games/junko.jpg", },
-                { code: "nami", avatar: "/vue carrd muse icon/games/chiaki.jpg", },
-                { code: "layer", avatar: "/vue carrd muse icon/games/layer.jpeg", },
-                { code: "ruler", avatar: "/vue carrd muse icon/fate/ruler.jpeg", },
-                { code: "ridem", avatar: "/vue carrd muse icon/fate/riderM.jpg", },
+                { code: "lisa", sect: 2, avatar: "/vue carrd muse icon/genshin/lisa.jpg", },
+                { code: "mira", sect: 2, avatar: "/vue carrd muse icon/genshin/mirror.jpeg", },
+                //{ code: "lumi", sect: 2, avatar: "/vue carrd muse icon/genshin/lumi.jpeg", },
+                //{ code: "saria", sect: 2, avatar: "/vue carrd muse icon/genshin/.jpeg", },
+                //{ code: "yelan", sect: 2, avatar: "/vue carrd muse icon/genshin/yelan.jpeg", },
+                { code: "luci", sect: 2, avatar: "/vue carrd muse icon/games/lucifer.jpg", },
+                { code: "tae", sect: 2, avatar: "/vue carrd muse icon/games/tae.png", },
+                { code: "ann", sect: 2, avatar: "/vue carrd muse icon/games/ann.png", },
+                { code: "sae", sect: 2, avatar: "/vue carrd muse icon/games/sae1.jpeg", },
+                { code: "moni", sect: 2, avatar: "/vue carrd muse icon/games/monika.png", },
+                { code: "roty", sect: 2, avatar: "/vue carrd muse icon/games/rotty.png", },
+                { code: "shan", sect: 2, avatar: "/vue carrd muse icon/games/shantae.jpeg", },
+                { code: "junko", sect: 2, avatar: "/vue carrd muse icon/games/junko.jpg", },
+                { code: "nami", sect: 2, avatar: "/vue carrd muse icon/games/chiaki.jpg", },
+                { code: "layer", sect: 2, avatar: "/vue carrd muse icon/games/layer.jpeg", },
+                { code: "ruler", sect: 2, avatar: "/vue carrd muse icon/fate/ruler.jpeg", },
+                { code: "ridem", sect: 2, avatar: "/vue carrd muse icon/fate/riderM.jpg", },
             ],
             animemhabtn: [
-                { code: "mei", avatar: "/vue carrd muse icon/mha/mei.jpeg", },
-                { code: "tsu", avatar: "/vue carrd muse icon/mha/tsuyu.jpeg", },
-                { code: "mina", avatar: "/vue carrd muse icon/mha/mina.jpeg", },
-                { code: "momo", avatar: "/vue carrd muse icon/mha/momo.jpeg", },
-                { code: "toru", avatar: "/vue carrd muse icon/mha/tooru.jpeg", },
-                { code: "kendo", avatar: "/vue carrd muse icon/mha/kendo.jpeg", },
-                { code: "camie", avatar: "/vue carrd muse icon/mha/camie.jpeg", },
-                { code: "mel", avatar: "/vue carrd muse icon/mha/melissa.jpeg", },
-                { code: "joke", avatar: "/vue carrd muse icon/mha/msjoke.jpeg", },
-                { code: "kai", avatar: "/vue carrd muse icon/mha/nagant.jpeg", },
-                { code: "rumi", avatar: "/vue carrd muse icon/mha/miruko.jpeg", },
-                { code: "yama", avatar: "/vue carrd muse icon/mha/mtlady.jpeg", },
-                { code: "fumi", avatar: "/vue carrd muse icon/mha/fuyumi.jpeg", },
-                { code: "inko", avatar: "/vue carrd muse icon/mha/inko.png", },
+                { code: "mei", sect: 3, avatar: "/vue carrd muse icon/mha/mei.jpeg", },
+                { code: "tsu", sect: 3, avatar: "/vue carrd muse icon/mha/tsuyu.jpeg", },
+                { code: "mina", sect: 3, avatar: "/vue carrd muse icon/mha/mina.jpeg", },
+                { code: "momo", sect: 3, avatar: "/vue carrd muse icon/mha/momo.jpeg", },
+                { code: "toru", sect: 3, avatar: "/vue carrd muse icon/mha/tooru.jpeg", },
+                { code: "kendo", sect: 3, avatar: "/vue carrd muse icon/mha/kendo.jpeg", },
+                { code: "camie", sect: 3, avatar: "/vue carrd muse icon/mha/camie.jpeg", },
+                { code: "mel", sect: 3, avatar: "/vue carrd muse icon/mha/melissa.jpeg", },
+                { code: "joke", sect: 3, avatar: "/vue carrd muse icon/mha/msjoke.jpeg", },
+                { code: "kai", sect: 3, avatar: "/vue carrd muse icon/mha/nagant.jpeg", },
+                { code: "rumi", sect: 3, avatar: "/vue carrd muse icon/mha/miruko.jpeg", },
+                { code: "yama", sect: 3, avatar: "/vue carrd muse icon/mha/mtlady.jpeg", },
+                { code: "fumi", sect: 3, avatar: "/vue carrd muse icon/mha/fuyumi.jpeg", },
+                { code: "inko", sect: 3, avatar: "/vue carrd muse icon/mha/inko.png", },
             ],
             animeotherbtn: [
-                { code: "beni", avatar: "/vue carrd muse icon/anime/kobeni.jpeg", },
-                { code: "marin", avatar: "/vue carrd muse icon/anime/marin.jpg", },
-                { code: "lucy", avatar: "/vue carrd muse icon/anime/lucynda.png", },
-                { code: "yor", avatar: "/vue carrd muse icon/anime/yor.png", },
-                { code: "stock", avatar: "/vue carrd muse icon/anime/stock.jpg", },
+                { code: "beni", sect: 4, avatar: "/vue carrd muse icon/anime/kobeni.jpeg", },
+                { code: "marin", sect: 4, avatar: "/vue carrd muse icon/anime/marin.jpg", },
+                { code: "lucy", sect: 4, avatar: "/vue carrd muse icon/anime/lucynda.png", },
+                { code: "yor", sect: 4, avatar: "/vue carrd muse icon/anime/yor.png", },
+                { code: "stock", sect: 4, avatar: "/vue carrd muse icon/anime/stock.jpg", },
             ],
         },
         allygroups: [
@@ -674,82 +430,93 @@ export default defineComponent({
             SedSh: "",
             versionsArray: [],
         },
-        kink: {
+        kinkA: {
             relation: {
-                cultist: "",
-                pet: "",
-                slave: "",
-                assist: "",
-                lover: "",
-                family: "",
+                cultist: { l: "Cultist", d: "" },
+                pet: { l: "Pet", d: "" },
+                slave: { l: "Slave", d: "" },
+                assist: { l: "Assistant", d: "" },
+                lover: { l: "Girlfriend", d: "" },
+                family: { l: "Family", d: "" },
             },
             partner: {
-                person: "",
-                group: "",
-                machine: "",
-                monster: "",
-                animal: "",
+                //Note: replace label with whatever character needs and put data as YES
+                person: { l: "Person", d: "" },
+                group: { l: "Group", d: "" },
+                machine: { l: "Machine", d: "" },
+                monster: { l: "Monster", d: "" },
+                animal: { l: "Animal", d: "" },
             },
             clothing: {
-                none: "",
-                animal: "",
-                material: "",
-                uniform: "",
-                fashion: "",
+                none: { l: "None", d: "" },
+                animal: { l: "Animal", d: "" },
+                material: { l: "Material", d: "" },
+                uniform: { l: "Uniform", d: "" },
+                fashion: { l: "Fashion", d: "" },
             },
-            physMod: {
-                breeding: "",
-                piercing: "",
-                branding: "",
-                growth: "",
+            bodyMod: {
+                breed: { l: "Breeding", d: "" },
+                pierce: { l: "Piercing", d: "" },
+                brand: { l: "Branding", d: "" },
+                grow: { l: "Growing", d: "" },
             },
             mindMod: {
-                corruption: "",
-                mindBreak: "",
-                brainWash: "",
-                brainBlank: "",
-                brainHive: "",
-            },
-            transform: {
-                bimbo: "",
-                goth: "",
-                mecha: "",
-                twin: "",
-            },
-            treat: {
-                praise: "",
-                degrade: "",
-                hurt: "",
-                object: "",
-                humiliate: "",
-            },
-            consent: {
-                free: "",
-                dub: "",
-                none: "",
-            },
-            substance: {
-                milk: "",
-                sweat: "",
-                cum: "",
-                piss: "",
-                food: "",
-                drug: "",
-            },
-            bondage: {
-                tentacle: "",
-                hypno: "",
-                hold: "",
-                world: "",
-                sense: "",
-                tie: "",
-            },
-            visibility: {
-                watch: "",
-                exhibit: "",
-                stealth: "",
+                corrupt: { l: "Corruption", d: "" },
+                mindBreak: { l: "Mind Break", d: "" },
+                brainWash: { l: "Brainwashing", d: "" },
+                brainBlank: { l: "Blank", d: "" },
+                brainHive: { l: "HiveMind", d: "" },
             },
         },
+        kinkB: {
+            transform: {
+                bimbo: { l: "Bimbofication", d: "" },
+                goth: { l: "Gothification", d: "" },
+                mecha: { l: "Mechanization", d: "" },
+                twin: { l: "Twinning", d: "" },
+            },
+            treat: {
+                praise: { l: "Praise", d: "" },
+                degrade: { l: "Degradation", d: "" },
+                hurt: { l: "Ryona", d: "" },
+                object: { l: "Objectification", d: "" },
+                humiliate: { l: "Humiliation", d: "" },
+            },
+            consent: {
+                free: { l: "Free Consent", d: "" },
+                dub: { l: "Dub-Con", d: "" },
+                none: { l: "Non-Con", d: "" },
+                watch: { l: "Voyeur", d: "" },
+                stealth: { l: "Stealthing", d: "" },
+                exhibit: { l: "Exhibitionism", d: "" },
+            },
+            substance: {
+                food: { l: "Food", d: "" },
+                sweat: { l: "Sweat", d: "" },
+                cum: { l: "Semen", d: "" },
+                piss: { l: "Urine", d: "" },
+                drug: { l: "Drugs", d: "" },
+            },
+            bondage: {
+                tie: { l: "Bindings", d: "" },
+                hypno: { l: "Hypnosis", d: "" },
+                hold: { l: "Grappling", d: "" },
+                world: { l: "Environment", d: "" },
+                sense: { l: "Sensory Deprivation", d: "" },
+            },
+        },
+        knkGlosBtn: [
+            { label: "Relation", index: 1 },
+            { label: "Partner", index: 2 },
+            { label: "Clothing", index: 3 },
+            { label: "Body Modification", index: 4 },
+            { label: "Mind Modification", index: 5 },
+            { label: "Transformation", index: 6 },
+            { label: "Treatment", index: 7 },
+            { label: "Consent", index: 8 },
+            { label: "Substances", index: 9 },
+            { label: "Bondage", index: 10 },
+        ],
         kinkGloss: {
             catDescription: "",
             catKink1: "",
@@ -780,47 +547,47 @@ export default defineComponent({
             this.kinkCat = cat
             switch (cat) {
                 case 1:
-                    this.kinkGloss.catDescription = "Category for the preferred forms of relationship between Muse and third parties with which to indulge in pleasure."
-                    this.kinkGloss.catKink1 = "Cultist: Being part of a cult towards third party, share in the delight of worship with third party, or be worshipped."
-                    this.kinkGloss.catKink2 = "Pet: Being third party's pet (particular animals mentioned), or having third party as a pet."
-                    this.kinkGloss.catKink3 = "Slave: Being subservient under threat and harm to a third party's will entirely, even imprisoned by them, or rather having third party subservient to/imprisoned by her."
-                    this.kinkGloss.catKink4 = "Assistant: Being third party's assistant, secretary, henchwoman, etc, or having one."
-                    this.kinkGloss.catKink5 = "Lover: Being third party's genuine romantic partner and for that third party to be hers."
-                    this.kinkGloss.catKink6 = "Family: Being third party's Mommy or Sister or Daughter, or third party being her Mommy/Sister/Daughter."
+                    this.kinkGloss.catDescription = "Preferred forms of relationship between Muse and her sexual partner/s."
+                    this.kinkGloss.catKink1 = "Cultist: Being part of a cult towards them, share in the delight of worship with them, or be worshipped."
+                    this.kinkGloss.catKink2 = "Pet: Being their pet (particular animals mentioned), or having them as a pet."
+                    this.kinkGloss.catKink3 = "Slave: Being subservient under threat and harm to their will entirely, even imprisoned by them, or having them subservient to/imprisoned by her."
+                    this.kinkGloss.catKink4 = "Assistant: Being their assistant, secretary, henchwoman, etc, or having them as one."
+                    this.kinkGloss.catKink5 = "Lover: Being their genuine romantic partner and for them to be hers."
+                    this.kinkGloss.catKink6 = "Family: Being their Mommy, Sis or Daughter, with them being the respective Daughter, Sis or Mommy."
                     break
                 case 2:
-                    this.kinkGloss.catDescription = "Category for the preferred third parties by the Muse to have some pleasure with."
-                    this.kinkGloss.catKink1 = "Person: The species of the local humanoid entity/entities that Muse enjoys playing with."
+                    this.kinkGloss.catDescription = "Preferred partner species by the Muse."
+                    this.kinkGloss.catKink1 = "Person: The local sapient species that Muse enjoys playing with."
                     this.kinkGloss.catKink2 = "Group: A gang, or a cult, or any more than two people working together towards pleasure."
-                    this.kinkGloss.catKink3 = "Machine: Mechanical non-sentient device or devices to toy with, or be toyed by someone else with."
-                    this.kinkGloss.catKink4 = "Monster: A being with mostly inhuman anatomy and/or thought, mostly dangerous, usually antagonistic."
-                    this.kinkGloss.catKink5 = "Animal: A common inhuman non-speaking entity that can be had as a pet, or be wrecked by as something lesser."
+                    this.kinkGloss.catKink3 = "Machine: Mechanical non-sapient devic/s to toy with, or be toyed by someone else with."
+                    this.kinkGloss.catKink4 = "Monster: A being with mostly non-humanoid anatomy and/or thought, usually dangerous or antagonistic."
+                    this.kinkGloss.catKink5 = "Animal: A common non-sapient entity, that can't speak, but can be a pet, and can mate.'"
                     break
                 case 3:
-                    this.kinkGloss.catDescription = "Category for the preferred forms of attire to arouse Muse and others."
-                    this.kinkGloss.catKink1 = "None: To go au naturale, or see others forgo their clothing."
+                    this.kinkGloss.catDescription = "Preferred forms of attire to arouse Muse and others."
+                    this.kinkGloss.catKink1 = "None: Going au naturale, or see others forgo their clothing."
                     this.kinkGloss.catKink2 = "Animal: Animal-themed outfits, such as cowkinis, playboy bunnies, etc."
                     this.kinkGloss.catKink3 = "Material: Particular materials that entice and arouse Muse, being worn by her or others, such as latex, fur, mesh, and even living"
-                    this.kinkGloss.catKink4 = "Uniform: To don the same outfit (or similar enough) to others in a group experience, such as a school or military uniform"
-                    this.kinkGloss.catKink5 = "Fashion: To have a tendency to shop, accessorize, and generally mess around with clothing styles and dresses."
+                    this.kinkGloss.catKink4 = "Uniform: Wearing the same outfit (or similar enough) to others in a group experience, such as a school or military uniform"
+                    this.kinkGloss.catKink5 = "Fashion: A tendency to shop, accessorize, and generally mess around with clothing styles and dresses."
                     break
                 case 4:
-                    this.kinkGloss.catDescription = "Category for the preferred forms Muse enjoys having hers or others' bodies changed, either for a time or forever"
-                    this.kinkGloss.catKink1 = "Breeding: To stuff or be stuffed with cum with the purpose of getting knocked up."
-                    this.kinkGloss.catKink2 = "Piercing: Standard obvious, appeal for embedded jewelry, particularly nipple and earrings"
-                    this.kinkGloss.catKink3 = "Branding: Artistic marks or writing to denote things about the person, be it tattoos, body writing, or magical emblems"
-                    this.kinkGloss.catKink4 = "Growth: The expansion, through flesh or silicone, of bodily assets, including ass and breasts, or general size and such."
+                    this.kinkGloss.catDescription = "Preferred forms Muse enjoys having hers or others' bodies changed, for a time or forever"
+                    this.kinkGloss.catKink1 = "Breeding: To fill with cum with the goal of getting knocked up."
+                    this.kinkGloss.catKink2 = "Piercing: Appeal for embedded jewelry or needle point tattooing."
+                    this.kinkGloss.catKink3 = "Branding: Artistic marks or writing to denote things about the person, be it drawing, body writing, or magical emblems"
+                    this.kinkGloss.catKink4 = "Growth: The expansion, through flesh or silicone, of body and its parts, like ass and breasts."
                     break
                 case 5:
-                    this.kinkGloss.catDescription = "Category for the preferred forms Muse enjoys having hers or others' minds changed, either for a time or forever"
-                    this.kinkGloss.catKink1 = "Corruption: To fall for vices or temptations, or by fear and hurt, away from their usual behaviour, and enjoy their new way of life"
-                    this.kinkGloss.catKink2 = "Mind Break: To iron away all thought and/or personality through force and overwhelming abuse turned to pleasure"
-                    this.kinkGloss.catKink3 = "Brainwash: To peacefully wash away all thought, memory and/or self and replacing it with new ones, often with the person unaware of the change"
-                    this.kinkGloss.catKink4 = "Blank State: The first step of brainwashing, left at that. Very suggestible, not a lot of content. Can be more technologically oriented, with commands and programming."
-                    this.kinkGloss.catKink5 = "Hive Mind: To connect one's mind to others, or assimilate it into a whole."
+                    this.kinkGloss.catDescription = "preferred forms Muse enjoys having hers or others' minds changed, for a time or forever"
+                    this.kinkGloss.catKink1 = "Corruption: Falling for vices, temptations, fear or harm, away from their usual behaviour, and enjoying their new way of life."
+                    this.kinkGloss.catKink2 = "Mind Break: Tear away all thought and/or personality through force and overwhelming abuse turned to pleasure"
+                    this.kinkGloss.catKink3 = "Brainwash: Peacefully wash away all thought, memory and/or self and replacing it with new ones, often with the person unaware of the change"
+                    this.kinkGloss.catKink4 = "Blank State: Leaving someone empty of personality and self, very suggestible. Can be more technologically oriented, with commands and programming."
+                    this.kinkGloss.catKink5 = "Hive Mind: Connecting their mind to others, or assimilate it into a whole."
                     break
                 case 6:
-                    this.kinkGloss.catDescription = "Category for the preferred forms Muse enjoys having hers or others' personhood altered, body and mind and soul, either for a time or forever"
+                    this.kinkGloss.catDescription = "Preferred forms Muse enjoys having hers or others' personhood altered, body and mind and soul, either for a time or forever"
                     this.kinkGloss.catKink1 = "Bimbofication: Combined with Gyaru fashion, it includes blonde hair, preference for pinks, skimpy clothing, massive tits and ass, sometimes a tan, and a general excess of libido and lack of intelligence (or a need for it)"
                     this.kinkGloss.catKink2 = "Gothification: Black or alternative hair colors and tips (purple, red, blue, green), often wearing leather, latex and mesh, in black and sometimes alternative color accents. Lots of piercing and tattoos common too."
                     this.kinkGloss.catKink3 = "Mechanization/Droneification: Covered in technology, or fused with it, or turned into a machine being, often Blank State'd or in a Hivemind."
@@ -828,39 +595,37 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "*Note: You can mix and match these too. Goth Bimbos, Bimbo Drones, Goth Twins, etc."
                     break
                 case 7:
-                    this.kinkGloss.catDescription = "Category for the ways Muse prefers to be treated, or treat the third parties"
-                    this.kinkGloss.catKink1 = "Praise: To be lavished and loved and adored."
-                    this.kinkGloss.catKink2 = "Degradation: To be treated as a lesser, pathetic being, who's lucky to get to hear even the words of disdain"
+                    this.kinkGloss.catDescription = "Ways Muse prefers to be treated, or treat their partner/s."
+                    this.kinkGloss.catKink1 = "Praise: Being lavished and loved and adored."
+                    this.kinkGloss.catKink2 = "Degradation: Being treated as a lesser, pathetic being, who's lucky to get to hear even the words of disdain"
                     this.kinkGloss.catKink3 = "Ryona: Mild physical abuse such as choking, slapping, pinching, even some punching. And it turns you on."
                     this.kinkGloss.catKink4 = "Objectification: Treatment as an item or prop, no more sapient than a lamp or seat."
-                    this.kinkGloss.catKink5 = "Humiliation: To use any combination of degradation, ryona and objectification, as well as torture and bondage and such, to openly devalue and mock one."
+                    this.kinkGloss.catKink5 = "Humiliation: Openly devaluing and mocking someone through the darker forms of treatment, bondage, etc."
                     break
                 case 8:
-                    this.kinkGloss.catDescription = "Category for both how Muse prefers regarding the consent of hers or others' to engage in lewd activity, and how visible the acts shall be"
+                    this.kinkGloss.catDescription = "The state of consent of the Muse that'll arouse them, of their partner/s, or of uninvolved people."
                     this.kinkGloss.catKink1 = "Free Consent: Available to fuck at every single moment, waking or unconscious, busy or free, doesn't matter."
-                    this.kinkGloss.catKink2 = "Dub-Con: To use any sort of body and/or mind modification or substance that makes the judgement of consent questionable"
-                    this.kinkGloss.catKink3 = "Non-Con: To fuck or be fucked against one's wishes expressed verbally and openly."
-                    this.kinkGloss.catKink4 = "Voyeur: Watching sexual activity happen."
+                    this.kinkGloss.catKink2 = "Dub-Con: Using any sort of body and/or mind modification or substance that makes the judgement of consent questionable"
+                    this.kinkGloss.catKink3 = "Non-Con: Fuck or be fucked against their wishes expressed verbally and openly."
+                    this.kinkGloss.catKink4 = "Voyeur: Watching sexual activity happen, sometimes without their awareness or consent."
                     this.kinkGloss.catKink5 = "Stealthing: A middle point of private and public, such as gloryholes, or doing it somewhere with little traffic, or behind an obstacle unseen."
-                    this.kinkGloss.catKink6 = "Exhibitionism: Let them all see what depravities to be enjoyed."
+                    this.kinkGloss.catKink6 = "Exhibitionism: Let them all see what depravities are to be enjoyed."
                     break
                 case 9:
-                    this.kinkGloss.catDescription = "Category for the fluids and otherwise that the Muse or the third parties enjoy indulging in, sharing, and more"
-                    this.kinkGloss.catKink1 = "Milk"
-                    this.kinkGloss.catKink2 = "Sweat"
-                    this.kinkGloss.catKink3 = "Semen"
-                    this.kinkGloss.catKink4 = "Urine"
-                    this.kinkGloss.catKink5 = "Food"
-                    this.kinkGloss.catKink6 = "Drug: Includes smoking, drinking, and biological drugs in trial without medical check."
+                    this.kinkGloss.catDescription = "Fluids and other substances that the Muse or partner/s enjoy, share, and more"
+                    this.kinkGloss.catKink1 = "Food: Anything usually bought at a grocery store, or set at a table. Important inclusion of milk."
+                    this.kinkGloss.catKink2 = "Sweat: Salty results of vigorous exercise and heat, on the body of a gorgeous gal."
+                    this.kinkGloss.catKink3 = "Semen: Somewhat used for babymaking, but also good as a beauty product for to the skin, as well as a very filling meal."
+                    this.kinkGloss.catKink4 = "Urine: A warm golden shower of physical relief."
+                    this.kinkGloss.catKink5 = "Drug: Otherwise substances with neurochemical effects, usually addictive, and dangerous. Includes smoking, drinking, and biological drugs in trial without medical check."
                     break
                 case 10:
-                    this.kinkGloss.catDescription = "Category for the ways in which Muse likes herself or others to be restrained and forced into positions for play"
-                    this.kinkGloss.catKink1 = "Tentacles"
-                    this.kinkGloss.catKink2 = "Hypnosis"
-                    this.kinkGloss.catKink3 = "Grappling"
-                    this.kinkGloss.catKink4 = "Environment"
-                    this.kinkGloss.catKink5 = "Sensory Deprivation"
-                    this.kinkGloss.catKink6 = "Bindings"
+                    this.kinkGloss.catDescription = "Ways in which Muse likes herself or others to be restrained and forced into positions for play"
+                    this.kinkGloss.catKink1 = "Bindings: Objects wrapped around the person and tying them up nicely. Includes tentacles, chains, ropes, tape, etc."
+                    this.kinkGloss.catKink2 = "Hypnosis: Control over a person's body, leaving them conscious inside their mind."
+                    this.kinkGloss.catKink3 = "Grappling: Physically restraining and manipulating a person into naughty positions."
+                    this.kinkGloss.catKink4 = "Environment: Setups and settled devices to put a slut in place, literally."
+                    this.kinkGloss.catKink5 = "Sensory Deprivation: Limiting or blocking sight and/or hearing (rarely the remaining three), to intensify the sense of pleasure, or make them feel helpless, lost and adrift."
                     break
             }
         },
@@ -895,7 +660,6 @@ export default defineComponent({
         },
         museProfileOpen(area, char) {
             this.cleanData();
-            console.log(char)
             switch (area) {
                 case 1:
                     switch (char) {
@@ -918,55 +682,48 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/rosa/d4bbadacd98635870ed9b442a5c591e4.png", name: "Team Plasma" },
                                 { pic: "/slideshow/nintendo/rosa/f60790321c674de16d1e92fb2bb6ac79.png", name: "Team Rocket" },
                             ];
-                            this.kink.relation.cultist = "Member (Self)"
-                            this.kink.relation.pet = "Dog, Cow, Bun (Self)"
-                            this.kink.relation.slave = "Slave (Self)"
-                            this.kink.relation.assist = "Assistant (Self)"
-                            this.kink.relation.lover = "YES"
-                            this.kink.relation.family = "Mommy/Daughter (Other/Self), Sister"
-                            this.kink.partner.person = "Human"
-                            this.kink.partner.group = "YES"
-                            this.kink.partner.monster = "Pokemon"
-                            this.kink.partner.animal = "Pokemon"
-                            this.kink.clothing.animal = "Pokemon (Dog, Cow, Bun)"
-                            this.kink.clothing.material = "Latex, Nylon"
-                            this.kink.clothing.uniform = "Evil Team (Rocket, Plasma)"
-                            this.kink.clothing.fashion = "YES"
-                            this.kink.physMod.breeding = "YES"
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = "Member (Self)"
+                            this.kinkA.relation.pet.d = "Dog, Cow, Bun (Self)"
+                            this.kinkA.relation.slave.d = "Slave (Self)"
+                            this.kinkA.relation.assist.d = "Assistant (Self)"
+                            this.kinkA.relation.lover.d = "YES"
+                            this.kinkA.relation.family.d = "Mommy/Daughter (Partner/Self), Sister"
+                            this.kinkA.partner.person.l = "Human"
+                            this.kinkA.partner.person.d = "YES"
+                            this.kinkA.partner.group.l = "Team Rocket, Team Plasma"
+                            this.kinkA.partner.group.d = "YES"
+                            this.kinkA.partner.monster.l = "Pokemon"
+                            this.kinkA.partner.monster.d = "YES"
+                            this.kinkA.clothing.animal.d = "Pokemon (Dog, Cow, Bun)"
+                            this.kinkA.clothing.material.d = "Latex, Nylon"
+                            this.kinkA.clothing.uniform.d = "Evil Team (Rocket, Plasma), Maid, School"
+                            this.kinkA.clothing.fashion.d = "YES"
+                            this.kinkA.bodyMod.breed.d = "YES"
+                            this.kinkA.bodyMod.brand.d = "Self"
+                            this.kinkA.bodyMod.grow.d = "Breasts, Hips"
+                            this.kinkA.mindMod.corrupt.d = "Self"
+                            this.kinkA.mindMod.mindBreak.d = "Self"
+                            this.kinkA.mindMod.brainWash.d = "Self"
+                            this.kinkA.mindMod.brainBlank.d = "Self"
+                            this.kinkA.mindMod.brainHive.d = "Self"
+                            this.kinkB.transform.bimbo.d = "YES"
+                            this.kinkB.transform.goth.d = "YES"
+                            this.kinkB.transform.mecha.d = "YES"
+                            this.kinkB.transform.twin.d = "YES"
+                            this.kinkB.treat.praise.d = "YES"
+                            this.kinkB.treat.degrade.d = "Self"
+                            this.kinkB.treat.hurt.d = "Self"
+                            this.kinkB.treat.humiliate.d = "Self"
+                            this.kinkB.treat.object.d = "Self"
+                            this.kinkB.consent.free.d = "YES"
+                            this.kinkB.consent.dub.d = "YES"
+                            this.kinkB.consent.none.d = "YES"
+                            this.kinkB.consent.exhibit.d = "YES"
+                            this.kinkB.substance.food.d = "Milk"
+                            this.kinkB.substance.cum.d = "Inside"
+                            this.kinkB.bondage.hypno.d = "YES"
+                            this.kinkB.bondage.hold.d = "Groping"
+                            this.kinkB.bondage.tie.d = "Rope"
                             break
                         case 'nem':
                             this.muse.Name = "Nemona Victoria";
@@ -987,58 +744,34 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/nemona/a22aa18c8c3e9d25fe3caf1b9c062e2f.jpg", name: "Alpha" },
                                 { pic: "/slideshow/nintendo/nemona/sample_76d2991400b75a59f375c40abaf7a14f.jpg", name: "Team Rocket" },
                             ];
-                            //this.kink.relation.cultist = "YES"
-                            this.kink.relation.pet = "Dog"
-                            //this.kink.relation.slave = "YES"
-                            this.kink.relation.assist = "YES"
-                            this.kink.relation.lover = "YES"
-                            //this.kink.relation.family = ""
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.pet.d = "Dog"
+                            this.kinkA.relation.assist.d = "YES"
+                            this.kinkA.relation.lover.d = "YES"
+                            this.kinkA.partner.person.l = "Human"
+                            this.kinkA.partner.person.d = "YES"
+                            this.kinkA.partner.monster.l = "Pokemon"
+                            this.kinkA.partner.monster.d = "YES"
+                            this.kinkA.clothing.animal.d = "Pokemon"
+                            this.kinkA.clothing.material.d = "Nylon"
+                            this.kinkA.clothing.uniform.d = "School, Team Rocket"
+                            this.kinkA.bodyMod.breed.d = "Partner"
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.mindMod.mindBreak.d = "Partner"
+                            this.kinkB.transform.bimbo.d = "Partner"
+                            this.kinkB.transform.goth.d = "Partner"
+                            this.kinkB.treat.praise.d = "YES"
+                            this.kinkB.treat.hurt.d = "YES"
+                            this.kinkB.consent.dub.d = "Partner"
+                            this.kinkB.consent.none.d = "Partner"
+                            this.kinkB.consent.watch.d = "YES"
+                            this.kinkB.consent.exhibit.d = "YES"
+                            this.kinkB.substance.sweat.d = "YES"
+                            this.kinkB.substance.cum.d = "YES"
+                            this.kinkB.bondage.hypno.d = "Partner"
+                            this.kinkB.bondage.hold.d = "YES"
+                            this.kinkB.bondage.world.d = "YES"
+                            this.kinkB.bondage.sense.d = "Partner"
+                            this.kinkB.bondage.tie.d = "Partner"
                             break
                         case 'marn':
                             this.muse.Name = "Marnie Mary";
@@ -1061,52 +794,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/marnie/13395b2704bd0d32a00681f04f681517.jpeg", name: "Alpha" },
                                 { pic: "/slideshow/nintendo/marnie/78605419_p0.png", name: "Team Rocket" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = "YES"
+                            this.kinkA.relation.pet.d = "YES"
+                            this.kinkA.relation.slave.d = "YES"
+                            this.kinkA.relation.lover.d = "YES"
+                            this.kinkA.partner.person.l = "Human"
+                            this.kinkA.partner.person.d = "YES"
+                            this.kinkA.partner.group.l = "Team Rocket"
+                            this.kinkA.partner.group.d = "YES"
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.l = "Pokemon"
+                            this.kinkA.partner.monster.d = "YES"
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'ida':
                             this.muse.Name = "Irida Kai";
@@ -1125,52 +862,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/irida/b8d11a378e26cce975c56d29f1f56bc8.jpeg", name: "Glaceon" },
                                 { pic: "/slideshow/nintendo/irida/f781168d50efb09fc74b4811e782e4d7.jpg", name: "Alpha" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.l = "Pokemon"
+                            this.kinkA.partner.monster.d = "YES"
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'iris':
                             this.muse.Name = "Iris Magenta";
@@ -1190,52 +931,57 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/iris/af150e09620200ce637325560180101d.jpeg", name: "Alpha" },
                                 { pic: "/slideshow/nintendo/iris/b0f559a5f7dcb1f712fcc52297596d87.png", name: "Team Rocket" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.l = "Pokemon"
+                            this.kinkA.partner.monster.d = "YES"
+                            this.kinkA.partner.animal.d = "Dragon"
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'sam':
                             this.muse.Name = "Samus Aran";
@@ -1258,52 +1004,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/samus/78e5271ef7bbf3c49bc3080cdeb653ec.png", name: "Mother Metroid" },
                                 { pic: "/slideshow/nintendo/samus/f5258199447bd959f2cc469b38e4d6ff.jpeg", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'bow':
                             this.muse.Name = "Bowsette Koopa";
@@ -1325,52 +1075,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/bowsette/fury bowsette gif frame 1.jpg", name: "Fury" },
                                 { pic: "/slideshow/nintendo/bowsette/89445fe5b636797e9888bcc55c9eb28a.jpg", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'pich':
                             this.muse.Name = "Peach Toadstool";
@@ -1394,52 +1148,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/peach/763d3b6dd3615daa4c6fb2bcc2643fb2.jpeg", name: "Koopa Slave" },
                                 { pic: "/slideshow/nintendo/peach/F7NULfkWUAA__Ma.jpeg", name: "Shadow Queen" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'lina':
                             this.muse.Name = "Rosalina Estela";
@@ -1460,52 +1218,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/rosalina/13cb108356db2a7210232ed15c816ee6.jpeg", name: "Koopa Slave" },
                                 { pic: "/slideshow/nintendo/rosalina/6cbefdde2ae7593950779b74dfc966c2.jpg", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'lin':
                             this.muse.Name = "Linkle Ordona";
@@ -1524,52 +1286,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/linkle/FwzG0ItWYAMWipg.jpeg", name: "Heroine" },
                                 { pic: "/slideshow/nintendo/linkle/FzVSDuTXoAAEbsK.jpeg", name: "Sheikah Tech" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'pura':
                             this.muse.Name = "Purah";
@@ -1589,52 +1355,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/purah/6817bd0af302b30bcb584ca8796061c1.jpeg", name: "" },
                                 { pic: "/slideshow/nintendo/purah/Inktober_2023_Day_5.png", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'edel':
                             this.muse.Name = "Edelgard von Hresvelg";
@@ -1654,52 +1424,56 @@ export default defineComponent({
                                 { pic: "/slideshow/nintendo/edelgard/sample-b00beb7c605ded6564f35bec996f76fe.jpg", name: "Modern" },
                                 { pic: "/slideshow/nintendo/edelgard/Inktober_2022_Day_11.png", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                     };
                     break
@@ -1723,52 +1497,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/lisa/105578655_p2.jpg", name: "Mirror Maiden (Unmasked)" },
                                 { pic: "/slideshow/games/lisa/105578655_p3.jpg", name: "Mirror Maiden (Masked)" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'mira':
                             this.muse.Name = "None";
@@ -1789,52 +1567,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/mirror/9ed3afc83ac02265959fc2b0c072abb8.jpg", name: "Yelan? (no mask)" },
                                 { pic: "/slideshow/games/mirror/7583993d6e254cd277e19d41ac96e952.jpg", name: "Jean? (no mask)" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'luci':
                             this.muse.Name = "Lucifer Morningstar";
@@ -1855,52 +1637,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/lucifer/d64e05cd98c07974eb080c65e152588a.jpg", name: "Falling" },
                                 { pic: "/slideshow/games/lucifer/127ea3e69a1d8ccfd4680b14846269f1.jpg", name: "Angel" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'tae':
                             this.muse.Name = "Tae Takemi";
@@ -1919,52 +1705,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/tae/1847b8e95a39bc591f3cb57ad764d436.png", name: "Swimwear" },
                                 { pic: "/slideshow/games/tae/c50fe2cea710a8a9948c1947d8bd605c2b78f008.jpg", name: "Casual" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'ann':
                             this.muse.Name = "Ann Takamaki";
@@ -1989,52 +1779,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/ann/LDlnggKn.jpg", name: "Kitty and Bunny (1)" },
                                 { pic: "/slideshow/games/ann/a2b26d0aff5a9a572a7dce7acd156883.jpg", name: "Kitty and Bunny (2)" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'sae':
                             this.muse.Name = "Sae Nijima";
@@ -2054,52 +1848,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/sae/a69df5bd0e5f00e82f3f327741d388a9.jpg", name: "Fancy" },
                                 { pic: "/slideshow/games/sae/49744d416f80de61bff47499c55b651f.png", name: "" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'moni':
                             this.muse.Name = "Monika";
@@ -2126,52 +1924,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/monika/715e3b9ad2c785a39651e16c15eacfdc.jpeg", name: "" },
                                 { pic: "/slideshow/games/monika/b5fc6dbea7ede96b837f2c9c92d2fc08.png", name: "" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'roty':
                             this.muse.Name = "Rottytops";
@@ -2191,52 +1993,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/rotty/73e9f9723e59f1f8b70ae9f26bd2f163.jpeg", name: "Racing" },
                                 { pic: "/slideshow/games/rotty/7b77b2e003914d464fdb413c41878edd.png", name: "Genie" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'shan':
                             this.muse.Name = "Shantae";
@@ -2255,52 +2061,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/shantae/e773b81e7a0e17b9cd7b3ef7b23c2a46.png", name: "Bunny" },
                                 { pic: "/slideshow/games/shantae/F9ewFlgakAA5rNo.jpeg", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'junko':
                             this.muse.Name = "Junko Enoshima";
@@ -2317,52 +2127,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/junko/F3lnjAXbwAE9xc_.jpeg", name: "Bunny" },
                                 { pic: "/slideshow/games/junko/108590748_p0.png", name: "Succubus" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'nami':
                             this.muse.Name = "Chiaki Nanami";
@@ -2380,52 +2194,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/chiaki/Fzk7OxkWIAMQZ0s.jpeg", name: "Default" },
                                 { pic: "/slideshow/games/chiaki/Fzk7OxkXwAEx93B.jpeg", name: "Bunny" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'layer':
                             this.muse.Name = "Layer";
@@ -2464,52 +2282,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/ruler/4537316e91107122c94ad05602b19ada.jpeg", name: "Lancer" },
                                 { pic: "/slideshow/games/ruler/Lancer.Artoria.Pendragon.full.2237522.png", name: "Lancer" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'ridem':
                             this.muse.Name = "Rider";
@@ -2532,52 +2354,56 @@ export default defineComponent({
                                 { pic: "/slideshow/games/rider/5ed5e2c9d755f14431620e791c860406.png", name: "Charming Bunny" },
                                 { pic: "/slideshow/games/rider/Medusa's_Mobile_Woman_Miss_Medusa.png", name: "Mecha Lady" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                     };
                     break
@@ -2603,52 +2429,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/mei/b3ee48710e50498d7b22659dbf6dcb2e.jpeg", name: "Bimbo" },
                                 { pic: "/slideshow/mha/mei/FyOb2p6XgAQugw1.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'tsu':
                             this.muse.Name = "Tsuyu Asui (Froppy)";
@@ -2670,52 +2500,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/tsuyu/88948762_p0.png", name: "Club" },
                                 { pic: "/slideshow/mha/tsuyu/FyOb0OkXgAEQOtz.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'mina':
                             this.muse.Name = "Mina Ashido (Pinky)";
@@ -2734,52 +2568,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/mina/bcee4ce87c56f6bd3b16b032f48f664d.png", name: "Non-Mutant" },
                                 { pic: "/slideshow/mha/mina/FyOb0tJWwAE5-3s.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'momo':
                             this.muse.Name = "Momo Yaoyorozu (Creati)";
@@ -2802,52 +2640,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/momo/89683124_p0.png", name: "Club" },
                                 { pic: "/slideshow/mha/momo/FyOb1nVWAAExxkE.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'toru':
                             this.muse.Name = "Tooru Hagakure (Invisible Girl)";
@@ -2868,52 +2710,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/tooru/112018813_p0.jpg", name: "Maid" },
                                 { pic: "/slideshow/mha/tooru/1cbd4b178a48020590b106d2c06e42c9.jpg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'kendo':
                             this.muse.Name = "Itsuka Kendo (Battle Fist)";
@@ -2933,52 +2779,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/kendo/f70abb85fd8a0b54b1bba4983e33f616.jpeg", name: "" },
                                 { pic: "/slideshow/mha/kendo/FyOb3udXoAA4PhX.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'camie':
                             this.muse.Name = "Camie Utsushimi (Illus-o-Camie)";
@@ -3000,52 +2850,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/camie/3401d01aa678a8bebbf233a2143ecdba.png", name: "X-mas" },
                                 { pic: "/slideshow/mha/camie/406e48e10251345bd347defdb117fda9.jpeg", name: "Swimwear" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'mel':
                             this.muse.Name = "Melissa Shield";
@@ -3066,52 +2920,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/melissa/3548d69186e45b12e393c06b4c8eeb4e.png", name: "Cowgirl" },
                                 { pic: "/slideshow/mha/melissa/a142dd804c2acb1c6cf9d1ff30d4185a.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'joke':
                             this.muse.Name = "Emi Fukukado (Ms. Joke)";
@@ -3131,52 +2989,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/emi/F4jJu1Va0AA7n_t.jpeg", name: "" },
                                 { pic: "/slideshow/mha/emi/MidJoke13.jpg", name: "" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'kai':
                             this.muse.Name = "Kaina Tsutsumi (Lady Nagant)";
@@ -3197,52 +3059,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/kaina/b0965f9d905b2395e0549c68d47bc13b.jpeg", name: "Bunny" },
                                 { pic: "/slideshow/mha/kaina/d963259f8c800a3ba15fd37160a40b6d.jpeg", name: "Virgin Killer Sweater" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'rumi':
                             this.muse.Name = "Rumi Usagiyama (Miruko)";
@@ -3264,52 +3130,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/rumi/493e59e27d67918a99bd7a0ad672f2a0.jpeg", name: "Underwear" },
                                 { pic: "/slideshow/mha/rumi/89738596_p1.png", name: "Club" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'yama':
                             this.muse.Name = "Yu Takeyama (Mt. Lady)";
@@ -3328,52 +3198,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/yu/d71851232adc6e0fb11001fb6fe2a479.png", name: "" },
                                 { pic: "/slideshow/mha/yu/02a4488ecbf54308bcacb8b0789c90ef.jpeg", name: "Cow" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'fumi':
                             this.muse.Name = "Fuyumi Todoroki";
@@ -3395,52 +3269,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/fuyumi/89683176_p1.png", name: "Club" },
                                 { pic: "/slideshow/mha/fuyumi/FyOb4NHWAAAFoFC.jpeg", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'inko':
                             this.muse.Name = "Inko Midoriya";
@@ -3461,52 +3339,56 @@ export default defineComponent({
                                 { pic: "/slideshow/mha/inko/d8553589ce4dbd302c615fd9f1bc23fd.jpeg", name: "Pre-Time Skip" },
                                 { pic: "/slideshow/mha/inko/3d62cc8c709d6312077c9898c3e7e8fb.png", name: "Cheerleader" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                     };
                     break
@@ -3531,52 +3413,56 @@ export default defineComponent({
                                 { pic: "/slideshow/anime/kobeni/f0fca9f1f164d9a8045bb4650d48aa61.png", name: "Cow" },
                                 { pic: "/slideshow/anime/kobeni/33e1f0e365fd03a28c4ac306a13c9af4200bd46b.jpg", name: "Puppy" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'marin':
                             this.muse.Name = "Marin Kitagawa";
@@ -3601,52 +3487,56 @@ export default defineComponent({
                                 { pic: "/slideshow/anime/marin/veronica.png", name: "Veronica (Marin)" },
                                 { pic: "/slideshow/anime/marin/symb.png", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'lucy':
                             this.muse.Name = "Lucyna Kushinada";
@@ -3666,52 +3556,56 @@ export default defineComponent({
                                 { pic: "/slideshow/anime/lucynda/F52RzoZaYAEK6Fb.jpeg", name: "" },
                                 { pic: "/slideshow/anime/lucynda/550de0a6117fa76e06ca72bc8d0eef20.jpeg", name: "" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'yor':
                             this.muse.Name = "Yor Forger nee Briar";
@@ -3736,52 +3630,56 @@ export default defineComponent({
                                 { pic: "/slideshow/anime/yor/3d2cc3b1be93d57e25e8ef81e59d27bd.png", name: "Yorticia 2" },
                                 { pic: "/slideshow/anime/yor/Inktober_2023_Day_15.png", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                         case 'stock':
                             this.muse.Name = "Stocking Anarchy";
@@ -3804,52 +3702,56 @@ export default defineComponent({
                                 { pic: "/slideshow/anime/stocking/f7134750b938e5620f8d2ec4fe69231c.png", name: "Bunnygirl" },
                                 { pic: "/slideshow/anime/stocking/Inktober_2023_Day_16.png", name: "Symbiote" },
                             ];
-                            this.kink.partner.person = ""
-                            this.kink.partner.group = ""
-                            this.kink.partner.machine = ""
-                            this.kink.partner.monster = ""
-                            this.kink.partner.animal = ""
-                            this.kink.clothing.animal = ""
-                            this.kink.clothing.none = ""
-                            this.kink.clothing.material = ""
-                            this.kink.clothing.uniform = ""
-                            this.kink.clothing.fashion = ""
-                            this.kink.physMod.breeding = ""
-                            this.kink.physMod.piercing = ""
-                            this.kink.physMod.branding = ""
-                            this.kink.physMod.growth = ""
-                            this.kink.mindMod.corruption = ""
-                            this.kink.mindMod.mindBreak = ""
-                            this.kink.mindMod.brainWash = ""
-                            this.kink.mindMod.brainBlank = ""
-                            this.kink.mindMod.brainHive = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.transform = ""
-                            this.kink.treat.praise = ""
-                            this.kink.treat.degrade = ""
-                            this.kink.treat.hurt = ""
-                            this.kink.treat.humiliate = ""
-                            this.kink.treat.object = ""
-                            this.kink.consent.free = ""
-                            this.kink.consent.dub = ""
-                            this.kink.consent.none = ""
-                            this.kink.visibility.watch = ""
-                            this.kink.visibility.exhibit = ""
-                            this.kink.visibility.stealth = ""
-                            this.kink.substance.milk = ""
-                            this.kink.substance.sweat = ""
-                            this.kink.substance.cum = ""
-                            this.kink.substance.piss = ""
-                            this.kink.substance.food = ""
-                            this.kink.substance.drug = ""
-                            this.kink.bondage.tentacle = ""
-                            this.kink.bondage.hypno = ""
-                            this.kink.bondage.hold = ""
-                            this.kink.bondage.world = ""
-                            this.kink.bondage.sense = ""
-                            this.kink.bondage.tie = ""
+                            this.kinkA.relation.cultist.d = ""
+                            this.kinkA.relation.pet.d = ""
+                            this.kinkA.relation.slave.d = ""
+                            this.kinkA.relation.assist.d = ""
+                            this.kinkA.relation.lover.d = ""
+                            this.kinkA.relation.family.d = ""
+                            this.kinkA.partner.person.l = ""
+                            this.kinkA.partner.group.d = ""
+                            this.kinkA.partner.machine.d = ""
+                            this.kinkA.partner.monster.d = ""
+                            this.kinkA.partner.animal.d = ""
+                            this.kinkA.clothing.animal.d = ""
+                            this.kinkA.clothing.none.d = ""
+                            this.kinkA.clothing.material.d = ""
+                            this.kinkA.clothing.uniform.d = ""
+                            this.kinkA.clothing.fashion.d = ""
+                            this.kinkA.bodyMod.breed.d = ""
+                            this.kinkA.bodyMod.pierce.d = ""
+                            this.kinkA.bodyMod.brand.d = ""
+                            this.kinkA.bodyMod.grow.d = ""
+                            this.kinkA.mindMod.corrupt.d = ""
+                            this.kinkA.mindMod.mindBreak.d = ""
+                            this.kinkA.mindMod.brainWash.d = ""
+                            this.kinkA.mindMod.brainBlank.d = ""
+                            this.kinkA.mindMod.brainHive.d = ""
+                            this.kinkB.transform.bimbo.d = ""
+                            this.kinkB.transform.goth.d = ""
+                            this.kinkB.transform.mecha.d = ""
+                            this.kinkB.transform.twin.d = ""
+                            this.kinkB.treat.praise.d = ""
+                            this.kinkB.treat.degrade.d = ""
+                            this.kinkB.treat.hurt.d = ""
+                            this.kinkB.treat.humiliate.d = ""
+                            this.kinkB.treat.object.d = ""
+                            this.kinkB.consent.free.d = ""
+                            this.kinkB.consent.dub.d = ""
+                            this.kinkB.consent.none.d = ""
+                            this.kinkB.consent.watch.d = ""
+                            this.kinkB.consent.exhibit.d = ""
+                            this.kinkB.consent.stealth.d = ""
+                            this.kinkB.substance.sweat.d = ""
+                            this.kinkB.substance.cum.d = ""
+                            this.kinkB.substance.piss.d = ""
+                            this.kinkB.substance.food.d = ""
+                            this.kinkB.substance.drug.d = ""
+                            this.kinkB.bondage.hypno.d = ""
+                            this.kinkB.bondage.hold.d = ""
+                            this.kinkB.bondage.world.d = ""
+                            this.kinkB.bondage.sense.d = ""
+                            this.kinkB.bondage.tie.d = ""
                             break
                     };
                     break
@@ -3859,23 +3761,18 @@ export default defineComponent({
         },
         museSwitch(move) {
             var arr = [];
-            var tempMSect = 0;
             switch (this.museSect) {
                 case 1:
                     arr = this.charArray.gamenintendobtn
-                    tempMSect = 1
                     break
                 case 2:
                     arr = this.charArray.gameotherbtn
-                    tempMSect = 2
                     break
                 case 3:
                     arr = this.charArray.animemhabtn
-                    tempMSect = 3
                     break
                 case 4:
                     arr = this.charArray.animeotherbtn
-                    tempMSect = 4
                     break
             }
             var newCode = "";
@@ -3903,7 +3800,7 @@ export default defineComponent({
                     }
                     break
             }
-            this.museProfileOpen(tempMSect, newCode)
+            this.museProfileOpen(this.museSect, newCode)
         },
         slideKeyboard(move) {
             switch (move) {
@@ -3924,40 +3821,58 @@ export default defineComponent({
             }
         },
         cleanData() {
-            var countMuse = 1
             for (let property in this.muse) {
-                if (countMuse + 1 > this.muse.length) {
-                    this.muse[property] = []
-                } else {
-                    this.muse[property] = ""
-                }
-                countMuse++
+                this.muse[property] = ""
             }
+            this.muse.versionsArray = []
             this.slide = 0;
-            for (let category in this.kink) {
-                for (let subkink in this.kink[category]) {
-                    this.kink[category][subkink] = "";
+            for (let category in this.kinkA) {
+                for (let subkink in this.kinkA[category]) {
+                    this.kinkA[category][subkink].d = "";
                 }
             }
+            for (let category in this.kinkB) {
+                for (let subkink in this.kinkB[category]) {
+                    this.kinkB[category][subkink].d = "";
+                }
+            }
+            this.kinkA.partner.person.l = ""
+            this.kinkA.partner.group.l = "Group"
+            this.kinkA.partner.machine.l = "Machine"
+            this.kinkA.partner.animal.l = "Animal"
+            this.kinkA.partner.monster.l = "Monster"
+
         },
     },
-
 })
 </script>
 <style>
-@media screen and (min-width: 610px) {
+@media screen and (min-width: 643px) {
+    .allmusebtn {
+        font-size: 72px;
+    }
+}
+@media screen and (max-width: 643px) {
+    .allmusebtn {
+        font-size: 60px;
+    }
+}
+@media screen and (min-width: 730px) {
     .musebutton {
         font-size: 120px;
     }
 }
-
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 730px) {
     .musebutton {
         font-size: 85px;
     }
-
+    .allmusebtn {
+        font-size: 60px;
+    }
     .button {
         font-size: 12px;
+        padding-left: 4px;
+        padding-right: 4px;
     }
 }
 
@@ -3965,12 +3880,26 @@ export default defineComponent({
     .musebutton {
         font-size: 72px;
     }
+    .allmusebtn {
+        font-size: 48px;
+    }
+}
+@media screen and (max-width: 384px) {
+    .button {
+        font-size: 10px;
+    }
 }
 
 .cardHolder {
     margin-bottom: 12px;
     padding: 0 4%;
     gap: 12px;
+}
+
+
+p {
+    margin: 0px;
+    padding: 0px;
 }
 
 .secret {
@@ -3995,6 +3924,7 @@ export default defineComponent({
 }
 
 .kinkitem {
+    text-transform: none;
     background: #bc36b5;
 }
 
@@ -4003,10 +3933,17 @@ export default defineComponent({
     width: 820px;
 }
 
-#cardMuse {
+.cardMuse {
     background: #CF4CC9D9;
     color: white;
     max-width: 970px;
+    width: fit-content;
+}
+
+.cardAllMuse {
+    background: #CF4CC9D9;
+    color: white;
+    max-width: 1280px;
     width: fit-content;
 }
 
@@ -4023,11 +3960,16 @@ export default defineComponent({
 }
 
 .button[disabled] {
-    background: rgb(128, 128, 128);
+    background: rgb(187, 187, 187);
+    color: rgb(99, 99, 99);
+    opacity: 1 !important
+}
+
+.q-expansion-item {
+    text-transform: uppercase;
 }
 
 .q-body--fullscreen-mixin,
 .q-body--prevent-scroll {
     position: relative !important;
-}
-</style>
+}</style>
