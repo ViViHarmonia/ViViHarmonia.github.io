@@ -612,6 +612,7 @@ export default defineComponent({
             }
         },
         groupShow(value) {
+            this.allyDialog = false
             this.ally.muses = []
             switch (value) {
                 case 'rocket':
