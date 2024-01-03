@@ -13,5 +13,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'IndexPage'
+  //use ^\s*$\n to find blank spaces
 })
 </script>

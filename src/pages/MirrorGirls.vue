@@ -8,26 +8,10 @@
                     Mistress...
                 </div>
                 <div class="row flex-center">
-                    <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 1"
-                                @click="section = 1">Rules</q-btn>
+                    <div class="col-xs-auto q-pa-sm" v-for="sect in sectBtn">
+                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs"
+                                :disabled="section == sect.index" @click="section = sect.index">{{ sect.label }}</q-btn>
                         </div>
-                    </div>
-                    <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 2"
-                                @click="section = 2">Lore</q-btn></div>
-                    </div>
-                    <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 3"
-                                @click="section = 3">Muses</q-btn></div>
-                    </div>
-                    <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 4"
-                                @click="section = 4">allies</q-btn></div>
-                    </div>
-                    <div class="col-xs-auto q-pa-sm">
-                        <div class="row flex-center"><q-btn class="button" :dense="$q.screen.lt.xs" :disabled="section == 5"
-                                @click="section = 5">Kinks</q-btn></div>
                     </div>
                 </div>
             </q-card-section>
@@ -120,7 +104,7 @@
                 <div class="row flex-center">
                     <q-btn v-for="(char, c) in allCharArr" square padding="xs" flat
                         v-show="char.sect == museSect || museSect == 5" @click="museProfileOpen(char.sect, char.code)">
-                        <q-avatar square :class="{ musebutton: museSect != 5, allmusebtn: museSect == 5 }">
+                        <q-avatar square :class="{ museImg: museSect != 5, allmuseimg: museSect == 5 }">
                             <img :src="char.avatar">
                         </q-avatar>
                     </q-btn>
@@ -138,7 +122,7 @@
                 <div class="row flex-center q-pa-sm">
                     <q-btn circle padding="xs" flat @click="groupShow(group.name)" v-for="(group, g) in allygroups"
                         :name="g" :key="group">
-                        <q-avatar circle size="85px">
+                        <q-avatar circle class="groupIcon">
                             <img :src="group.emblem">
                         </q-avatar>
                     </q-btn>
@@ -153,7 +137,7 @@
                     <div class="row">
                         <div class="col-xs-auto" v-for="(char, c) in ally.muses">
                             <q-btn square padding="xs" flat @click="museProfileOpen(char.sect, char.code)">
-                                <q-avatar rounded size="80px">
+                                <q-avatar rounded class="grupMuseImg">
                                     <img :src="char.avatar">
                                 </q-avatar>
                             </q-btn>
@@ -176,24 +160,12 @@
                                     term.label }}</q-btn>
                         </div>
                     </div>
-                    <div class="col-xs-9 col-md-9" v-if="kinkGloss.catDescription != ''">
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catDescription != ''"> {{
-                            kinkGloss.catDescription }}</div>
-                        <q-separator dark v-if="kinkGloss.catDescription != ''" />
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink1 != ''">{{
-                            kinkGloss.catKink1 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink2 != ''">{{
-                            kinkGloss.catKink2 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink3 != ''">{{
-                            kinkGloss.catKink3 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink4 != ''">{{
-                            kinkGloss.catKink4 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink5 != ''">{{
-                            kinkGloss.catKink5 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink6 != ''">{{
-                            kinkGloss.catKink6 }}</div>
-                        <div class="row text-body2 q-pa-sm justify-start" v-if="kinkGloss.catKink7 != ''">{{
-                            kinkGloss.catKink7 }}</div>
+                    <div class="col-xs-9 col-md-9" v-if="knkGloscatDesc != ''">
+                        <div class="row text-body2 q-pa-sm justify-start" v-if="knkGloscatDesc != ''"> {{
+                            knkGloscatDesc }}</div>
+                        <q-separator dark v-if="knkGloscatDesc != ''" />
+                        <div class="row text-body2 q-pa-sm justify-start" v-for="kink in kinkGloss" v-show="kink != ''">{{
+                            kink }}</div>
                     </div>
                 </div>
             </q-card-section>
@@ -349,57 +321,63 @@ export default defineComponent({
         kinkCat: 0,
         museDataCheck: 1,
         currentMuseCode: "",
-        allCharArr: [
-            { code: "rosa", sect: 1, group: "rocket", gpP: "Grunt", tags: ["love"], avatar: "/museicon/nintendo/rosa.jpg", },
-            { code: "nem", sect: 1, group: "rocket", gpP: "Leader", tags: [], avatar: "/museicon/nintendo/nemona.png", },
-            { code: "marn", sect: 1, group: "rocket", gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/marnie.jpg", },
-            { code: "ida", sect: 1, group: "rocket", gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/irida.jpg", },
-            { code: "iris", sect: 1, group: "rocket", gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/iris.jpeg", },
-            { code: "sam", sect: 1, group: "shy", gpP: "[WIP]", tags: ["venom"], avatar: "/museicon/nintendo/samus.jpg", },
-            { code: "bow", sect: 1, group: "shy", gpP: "[WIP]", tags: ["venom"], avatar: "/museicon/nintendo/bowsette.jpg", },
-            { code: "pich", sect: 1, group: "shy", gpP: "[WIP]", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/nintendo/peach.jpg", },
-            { code: "lina", sect: 1, group: "shy", gpP: "[WIP]", tags: ["venom"], avatar: "/museicon/nintendo/rosalina.jpg", },
-            { code: "lin", sect: 1, group: "yiga", gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/linkle.jpeg", },
-            { code: "pura", sect: 1, group: "yiga", gpP: "Scientist", tags: ["venom"], avatar: "/museicon/nintendo/purah.jpeg", },
-            { code: "edel", sect: 1, group: "", gpP: "", tags: ["venom"], avatar: "/museicon/nintendo/edelgard.jpg", },
-            { code: "lisa", sect: 2, group: "mirror", gpP: "Blessed", tags: [], avatar: "/museicon/genshin/lisa.jpg", },
-            { code: "mira", sect: 2, group: "mirror", gpP: "Example", tags: [], avatar: "/museicon/genshin/mirror.jpeg", },
-            //{ code: "lumi", sect: 2, group: "mirror", gpP:"" , tags: [], avatar: "/museicon/genshin/lumi.jpeg", },
-            //{ code: "saria", sect: 2, group: "mirror", gpP:"" , tags: [], avatar: "/museicon/genshin/.jpeg", },
-            //{ code: "yelan", sect: 2, group: "mirror", gpP:"" , tags: [], avatar: "/museicon/genshin/yelan.jpeg", },
-            { code: "luci", sect: 2, group: "", gpP: "", tags: [], avatar: "/museicon/games/lucifer.jpg", },
-            { code: "tae", sect: 2, group: "phantom", gpP: "R&D", tags: [], avatar: "/museicon/games/tae.png", },
-            { code: "ann", sect: 2, group: "phantom", gpP: "Founder", tags: ["bimbo/gyaru", "venom"], avatar: "/museicon/games/ann.png", },
-            { code: "sae", sect: 2, group: "phantom", gpP: "Chief", tags: [], avatar: "/museicon/games/sae1.jpeg", },
-            { code: "moni", sect: 2, group: "", gpP: "", tags: ["love"], avatar: "/museicon/games/monika.png", },
-            { code: "roty", sect: 2, group: "", gpP: "", tags: [], avatar: "/museicon/games/rotty.png", },
-            { code: "shan", sect: 2, group: "", gpP: "", tags: ["venom"], avatar: "/museicon/games/shantae.jpeg", },
-            { code: "junko", sect: 2, group: "", gpP: "", tags: [], avatar: "/museicon/games/junko.jpg", },
-            { code: "nami", sect: 2, group: "", gpP: "", tags: ["love"], avatar: "/museicon/games/chiaki.jpg", },
-            { code: "layer", sect: 2, group: "", gpP: "", tags: ["love"], avatar: "/museicon/games/layer.jpeg", },
-            { code: "ruler", sect: 2, group: "", gpP: "", tags: [], avatar: "/museicon/fate/ruler.jpeg", },
-            { code: "ridem", sect: 2, group: "", gpP: "", tags: [], avatar: "/museicon/fate/riderM.jpg", },
-            { code: "mei", sect: 3, group: "ua", gpP: "Student", tags: [], avatar: "/museicon/mha/mei.jpeg", },
-            { code: "tsu", sect: 3, group: "ua", gpP: "Student", tags: ["venom"], avatar: "/museicon/mha/tsuyu.jpeg", },
-            { code: "mina", sect: 3, group: "ua", gpP: "Student", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/mha/mina.jpeg", },
-            { code: "momo", sect: 3, group: "ua", gpP: "Student", tags: [], avatar: "/museicon/mha/momo.jpeg", },
-            { code: "toru", sect: 3, group: "ua", gpP: "Student", tags: ["love"], avatar: "/museicon/mha/tooru.jpeg", },
-            { code: "kendo", sect: 3, group: "ua", gpP: "Student", tags: [], avatar: "/museicon/mha/kendo.jpeg", },
-            { code: "camie", sect: 3, group: "ua", gpP: "Student", tags: ["bimbo/gyaru"], avatar: "/museicon/mha/camie.jpeg", },
-            { code: "mel", sect: 3, group: "ua", gpP: "Student", tags: [], avatar: "/museicon/mha/melissa.jpeg", },
-            { code: "joke", sect: 3, group: "ua", gpP: "Staff", tags: [], avatar: "/museicon/mha/msjoke.jpeg", },
-            { code: "kai", sect: 3, group: "ua", gpP: "Guest", tags: [], avatar: "/museicon/mha/nagant.jpeg", },
-            { code: "rumi", sect: 3, group: "ua", gpP: "Staff", tags: ["venom"], avatar: "/museicon/mha/miruko.jpeg", },
-            { code: "yama", sect: 3, group: "ua", gpP: "Staff", tags: [], avatar: "/museicon/mha/mtlady.jpeg", },
-            { code: "fumi", sect: 3, group: "ua", gpP: "Staff", tags: [], avatar: "/museicon/mha/fuyumi.jpeg", },
-            { code: "inko", sect: 3, group: "ua", gpP: "Staff", tags: [], avatar: "/museicon/mha/inko.png", },
-            { code: "beni", sect: 4, group: "", gpP: "", tags: [], avatar: "/museicon/anime/kobeni.jpeg", },
-            { code: "marin", sect: 4, group: "", gpP: "", tags: ["bimbo/gyaru", "venom"], avatar: "/museicon/anime/marin.jpg", },
-            { code: "lucy", sect: 4, group: "", gpP: "", tags: [], avatar: "/museicon/anime/lucynda.png", },
-            { code: "yor", sect: 4, group: "", gpP: "", tags: ["venom"], avatar: "/museicon/anime/yor.png", },
-            { code: "stock", sect: 4, group: "", gpP: "", tags: ["venom"], avatar: "/museicon/anime/stock.jpg", },
+        sectBtn: [
+            { label: "Rules", index: 1 },
+            { label: "Lore", index: 2 },
+            { label: "Muses", index: 3 },
+            { label: "Allies", index: 4 },
+            { label: "Kinks", index: 5 },
         ],
-        searChrArr: [],
+        allCharArr: [
+            { code: "rosa", sect: 1, group: ["rocket"], gpP: "Grunt", tags: ["love"], avatar: "/museicon/nintendo/rosa.jpg", },
+            { code: "nem", sect: 1, group: ["rocket"], gpP: "Leader", tags: [], avatar: "/museicon/nintendo/nemona.png", },
+            { code: "marn", sect: 1, group: ["rocket"], gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/marnie.jpg", },
+            { code: "ida", sect: 1, group: ["rocket"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/irida.jpg", },
+            { code: "iris", sect: 1, group: ["rocket"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/iris.jpeg", },
+            { code: "sam", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/samus.jpg", },
+            { code: "bow", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/bowsette.jpg", },
+            { code: "pich", sect: 1, group: ["shy"], gpP: "[WIP]", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/nintendo/peach.jpg", },
+            { code: "lina", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/rosalina.jpg", },
+            { code: "lin", sect: 1, group: ["yiga"], gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/linkle.jpeg", },
+            { code: "pura", sect: 1, group: ["yiga", "venom"], gpP: "Scientist", tags: [], avatar: "/museicon/nintendo/purah.jpeg", },
+            { code: "edel", sect: 1, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/nintendo/edelgard.jpg", },
+            { code: "lisa", sect: 2, group: ["mirror"], gpP: "Blessed", tags: [], avatar: "/museicon/genshin/lisa.jpg", },
+            { code: "mira", sect: 2, group: ["mirror"], gpP: "Example", tags: [], avatar: "/museicon/genshin/mirror.jpeg", },
+            //{ code: "lumi", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/lumi.jpeg", },
+            //{ code: "saria", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/.jpeg", },
+            //{ code: "yelan", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/yelan.jpeg", },
+            { code: "luci", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/lucifer.jpg", },
+            { code: "tae", sect: 2, group: ["phantom"], gpP: "R&D", tags: [], avatar: "/museicon/games/tae.png", },
+            { code: "ann", sect: 2, group: ["phantom", "venom"], gpP: "Founder", tags: ["bimbo/gyaru"], avatar: "/museicon/games/ann.png", },
+            { code: "sae", sect: 2, group: ["phantom"], gpP: "Chief", tags: [], avatar: "/museicon/games/sae1.jpeg", },
+            { code: "moni", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/monika.png", },
+            { code: "roty", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/rotty.png", },
+            { code: "shan", sect: 2, group: ["venom"], gpP: "", tags: [], avatar: "/museicon/games/shantae.jpeg", },
+            { code: "junko", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/junko.jpg", },
+            { code: "nami", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/chiaki.jpg", },
+            { code: "layer", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/layer.jpeg", },
+            { code: "ruler", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/fate/ruler.jpeg", },
+            { code: "ridem", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/fate/riderM.jpg", },
+            { code: "mei", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/mei.jpeg", },
+            { code: "tsu", sect: 3, group: ["ua", "venom"], gpP: "Student", tags: [], avatar: "/museicon/mha/tsuyu.jpeg", },
+            { code: "mina", sect: 3, group: ["ua"], gpP: "Student", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/mha/mina.jpeg", },
+            { code: "momo", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/momo.jpeg", },
+            { code: "toru", sect: 3, group: ["ua"], gpP: "Student", tags: ["love"], avatar: "/museicon/mha/tooru.jpeg", },
+            { code: "kendo", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/kendo.jpeg", },
+            { code: "camie", sect: 3, group: ["ua"], gpP: "Student", tags: ["bimbo/gyaru"], avatar: "/museicon/mha/camie.jpeg", },
+            { code: "mel", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/melissa.jpeg", },
+            { code: "joke", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/msjoke.jpeg", },
+            { code: "kai", sect: 3, group: ["ua"], gpP: "Guest", tags: [], avatar: "/museicon/mha/nagant.jpeg", },
+            { code: "rumi", sect: 3, group: ["ua", "venom"], gpP: "Staff", tags: [], avatar: "/museicon/mha/miruko.jpeg", },
+            { code: "yama", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/mtlady.jpeg", },
+            { code: "fumi", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/fuyumi.jpeg", },
+            { code: "inko", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/inko.png", },
+            { code: "beni", sect: 4, group: [""], gpP: "", tags: [], avatar: "/museicon/anime/kobeni.jpeg", },
+            { code: "marin", sect: 4, group: ["", "venom"], gpP: "", tags: ["bimbo/gyaru"], avatar: "/museicon/anime/marin.jpg", },
+            { code: "lucy", sect: 4, group: [""], gpP: "", tags: [], avatar: "/museicon/anime/lucynda.png", },
+            { code: "yor", sect: 4, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/anime/yor.png", },
+            { code: "stock", sect: 4, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/anime/stock.jpg", },
+        ],
         allygroups: [
             { name: 'rocket', emblem: '/groups/hypnorocket.png' },
             { name: 'shy', emblem: '/groups/shy.png' },
@@ -521,8 +499,8 @@ export default defineComponent({
             { label: "Substances", index: 9 },
             { label: "Bondage", index: 10 },
         ],
+        knkGloscatDesc: "",
         kinkGloss: {
-            catDescription: "",
             catKink1: "",
             catKink2: "",
             catKink3: "",
@@ -551,7 +529,7 @@ export default defineComponent({
             this.kinkCat = cat
             switch (cat) {
                 case 1:
-                    this.kinkGloss.catDescription = "Preferred forms of relationship between Muse and her sexual partner/s."
+                    this.knkGloscatDesc = "Preferred forms of relationship between Muse and her sexual partner/s."
                     this.kinkGloss.catKink1 = "Cultist: Being part of a cult towards them, share in the delight of worship with them, or be worshipped."
                     this.kinkGloss.catKink2 = "Pet: Being their pet (particular animals mentioned), or having them as a pet."
                     this.kinkGloss.catKink3 = "Slave: Being subservient under threat and harm to their will entirely, even imprisoned by them, or having them subservient to/imprisoned by her."
@@ -560,7 +538,7 @@ export default defineComponent({
                     this.kinkGloss.catKink6 = "Family: Being their Mommy, Sis or Daughter, with them being the respective Daughter, Sis or Mommy."
                     break
                 case 2:
-                    this.kinkGloss.catDescription = "Preferred partner species by the Muse."
+                    this.knkGloscatDesc = "Preferred partner species by the Muse."
                     this.kinkGloss.catKink1 = "Person: The local sapient species that Muse enjoys playing with."
                     this.kinkGloss.catKink2 = "Group: A gang, or a cult, or any more than two people working together towards pleasure."
                     this.kinkGloss.catKink3 = "Machine: Mechanical non-sapient devic/s to toy with, or be toyed by someone else with."
@@ -568,7 +546,7 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "Animal: A common non-sapient entity, that can't speak, but can be a pet, and can mate.'"
                     break
                 case 3:
-                    this.kinkGloss.catDescription = "Preferred forms of attire to arouse Muse and others."
+                    this.knkGloscatDesc = "Preferred forms of attire to arouse Muse and others."
                     this.kinkGloss.catKink1 = "None: Going au naturale, or see others forgo their clothing."
                     this.kinkGloss.catKink2 = "Animal: Animal-themed outfits, such as cowkinis, playboy bunnies, etc."
                     this.kinkGloss.catKink3 = "Material: Particular materials that entice and arouse Muse, being worn by her or others, such as latex, fur, mesh, and even living"
@@ -576,14 +554,14 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "Fashion: A tendency to shop, accessorize, and generally mess around with clothing styles and dresses."
                     break
                 case 4:
-                    this.kinkGloss.catDescription = "Preferred forms Muse enjoys having hers or others' bodies changed, for a time or forever"
+                    this.knkGloscatDesc = "Preferred forms Muse enjoys having hers or others' bodies changed, for a time or forever"
                     this.kinkGloss.catKink1 = "Breeding: To fill with cum with the goal of getting knocked up."
                     this.kinkGloss.catKink2 = "Piercing: Appeal for embedded jewelry or needle point tattooing."
                     this.kinkGloss.catKink3 = "Branding: Artistic marks or writing to denote things about the person, be it drawing, body writing, or magical emblems"
                     this.kinkGloss.catKink4 = "Growth: The expansion, through flesh or silicone, of body and its parts, like ass and breasts."
                     break
                 case 5:
-                    this.kinkGloss.catDescription = "preferred forms Muse enjoys having hers or others' minds changed, for a time or forever"
+                    this.knkGloscatDesc = "preferred forms Muse enjoys having hers or others' minds changed, for a time or forever"
                     this.kinkGloss.catKink1 = "Corruption: Falling for vices, temptations, fear or harm, away from their usual behaviour, and enjoying their new way of life."
                     this.kinkGloss.catKink2 = "Mind Break: Tear away all thought and/or personality through force and overwhelming abuse turned to pleasure"
                     this.kinkGloss.catKink3 = "Brainwash: Peacefully wash away all thought, memory and/or self and replacing it with new ones, often with the person unaware of the change"
@@ -591,7 +569,7 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "Hive Mind: Connecting their mind to others, or assimilate it into a whole."
                     break
                 case 6:
-                    this.kinkGloss.catDescription = "Preferred forms Muse enjoys having hers or others' personhood altered, body and mind and soul, either for a time or forever"
+                    this.knkGloscatDesc = "Preferred forms Muse enjoys having hers or others' personhood altered, body and mind and soul, either for a time or forever"
                     this.kinkGloss.catKink1 = "Bimbofication/Gyarufication: Includes blonde hair, preference for pinks, skimpy clothing, massive tits and ass, sometimes a tan, and a general excess of libido and lack of intelligence (or a need for it)"
                     this.kinkGloss.catKink2 = "Gothification/Punkification: Black or alternative hair colors, wearing leather, latex and/or mesh, in same as hair color/s. Expect sass and a pissed or aloof attitude. Lots of piercing and tattoos common too."
                     this.kinkGloss.catKink3 = "Mechanization/Droneification: Covered in technology, or fused with it, or turned into a machine being, often Blank State'd or in a Hivemind."
@@ -599,7 +577,7 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "*Note: You can mix and match these too. Goth Bimbos, Bimbo Drones, Goth Twins, etc."
                     break
                 case 7:
-                    this.kinkGloss.catDescription = "Ways Muse prefers to be treated, or treat their partner/s."
+                    this.knkGloscatDesc = "Ways Muse prefers to be treated, or treat their partner/s."
                     this.kinkGloss.catKink1 = "Praise: Being lavished and loved and adored."
                     this.kinkGloss.catKink2 = "Degradation: Being treated as a lesser, pathetic being, who's lucky to get to hear even the words of disdain"
                     this.kinkGloss.catKink3 = "Ryona: Getting physically and psychologically abused, more emphasis on physical on this glossary (as psychological is covered by Degradation)"
@@ -607,7 +585,7 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "Humiliation: Openly devaluing and mocking someone through the darker forms of treatment, bondage, etc."
                     break
                 case 8:
-                    this.kinkGloss.catDescription = "The state of consent of the Muse that'll arouse them, of their partner/s, or of uninvolved people."
+                    this.knkGloscatDesc = "The state of consent of the Muse that'll arouse them, of their partner/s, or of uninvolved people."
                     this.kinkGloss.catKink1 = "Free Consent: Available to fuck at every single moment, waking or unconscious, busy or free, doesn't matter."
                     this.kinkGloss.catKink2 = "Dub-Con: Using any sort of body and/or mind modification or substance that makes the judgement of consent questionable"
                     this.kinkGloss.catKink3 = "Non-Con: Fuck or be fucked against their wishes expressed verbally and openly."
@@ -616,7 +594,7 @@ export default defineComponent({
                     this.kinkGloss.catKink6 = "Exhibitionism: Let them all see what depravities are to be enjoyed."
                     break
                 case 9:
-                    this.kinkGloss.catDescription = "Fluids and other substances that the Muse or partner/s enjoy, share, and more"
+                    this.knkGloscatDesc = "Fluids and other substances that the Muse or partner/s enjoy, share, and more"
                     this.kinkGloss.catKink1 = "Food: Anything usually bought at a grocery store, or set at a table. Important inclusion of milk."
                     this.kinkGloss.catKink2 = "Sweat: Salty results of vigorous exercise and heat, on the body of a gorgeous gal."
                     this.kinkGloss.catKink3 = "Semen: Somewhat used for babymaking, but also good as a beauty product for to the skin, as well as a very filling meal."
@@ -624,7 +602,7 @@ export default defineComponent({
                     this.kinkGloss.catKink5 = "Drug: Otherwise substances with neurochemical effects, usually addictive, and dangerous. Includes smoking, drinking, and biological drugs in trial without medical check."
                     break
                 case 10:
-                    this.kinkGloss.catDescription = "Ways in which Muse likes herself or others to be restrained and forced into positions for play"
+                    this.knkGloscatDesc = "Ways in which Muse likes herself or others to be restrained and forced into positions for play"
                     this.kinkGloss.catKink1 = "Bindings: Objects wrapped around the person and tying them up nicely. Includes tentacles, chains, ropes, tape, etc."
                     this.kinkGloss.catKink2 = "Hypnosis: Control over a person's body, leaving them conscious inside their mind."
                     this.kinkGloss.catKink3 = "Grappling: Physically restraining and manipulating a person into naughty positions."
@@ -659,31 +637,18 @@ export default defineComponent({
                 case 'ua':
                     this.ally.title = "UA HEROINE UNIVERSITY";
                     this.ally.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
-
                     break
                 case 'venom':
                     this.ally.title = "VENOM SYMBIOTE";
                     this.ally.description = "A parasite that fuses to bodies, evolved to feed on pleasure and with a little more interest in their host's desires. Thanks to the Mirror Mistress, available in many more worlds. ";
-
-
             }
-            if (value != "venom") {
-                for (var i = 0; i < this.allCharArr.length; i++) {
-                    if (this.allCharArr[i].group == value) {
+            for (var i = 0; i < this.allCharArr.length; i++) {
+                for (var j = 0; j < this.allCharArr[i].group.length; j++) {
+                    if (this.allCharArr[i].group[j] == value) {
                         this.ally.muses.push(this.allCharArr[i])
                     }
                 }
-            } else {
-                for (var i = 0; i < this.allCharArr.length; i++) {
-                    for (var j = 0; j < this.allCharArr[i].tags.length; j++) {
-                        if (this.allCharArr[i].tags[j] == value) {
-                            this.ally.muses.push(this.allCharArr[i])
-                        }
-                    }
-
-                }
             }
-
             this.allyDialog = true
         },
         museProfileOpen(area, char) {
@@ -3253,135 +3218,127 @@ export default defineComponent({
     },
 })
 </script>
-<style>
+<style> 
 @media screen and (min-width: 730px) {
-    .musebutton {
+    .museImg {
         font-size: 120px;
     }
 }
-
 @media screen and (max-width: 730px) {
-    .musebutton {
+    .museImg {
         font-size: 85px;
     }
-
-    .allmusebtn {
-        font-size: 60px;
-    }
-
     .button {
         font-size: 12px;
         padding-left: 4px;
         padding-right: 4px;
     }
 }
-
 @media screen and (min-width: 643px) {
-    .allmusebtn {
+    .allmuseimg {
         font-size: 72px;
     }
+    .groupIcon {
+        font-size: 80px;
+    }
+    .grupMuseImg {
+        font-size: 75px;
+    }
 }
-
 @media screen and (max-width: 643px) {
-    .allmusebtn {
+    .allmuseimg {
         font-size: 60px;
     }
+    .groupIcon {
+        font-size: 70px;
+    }
+    .grupMuseImg {
+        font-size: 58px;
+    }
 }
-
 @media screen and (max-width: 412px) {
-    .musebutton {
+    .museImg {
         font-size: 72px;
     }
-
-    .allmusebtn {
+    .allmuseimg {
+        font-size: 48px;
+    }
+    .groupIcon {
+        font-size: 56px;
+    }
+    .grupMuseImg {
         font-size: 48px;
     }
 }
-
 @media screen and (max-width: 384px) {
     .button {
         font-size: 10px;
     }
 }
-
 .cardHolder {
     margin-bottom: 12px;
     padding: 0 4%;
     gap: 12px;
 }
-
+.button {
+    background: white;
+    color: black;
+}
+.button[disabled] {
+    background: rgb(158, 158, 158);
+    color: rgb(92, 92, 92);
+    opacity: 1 !important
+}
 p {
     margin: 0px;
     padding: 0px;
 }
-
 .secret {
     color: black;
     background-color: black;
 }
-
 .secret:hover {
     color: white;
 }
-
 .museslideText {
     color: purple;
     background-color: rgba(0, 0, 0, 0.6);
 }
-
+.q-expansion-item {
+    text-transform: uppercase;
+}
+.kinkitem {
+    text-transform: none;
+    background: #bc36b5;
+}
 .card {
     background: #CF4CC9D9;
     color: white;
     width: 100%;
     max-width: 720px;
 }
-
-.kinkitem {
-    text-transform: none;
-    background: #bc36b5;
-}
-
 .kinklist {
     background: #8a2a85;
     width: 820px;
 }
-
 .cardMuse {
     background: #CF4CC9D9;
     color: white;
     max-width: 970px;
     width: fit-content;
 }
-
 .cardAllMuse {
     background: #CF4CC9D9;
     color: white;
     max-width: 1240px;
     width: fit-content;
 }
-
 #muse {
     background: #CF4CC9;
     color: white;
     max-width: 900px;
     width: fit-content;
 }
-
-.button {
-    background: white;
-    color: black;
-}
-
-.button[disabled] {
-    background: rgb(187, 187, 187);
-    color: rgb(99, 99, 99);
-    opacity: 1 !important
-}
-
-.q-expansion-item {
-    text-transform: uppercase;
-}
-
 .q-body--fullscreen-mixin,
 .q-body--prevent-scroll {
     position: relative !important;
