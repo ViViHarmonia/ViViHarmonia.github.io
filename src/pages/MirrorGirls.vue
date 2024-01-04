@@ -135,13 +135,13 @@
                 </div>
                 <div class="row q-pa-sm justify-start" v-if="allyDialog == true">
                     <div class="row">
-                        <div class="col-xs-auto" v-for="(char, c) in ally.muses">
+                        <div class="col-xs-auto" v-for="(char, c) in museAllies">
                             <q-btn square padding="xs" flat @click="museProfileOpen(char.sect, char.code)">
                                 <q-avatar rounded class="grupMuseImg">
                                     <img :src="char.avatar">
                                 </q-avatar>
                             </q-btn>
-                            <div class="row justify-center" v-if="ally.title != 'VENOM SYMBIOTE'"> {{ char.gpP }}</div>
+                            <div class="row justify-center" v-if="groupPos != ''"> {{ char.groupPos }}</div>
                         </div>
                     </div>
                 </div>
@@ -171,8 +171,8 @@
             </q-card-section>
         </q-card>
     </div>
-    <q-dialog v-model="museDialog" @keyup.x="museDialog = false" @keyup.up="museSwitch(1)" @keyup.down="museSwitch(2)"
-        @keyup.right="slideKeyboard(2)" @keyup.left="slideKeyboard(1)">
+    <q-dialog v-model="museDialog" @keyup.x="museDialog = false" @keyup.left="museSwitch(1)" @keyup.right="museSwitch(2)"
+        @keyup.down="slideKeyboard(2)" @keyup.up="slideKeyboard(1)">
         <q-card id="muse">
             <q-card-section class="q-pa-sm flex-center">
                 <div class="row q-pa-sm flex-center">
@@ -216,11 +216,11 @@
                                 }}</span>
                                 </div>
                             </div>
-                            <div class="row text-body2 q-pa-xs justify-start">
+                            <!--<div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-sm-12 col-md-2"><b>Seduction:</b></div>
                                 <div class="col-sm-12 col-md-10"><span class="secret">{{ muse.SedSh }}</span>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="row text-body2 q-pa-xs justify-start">
                                 <div class="col-sm-12 col-md-2"><b>Variants:</b></div>
                                 <div class="col-sm-12 col-md-10">{{ muse.Var }}<span class="secret">{{ muse.VarSh }}</span>
@@ -268,7 +268,7 @@
                         <div class="row justify-center">
                             <div class="col-xs-auto q-pa-sm">
                                 <div class="row flex-center"><q-btn class="button" flat @click="museSwitch(1)">
-                                        <q-icon left size="1rem" name="arrow_upward" />
+                                        <q-icon left size="1rem" name="arrow_back" />
                                         <div>Prev</div>
                                     </q-btn>
                                 </div>
@@ -282,19 +282,23 @@
                             </div>
                             <div class="col-xs-auto q-pa-sm">
                                 <div class="row flex-center"><q-btn class="button" flat @click="museSwitch(2)">
-                                        <q-icon left size="1rem" name="arrow_downward" />
+                                        <q-icon left size="1rem" name="arrow_forward" />
                                         <div>Next</div>
                                     </q-btn></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-5">
-                        <q-carousel control-color="purple" animated v-model="slide" arrows navigation infinite
+                        <q-carousel control-color="purple" animated vertical v-model="slide" arrows navigation infinite
                             height="500px">
                             <q-carousel-slide v-for="(version, v) in muse.versionsArray" :name="v" :key="v">
                                 <div class="row fit flex-center">
                                     <q-img :src="version.pic" style="max-height: 480px" fit="contain">
                                         <div class="absolute-top text-body-1 text-center custom-cap"
+                                            v-if="version.name != ''">
+                                            {{ version.name }}
+                                        </div>
+                                        <div class="absolute-bottom text-body-2 text-center custom-cap"
                                             v-if="version.name != ''">
                                             {{ version.name }}
                                         </div>
@@ -329,54 +333,54 @@ export default defineComponent({
             { label: "Kinks", index: 5 },
         ],
         allCharArr: [
-            { code: "rosa", sect: 1, group: ["rocket"], gpP: "Grunt", tags: ["love"], avatar: "/museicon/nintendo/rosa.jpg", },
-            { code: "nem", sect: 1, group: ["rocket"], gpP: "Leader", tags: [], avatar: "/museicon/nintendo/nemona.png", },
-            { code: "marn", sect: 1, group: ["rocket"], gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/marnie.jpg", },
-            { code: "ida", sect: 1, group: ["rocket"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/irida.jpg", },
-            { code: "iris", sect: 1, group: ["rocket"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/iris.jpeg", },
-            { code: "sam", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/samus.jpg", },
-            { code: "bow", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/bowsette.jpg", },
-            { code: "pich", sect: 1, group: ["shy"], gpP: "[WIP]", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/nintendo/peach.jpg", },
-            { code: "lina", sect: 1, group: ["shy", "venom"], gpP: "[WIP]", tags: [], avatar: "/museicon/nintendo/rosalina.jpg", },
-            { code: "lin", sect: 1, group: ["yiga"], gpP: "Undercover", tags: [], avatar: "/museicon/nintendo/linkle.jpeg", },
-            { code: "pura", sect: 1, group: ["yiga", "venom"], gpP: "Scientist", tags: [], avatar: "/museicon/nintendo/purah.jpeg", },
-            { code: "edel", sect: 1, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/nintendo/edelgard.jpg", },
-            { code: "lisa", sect: 2, group: ["mirror"], gpP: "Blessed", tags: [], avatar: "/museicon/genshin/lisa.jpg", },
-            { code: "mira", sect: 2, group: ["mirror"], gpP: "Example", tags: [], avatar: "/museicon/genshin/mirror.jpeg", },
-            //{ code: "lumi", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/lumi.jpeg", },
-            //{ code: "saria", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/.jpeg", },
-            //{ code: "yelan", sect: 2, group: ["mirror"], gpP:"" , tags: [], avatar: "/museicon/genshin/yelan.jpeg", },
-            { code: "luci", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/lucifer.jpg", },
-            { code: "tae", sect: 2, group: ["phantom"], gpP: "R&D", tags: [], avatar: "/museicon/games/tae.png", },
-            { code: "ann", sect: 2, group: ["phantom", "venom"], gpP: "Founder", tags: ["bimbo/gyaru"], avatar: "/museicon/games/ann.png", },
-            { code: "sae", sect: 2, group: ["phantom"], gpP: "Chief", tags: [], avatar: "/museicon/games/sae1.jpeg", },
-            { code: "moni", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/monika.png", },
-            { code: "roty", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/rotty.png", },
-            { code: "shan", sect: 2, group: ["venom"], gpP: "", tags: [], avatar: "/museicon/games/shantae.jpeg", },
-            { code: "junko", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/games/junko.jpg", },
-            { code: "nami", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/chiaki.jpg", },
-            { code: "layer", sect: 2, group: [""], gpP: "", tags: ["love"], avatar: "/museicon/games/layer.jpeg", },
-            { code: "ruler", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/fate/ruler.jpeg", },
-            { code: "ridem", sect: 2, group: [""], gpP: "", tags: [], avatar: "/museicon/fate/riderM.jpg", },
-            { code: "mei", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/mei.jpeg", },
-            { code: "tsu", sect: 3, group: ["ua", "venom"], gpP: "Student", tags: [], avatar: "/museicon/mha/tsuyu.jpeg", },
-            { code: "mina", sect: 3, group: ["ua"], gpP: "Student", tags: ["love", "bimbo/gyaru"], avatar: "/museicon/mha/mina.jpeg", },
-            { code: "momo", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/momo.jpeg", },
-            { code: "toru", sect: 3, group: ["ua"], gpP: "Student", tags: ["love"], avatar: "/museicon/mha/tooru.jpeg", },
-            { code: "kendo", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/kendo.jpeg", },
-            { code: "camie", sect: 3, group: ["ua"], gpP: "Student", tags: ["bimbo/gyaru"], avatar: "/museicon/mha/camie.jpeg", },
-            { code: "mel", sect: 3, group: ["ua"], gpP: "Student", tags: [], avatar: "/museicon/mha/melissa.jpeg", },
-            { code: "joke", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/msjoke.jpeg", },
-            { code: "kai", sect: 3, group: ["ua"], gpP: "Guest", tags: [], avatar: "/museicon/mha/nagant.jpeg", },
-            { code: "rumi", sect: 3, group: ["ua", "venom"], gpP: "Staff", tags: [], avatar: "/museicon/mha/miruko.jpeg", },
-            { code: "yama", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/mtlady.jpeg", },
-            { code: "fumi", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/fuyumi.jpeg", },
-            { code: "inko", sect: 3, group: ["ua"], gpP: "Staff", tags: [], avatar: "/museicon/mha/inko.png", },
-            { code: "beni", sect: 4, group: [""], gpP: "", tags: [], avatar: "/museicon/anime/kobeni.jpeg", },
-            { code: "marin", sect: 4, group: ["", "venom"], gpP: "", tags: ["bimbo/gyaru"], avatar: "/museicon/anime/marin.jpg", },
-            { code: "lucy", sect: 4, group: [""], gpP: "", tags: [], avatar: "/museicon/anime/lucynda.png", },
-            { code: "yor", sect: 4, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/anime/yor.png", },
-            { code: "stock", sect: 4, group: ["", "venom"], gpP: "", tags: [], avatar: "/museicon/anime/stock.jpg", },
+            { code: "rosa", sect: 1, tags: ["love"], avatar: "/museicon/nintendo/rosa.jpg", },
+            { code: "nem", sect: 1, tags: [], avatar: "/museicon/nintendo/nemona.png", },
+            { code: "marn", sect: 1, tags: [], avatar: "/museicon/nintendo/marnie.jpg", },
+            { code: "ida", sect: 1, tags: [], avatar: "/museicon/nintendo/irida.jpg", },
+            { code: "iris", sect: 1, tags: [], avatar: "/museicon/nintendo/iris.jpeg", },
+            { code: "sam", sect: 1, tags: [], avatar: "/museicon/nintendo/samus.jpg", },
+            { code: "bow", sect: 1, tags: [], avatar: "/museicon/nintendo/bowsette.jpg", },
+            { code: "pich", sect: 1, tags: ["love", "bimbo/gyaru"], avatar: "/museicon/nintendo/peach.jpg", },
+            { code: "lina", sect: 1, tags: [], avatar: "/museicon/nintendo/rosalina.jpg", },
+            { code: "lin", sect: 1, tags: [], avatar: "/museicon/nintendo/linkle.jpeg", },
+            { code: "pura", sect: 1, tags: [], avatar: "/museicon/nintendo/purah.jpeg", },
+            { code: "edel", sect: 1, tags: [], avatar: "/museicon/nintendo/edelgard.jpg", },
+            { code: "lisa", sect: 2, tags: [], avatar: "/museicon/genshin/lisa.jpg", },
+            { code: "mira", sect: 2, tags: [], avatar: "/museicon/genshin/mirror.jpeg", },
+            //{ code: "lumi", sect: 2, tags: [], avatar: "/museicon/genshin/lumi.jpeg", },
+            //{ code: "saria", sect: 2, tags: [], avatar: "/museicon/genshin/.jpeg", },
+            //{ code: "yelan", sect: 2, tags: [], avatar: "/museicon/genshin/yelan.jpeg", },
+            { code: "luci", sect: 2, tags: [], avatar: "/museicon/games/lucifer.jpg", },
+            { code: "tae", sect: 2, tags: [], avatar: "/museicon/games/tae.png", },
+            { code: "ann", sect: 2, tags: ["bimbo/gyaru"], avatar: "/museicon/games/ann.png", },
+            { code: "sae", sect: 2, tags: [], avatar: "/museicon/games/sae1.jpeg", },
+            { code: "moni", sect: 2, tags: ["love"], avatar: "/museicon/games/monika.png", },
+            { code: "roty", sect: 2, tags: [], avatar: "/museicon/games/rotty.png", },
+            { code: "shan", sect: 2, tags: [], avatar: "/museicon/games/shantae.jpeg", },
+            { code: "junko", sect: 2, tags: [], avatar: "/museicon/games/junko.jpg", },
+            { code: "nami", sect: 2, tags: ["love"], avatar: "/museicon/games/chiaki.jpg", },
+            { code: "layer", sect: 2, tags: ["love"], avatar: "/museicon/games/layer.jpeg", },
+            { code: "ruler", sect: 2, tags: [], avatar: "/museicon/fate/ruler.jpeg", },
+            { code: "ridem", sect: 2, tags: [], avatar: "/museicon/fate/riderM.jpg", },
+            { code: "mei", sect: 3, tags: [], avatar: "/museicon/mha/mei.jpeg", },
+            { code: "tsu", sect: 3, tags: [], avatar: "/museicon/mha/tsuyu.jpeg", },
+            { code: "mina", sect: 3, tags: ["love", "bimbo/gyaru"], avatar: "/museicon/mha/mina.jpeg", },
+            { code: "momo", sect: 3, tags: [], avatar: "/museicon/mha/momo.jpeg", },
+            { code: "toru", sect: 3, tags: ["love"], avatar: "/museicon/mha/tooru.jpeg", },
+            { code: "kendo", sect: 3, tags: [], avatar: "/museicon/mha/kendo.jpeg", },
+            { code: "camie", sect: 3, tags: ["bimbo/gyaru"], avatar: "/museicon/mha/camie.jpeg", },
+            { code: "mel", sect: 3, tags: [], avatar: "/museicon/mha/melissa.jpeg", },
+            { code: "joke", sect: 3, tags: [], avatar: "/museicon/mha/msjoke.jpeg", },
+            { code: "kai", sect: 3, tags: [], avatar: "/museicon/mha/nagant.jpeg", },
+            { code: "rumi", sect: 3, tags: [], avatar: "/museicon/mha/miruko.jpeg", },
+            { code: "yama", sect: 3, tags: [], avatar: "/museicon/mha/mtlady.jpeg", },
+            { code: "fumi", sect: 3, tags: [], avatar: "/museicon/mha/fuyumi.jpeg", },
+            { code: "inko", sect: 3, tags: [], avatar: "/museicon/mha/inko.png", },
+            { code: "beni", sect: 4, tags: [], avatar: "/museicon/anime/kobeni.jpeg", },
+            { code: "marin", sect: 4, tags: ["bimbo/gyaru"], avatar: "/museicon/anime/marin.jpg", },
+            { code: "lucy", sect: 4, tags: [], avatar: "/museicon/anime/lucynda.png", },
+            { code: "yor", sect: 4, tags: [], avatar: "/museicon/anime/yor.png", },
+            { code: "stock", sect: 4, tags: [], avatar: "/museicon/anime/stock.jpg", },
         ],
         allygroups: [
             { name: 'rocket', emblem: '/groups/hypnorocket.png' },
@@ -391,7 +395,10 @@ export default defineComponent({
             title: "",
             description: "",
             muses: [],
+            musesTitles: [],
         },
+        museAllies: [],
+        currentGroup: "",
         muse: {
             Name: "",
             NameSh: "",
@@ -612,41 +619,64 @@ export default defineComponent({
             }
         },
         groupShow(value) {
-            this.allyDialog = false
+            this.currentGroup = "";
+            this.ally.title = ""
+            this.ally.description = ""
             this.ally.muses = []
+            this.ally.musesTitles = []
+            this.museAllies = []
             switch (value) {
                 case 'rocket':
                     this.ally.title = "TEAM HYPNO ROCKET";
                     this.ally.description = "A girls-only offshoot of Team Rocket, focused on acquisition and training of Pokemon trainers, leaders, champions, etc. Takes a more hypnotic, sexual approach to both.";
+                    this.ally.muses = ["nem", "rosa", "ida", "iris", "marn"]
+                    this.ally.musesTitles = ["Leader", "Grunt", "Grunt", "Grunt", "Undercover"]
                     break
                 case 'shy':
                     this.ally.title = "SHY GAL GROUP";
                     this.ally.description = "A group of girls wearing the same mask, making no noise but for light grunts and moans, watching from the dark depths of the mask's eyes. ";
+                    this.ally.muses = ["pich", "lina", "bow", "sam"]
+                    this.ally.musesTitles = ["Pink", "Cyan", "Black", "Blue"]
                     break
                 case 'yiga':
                     this.ally.title = "YIGA CLAN";
                     this.ally.description = "A group of ruthless former Sheikah offshoots allied and dedicated to Ganon, currently aiming for more perverse methods, and preparation for every day servitude to him.";
+                    this.ally.muses = ["pura", "lin"]
+                    this.ally.musesTitles = ["Scientist", "Undercover"]
                     break
                 case 'phantom':
                     this.ally.title = "PHANTOM THIEVES OF LUST";
                     this.ally.description = "A girls-only variant of the Phantom Thieves and allies that failed to pursue justice and fell victims to others' lustful cognitions of them. Now they aim to make Tokyo as filthy as they've become.";
+                    this.ally.muses = ["sae", "ann", "tae", "shiho"]
+                    this.ally.musesTitles = ["Chief", "Kitten", "Medic", "Bunny"]
                     break
                 case 'mirror':
                     this.ally.title = "MIRROR MAIDENS";
                     this.ally.description = "A group of assimilated illusionist women who work out of Teyvat, allied with the Fatui. Their assimilation inspired the Mistress' style. ";
+                    this.ally.muses = ["mira", "lisa"]
+                    this.ally.musesTitles = ["Reflection", "Sister"]
                     break
                 case 'ua':
                     this.ally.title = "UA HEROINE UNIVERSITY";
                     this.ally.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
+                    this.ally.muses = ["fumi", "inko", "yama", "rumi", "joke", "momo", "mina", "toru", "tsu", "kendo", "camie", "mei", "mel", "kai"]
+                    this.ally.musesTitles = ["Secretary", "Staff", "Staff", "Staff", "Staff", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Guest"]
                     break
                 case 'venom':
                     this.ally.title = "VENOM SYMBIOTE";
                     this.ally.description = "A parasite that fuses to bodies, evolved to feed on pleasure and with a little more interest in their host's desires. Thanks to the Mirror Mistress, available in many more worlds. ";
+                    this.ally.muses = ["sam", "bow", "lina", "pura", "edel", "ann", "shan", "tsu", "rumi", "marin", "yor", "stock"]
+                    this.ally.musesTitles = ["", "", "", "", "", "", "", "", "", "", "", ""]
             }
-            for (var i = 0; i < this.allCharArr.length; i++) {
-                for (var j = 0; j < this.allCharArr[i].group.length; j++) {
-                    if (this.allCharArr[i].group[j] == value) {
-                        this.ally.muses.push(this.allCharArr[i])
+            this.currentGroup = value;
+            var tempObjMuse;
+            for (var i = 0; i < this.ally.muses.length; i++) {
+                for (var j = 0; j < this.allCharArr.length; j++) {
+                    if (this.allCharArr[j].code == this.ally.muses[i]) {
+                        tempObjMuse = {}
+                        tempObjMuse = this.allCharArr[j]
+                        tempObjMuse.groupPos = this.ally.musesTitles[i]
+                        this.museAllies.push(tempObjMuse)
                     }
                 }
             }
@@ -3219,129 +3249,156 @@ export default defineComponent({
     },
 })
 </script>
-<style> 
-@media screen and (min-width: 730px) {
-    .museImg {
-        font-size: 120px;
-    }
-}
-@media screen and (max-width: 730px) {
-    .museImg {
-        font-size: 85px;
-    }
-    .button {
-        font-size: 12px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
-}
-@media screen and (min-width: 643px) {
-    .allmuseimg {
-        font-size: 72px;
-    }
-    .groupIcon {
-        font-size: 80px;
-    }
-    .grupMuseImg {
-        font-size: 75px;
-    }
-}
-@media screen and (max-width: 643px) {
-    .allmuseimg {
-        font-size: 60px;
-    }
-    .groupIcon {
-        font-size: 70px;
-    }
-    .grupMuseImg {
-        font-size: 58px;
-    }
-}
-@media screen and (max-width: 412px) {
-    .museImg {
-        font-size: 72px;
-    }
-    .allmuseimg {
-        font-size: 48px;
-    }
-    .groupIcon {
-        font-size: 56px;
-    }
-    .grupMuseImg {
-        font-size: 48px;
-    }
-}
-@media screen and (max-width: 384px) {
-    .button {
-        font-size: 10px;
-    }
-}
-.cardHolder {
-    margin-bottom: 12px;
-    padding: 0 4%;
-    gap: 12px;
-}
-.button {
-    background: white;
-    color: black;
-}
-.button[disabled] {
-    background: rgb(158, 158, 158);
-    color: rgb(92, 92, 92);
-    opacity: 1 !important
-}
-p {
-    margin: 0px;
-    padding: 0px;
-}
-.secret {
-    color: black;
-    background-color: black;
-}
-.secret:hover {
-    color: white;
-}
-.museslideText {
-    color: purple;
-    background-color: rgba(0, 0, 0, 0.6);
-}
-.q-expansion-item {
-    text-transform: uppercase;
-}
-.kinkitem {
-    text-transform: none;
-    background: #bc36b5;
-}
-.card {
-    background: #CF4CC9D9;
-    color: white;
-    width: 100%;
-    max-width: 720px;
-}
-.kinklist {
-    background: #8a2a85;
-    width: 820px;
-}
-.cardMuse {
-    background: #CF4CC9D9;
-    color: white;
-    max-width: 970px;
-    width: fit-content;
-}
-.cardAllMuse {
-    background: #CF4CC9D9;
-    color: white;
-    max-width: 1240px;
-    width: fit-content;
-}
-#muse {
-    background: #CF4CC9;
-    color: white;
-    max-width: 900px;
-    width: fit-content;
-}
-.q-body--fullscreen-mixin,
-.q-body--prevent-scroll {
-    position: relative !important;
-}
+<style> @media screen and (min-width: 730px) {
+     .museImg {
+         font-size: 120px;
+     }
+ }
+
+ @media screen and (max-width: 730px) {
+     .museImg {
+         font-size: 85px;
+     }
+
+     .button {
+         font-size: 12px;
+         padding-left: 4px;
+         padding-right: 4px;
+     }
+ }
+
+ @media screen and (min-width: 643px) {
+     .allmuseimg {
+         font-size: 72px;
+     }
+
+     .groupIcon {
+         font-size: 80px;
+     }
+
+     .grupMuseImg {
+         font-size: 75px;
+     }
+ }
+
+ @media screen and (max-width: 643px) {
+     .allmuseimg {
+         font-size: 60px;
+     }
+
+     .groupIcon {
+         font-size: 70px;
+     }
+
+     .grupMuseImg {
+         font-size: 58px;
+     }
+ }
+
+ @media screen and (max-width: 412px) {
+     .museImg {
+         font-size: 72px;
+     }
+
+     .allmuseimg {
+         font-size: 48px;
+     }
+
+     .groupIcon {
+         font-size: 56px;
+     }
+
+     .grupMuseImg {
+         font-size: 48px;
+     }
+ }
+
+ @media screen and (max-width: 384px) {
+     .button {
+         font-size: 10px;
+     }
+ }
+
+ .cardHolder {
+     margin-bottom: 12px;
+     padding: 0 4%;
+     gap: 12px;
+ }
+
+ .button {
+     background: white;
+     color: black;
+ }
+
+ .button[disabled] {
+     background: rgb(158, 158, 158);
+     color: rgb(92, 92, 92);
+     opacity: 1 !important
+ }
+
+ p {
+     margin: 0px;
+     padding: 0px;
+ }
+
+ .secret {
+     color: black;
+     background-color: black;
+ }
+
+ .secret:hover {
+     color: white;
+ }
+
+ .museslideText {
+     color: purple;
+     background-color: rgba(0, 0, 0, 0.6);
+ }
+
+ .q-expansion-item {
+     text-transform: uppercase;
+ }
+
+ .kinkitem {
+     text-transform: none;
+     background: #bc36b5;
+ }
+
+ .card {
+     background: #CF4CC9D9;
+     color: white;
+     width: 100%;
+     max-width: 720px;
+ }
+
+ .kinklist {
+     background: #8a2a85;
+     width: 820px;
+ }
+
+ .cardMuse {
+     background: #CF4CC9D9;
+     color: white;
+     max-width: 970px;
+     width: fit-content;
+ }
+
+ .cardAllMuse {
+     background: #CF4CC9D9;
+     color: white;
+     max-width: 1240px;
+     width: fit-content;
+ }
+
+ #muse {
+     background: #CF4CC9;
+     color: white;
+     max-width: 900px;
+     width: fit-content;
+ }
+
+ .q-body--fullscreen-mixin,
+ .q-body--prevent-scroll {
+     position: relative !important;
+ }
 </style>
