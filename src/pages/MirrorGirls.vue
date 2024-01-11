@@ -298,10 +298,6 @@
                                             v-if="version.name != ''">
                                             {{ version.name }}
                                         </div>
-                                        <div class="absolute-bottom text-body-2 text-center custom-cap"
-                                            v-if="version.name != ''">
-                                            {{ version.name }}
-                                        </div>
                                     </q-img>
                                 </div>
                             </q-carousel-slide>
@@ -1154,7 +1150,7 @@ export default defineComponent({
                             this.muse.SedSh = "From a different timeline than Peach and Bowsette, the shard hit her flying in outer space. It twisted her motherhood into a sexual one, and asked of her to mother the Mushroom Kingdom as well. Promised more children to spoil or discipline, she accepted the Mirror."
                             this.muse.Var = "Driver, Witch, Cosmic, Symbiote, Bounty Hunter";
                             this.muse.versionsArray = [
-                                { pic: "/slideshow/nintendo/rosalina/fb38c00659eb642664c7004149d84310.jpeg", name: "]" },
+                                { pic: "/slideshow/nintendo/rosalina/fb38c00659eb642664c7004149d84310.jpeg", name: "" },
                                 { pic: "/slideshow/nintendo/rosalina/Fzmw5bGWAAAlq2v.jpeg", name: "Driver" },
                                 { pic: "/slideshow/nintendo/rosalina/10878353ec3368048c042e1e50f15b7a.jpg", name: "Witch" },
                                 { pic: "/slideshow/nintendo/rosalina/09497125e1334763a4dc17a40544ae7c.jpeg", name: "Cosmos" },
