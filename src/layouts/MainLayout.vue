@@ -82,9 +82,5 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
 }
-body {
-  background-image: url("/images/mirrorbg.jpg");
-  background-size: cover;
-  background-position: center;
-}
+
 </style>

@@ -45,7 +45,7 @@ export default defineComponent({
       Iris: Princess, Dragon, Team Plasma
       Edelgard: Student, Empress, Hegemon Husk, Modern
 
-      Lisa: Fatui, Nihility
+      Lisa: Fatui
       Lucifer: Angel
       Rottytops: Alive
       Artoria: Lancer, Saber
