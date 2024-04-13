@@ -40,6 +40,15 @@
             </div>
             <div class="row flex-center">
                <div class="col-xs-12">
+                  <div class="row text-subtitle2 q-pa-sm text-center justify-center"> ✖ CHARACTERS IN REST ✖ </div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Rottytops (Shantae)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Junko Enoshima, Chiaki Nanami (Danganronpa)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Tooru Hagakure, Tsuyu Asui (BNHA)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Kobeni Higashiyama (Chainsaw Man)</div>
+               </div>
+            </div>
+            <div class="row flex-center">
+               <div class="col-xs-12">
                   <div class="row text-subtitle2 q-pa-sm text-center justify-center"> ✖ WARNINGS ✖ </div>
                   <div class="row text-body2 q-pa-sm text-center justify-center"> Minors, i waited till I was 19, so
                      should you
@@ -348,9 +357,9 @@ export default defineComponent({
          { code: "tae", sect: 2, avatar: "/museicon/games/tae.png", },
          { code: "sae", sect: 2, avatar: "/museicon/games/sae1.jpeg", },
          { code: "shan", sect: 2, avatar: "/museicon/games/shantae.jpeg", },
-         { code: "roty", sect: 2, avatar: "/museicon/games/rotty.png", },
-         { code: "junko", sect: 2, avatar: "/museicon/games/junko.jpg", },
-         { code: "nami", sect: 2, avatar: "/museicon/games/chiaki.jpg", },
+         //{ code: "roty", sect: 2, avatar: "/museicon/games/rotty.png", },
+         //{ code: "junko", sect: 2, avatar: "/museicon/games/junko.jpg", },
+         //{ code: "nami", sect: 2, avatar: "/museicon/games/chiaki.jpg", },
          { code: "ridem", sect: 2, avatar: "/museicon/fate/riderM.jpg", },
          { code: "ruler", sect: 2, avatar: "/museicon/fate/ruler.jpeg", },
          { code: "luci", sect: 2, avatar: "/museicon/games/lucifer.jpg", },
@@ -358,8 +367,8 @@ export default defineComponent({
          { code: "layer", sect: 2, avatar: "/museicon/games/layer.jpeg", },
          { code: "mina", sect: 3, avatar: "/museicon/mha/mina.jpeg", },
          { code: "momo", sect: 3, avatar: "/museicon/mha/momo.jpeg", },
-         { code: "toru", sect: 3, avatar: "/museicon/mha/tooru.jpeg", },
-         { code: "tsu", sect: 3, avatar: "/museicon/mha/tsuyu.jpeg", },
+         //{ code: "toru", sect: 3, avatar: "/museicon/mha/tooru.jpeg", },
+         //{ code: "tsu", sect: 3, avatar: "/museicon/mha/tsuyu.jpeg", },
          { code: "kendo", sect: 3, avatar: "/museicon/mha/kendo.jpeg", },
          { code: "mei", sect: 3, avatar: "/museicon/mha/mei.jpeg", },
          { code: "mel", sect: 3, avatar: "/museicon/mha/melissa.jpeg", },
@@ -373,7 +382,7 @@ export default defineComponent({
          { code: "marin", sect: 4, avatar: "/museicon/anime/marin.jpg", },
          { code: "yor", sect: 4, avatar: "/museicon/anime/yor.png", },
          { code: "stock", sect: 4, avatar: "/museicon/anime/stock.jpg", },
-         { code: "beni", sect: 4, avatar: "/museicon/anime/kobeni.jpeg", },
+         //{ code: "beni", sect: 4, avatar: "/museicon/anime/kobeni.jpeg", },
          { code: "lucy", sect: 4, avatar: "/museicon/anime/lucynda.png", },
       ],
       allygroups: [
@@ -593,13 +602,13 @@ export default defineComponent({
             case 'ua':
                this.ally.title = "UA HEROINE UNIVERSITY";
                this.ally.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
-               this.ally.muses = ["fumi", "inko", "yama", "rumi", "joke", "momo", "mina", "toru", "tsu", "kendo", "camie", "mei", "mel", "kai"]
+               this.ally.muses = ["fumi", "inko", "yama", "rumi", "joke", "momo", "mina", "kendo", "camie", "mei", "mel", "kai"] //"toru", "tsu", 
                this.ally.musesTitles = ["Secretary", "Staff", "Staff", "Staff", "Staff", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Guest"]
                break
             case 'venom':
                this.ally.title = "VENOM SYMBIOTE";
                this.ally.description = "A parasite that fuses to bodies, evolved to feed on pleasure and with a little more interest in their host's desires. Thanks to the Mirror Mistress, available in many more worlds. ";
-               this.ally.muses = ["rosa", "sam", "bow", "peach", "lina", "pura", "edel", "yelan", "ann", "shan", "tsu", "mina", "momo", "rumi", "marin", "yor", "stock"]
+               this.ally.muses = ["rosa", "sam", "bow", "peach", "lina", "pura", "edel", "yelan", "ann", "shan",  "mina", "momo", "rumi", "marin", "yor", "stock"] //"tsu",
          }
          this.currentAU = value;
          var tempObjMuse;
