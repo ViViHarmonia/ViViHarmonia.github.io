@@ -42,9 +42,11 @@
                <div class="col-xs-12">
                   <div class="row text-subtitle2 q-pa-sm text-center justify-center"> ✖ CHARACTERS IN REST ✖ </div>
                   <div class="row text-body2 q-pa-sm text-center justify-center"> Rottytops (Shantae)</div>
-                  <div class="row text-body2 q-pa-sm text-center justify-center"> Junko Enoshima, Chiaki Nanami (Danganronpa)</div>
-                  <div class="row text-body2 q-pa-sm text-center justify-center"> Tooru Hagakure, Tsuyu Asui (BNHA)</div>
-                  <div class="row text-body2 q-pa-sm text-center justify-center"> Kobeni Higashiyama (Chainsaw Man)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Junko Enoshima, Chiaki Nanami
+                     (Danganronpa)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Tooru Hagakure (BNHA)</div>
+                  <div class="row text-body2 q-pa-sm text-center justify-center"> Kobeni Higashiyama (Chainsaw Man)
+                  </div>
                </div>
             </div>
             <div class="row flex-center">
@@ -340,6 +342,8 @@ export default defineComponent({
          { code: "nem", sect: 1, avatar: "/museicon/nintendo/nemona.png", },
          { code: "ida", sect: 1, avatar: "/museicon/nintendo/irida.jpg", },
          { code: "sere", sect: 1, avatar: "/museicon/nintendo/serena.png", },
+         { code: "cyn", sect: 1, avatar: "/museicon/nintendo/cyn.jpg", },
+         { code: "nesa", sect: 1, avatar: "/museicon/nintendo/nesa.png", },
          { code: "brina", sect: 1, avatar: "/museicon/nintendo/sabrina.jpg", },
          { code: "sam", sect: 1, avatar: "/museicon/nintendo/samus.jpg", },
          { code: "pich", sect: 1, avatar: "/museicon/nintendo/peach.jpg", },
@@ -368,13 +372,14 @@ export default defineComponent({
          { code: "mina", sect: 3, avatar: "/museicon/mha/mina.jpeg", },
          { code: "momo", sect: 3, avatar: "/museicon/mha/momo.jpeg", },
          //{ code: "toru", sect: 3, avatar: "/museicon/mha/tooru.jpeg", },
-         //{ code: "tsu", sect: 3, avatar: "/museicon/mha/tsuyu.jpeg", },
+         { code: "tsu", sect: 3, avatar: "/museicon/mha/tsuyu.jpeg", },
          { code: "kendo", sect: 3, avatar: "/museicon/mha/kendo.jpeg", },
          { code: "mei", sect: 3, avatar: "/museicon/mha/mei.jpeg", },
          { code: "mel", sect: 3, avatar: "/museicon/mha/melissa.jpeg", },
          { code: "camie", sect: 3, avatar: "/museicon/mha/camie.jpeg", },
          { code: "joke", sect: 3, avatar: "/museicon/mha/msjoke.jpeg", },
          { code: "rumi", sect: 3, avatar: "/museicon/mha/miruko.jpeg", },
+         { code: "nana", sect: 3, avatar: "/museicon/mha/nana.jpeg", },
          { code: "yama", sect: 3, avatar: "/museicon/mha/mtlady.jpeg", },
          { code: "kai", sect: 3, avatar: "/museicon/mha/nagant.jpeg", },
          { code: "fumi", sect: 3, avatar: "/museicon/mha/fuyumi.jpeg", },
@@ -382,6 +387,7 @@ export default defineComponent({
          { code: "marin", sect: 4, avatar: "/museicon/anime/marin.jpg", },
          { code: "yor", sect: 4, avatar: "/museicon/anime/yor.png", },
          { code: "stock", sect: 4, avatar: "/museicon/anime/stock.jpg", },
+         { code: "frie", sect: 4, avatar: "/museicon/anime/frie.jpg", },
          //{ code: "beni", sect: 4, avatar: "/museicon/anime/kobeni.jpeg", },
          { code: "lucy", sect: 4, avatar: "/museicon/anime/lucynda.png", },
       ],
@@ -578,8 +584,8 @@ export default defineComponent({
             case 'rocket':
                this.ally.title = "TEAM HYPNO ROCKET";
                this.ally.description = "A girls-only offshoot of Team Rocket, focused on acquisition and training of Pokemon trainers, leaders, champions, etc. Takes a more hypnotic, sexual approach to both.";
-               this.ally.muses = ["nem", "brina", "sere", "ida", "rosa", "iris", "marn"]
-               this.ally.musesTitles = ["Leader", "Head", "Model", "Priestess", "Grunt", "Grunt", "Undercover"]
+               this.ally.muses = ["nem", "brina", "nesa", "cyn", "sere", "ida", "rosa", "iris", "marn"]
+               this.ally.musesTitles = ["Leader", "Commander", "Coordinator", "Scientist", "Model", "Priestess", "Grunt", "Grunt", "Undercover"]
                break
             case 'shy':
                this.ally.title = "SHY GAL GROUP";
@@ -602,13 +608,13 @@ export default defineComponent({
             case 'ua':
                this.ally.title = "UA HEROINE UNIVERSITY";
                this.ally.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
-               this.ally.muses = ["fumi", "inko", "yama", "rumi", "joke", "momo", "mina", "kendo", "camie", "mei", "mel", "kai"] //"toru", "tsu", 
-               this.ally.musesTitles = ["Secretary", "Staff", "Staff", "Staff", "Staff", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Guest"]
+               this.ally.muses = ["fumi", "inko", "yama", "rumi", "joke", "momo", "mina", "tsu", "kendo", "camie", "mei", "mel", "kai", "nana"] //"toru",  
+               this.ally.musesTitles = ["Secretary", "Staff", "Staff", "Staff", "Staff", "Student", "Student", "Student", "Student", "Student", "Student", "Student", "Guest", "Guest"]
                break
             case 'venom':
                this.ally.title = "VENOM SYMBIOTE";
                this.ally.description = "A parasite that fuses to bodies, evolved to feed on pleasure and with a little more interest in their host's desires. Thanks to the Mirror Mistress, available in many more worlds. ";
-               this.ally.muses = ["rosa", "sam", "bow", "peach", "lina", "pura", "edel", "yelan", "ann", "shan",  "mina", "momo", "rumi", "marin", "yor", "stock"] //"tsu",
+               this.ally.muses = ["rosa", "nem", "sam", "bow", "peach", "lina", "pura", "edel", "yelan", "ann", "shan", "mina", "momo", "tsu", "rumi", "marin", "yor", "stock"]
          }
          this.currentAU = value;
          var tempObjMuse;
@@ -823,6 +829,7 @@ export default defineComponent({
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: true },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: false },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: false },
                            ]
                            this.muse.slideArray = [
                               { pic: "/slideshow/nintendo/nemona/FzmC1wdXsAEB_nX.jpeg", name: "" },
@@ -839,12 +846,26 @@ export default defineComponent({
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: true },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: false },
                            ]
                            this.muse.slideArray = [
                               { pic: "/slideshow/nintendo/nemona/114534578_p5.png", name: "" },
                               { pic: "/slideshow/nintendo/nemona/114534578_p7.png", name: "" },
                               { pic: "/slideshow/nintendo/nemona/sample_76d2991400b75a59f375c40abaf7a14f.jpg", name: "" },
                               { pic: "/slideshow/nintendo/nemona/30a7e0432cda01fdf2c54babee6a711e.jpeg", name: "" },
+                           ];
+                           break
+                           case 'venom':
+                           this.muse.Name = "Victoria";
+                           this.muse.Desc = "Her new form has allowed her to take on Pokemon Battles all by herself, proving and testing herself constantly anew. She retains her last name, and her former self's loneliness at the peak of battle prowess. ";
+                           this.muse.DescSh = "";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: true },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: true },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/nemona/94dcee624918260ed9c7e7b660e2c447.png", name: "" },
                            ];
                            break
                      }
@@ -1083,6 +1104,149 @@ export default defineComponent({
                      this.muse.kinksB.substance = ["", "", "YES", "", "Smoking"]
                      this.muse.kinksB.bondage = ["Rope", "YES", "", "YES", "YES"]
 
+                     break
+                  case 'cyn':
+                     this.muse.Uni = "Pokemon";
+                     this.muse.Reg = "Unova";
+                     switch (au) {
+                        case 'base':
+                           this.muse.Name = "Cynthia Shirona";
+                           this.muse.Spec = "Human";
+                           this.muse.SubDom = "Mostly Dommy Mommy.";
+                           this.muse.Desc = "An adventuring archaeologist who's stumbled upon the title of champion. While not the greatest fan of battling, the title serves her well for clearance into important sites, and her team is prepared to deal with the blow of legendaries' actions. ";
+                           this.muse.DescSh = "She's well aware of the reputation and trauma her prowess does to others, and sometimes she revels in it, playing up her mystery and dominance. Other times? She surprises them with her tenderness. She enjoys either";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: true },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: false },
+                              { au: 'galaxy', emblem: '/versions/galactic.jpg', area: 1, check: false },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: false },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/cynthia/sample_46f7d45f3df7d6fa3b94cb376ca12b4e.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/cynthia_pokemon_and_2_more_drawn_by_ginhaha__cc368d92d57ba6812e551d5882734a29.png", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/1426a270e43fcd952d9bf754ae1ec5fd.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/F_PYH5MW8AERouv.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/FUHl-bvXwAAp-IN.jpeg", name: "Renegade" },
+                           ];
+                           break
+                        case 'rocket':
+                           this.muse.Name = "Rocket Scientist Cynthia";
+                           this.muse.Spec = "Human";
+                           this.muse.SubDom = "Vicious Dommy, Power Bottom.";
+                           this.muse.Desc = "Offered quite a bit of endorsement for her help in studying mythos (as well as promises that they wouldn't use it for as dangerous goals as Team Galactic), she joined on contract, though contact with their uniforms and culture and the myriad of Sonia's inventions degraded her until she accepted to join in full. ";
+                           this.muse.DescSh = "She no longer has qualms about whether her knowledge is used for great evil, only how it'll serve team Rocket, her beloved.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: true },
+                              { au: 'galaxy', emblem: '/versions/galactic.jpg', area: 1, check: false },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: false },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/cynthia/rocket/GKbkRfxWwAA-Zpd.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/81105c265a347e41061aaf08480c8a76.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/768dac8a75af8d7387e5efa7154dfa1a.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/86f7a48ac152f9edea96d04f1b98a98d.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/1f29832f3ce4ec0cbbaf669a5925ad15.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/48e1649cca728f421d956e8b01285cd6.png", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/90978ed1ae5cb032202d001d9c981d0c.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/rocket/13.png", name: "" },
+                           ];
+                           break
+                        case 'galaxy':
+                           this.muse.Name = "Admin Cynthia";
+                           this.muse.SubDom = "Ready to obey";
+                           this.muse.Spec = "Human";
+                           this.muse.Desc = "Unknowingly and accidentally helped with the archaeological/mythos side of things, realizing how much she had helped the team broke her, choosing to use their tech to be brainwashed. Now she's happily loyal, without those pesky morals that gave her guilt, and all she had to give away was her life and pride. ";
+                           this.muse.DescSh = "The errors that led to her assistance were entirely staged to wrack her with guilt, and the pleasure she gets when obeying from the brainwashing helped ensure she'd never leave.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: false },
+                              { au: 'galaxy', emblem: '/versions/galactic.jpg', area: 1, check: true },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: false },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/cynthia/galaxy/f81413db35920e9c3d66bc1027ee1a3d.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/galaxy/eef75109b9325aa76ee9f2b85cd0c461.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/galaxy/109078811_p1.png", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/galaxy/114562458_p1.png", name: "" },
+                           ];
+                           break
+                        case 'venom':
+                           this.muse.Name = "Historia";
+                           this.muse.SubDom = "Dommy Mommy Supreme";
+                           this.muse.Spec = "Human/Symbiote";
+                           this.muse.Desc = "Found a strange substance in some ruins, that have given her the strength to go toe to toe with legendaries, and a viciousness at battle. Those who lose to her will have to accept being her adopted 'children', and hours of making love. ";
+                           this.muse.DescSh = ".";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: false },
+                              { au: 'galaxy', emblem: '/versions/galactic.jpg', area: 1, check: false },
+                              { au: 'venom', emblem: '/versions/symbiote.png', area: 1, check: true },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/cynthia/venom/11fc59be157d5cdd555e8fb7e08bbb7b.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/cynthia/venom/56c6c69e5ebd8be4bedaf2702c56d716.jpg", name: "" },
+                           ];
+                           break
+                     }
+                     this.muse.kinksA.partner = ["Human", "Team Rocket, Team Galactic", "", "Pokemon", ""]
+                     this.muse.kinksA.relation = ["YES", "YES", "", "Partner", "YES", "Self - Mommy"]
+                     this.muse.kinksA.clothing = ["YES", "", "Latex, Fur", "Evil Team", "YES"]
+                     this.muse.kinksA.bodyMod = ["YES", "", "", "Boobs"]
+                     this.muse.kinksA.mindMod = ["YES", "YES", "YES", "", ""]
+                     this.muse.kinksB.transform = ["YES", "YES", "", ""]
+                     this.muse.kinksB.treatment = ["YES", "YES", "", "YES", "YES"]
+                     this.muse.kinksB.consent = ["", "YES", "", "YES", "", "YES"]
+                     this.muse.kinksB.substance = ["", "YES", "YES", "YES", ""]
+                     this.muse.kinksB.bondage = ["YES", "YES", "YES", "YES", "YES"]
+                     break
+                  case 'nesa':
+                     this.muse.SubDom = "Goes with the flow";
+                     this.muse.Uni = "Pokemon";
+                     this.muse.Spec = "Human";
+                     this.muse.Reg = "Galar";
+                     switch (au) {
+                        case 'base':
+                           this.muse.Name = "Nessa Rurina";
+                           this.muse.Desc = "A model and gym leader from Galar who much like the sea, is calm until battle comes and she becomes the storm. She worries about holding onto her modelling career alongside the gym, but she continues to shine on. She always has time for Sonia though! ";
+                           this.muse.DescSh = "She absolutely adores Sonia and would do anything for her, go as far as she asks. She's taken to masturbate to her at her own pool, hoping the waters hide her own fluids shed from thinking about her closest gal pal.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: true },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: false },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/nessa/62e996c47d7c846df60e7e764e26cbf6.png", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/81e9b85cbd6a64de19f00c8dff362b16.png", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/__nessa_pokemon_and_2_more_drawn_by_maniacpaint__635588b734766d0604df0597822acfb5.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/RDT_20230218_1417587122187047633158608.jpg", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/FJYhANXVQAIFabl.png", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/be7118ff43e7812f7df4775891681b2b.png", name: "" },
+                           ];
+                           break
+                        case 'rocket':
+                           this.muse.Name = "Coordinator Nessa";
+                           this.muse.Desc = "She entered by Sonia's invitations, and her own secret sensual experiments on her left her suggestible enough to dedicate herself. Team Rocket has helped her greatly in managing her time for gym, modelling, and Rocket missions. And she always has time to assist her Sonia in the lab, grateful she got her here.";
+                           this.muse.DescSh = "";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', area: 1, check: true },
+                           ]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/nintendo/nessa/30c9fdc5293fc419ba812e237361bd99.jpeg", name: "" },
+                              { pic: "/slideshow/nintendo/nessa/7dbbf55cbc24e9f6c1260e3727447ccc.jpeg", name: "(+ Rocket Grunt Hilda)" },
+                           ];
+                           break
+                     }
+                     this.muse.kinksA.partner = ["Human", "YES", "", "Pokemon", ""]
+                     this.muse.kinksA.relation = ["", "", "", "Self", "Sonia", ""]
+                     this.muse.kinksA.clothing = ["YES", "", "Spandex, Latex", "", "Model"]
+                     this.muse.kinksA.bodyMod = ["", "Yes", "", "Gigantamax"]
+                     this.muse.kinksA.mindMod = ["", "Self", "Self", "", ""]
+                     this.muse.kinksB.transform = ["YES", "YES", "", ""]
+                     this.muse.kinksB.treatment = ["YES", "", "", "", ""]
+                     this.muse.kinksB.consent = ["YES", "", "", "", "YES", "YES"]
+                     this.muse.kinksB.substance = ["", "YES", "Outside", "YES", ""]
+                     this.muse.kinksB.bondage = ["", "", "YES", "YES", "YES"]
                      break
                   case 'brina':
                      this.muse.Uni = "Pokemon";
@@ -2741,6 +2905,36 @@ export default defineComponent({
                      this.muse.kinksB.substance = ["Milk", "YES", "YES", "YES", ""]
                      this.muse.kinksB.bondage = ["Self: Rope, Chain, Tentacles", "Self", "Self", "Self", "Self"]
                      break
+                  case 'nana':
+                     this.muse.Name = "Nana Shimura (???)";
+                     this.muse.SubDom = "Dominant unless flustered.";
+                     this.muse.Uni = "Hero Academia";
+                     this.muse.Spec = "Human (Quirked)";
+                     this.muse.Reg = "Japan, Musatafu";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false }]
+                     this.muse.Desc = "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
+                     this.muse.DescSh = "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
+                     this.muse.slideArray = [
+                        { pic: "/slideshow/mha/nana/319bc1e6f9667d2f8762290a012fb337.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/5151aea1e5129ee96b1e8cc6ac6298ea.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/364cdab97b673dc744b99911c005d3ea.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/be9b776c6e028687eecf0727ab4bcbb3.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/ef0a1c9e3147a809edd1593432a0f4ba.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/b947de3aed249fe8cb7e93584b6f5fdd.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/61c4eb7a82e4a7532fd403ac8f588294.jpg", name: "" },
+                        { pic: "/slideshow/mha/nana/GJSaGclawAAnyPm.jpeg", name: "" },
+                     ];
+                     this.muse.kinksA.partner = ["Human", "", "", "", ""]
+                     this.muse.kinksA.relation = ["", "", "", "Partner", "YES", "Mommy"]
+                     this.muse.kinksA.clothing = ["", "", "Nylon", "", ""]
+                     this.muse.kinksA.bodyMod = ["YES", "", "", ""]
+                     this.muse.kinksA.mindMod = ["", "Partner", "", "", ""]
+                     this.muse.kinksB.transform = ["", "", "", "YES"]
+                     this.muse.kinksB.treatment = ["YES", "", "", "", ""]
+                     this.muse.kinksB.consent = ["", "", "", "YES", "YES", ""]
+                     this.muse.kinksB.substance = ["", "YES", "Outside", "YES", ""]
+                     this.muse.kinksB.bondage = ["", "", "YES", "", ""]
+                     break
                   case 'fumi':
                      this.muse.Name = "Fuyumi Todoroki";
                      this.muse.SubDom = "Mostly Submissive";
@@ -3004,6 +3198,54 @@ export default defineComponent({
                      this.muse.kinksB.consent = ["", "YES", "YES", "YES", "", "YES"]
                      this.muse.kinksB.substance = ["Sweets, Milk", "YES", "YES", "YES", "YES"]
                      this.muse.kinksB.bondage = ["Tentacles, Chains", "YES", "YES", "YES", "YES"]
+                     break
+                  case 'frie':
+                     this.muse.Uni = "Beyond Journey's End";
+                     this.muse.Reg = "N/A: Traveling";
+                     switch (au) {
+                        case 'base':
+                           this.muse.Name = "Frieren";
+                           this.muse.SubDom = "Experimental Switch";
+                           this.muse.Spec = "Elf";
+                           this.muse.Desc = "An ancient elf who loves magic, hates demons, and is otherwise a mess. Despite being the world's greatest mage, she has rookie mistakes, and can't resist mimics. She's still getting the hang of human lifespans. ";
+                           this.muse.DescSh = "While elves have a low sex drive, she IS interested in the topic, and having fun with it. Just as magic, she looks for objects and tomes about it, and she's the greatest layer, even if she has some gaps.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 4, check: true },
+                              { au: 'mimic', emblem: '/versions/mimic.png', area: 4, check: false },]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/anime/frieren/25ee231e74cdaa1ca90f0b3da59d39f4.jpg", name: "" },
+                              { pic: "/slideshow/anime/frieren/sample_c589e7469d22af5e76c8259bec181567.jpg", name: "" },
+                              { pic: "/slideshow/anime/frieren/sample_d778d31c3dfe6d8ab0497bcd50d662eb.jpg", name: "" },
+                              { pic: "/slideshow/anime/frieren/GJJMI0vXcAApQw6.jpeg", name: "" },
+                              { pic: "/slideshow/anime/frieren/GJ72Vh1W0AAQ9LF.jpeg", name: "" },
+                              { pic: "/slideshow/anime/frieren/GAirPEfWIAAJCUL.jpeg", name: "" },
+                           ];
+                           break
+                        case 'mimic':
+                           this.muse.Name = "Jägerin";
+                           this.muse.SubDom = "Carnivore";
+                           this.muse.Spec = "???";
+                           this.muse.Desc = "Once a great mage, she is now a monster of sorts herself. Her outfit can change to what she wills, even if it'll always be a little tight. She goes around breeding women for new mimic eggs, and alluring travelers into some more advanced mimics. Demons love the new Frieren, and she quite loves herself too. ";
+                           this.muse.DescSh = "None know if she's still Frieren but too fallen into pleasure to retrieve, or a mimic that's copied her form and mannerisms. Not even herself.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', area: 4, check: false },
+                              { au: 'mimic', emblem: '/versions/mimic.png', area: 4, check: true },]
+                           this.muse.slideArray = [
+                              { pic: "/slideshow/anime/frieren/GJix1u1WUAAGdmh.jpeg", name: "" },
+                              { pic: "/slideshow/anime/frieren/20231215_125840.jpg", name: "" },
+                           ];
+                           break
+                     }
+                     this.muse.kinksA.partner = ["Human", "", "", "Mimic, Demons", ""]
+                     this.muse.kinksA.relation = ["", "", "", "", "", "Mommy - Self"]
+                     this.muse.kinksA.clothing = ["YES", "", "", "", ""]
+                     this.muse.kinksA.bodyMod = ["", "", "YES", "YES"]
+                     this.muse.kinksA.mindMod = ["YES", "YES", "YES", "", ""]
+                     this.muse.kinksB.transform = ["", "", "", "YES"]
+                     this.muse.kinksB.treatment = ["YES", "", "", "YES", "YES"]
+                     this.muse.kinksB.consent = ["YES", "", "", "YES", "YES", ""]
+                     this.muse.kinksB.substance = ["", "", "Outside", "YES", "Potions"]
+                     this.muse.kinksB.bondage = ["YES", "YES", "", "YES", "YES"]
                      break
                };
                break
