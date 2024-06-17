@@ -37,37 +37,9 @@ export default defineComponent({
       this.muse.kinksB.consent = ["FREE", "DUB", "NONE", "WATCH", "STEALTH", "EXHIBIT"]
       this.muse.kinksB.substance = ["FOOD", "SWEAT", "CUM", "PISS", "DRUGS"]
       this.muse.kinksB.bondage = ["BIND", "HYPNO", "GRAPPLE", "WORLD", "SENSE"]
+
+      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
       
-      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: false }]
-      //{ au: 'base', emblem: '/versions/mirror.jpg', area: 1, check: true },
-
-      /*Muses with remaining variants but no image/info available
-      Iris: Princess, Dragon, Team Plasma
-      Edelgard: Student, Empress, Hegemon Husk, Modern
-
-      Lisa: Fatui
-      Lucifer: Angel
-      Rottytops: Alive
-      Artoria: Lancer, Saber
-
-      Mei: Villain (Vulcan), Hero (Gadget), Mecha
-      Tsuyu: Villain (Beelzebufo)
-      Mina: Villain (Alien Queen), Gyaru, Non-Mutant
-      Momo: Villain (Empress)
-      Tooru: Villain (Prismatic)
-      Kendo: Villain (Martial Law)
-      Camie: Villain (Miss Behave)
-      Melissa: Villain (Iron Maiden), Hero (Athena)
-      Emi: Villain (Black Comedy)
-      Kaina: Pre-break Nagant
-      Rumi: Villain (Mad Hare), UA Student
-      Yu: Villain (Mistress Summit)
-      Fuyumi: Villain (Blizzard), Hero (Snow Angel), UA Teacher, UA Student, Librarian
-      Inko: Villain (Twist), Young Mom, UA Student, Hero (Power Pull), 
-
-      Marin: Streamer, Prostitute, Succubus, Symbiote, Kuroe Shizuku(-tan!), Rizu-kyun, Prisoner Veronica
-      Yor: Succubus, Witch (Yorticia), Shinobi
-      */
     },
   },
 })
