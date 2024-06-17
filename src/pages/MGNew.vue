@@ -801,16 +801,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Fatui", "", "Churls", ""]
-                     this.muse.kinks.relation = ["YES", "Partner", "Self", "YES", "", "Mommy/Daughter (Self/Partner)"]
-                     this.muse.kinks.clothing = ["YES", "", "Nylon, Living", "Fatui", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.transform = ["YES", "", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", ""]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'mira':
                      this.muse.Name = "None";
@@ -821,16 +811,6 @@ export default defineComponent({
                      this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
                      this.muse.DescLewd = "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-                     this.muse.kinks.partner = ["Human", "Fatui, Mirror Maidens", "", "Churls", ""]
-                     this.muse.kinks.relation = ["YES", "YES*", "YES*", "Selves (By Mistress)", "", "Sisters, Mommy (Selves)"]
-                     this.muse.kinks.clothing = ["", "", "Latex, Nylon, Living", "Mirror Maiden", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "Fatui Emblem", "Height, Boobs"]
-                     this.muse.kinks.mindMod = ["Partner", "Partner", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.transform = ["", "", "", "Mirror Maidens"]
-                     this.muse.kinks.treatment = ["Selves, Mistress", "YES*", "YES*", "YES*", "YES*"]
-                     this.muse.kinks.consent = ["Selves (For Mistress)", "Partners", "Partners", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "", "Inside", "", ""]
-                     this.muse.kinks.bondage = ["Chains: YES*", "YES*", "YES*", "YES*", "YES*"]
                      break
                   case 'lumi':
                      this.muse.Title = "Genshin Impact";
@@ -859,16 +839,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Fatui, Eremites", "Automatons", "Churls, Slime", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.clothing = ["YES", "YES", "Latex, Nylon, Living", "Fatui", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "YES", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "", "Self as Partner"]
-                     this.muse.kinks.treatment = ["Partner", "YES", "", "YES", "YES"]
-                     this.muse.kinks.consent = ["", "Self", "Self", "", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Outside", "YES", ""]
-                     this.muse.kinks.bondage = ["Tentacles, Chains, Rope", "YES", "", "", "YES"]
                      break
                   case 'saria':
                      this.muse.Title = "Genshin Impact";
@@ -897,16 +867,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Fatui", "", "Churls", ""]
-                     this.muse.kinks.relation = ["YES", "", "YES", "", "", "Mommy (Self, Tease)"]
-                     this.muse.kinks.clothing = ["", "", "Nylon, Fishnets", "Nun, Fatui", ""]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", "YES"]
-                     this.muse.kinks.transform = ["", "Partner", "", "YES"]
-                     this.muse.kinks.treatment = ["Self", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["", "YES", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "", "YES", "YES", "Smoking, Drinking"]
-                     this.muse.kinks.bondage = ["Rope, Chains", "", "YES", "YES", "YES"]
                      break
                   case 'yelan':
                      this.muse.Title = "Genshin Impact";
@@ -935,16 +895,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Fatui", "", "Churls", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "", "Mommy (Self, Tease)"]
-                     this.muse.kinks.clothing = ["YES", "YES", "Latex, Threads, Fur, Living", "Fatui", "YES"]
-                     this.muse.kinks.bodyMod = ["", "", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "", "YES"]
-                     this.muse.kinks.treatment = ["Self", "YES", "", "", "YES"]
-                     this.muse.kinks.consent = ["Self", "", "Partner", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Outside", "YES", "Drinking"]
-                     this.muse.kinks.bondage = ["Tentacles, Rope, Threads", "YES", "", "YES", "YES"]
                      break
                };
                break
@@ -959,16 +909,6 @@ export default defineComponent({
                      this.muse.Desc = "The greatest engineer in quirked history, she's brilliant, bombastic, and can't remember silly things like names, hygiene, or shame. All she needs in her world are her babies, and what girls may take an interest in her and her babies. ";
                      this.muse.DescLewd = "Is more into machines than humans, would roboticize every hot girl she meets if she could.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-                     this.muse.kinks.partner = ["", "", "YES", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "", "", "Partner", "", ""]
-                     this.muse.kinks.clothing = ["YES", "", "Spandex, Latex", "", ""]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "", ""]
-                     this.muse.kinks.mindMod = ["Already lacks morals", "", "YES", "YES", ""]
-                     this.muse.kinks.transform = ["", "", "YES", ""]
-                     this.muse.kinks.treatment = ["YES", "", "", "Partner", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Tentacles, Chains", "YES", "YES", "YES", "YES"]
                      break
                   case 'tsu':
                      this.muse.Name = "Tsuyu Asui (Froppy)";
@@ -983,16 +923,6 @@ export default defineComponent({
                            this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true },]
                            break
                      }
-                     this.muse.kinks.partner = ["Mutant", "", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "YES", "", "", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "Spandex", "School", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "", "Tongue (Self)"]
-                     this.muse.kinks.mindMod = ["YES", "", "YES", "", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "", ""]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "", "", "", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Outside", "YES", "Hallucinogens"]
-                     this.muse.kinks.bondage = ["Chain, Tentacle", "YES", "YES", "YES", "YES"]
                      break
                   case 'mina':
                      this.muse.Name = "Mina Ashido (Pinky)";
@@ -1009,16 +939,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human, Mutant", "YES", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "", "Self", "", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "Fishnets, Spandex, Fur, Living", "Cheerleader", "Gyaru, Eye-searing"]
-                     this.muse.kinks.bodyMod = ["YES", "Nipple Piercings", "Tramp Stamp, Body Writing", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "", ""]
-                     this.muse.kinks.treatment = ["YES", "YES", "", "", "YES"]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["Milk", "Likes Partner's, NO from Self (likely toxic)", "YES", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Tentacles", "", "YES", "YES", ""]
                      break
                   case 'momo':
                      this.muse.Name = "Momo Yaoyorozu (Creati)";
@@ -1036,16 +956,7 @@ export default defineComponent({
                      }
                      this.muse.Desc = "A girl born of wealth with a genuine heart of gold and a mind that holds great knowledge. Despite her dazzling intellect, astonishing quirk, and stunning beauty, her confidence needs some serious work. But she will always stand by the side of her friends. ";
                      this.muse.DescLewd = "Headmistress Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
-                     this.muse.kinks.partner = ["Human", "", "YES", "Noumu", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "YES", "Mommy/Daughter"]
-                     this.muse.kinks.clothing = ["YES", "YES", "Latex, Living", "Cheerleader, Student", "Fancy"]
-                     this.muse.kinks.bodyMod = ["YES", "", "Body Writing", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "", "YES", "YES", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.treatment = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Rope", "", "YES", "YES", "YES"]
+                     
                      break
                   case 'toru':
                      this.muse.Name = "Tooru Hagakure (Invisible Girl)";
@@ -1056,16 +967,6 @@ export default defineComponent({
                      this.muse.Desc = "A girl born invisible, pushing herself to be loud and bright and seen. Thanks to her friends and training, she has become more visible than ever at UA, thus aiming as a hero to look out for others who might be left unseen. ";
                      this.muse.DescLewd = "People watching is her hobby, which has often veered into very perverted situations...not that she minds the show, or interrupts, or even leaves. Also has developed a nudist streak.";
 
-                     this.muse.kinks.partner = ["Human", "YES", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "", "", "", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "", "", "School, Cheerleader", "YES"]
-                     this.muse.kinks.bodyMod = ["", "YES", "", ""]
-                     this.muse.kinks.mindMod = ["", "", "", "", "YES"]
-                     this.muse.kinks.transform = ["", "", "YES", ""]
-                     this.muse.kinks.treatment = ["YES", "", "", "", "YES"]
-                     this.muse.kinks.consent = ["YES", "Partner", "Partner", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "", "Outside", "YES", ""]
-                     this.muse.kinks.bondage = ["Rope, Tape", "", "YES", "YES", ""]
                      break
                   case 'kendo':
                      this.muse.Name = "Itsuka Kendo (Battle Fist)";
@@ -1076,16 +977,6 @@ export default defineComponent({
                      this.muse.Desc = "A martial artist with a big brain, big heart, and bigger hands, the class representative of class B is as ruthless with her criticism as her combative disposition. She does however have a tendency to let go for others, neglecting her own wants and needs. ";
                      this.muse.DescLewd = "One can only hope her friend slash crush Setsuna does not take advantage of that...or that she lets herself go along the rather sexualized world of female pro-heroism.";
 
-                     this.muse.kinks.partner = ["Human, Mutant", "YES", "YES", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "", "Self", "Self", "YES", ""]
-                     this.muse.kinks.clothing = ["", "YES", "Spandex, Living", "Cheerleader", "Martial Arts, Exercise"]
-                     this.muse.kinks.bodyMod = ["Self", "", "Body Writing", "Self"]
-                     this.muse.kinks.mindMod = ["Self", "Self", "", "", ""]
-                     this.muse.kinks.transform = ["Self", "Self", "", "Of Partner"]
-                     this.muse.kinks.treatment = ["Partner", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["Self", "Self", "", "", "Self", "Self"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", "Self"]
-                     this.muse.kinks.bondage = ["Self: Chains, Ropes, Tentacles, Tape", "Self", "YES", "Self", "Self"]
                      break
                   case 'camie':
                      this.muse.Name = "Camie Utsushimi (Illus-o-Camie)";
@@ -1097,16 +988,6 @@ export default defineComponent({
                      this.muse.Desc = "A Ketsubutsu-taught pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
                      this.muse.DescLewd = "Her hero outfit and flirtatiousness bely the fact that she likes to draw in the attention, the only question being, what she will do with that attention. She knows quite well the answer will be 'whatever Camie desires'.";
 
-                     this.muse.kinks.partner = ["Human", "YES", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "YES", "YES", "", "", ""]
-                     this.muse.kinks.clothing = ["", "YES", "Latex, Leather, Living", "", "YES"]
-                     this.muse.kinks.bodyMod = ["", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "", "YES", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["Self", "", "", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", "Smoking, Hallucinogens"]
-                     this.muse.kinks.bondage = ["Tentacles, Chains, Ropes", "YES", "YES", "YES", "YES"]
                      break
                   case 'mel':
                      this.muse.Name = "Melissa Shield";
@@ -1117,16 +998,6 @@ export default defineComponent({
                      this.muse.Desc = "A quirkless american girl who wants to save people, and has decided to do so through her inventions. Despite her outgoing nature, she doesn't have many friends. Something she intends to fix as well. ";
                      this.muse.DescLewd = "She is not blind to how her looks makes others feel. She hopes the acquisition of friends will facilitate experimenting with that.";
 
-                     this.muse.kinks.partner = ["Human", "YES", "YES", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "", "", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "", "", "", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "Self, Nipple", "Body Writing, Tattoos", ""]
-                     this.muse.kinks.mindMod = ["Self", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.transform = ["Self", "", "Self", ""]
-                     this.muse.kinks.treatment = ["YES", "Self", "", "Self", ""]
-                     this.muse.kinks.consent = ["Self", "Self", "Self", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "", ""]
-                     this.muse.kinks.bondage = ["Tentacles, Rope", "Self", "", "", ""]
                      break
                   case 'joke':
                      this.muse.Name = "Emi Fukukado (Ms. Joke)";
@@ -1137,16 +1008,6 @@ export default defineComponent({
                      this.muse.Desc = "A pro-hero who uses the power of comedy to save people! And beat up dead cows. She flirts and laughs and loves, and never quite shuts up, to the chagrin of many. Has a book of jokes on every topic under the rising sun. ";
                      this.muse.DescLewd = "Still wants to meet a hot villainess to happily surrender to, already has a suit, name and theme planned to serve her.";
 
-                     this.muse.kinks.partner = ["Human, Devil", "", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["", "YES", "", "YES", "Midnight", ""]
-                     this.muse.kinks.clothing = ["", "", "Latex, Spandex, Nylon", "", ""]
-                     this.muse.kinks.bodyMod = ["", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "Self", "", ""]
-                     this.muse.kinks.treatment = ["YES", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["", "Self", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "YES", "Gas"]
-                     this.muse.kinks.bondage = ["Tentacles, Rope", "YES", "YES", "", "YES"]
                      break
                   case 'kai':
                      this.muse.Name = "Kaina Tsutsumi (Lady Nagant)";
@@ -1157,16 +1018,6 @@ export default defineComponent({
                      this.muse.Desc = "A former hero turned assassin for the Hero Association, Nagant once wanted to truly help people, but was used as a weapon of subterfuge, until she killed her own boss who led her down that path. Free now, as a villain, she sprawls the streets ready to aim and shoot. ";
                      this.muse.DescLewd = "Has an interest in female pro-heroes, and teaching them a tough lesson...however they may need it.";
 
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["", "Partner", "Partner", "", "", ""]
-                     this.muse.kinks.clothing = ["YES", "", "Latex", "", ""]
-                     this.muse.kinks.bodyMod = ["", "YES", "Partner", ""]
-                     this.muse.kinks.mindMod = ["Partner", "Partner", "", "", ""]
-                     this.muse.kinks.transform = ["", "Partner", "", ""]
-                     this.muse.kinks.treatment = ["", "Partner", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.consent = ["", "Partner", "Partner", "", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Outside", "YES", ""]
-                     this.muse.kinks.bondage = ["Rope", "", "Partner", "Partner", "Partner"]
                      break
                   case 'rumi':
                      this.muse.Name = "Rumi Usagiyama (Miruko)";
@@ -1183,16 +1034,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human, Mutant", "", "", "Noumu", ""]
-                     this.muse.kinks.relation = ["Self: Worshipped", "YES", "YES", "Partner", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "Partner", "", "", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "", ""]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["", "", "", "Partner as Self"]
-                     this.muse.kinks.treatment = ["Self", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["", "", "YES", "", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains", "", "YES", "YES", "YES"]
                      break
                   case 'yama':
                      this.muse.Name = "Yu Takeyama (Mt. Lady)";
@@ -1203,16 +1044,6 @@ export default defineComponent({
                      this.muse.Desc = "A recent pro-hero who seems to be everything wrong with them. Vain, lazy, cocky, lustful, spiteful. Despite this, she has a strong heart that will shine in the worst of times. Even if the rest of times she spends bickering and teasing. ";
                      this.muse.DescLewd = "Often expresses her attraction to her fellow pro-heroes by mockery, argument and teasing, desperate to push them to snap and do as they will with her. Most of them know this and don't want to give her the satisfaction.";
 
-                     this.muse.kinks.partner = ["Human", "YES", "", "Noumu", "YES"]
-                     this.muse.kinks.relation = ["Partner (Worshipped)", "Self", "Self", "Partner", "", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "Latex, Spandex, Nylon, Living", "", ""]
-                     this.muse.kinks.bodyMod = ["Self", "Self", "Self", "YES"]
-                     this.muse.kinks.mindMod = ["", "Self", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "", "", ""]
-                     this.muse.kinks.treatment = ["", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["", "Self", "Self", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Self: Rope, Chain, Tentacles", "Self", "Self", "Self", "Self"]
                      break
                   case 'nana':
                      this.muse.Name = "Nana Shimura (???)";
@@ -1224,16 +1055,6 @@ export default defineComponent({
                      this.muse.Desc = "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
                      this.muse.DescLewd = "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
 
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["", "", "", "Partner", "YES", "Mommy"]
-                     this.muse.kinks.clothing = ["", "", "Nylon", "", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "", ""]
-                     this.muse.kinks.mindMod = ["", "Partner", "", "", ""]
-                     this.muse.kinks.transform = ["", "", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "", "", "", ""]
-                     this.muse.kinks.consent = ["", "", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["", "YES", "Outside", "YES", ""]
-                     this.muse.kinks.bondage = ["", "", "YES", "", ""]
                      break
                   case 'fumi':
                      this.muse.Name = "Fuyumi Todoroki";
@@ -1244,16 +1065,6 @@ export default defineComponent({
                      this.muse.Desc = "A woman who's spent her life trying to keep things together for her family, or her idea of it. She's a preschool teacher, with a weak quirk, and often percieved as weak herself. But it takes great strength to be kind and want better under her circumstances. ";
                      this.muse.DescLewd = "Something less than wonderful brews beneath her softness, and if pushed, it will no doubt come out.";
 
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["", "", "SLAVE", "YES", "YES", "Mommy/Daughter (Partner/Self)"]
-                     this.muse.kinks.clothing = ["", "YES", "Latex, Nylon", "Suit", "YES"]
-                     this.muse.kinks.bodyMod = ["", "", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "", "", "", ""]
-                     this.muse.kinks.transform = ["Self", "Self", "", ""]
-                     this.muse.kinks.treatment = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Rope", "YES", "YES", "YES", "YES"]
                      break
                   case 'inko':
                      this.muse.Name = "Inko Midoriya";
@@ -1264,16 +1075,6 @@ export default defineComponent({
                      this.muse.Desc = "A mother, no longer a lover, at least in her mind. With her son on the dangerous paths of heroism (yet doing well) and a great deal of regret and time left on her own, she listlessly spends her days watching soap operas, and wondering on what could be. ";
                      this.muse.DescLewd = "Few have met the steel behind the tears, when it comes to her heart. Perhaps someone out there may yet be for her.";
 
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["", "", "", "", "YES", "Mommy/Daughter"]
-                     this.muse.kinks.clothing = ["YES", "YES", "", "Secretary", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "", ""]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["", "Self", "", ""]
-                     this.muse.kinks.treatment = ["Partner", "", "", "", ""]
-                     this.muse.kinks.consent = ["", "", "", "", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "", "YES", "", ""]
-                     this.muse.kinks.bondage = ["Rope", "", "YES", "", "YES"]
                      break
                };
                break
@@ -1307,16 +1108,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Aliens", "", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["", "YES", "YES", "", "YES", "Mommy/Daughter"]
-                     this.muse.kinks.clothing = ["", "", "Latex, Living", "YES", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "", "Tattoos", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.transform = ["YES", "YES", "YES", ""]
-                     this.muse.kinks.treatment = ["YES", "", "YES", "", ""]
-                     this.muse.kinks.consent = ["YES", "Self", "Self", "", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "YES", "Inside", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Tentacles", "YES", "YES", "YES", ""]
                      break
                   case 'bow':
                      this.muse.Title = "Mario";
@@ -1345,16 +1136,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Princesses", "", "YES", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "", "Latex", "", "Princess, Goth, Punk, Delinquent"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "Partner", "", ""]
-                     this.muse.kinks.treatment = ["YES", "Partner", "YES", "Partner", "Partner"]
-                     this.muse.kinks.consent = ["", "YES", "YES", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Rope", "", "YES", "YES", "YES"]
                      break
                   case 'pich':
                      this.muse.Title = "Mario";
@@ -1413,16 +1194,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["YES", "Princesses", "YES", "Koopa", "YES"]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["", "YES", "Frills", "", "Pink"]
-                     this.muse.kinks.bodyMod = ["YES", "Nipple Piercings", "Tattoo", "Butt"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "YES", "YES"]
-                     this.muse.kinks.treatment = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "Self", "Self", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'lina':
                      this.muse.Title = "Mario";
@@ -1465,16 +1236,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["YES", "", "YES", "Koopa, Other", ""]
-                     this.muse.kinks.relation = ["Self: Worshipped", "", "Self", "YES", "YES", "Mommy/Daughter (Self/Partner)"]
-                     this.muse.kinks.clothing = ["YES", "", "Spandex, Latex, Living", "", "Dresses"]
-                     this.muse.kinks.bodyMod = ["YES", "", "", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "", "YES", "YES", "YES"]
-                     this.muse.kinks.transform = ["YES", "YES", "YES", ""]
-                     this.muse.kinks.treatment = ["YES", "", "", "Self", ""]
-                     this.muse.kinks.consent = ["YES", "", "", "", "", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "PISS", "DRUGS"]
-                     this.muse.kinks.bondage = ["Tentacles", "YES", "", "", "YES"]
                      break
                   case 'lin':
                      this.muse.Name = "Linkle Ordona";
@@ -1484,17 +1245,6 @@ export default defineComponent({
                      this.muse.Reg = "Hyrule";
                      this.muse.Desc = "A farmer who believes herself to be the hero of Hyrule, winning over hearts with a sweet smile. She will befriend anyone, as she keeps getting lost and finding herself anywhere. ";
                      this.muse.DescLewd = "Fantasizes about taking care of the animals with her body, as well as being defeated by the monsters, only to take the upper hand after loooong long hours of fun sex with them.";
-
-                     this.muse.kinks.partner = ["Hylian, Gerudo", "", "", "YES", "YES"]
-                     this.muse.kinks.relation = ["", "Self (Dog)", "Self", "", "", ""]
-                     this.muse.kinks.clothing = ["YES", "Cow, Dog, Horse", "", "Knight, Hero", ""]
-                     this.muse.kinks.bodyMod = ["YES", "", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["", "", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", ""]
-                     this.muse.kinks.consent = ["YES", "", "", "", "YES", ""]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "YES", ""]
-                     this.muse.kinks.bondage = ["Rope", "", "YES", "YES", ""]
                      break
                   case 'pura':
                      this.muse.Name = "Purah";
@@ -1533,16 +1283,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Hylian, Gerudo", "Yiga", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["", "YES", "YES", "YES", "Zelda", "Mommy (Self, tease)"]
-                     this.muse.kinks.clothing = ["", "", "Nylon, Latex", "YES", "YES"]
-                     this.muse.kinks.bodyMod = ["", "YES", "", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.transform = ["Partner", "Self", "YES", "Partner"]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "YES", "", ""]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "", "YES"]
-                     this.muse.kinks.bondage = ["Chains, Tentacles", "YES", "YES", "YES", "YES"]
                      break
                   case 'edel'://need Hegemon Husk picture
                      this.muse.Title = "Fire Emblem";
@@ -1558,16 +1298,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["YES", "", "", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["", "YES", "Nylon, Latex", "School", ""]
-                     this.muse.kinks.bodyMod = ["", "", "Teacher's Pet", "Self"]
-                     this.muse.kinks.mindMod = ["YES", "", "YES", "", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "", "", "", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "", "YES", ""]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Rope", "", "YES", "YES", "YES"]
                      break
                   case 'luci':
                      this.muse.Name = "Lucifer Morningstar";
@@ -1579,17 +1309,6 @@ export default defineComponent({
                      this.muse.Reg = "Hell";
                      this.muse.Desc = "A smooth-talking woman who's done the best of her situation. Despite her charm, she's a black-hearted queen with only a few soft spots, fine dining, drinking, worship. She flusters if her authority is upended. ";
                      this.muse.DescLewd = "She's very weak outside of actual hell, and secretly likes it when she is abused on her weakness. She will repay when returning to hell, however.";
-
-                     this.muse.kinks.partner = ["Devil, Human, Angel", "YES", "", "YES", "YES"]
-                     this.muse.kinks.relation = ["Self: Worshipped", "YES", "YES", "YES", "YES", "Mommy/Daughter"]
-                     this.muse.kinks.clothing = ["YES", "YES", "Leather", "Suit", ""]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "Partner", "", ""]
-                     this.muse.kinks.treatment = ["Self", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "YES", "YES", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Tentacles, Chains", "", "YES", "YES", "YES"]
                      break
                   case 'tae':
                      this.muse.Title = "Persona";
@@ -1616,16 +1335,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Shadows", "YES", "", ""]
-                     this.muse.kinks.relation = ["", "Partner", "Partner", "Partner", "", ""]
-                     this.muse.kinks.clothing = ["", "", "Latex, Fishnet, Leather, Living", "Doctor", "Punk/Goth"]
-                     this.muse.kinks.bodyMod = ["", "YES", "", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "Partner", "Partner", "Partner", ""]
-                     this.muse.kinks.transform = ["YES", "Partner", "YES", "Partner as Self"]
-                     this.muse.kinks.treatment = ["Self", "Partner", "", "Partner", "Partner"]
-                     this.muse.kinks.consent = ["YES", "Partner", "Partner", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", "Medical, Smoking"]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'ann':
                      this.muse.Title = "Persona";
@@ -1654,16 +1363,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Shadows", "", "", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "Already has one, would love more", ""]
-                     this.muse.kinks.clothing = ["YES", "YES (Kitten, Panther)", "Latex, Living", "", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "", ""]
-                     this.muse.kinks.treatment = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["Self", "YES", "YES", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'sae':
                      this.muse.Title = "Persona";
@@ -1692,16 +1391,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Shadows", "", "", ""]
-                     this.muse.kinks.relation = ["", "Partner", "Partner", "Partner", "", "Sisters"]
-                     this.muse.kinks.clothing = ["", "", "Nylon", "Suit", ""]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "Partner", "", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "", ""]
-                     this.muse.kinks.treatment = ["", "Partner", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.consent = ["", "Partner", "Partner", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Rope", "YES", "YES", "YES", ""]
                      break
                   case 'moni':
                      this.muse.Name = "Monika";
@@ -1715,16 +1404,6 @@ export default defineComponent({
                      this.muse.Desc = "The smartest, kindest, most beautiful girl in school, who's decided you are her soulmate, and is distraught by you focusing on the other members of her Literature Club. She will happily use her dedication to make sure you only look at her. ";
                      this.muse.DescLewd = "Though, she does find the girls rather attractive herself...she wouldn't mind them around, if they acknowledge her as the head girlfriend. She'll make sure they love her too. She has her ways.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }];
-                     this.muse.kinks.partner = ["YES", "", "", "", ""]
-                     this.muse.kinks.relation = ["", "", "You", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "Nylon", "School", "Dresses"]
-                     this.muse.kinks.bodyMod = ["YES", "", "YES", ""]
-                     this.muse.kinks.mindMod = ["Her", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["Her", "Her", "Her", ""]
-                     this.muse.kinks.treatment = ["You", "Her", "Her", "Her", "Her"]
-                     this.muse.kinks.consent = ["Her", "You", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'roty':
                      this.muse.Name = "Rottytops";
@@ -1735,16 +1414,6 @@ export default defineComponent({
                      this.muse.Desc = "A cheerful zombie who enjoys cosplay and teasing, Rotty is Shantae's bestest undead friend. Despite genuinely caring for Shantae, she's conniving, tricky and naughty in every single way. It's part of her charm, and sorely wishes to 'corrupt' Shantae. ";
                      this.muse.DescLewd = "Preferably by dating her, kissing her, eating her out, and doing all sorts of fun stuff to her body.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }];
-                     this.muse.kinks.partner = ["Human, Half-Genies", "", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["", "YES", "YES", "", "YES", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "", "YES", "YES"]
-                     this.muse.kinks.bodyMod = ["", "YES", "YES", "Splitting"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.transform = ["YES", "YES", "YES", "Partner: Zombiefication"]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", ""]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'shan':
                      this.muse.Title = "Shantae";
@@ -1762,16 +1431,6 @@ export default defineComponent({
                            ];
                            break
                      }
-                     this.muse.kinks.partner = ["Human, Zombie", "YES", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["YES", "Self", "Self", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["", "", "Nylon, Satin", "", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "", "YES"]
-                     this.muse.kinks.mindMod = ["Self", "Self", "Self", "Self", ""]
-                     this.muse.kinks.transform = ["", "", "Self", "YES"]
-                     this.muse.kinks.treatment = ["YES", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["", "Self", "", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Self: Rope, Tentacle, Chains", "YES", "Self", "Self", "Self"]
                      break
                   case 'junko':
                      this.muse.Name = "Junko Enoshima";
@@ -1781,16 +1440,6 @@ export default defineComponent({
                      this.muse.Reg = "Japan";
                      this.muse.Desc = "The ultimate fashionista, but ultimately just a girl who turns despair into pleasure for herself, she wants nothing but to share what she feels with everyone in the world. She's twisted, switches between states of self constantly, and her victory and defeat taste equally good to someone as utterly despairful as herself. There's nothing to hide anymore.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-                     this.muse.kinks.partner = ["Human", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "", "Sisters"]
-                     this.muse.kinks.clothing = ["YES", "YES", "", "YES", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.transform = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.treatment = ["Self", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["", "", "YES", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.bondage = ["YES", "YES", "YES", "YES", "YES"]
                      break
                   case 'nami':
                      this.muse.Name = "Chiaki Nanami";
@@ -1802,17 +1451,6 @@ export default defineComponent({
                      this.muse.Desc = "The ultimate gamer, all but for dating sims. She's rather soft-spoken, and gentle, to the point of even second-guessing her own statements and ideas. But ultimately she is well-meaning and easy to get along with by everyone. ";
                      this.muse.DescLewd = "Recently she's really been getting into lewd games...with all the kinks they teach. Still as bad at them as in dating sims however.";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-
-                     this.muse.kinks.partner = ["Human", "YES", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["", "Self", "Self", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["", "YES (Bunny)", "Nylon, Fur, Living", "YES", "Hoodie"]
-                     this.muse.kinks.bodyMod = ["YES", "", "", "YES"]
-                     this.muse.kinks.mindMod = ["Self", "Self", "Self", "Self", ""]
-                     this.muse.kinks.transform = ["Self", "Self", "Self", "Self as Partner"]
-                     this.muse.kinks.treatment = ["YES", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["", "Self", "", "", "", ""]
-                     this.muse.kinks.substance = ["Milk", "", "Inside", "YES", ""]
-                     this.muse.kinks.bondage = ["Self: Rope, Tentacles, Chains", "Self", "Self", "Self", "Self"]
                      break
                   case 'layer':
                      this.muse.Name = "Layer";
@@ -1823,17 +1461,6 @@ export default defineComponent({
                      this.muse.Desc = "The picture of a professional and capable Navigator Reploid..until romance comes into play. At which point she'll become a flustered, shy disaster. Good thing her bangs cover her eyes...even if her top doesn't cover the bottom of her chest."
                      this.muse.DescLewd = "Gaining enough confidence in her romantic situation unlocks her confident mommy side...but it's a slow burn to get there. Before however? She'll let her interest do whatever they want to her."
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-
-                     this.muse.kinks.partner = ["Human, Reploids", "", "YES", "", ""]
-                     this.muse.kinks.relation = ["", "", "", "YES", "YES", ""]
-                     this.muse.kinks.clothing = ["", "", "Nylon, Armor", "", "YES"]
-                     this.muse.kinks.bodyMod = ["Wants to", "", "YES", ""]
-                     this.muse.kinks.mindMod = ["YES", "", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "YES", "Partner", ""]
-                     this.muse.kinks.treatment = ["YES", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Tentacles", "", "YES", "YES", "YES"]
                      break
                   case 'ruler':
                      this.muse.Name = "Ruler";
@@ -1846,17 +1473,6 @@ export default defineComponent({
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      this.muse.Desc = "A woman who enjoys food and battle, turned human heroic spirit, and grown into a Heaven Heroic Spirit. While much more composed due to her growth, flashes of her battle-hungry (and general appetite hungry) self still shine through at times. Currently she is enjoying the world once more, this time as the greatest casino dealer. ";
                      this.muse.DescLewd = "Another kind of hunger has awakened in her more mature form, and she will feed on it kindly if finding a victor, or harshly if finding a cheater.";
-
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["Worshipped", "Partner", "Partner", "Partner", "", "Mommy (Self)"]
-                     this.muse.kinks.clothing = ["", "Yes (Bunny)", "Nylon, Fishnet, Fur", "", "Armor"]
-                     this.muse.kinks.bodyMod = ["YES", "", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["", "", "", "Partner as Self"]
-                     this.muse.kinks.treatment = ["Self", "", "YES", "", ""]
-                     this.muse.kinks.consent = ["", "Partner", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["YES", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Rope", "", "YES", "YES", "YES"]
                      break
                   case 'ridem':
                      this.muse.Name = "Rider";
@@ -1868,17 +1484,6 @@ export default defineComponent({
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      this.muse.Desc = "A woman who conceals both her emotions and eyes, hiding beauty and horrors behind both. She is completely loyal to her Master, and is not ultimately cruel, though she is hampered by a great deal of self-consciousness. ";
                      this.muse.DescLewd = "She also hides a lot of care, for those who reciprocate loyalty to her, or those who remind of herself. Only with them will she let her emotions out...all of them. Very enthusiastically.";
-
-                     this.muse.kinks.partner = ["Human", "", "", "", ""]
-                     this.muse.kinks.relation = ["Self", "", "Self", "Self", "YES", ""]
-                     this.muse.kinks.clothing = ["", "YES (Bunny)", "Living", "Office, Maid", "Covering"]
-                     this.muse.kinks.bodyMod = ["", "YES", "YES", ""]
-                     this.muse.kinks.mindMod = ["", "YES", "", "", ""]
-                     this.muse.kinks.transform = ["", "", "YES", ""]
-                     this.muse.kinks.treatment = ["Partner", "", "", "", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["", "YES", "Inside", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Tentacles (Snakes)", "YES", "YES", "", "YES"]
                      break
 
                };
@@ -1894,18 +1499,6 @@ export default defineComponent({
                      this.muse.Reg = "Japan";
                      this.muse.Desc = "A hot mess and nervous wreck of a girl who's found some level of safety and ease in following the commands of her fellow coworkers and superiors, particularly Makima and Power. ";
                      this.muse.DescLewd = "She enjoy being their pet, what bodily additions they've made her get, and wants everyone to drink her milk, and know she's owned. Really really likes it when Power yells at her.";
-
-                     this.muse.kinks.partner = ["Human, Devil", "", "", "YES", ""]
-                     this.muse.kinks.relation = ["", "Self (Dog, Cow)", "Self", "", "YES", ""]
-                     this.muse.kinks.clothing = ["", "Self (Dog, Cow)", "", "Suit", ""]
-                     this.muse.kinks.bodyMod = ["Self", "Self", "Self", "Boobs"]
-                     this.muse.kinks.mindMod = ["Self", "Self", "", "", ""]
-                     this.muse.kinks.transform = ["Self", "Self", "", ""]
-                     this.muse.kinks.treatment = ["Partner", "Self", "Self", "Self", "Self"]
-                     this.muse.kinks.consent = ["Self", "", "", "", "", "Self"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains", "", "YES", "YES", "YES"]
-                     break
                   case 'marin':
                      this.muse.SubDom = "YES";
                      this.muse.Title = "Dress Up Darling";
@@ -1921,16 +1514,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "YES", "YES", "Mother/Daughter (Partner/Self), Sister"]
-                     this.muse.kinks.clothing = ["", "YES", "Latex, Nylon, Living", "School, Military", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "Ear, Nipples", "Tattoos, Body Writing", "Booooobs"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["Partner", "YES", "YES", "YES"]
-                     this.muse.kinks.treatment = ["YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "YES", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", ""]
-                     this.muse.kinks.bondage = ["Chains, Tentacle, Rope, Tape", "YES", "YES", "", "YES"]
                      break
                   case 'lucy':
                      this.muse.Name = "Lucyna Kushinada";
@@ -1940,17 +1523,6 @@ export default defineComponent({
                      this.muse.Reg = "Night City, California";
                      this.muse.Desc = "An introverted netrunner who uses her looks for her advantage, as innocent or seductive as is needed to survive. She dreams of one day reaching the Moon and escaping the prison that is the city she lives in. ";
                      this.muse.DescLewd = "Sometimes she fantasizes of taking over AND rule from the moon, make the world her bitch, starting with one short, loud girl who she'd love to pick up and break.";
-
-                     this.muse.kinks.partner = ["Human, Cyber", "", "YES", "", ""]
-                     this.muse.kinks.relation = ["", "", "Partner", "YES", "", ""]
-                     this.muse.kinks.clothing = ["YES", "YES", "Latex, Leather, Nylon", "YES", "YES"]
-                     this.muse.kinks.bodyMod = ["", "YES", "Partner", ""]
-                     this.muse.kinks.mindMod = ["YES", "Partner", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.transform = ["Partner", "Partner", "YES", ""]
-                     this.muse.kinks.treatment = ["YES", "Partner", "Partner", "Partner", "Partner"]
-                     this.muse.kinks.consent = ["YES", "Partner", "", "YES", "YES", "YES"]
-                     this.muse.kinks.substance = ["", "YES", "YES", "YES", "Smoking, Alcohol"]
-                     this.muse.kinks.bondage = ["Partner: Chains, Tentacles", "Partner", "Partner", "Partner", "Partner"]
                      break
                   case 'yor':
                      this.muse.Title = "Spy X Family";
@@ -1968,16 +1540,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "", "YES", "", ""]
-                     this.muse.kinks.relation = ["", "Partner", "Partner", "YES", "YES", "Mommy/Daughter (Self/Partner)"]
-                     this.muse.kinks.clothing = ["", "", "Latex, Leather", "Suit", "YES"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "", ""]
-                     this.muse.kinks.mindMod = ["YES", "Partner", "", "", ""]
-                     this.muse.kinks.transform = ["YES", "Partner", "", "Partner as Self"]
-                     this.muse.kinks.treatment = ["YES", "", "YES", "YES", ""]
-                     this.muse.kinks.consent = ["", "YES", "", "", "YES", ""]
-                     this.muse.kinks.substance = ["Milk", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Chains, Tentacles, Rope", "Partner", "YES", "Partner", "YES"]
                      break
                   case 'stock':
                      this.muse.Title = "Panty & Stocking";
@@ -1995,16 +1557,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human, Angel, Ghost, Devil", "", "YES", "YES", ""]
-                     this.muse.kinks.relation = ["YES", "YES", "YES", "", "YES", "Sisters"]
-                     this.muse.kinks.clothing = ["", "YES", "Frills, Leather", "YES", "Lolita"]
-                     this.muse.kinks.bodyMod = ["YES", "YES", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["Self", "Partner", "", "YES"]
-                     this.muse.kinks.treatment = ["", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.consent = ["", "YES", "YES", "YES", "", "YES"]
-                     this.muse.kinks.substance = ["Sweets, Milk", "YES", "YES", "YES", "YES"]
-                     this.muse.kinks.bondage = ["Tentacles, Chains", "YES", "YES", "YES", "YES"]
                      break
                   case 'frie':
                      this.muse.Title = "Beyond Journey's End";
@@ -2033,16 +1585,6 @@ export default defineComponent({
 
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "", "", "Mimic, Demons", ""]
-                     this.muse.kinks.relation = ["", "", "", "", "", "Mommy - Self"]
-                     this.muse.kinks.clothing = ["YES", "", "", "", ""]
-                     this.muse.kinks.bodyMod = ["", "", "YES", "YES"]
-                     this.muse.kinks.mindMod = ["YES", "YES", "YES", "", ""]
-                     this.muse.kinks.transform = ["", "", "", "YES"]
-                     this.muse.kinks.treatment = ["YES", "", "", "YES", "YES"]
-                     this.muse.kinks.consent = ["YES", "", "", "YES", "YES", ""]
-                     this.muse.kinks.substance = ["", "", "Outside", "YES", "Potions"]
-                     this.muse.kinks.bondage = ["YES", "YES", "", "YES", "YES"]
                      break
                }
                break
@@ -2064,19 +1606,7 @@ export default defineComponent({
          this.muse.RegSh = ""
          this.muse.Desc = ""
          this.muse.DescLewd = ""
-         this.muse.slideArray = []
          this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-         this.muse.kinks.partner = ["Human", "GROUP", "MACHINE", "MONSTER", "ANIMAL"]
-         this.muse.kinks.relation = ["CULTIST", "PET", "SLAVE", "ASSISTANT", "LOVER", "FAMILY"]
-         this.muse.kinks.clothing = ["NONE", "ANIMAL", "MATERIAL", "UNIFORM", "FASHION"]
-         this.muse.kinks.bodyMod = ["BREED", "PIERCE", "BRAND", "GROW"]
-         this.muse.kinks.mindMod = ["CORRUPT", "MINDBREAK", "BRAINWASH", "MINDBLANK", "HIVEMIND"]
-         this.muse.kinks.transform = ["BIMBO", "GOTH", "MECHA", "TWIN"]
-         this.muse.kinks.treatment = ["PRAISE", "DEGRADE", "RYONA", "OBJECT", "HUMILIATE"]
-         this.muse.kinks.consent = ["FREE", "DUB", "NONE", "WATCH", "STEALTH", "EXHIBIT"]
-         this.muse.kinks.substance = ["FOOD", "SWEAT", "CUM", "PISS", "DRUGS"]
-         this.muse.kinks.bondage = ["BIND", "HYPNO", "GRAPPLE", "WORLD", "SENSE"]
-         this.slide = 0;
       },
    },
    mounted() {
