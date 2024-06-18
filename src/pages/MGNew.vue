@@ -619,47 +619,42 @@ export default defineComponent({
                      }
                      break
                   case 'cyn':
-                     this.muse.Title = "Pokemon";
-                     this.muse.Reg = "Unova";
+                     this.muse.Reg = "Sinnoh";
+                     this.muse.Name = "Cynthia Shirona";
+                   this.muse.Spec = "Human";
                      switch (au) {
                         case 'base':
-                           this.muse.Name = "Cynthia Shirona";
-                           this.muse.Spec = "Human";
+                           this.muse.Title = "Sinnoh Champion / Archaeologist";
                            this.muse.SubDom = "Mostly Dommy Mommy.";
                            this.muse.Desc = "An adventuring archaeologist who's stumbled upon the title of champion. While not the greatest fan of battling, the title serves her well for clearance into important sites, and her team is prepared to deal with the blow of legendaries' actions. ";
-                           this.muse.DescLewd = "She's well aware of the reputation and trauma her prowess does to others, and sometimes she revels in it, playing up her mystery and dominance. Other times? She surprises them with her tenderness. She enjoys either";
+                           this.muse.DescLewd = "She's well aware of the reputation and trauma her prowess does to others, and sometimes she revels in it, playing up her mystery and dominance. Other times? She surprises them with her tenderness. She enjoys either, and the arousing events they lead to.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
                               { au: 'galaxy', emblem: '/versions/galactic.jpg', check: false },
                            ]
-
                            break
                         case 'rocket':
-                           this.muse.Name = "Rocket Scientist Cynthia";
-                           this.muse.Spec = "Human";
+                           this.muse.Title = "Rocket Scientist";
                            this.muse.SubDom = "Vicious Dommy, Power Bottom.";
-                           this.muse.Desc = "Offered quite a bit of endorsement for her help in studying mythos (as well as promises that they wouldn't use it for as dangerous goals as Team Galactic), she joined on contract, though contact with their uniforms and culture and the myriad of Sonia's inventions degraded her until she accepted to join in full. ";
-                           this.muse.DescLewd = "She no longer has qualms about whether her knowledge is used for great evil, only how it'll serve team Rocket, her beloved.";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "Offered quite a bit of endorsement for her help in studying mythos (as well as promises that they wouldn't use it for as dangerous goals as Team Galactic), she joined on contract, though contact with their uniforms and culture and the myriad of Sonia's inventions degraded her until she accepted to join in full. She no longer has qualms about whether her knowledge is used for great evil, only how it'll serve team Rocket, her beloved.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: true },
                               { au: 'galaxy', emblem: '/versions/galactic.jpg', check: false },
                            ]
-
                            break
                         case 'galaxy':
-                           this.muse.Name = "Admin Cynthia";
-                           this.muse.SubDom = "Ready to obey";
-                           this.muse.Spec = "Human";
-                           this.muse.Desc = "Unknowingly and accidentally helped with the archaeological/mythos side of things, realizing how much she had helped the team broke her, choosing to use their tech to be brainwashed. Now she's happily loyal, without those pesky morals that gave her guilt, and all she had to give away was her life and pride. ";
-                           this.muse.DescLewd = "The errors that led to her assistance were entirely staged to wrack her with guilt, and the pleasure she gets when obeying from the brainwashing helped ensure she'd never leave.";
+                           this.muse.Title = "Galactic Admin";
+                           this.muse.SubDom = "Ready to obey, and destroy";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "Unknowingly and accidentally helped with the archaeological/mythos side of things, realizing how much she had helped the team broke her, choosing to use their tech to be brainwashed. Now she's happily loyal, without those pesky morals that gave her guilt, and all she had to give away was her life and pride. The errors that led to her assistance were entirely staged to wrack her with guilt, and the pleasure she gets when obeying from the brainwashing helped ensure she'd never leave.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
                               { au: 'galaxy', emblem: '/versions/galactic.jpg', check: true },
                            ]
-
                            break
                      }
                      break
@@ -758,16 +753,6 @@ export default defineComponent({
                            ]
                            break
                      }
-                     this.muse.kinks.partner = ["Human", "Team Rocket", "YES", "Pokemon", "Ultra Beasts"]
-                     this.muse.kinks.relation = ["CULTIST", "PET", "SLAVE", "ASSISTANT", "LOVER", "FAMILY"]
-                     this.muse.kinks.clothing = ["NONE", "ANIMAL", "MATERIAL", "UNIFORM", "FASHION"]
-                     this.muse.kinks.bodyMod = ["BREED", "PIERCE", "BRAND", "GROW"]
-                     this.muse.kinks.mindMod = ["CORRUPT", "MINDBREAK", "BRAINWASH", "MINDBLANK", "HIVEMIND"]
-                     this.muse.kinks.transform = ["BIMBO", "GOTH", "MECHA", "TWIN"]
-                     this.muse.kinks.treatment = ["PRAISE", "DEGRADE", "RYONA", "OBJECT", "HUMILIATE"]
-                     this.muse.kinks.consent = ["FREE", "DUB", "NONE", "WATCH", "STEALTH", "EXHIBIT"]
-                     this.muse.kinks.substance = ["FOOD", "SWEAT", "CUM", "PISS", "DRUGS"]
-                     this.muse.kinks.bondage = ["BIND", "HYPNO", "GRAPPLE", "WORLD", "SENSE"]
                      break
                   case 'elesa': break
                };
