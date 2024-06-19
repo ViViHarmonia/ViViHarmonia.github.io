@@ -4,18 +4,15 @@
          <q-card-section>
             <div class="row flex-center text-subtitle2 text-center q-pa-sm">Characters I have/will roleplay, their
                characteristics, preferences, and such information, canon or personal.</div>
-
             <div class="row justify-center">
                <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table"
                   hide-bottom virtual-scroll auto-width :rows-per-page-options="[0]" :rows="finalCharArr">
                   <template v-slot:top>
                      <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
                         input-debounce="0" dark outlined dense />
-
                      <q-toggle v-model="nsfwSwitch" color="black" />
                      <span v-show="nsfwSwitch">NSFW</span>
                      <span v-show="!nsfwSwitch">SFW</span>
-
                   </template>
                   <template v-slot:body-cell-icon="props">
                      <q-td :props="props">
@@ -90,7 +87,6 @@
                               }}</span>
                         </div>
                      </div>
-
                   </div>
                   <div v-if="museDataCheck == 2">
                      <div class="row q-pa-sm justify-start">
@@ -105,7 +101,6 @@
                   </div>
                   <div v-if="museDataCheck == 3">
                      <div class="row q-pa-sm justify-start">
-
                      </div>
                   </div>
                   <div class="row text-body2 q-pa-xs justify-start items-center" v-if="muse.auArray.length != 1">
@@ -150,7 +145,6 @@
                      </div>
                   </div>
                </div>
-
             </div>
          </q-card-section>
       </q-card>
@@ -199,7 +193,7 @@ export default defineComponent({
          { code: "jess", sect: 1, name: "Jessie", state: "base", free: "NO", states: ["base", "rocket"], uni: "Pokémon", avatar: "/museicon/jessie.jpg", },
          { code: "ele", sect: 1, name: "Elesa", state: "base", free: "NO", states: ["base", "rocket", "plasma"], uni: "Pokémon", avatar: "/museicon/ele.gif", },
          { code: "lusa", sect: 1, name: "Lusamine", state: "base", free: "NO", states: ["base", "rocket", "aether"], uni: "Pokémon", avatar: "/museicon/lusa.jpg", },
-         { code: "clair", sect: 1, name: "Clair", state: "base", free: "NO", states: ["base", "rocket"], uni: "Pokémon", avatar: "/museicon/clair.jpg", },
+         { code: "clair", sect: 1, name: "Clair", state: "base", free: "NO", states: ["base"], uni: "Pokémon", avatar: "/museicon/clair.jpg", },
          { code: "lumi", sect: 2, name: "Lumine", state: "base", free: "NO", states: ["base", "mirror"], uni: "Genshin Impact", avatar: "/museicon/lumi.jpeg", },
          { code: "lisa", sect: 2, name: "Lisa Minci", state: "base", free: "NO", states: ["base", "mirror"], uni: "Genshin Impact", avatar: "/museicon/lisa.jpg", },
          { code: "saria", sect: 2, name: "Rosaria", state: "base", free: "NO", states: ["base", "mirror"], uni: "Genshin Impact", avatar: "/museicon/rosaria.jpg", },
@@ -401,7 +395,6 @@ export default defineComponent({
                               { au: 'plasma', emblem: '/versions/Team_Plasma.png', check: false },
                               { au: 'ua', emblem: '/versions/uagirls.png', check: false },
                            ]
-
                            break
                         case 'plasma':
                            this.muse.Title = "Plasma Grunt 'Princess'";
@@ -465,7 +458,7 @@ export default defineComponent({
                      this.muse.Reg = "Galar";
                      switch (au) {
                         case 'base':
-                           this.muse.Title = "Gym Leader";
+                           this.muse.Title = "Spikemuth Gym Leader";
                            this.muse.SubDom = "Submissive unless irritated sufficiently. Like a Morpeko.";
                            this.muse.Desc = "A punk-ish girl who seems tough, hiding a truly shy and sweet disposition, with troubles smiling and otherwise expressing herself concisely. She has a legion of fans that cause ruckus, and two cousins that tease her endlessly, both of which she is eternally grateful to. ";
                            this.muse.DescLewd = "When she snaps, she truly embraces that toughness all see, and will use every filthy fantasy on whoever brought it on her. On the other hand, if she breaks, she'll take anything you do to her.";
@@ -520,7 +513,7 @@ export default defineComponent({
                      this.muse.Name = "Iris Magenta";
                      switch (au) {
                         case 'base':
-                           this.muse.Title = "Gym Leader, Unovan Champion";
+                           this.muse.Title = "Opelucid Gym Leader, Unovan Champion";
                            this.muse.Desc = "A very wild girl who loves dragons, and Pokémon, but is rather clueless and slow to trust and learn when it comes to anything outside of that. After a great journey, she managed to become the Champion of Unova, a title which often swings between her and her claimed sister Rosa. ";
                            this.muse.DescLewd = "It is her earnest hope to be taken by a dragon as a mate and utterly ruined, only existing as a dragon's slave. Or perhaps commanded by one to execute their dominance on other victims.";
                            this.muse.auArray = [
@@ -566,7 +559,6 @@ export default defineComponent({
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
                               { au: 'flare', emblem: '/versions/team_flare_by_biochao_dezue6u-pre.png', check: false },
                            ]
-
                            break
                         case 'rocket':
                            this.muse.Title = "Rocket Grunt 'Model' ";
@@ -599,7 +591,7 @@ export default defineComponent({
                      this.muse.Name = "Sabrina";
                      switch (au) {
                         case 'base':
-                        this.muse.Title = "Saffron Gym Leader";
+                           this.muse.Title = "Saffron Gym Leader";
                            this.muse.Desc = "A confident woman who's grown a little conceited in her psychic powers, and embraced the cockiness in it, dressing, speaking, and behaving the part of a powerful villain, even when doing good for others. Despite it, shimmers of the sweet kid she couldn't be sometimes shine through. ";
                            this.muse.DescLewd = "She's obsessed with control, and she'll use whatever she's got, be it her looks or her psychic powers, to make sure they go as she wishes. You have no choice in the matter.";
                            this.muse.auArray = [
@@ -608,7 +600,7 @@ export default defineComponent({
                            ]
                            break
                         case 'rocket':
-                        this.muse.Title = "Rocket Commander";
+                           this.muse.Title = "Rocket Commander";
                            this.muse.Desc = "NSFW ONLY - ";
                            this.muse.DescLewd = "Finding her wicked disposition and power praised and endorsed by the team, she joined truly of her own voalition, and uses her own psychic powers towards getting more members. Some people say the growing sexualization of the female members' outfits is due to her own fetishes, but none dare ever ask. She knows they intend to, though, and she'll never say.";
                            this.muse.auArray = [
@@ -621,7 +613,7 @@ export default defineComponent({
                   case 'cyn':
                      this.muse.Reg = "Sinnoh";
                      this.muse.Name = "Cynthia Shirona";
-                   this.muse.Spec = "Human";
+                     this.muse.Spec = "Human";
                      switch (au) {
                         case 'base':
                            this.muse.Title = "Sinnoh Champion / Archaeologist";
@@ -660,53 +652,49 @@ export default defineComponent({
                      break
                   case 'nesa':
                      this.muse.SubDom = "Goes with the flow";
-                     this.muse.Title = "Pokemon";
                      this.muse.Spec = "Human";
                      this.muse.Reg = "Galar";
+                     this.muse.Name = "Nessa Rurina";
                      switch (au) {
                         case 'base':
-                           this.muse.Name = "Nessa Rurina";
+                           this.muse.Title = "Hulbury Gym Leader / Model";
                            this.muse.Desc = "A model and gym leader from Galar who much like the sea, is calm until battle comes and she becomes the storm. She worries about holding onto her modelling career alongside the gym, but she continues to shine on. She always has time for Sonia though! ";
                            this.muse.DescLewd = "She absolutely adores Sonia and would do anything for her, go as far as she asks. She's taken to masturbate to her at her own pool, hoping the waters hide her own fluids shed from thinking about her closest gal pal.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
                            ]
-
                            break
                         case 'rocket':
-                           this.muse.Name = "Coordinator Nessa";
-                           this.muse.Desc = "She entered by Sonia's invitations, and her own secret sensual experiments on her left her suggestible enough to dedicate herself. Team Rocket has helped her greatly in managing her time for gym, modelling, and Rocket missions. And she always has time to assist her Sonia in the lab, grateful she got her here.";
-                           this.muse.DescLewd = "";
+                           this.muse.Title = "Rocket Coordinator";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "She entered by Sonia's invitations, and her own secret sensual experiments on her left her suggestible enough to dedicate herself. Team Rocket has helped her greatly in managing her time for gym, modelling, and Rocket missions. And she always has time to assist her Sonia in the lab, grateful she got her here.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: true },
                            ]
-
                            break
                      }
                      break
-
                   case 'jess':
-                     this.muse.Title = "Pokemon";
                      this.muse.Spec = "Human";
                      this.muse.Reg = "Kanto";
+                     this.muse.Name = "Jessie Musashi";
+                     this.muse.SubDom = "Cocky Top, Bratty Bottom";
                      switch (au) {
                         case 'base':
-                           this.muse.Name = "Jessie Musashi";
-                           this.muse.SubDom = "Haughty bottom and top.";
-                           this.muse.Desc = "A spirited woman . ";
-                           this.muse.DescLewd = ".";
+                           this.muse.Title = "Rocket Agent";
+                           this.muse.Desc = "A longtime member of Team Rocket, coming from her own mother being a part of it. While adoring the fashion, the high life of crime, and even the evil plots, the goals of the organization, her position, and the fact she was unable to become a nurse still chafe at her to date, promising one day to rise the ranks and make the organization better anew. ";
+                           this.muse.DescLewd = "She's quite confident in her looks, and does her best to wear as little as possible. She doesn't mind people having a look, but rare are those she permits to touch.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
                            ]
                            break
                         case 'rocket':
-                           this.muse.Name = "Rocket Leader Jessie";
-                           this.muse.SubDom = "On top, as she should've been always";
-                           this.muse.Desc = "One of Team (Hypno) Rocket's leaders, finally at the place she belongs. ";
-                           this.muse.DescLewd = "";
+                           this.muse.Title = "Rocket Leader";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A woman who's finally taken center stage in her life and at the top, where she belongs, helping command Team Rocket into a more positive, albeit arousing, direction. Her charm has aided her greatly in both recruitment and reworking Rocket's public perception.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'rocket', emblem: '/versions/hypnorocket.png', check: true },
@@ -714,16 +702,54 @@ export default defineComponent({
                            break
                      }
                      break
-                  case 'lusa': //normal, nihilego, rocket, symbiote
-                     this.muse.Title = "Pokemon";
+                  case 'elesa':
+                     this.muse.SubDom = "Electric Switch";
                      this.muse.Spec = "Human";
-                     this.muse.Reg = "Alola";
+                     this.muse.Reg = "Unova";
+                     this.muse.Name = "Elesa Kamitsure";
                      switch (au) {
                         case 'base':
-                           this.muse.Name = "Jessie Musashi";
-                           this.muse.SubDom = "Haughty bottom and top.";
-                           this.muse.Desc = "A spirited woman . ";
-                           this.muse.DescLewd = ".";
+                           this.muse.Title = "Nimbasa Gym Leader / Model";
+                           this.muse.Desc = "An enthusiastic gym leader and supermodel, who's happy to do her best for others and let them shine through, with their own spark. ";
+                           this.muse.DescLewd = "She's proudly led many through the pipeline from model to whore, accompanying them all the while in the dark side of fashion and beauty. ";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
+                              { au: 'plasma', emblem: '/versions/Team_Plasma.png', check: false },
+                           ]
+                           break
+                        case 'rocket':
+                           this.muse.Title = "Rocket Agent";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "The actual fashion designer for Team Rocket's new uniforms. She was not originally asked to make them so..arousing, visually or wear-wise. But it went incredibly well, so they accept and ask of her to make them even sluttier.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', check: true },
+                              { au: 'plasma', emblem: '/versions/Team_Plasma.png', check: false },
+                           ]
+                           break
+                        case 'plasma':
+                           this.muse.Title = "Plasma Admin";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "Asked to be their fashion ambassador, and given Plasma-made earbuds for her looks. Said buds assaulted her brain every so often to break her mental defenses down, until it left her vulnerable enough to give herself to them. She still does modelling, sponsored by Team Plasma, and turning them into recruitment rallies, blasting the same waves that broke her to the audience.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', check: false },
+                              { au: 'rocket', emblem: '/versions/hypnorocket.png', check: false },
+                              { au: 'plasma', emblem: '/versions/Team_Plasma.png', check: true },
+                           ]
+                           break
+                     }
+                     break
+                  case 'lusa':
+                     this.muse.Reg = "Alola";
+                     this.muse.Name = "Lusamine";
+                     switch (au) {
+                        case 'base':
+                           this.muse.Title = "Aether President";
+                           this.muse.Spec = "Human";
+                           this.muse.SubDom = "Mommy Dommy, you decide if gentle or cruel.";
+                           this.muse.Desc = "President of the Aether Foundation, who's too busy and lost in her obsessions to care for her daughter or son. Despite this she is not an unlikeable person, and too many are drawn to her to stop her influence. ";
+                           this.muse.DescLewd = "She knows how great she looks and is not afraid to use it to her benefit, as well as simply to relax after a hard day of work...or even to punish and manipulate people into doing her bidding, believing her fully.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                               { au: 'aether', emblem: '/versions/aether.png', check: false },
@@ -731,10 +757,11 @@ export default defineComponent({
                            ]
                            break
                         case 'aether':
-                           this.muse.Name = "Rocket Leader Jessie";
-                           this.muse.SubDom = "On top, as she should've been always";
-                           this.muse.Desc = "One of Team (Hypno) Rocket's leaders, finally at the place she belongs. ";
-                           this.muse.DescLewd = "";
+                           this.muse.Title = "Mother Beast";
+                           this.muse.Spec = "Human / Ultra Beast";
+                           this.muse.SubDom = "Cruel Mother";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A deranged woman who's lost herself in the feeling that her beloved Ultra Beast has given her, intent on sharing this gift with the world, starting with her unruly children, who too can become better themselves and truly hers if they accept a Beast too, or their Mother's one.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'aether', emblem: '/versions/aether.png', check: true },
@@ -742,10 +769,11 @@ export default defineComponent({
                            ]
                            break
                         case 'rocket':
-                           this.muse.Name = "Rocket Leader Jessie";
-                           this.muse.SubDom = "On top, as she should've been always";
-                           this.muse.Desc = "One of Team (Hypno) Rocket's leaders, finally at the place she belongs. ";
-                           this.muse.DescLewd = "";
+                           this.muse.Title = "Rocket Scientist";
+                           this.muse.Spec = "Human";
+                           this.muse.SubDom = "Kind Dommy Mommy";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "Joined Team Rocket under false pretenses to undermine them and get out of her way, but was given hypnosis to truly join them..and therapy to acknowledge the issues with her Ultra Beast obsession. After apologies to her daughter (who was already a member), she works hard to make up to her and the world by being very truly kind.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'aether', emblem: '/versions/aether.png', check: false },
@@ -754,18 +782,56 @@ export default defineComponent({
                            break
                      }
                      break
-                  case 'elesa': break
+                  case 'clair':
+                     this.muse.Name = "Clair Ibuki"
+                     this.muse.SubDom = "Cocky Top, Flustered Bottom"
+                     this.muse.Title = "Blackthorn Gym Leader"
+                     this.muse.Spec = "Human"
+                     this.muse.Reg = "Johto"
+                     this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. "
+                     this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her"
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
+                     break
                };
                break
             case 2:
                switch (char) {
+                  case 'lumi':
+                     this.muse.Reg = "Teyvat";
+                     switch (au) {
+                        case 'base':
+                           this.muse.Name = "Lumine";
+                           this.muse.Title = "Traveler";
+                           this.muse.SubDom = "Submissive unless suficiently aroused";
+                           this.muse.Spec = "???";
+                           this.muse.Desc = "A girl who's come from far, far away, many many years ago, to look for her brother. She found him allied with the evil Fatui, and told her to see the world, and so she has, helping every other person who crosses her way, fighting monsters and foes, and dealing with far too much archon bullshit. ";
+                           this.muse.DescLewd = "The pressures of being the Traveler, always helping, always going everywhere, tires her out to the point she'd rather just do nothing but masturbate to the unfairly hot women of Teyvat.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
+                              { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: false }
+                           ]
+                           break
+                        case 'mirror':
+                           this.muse.Name = "???";
+                           this.muse.Title = "Mirror Maiden";
+                           this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
+                           this.muse.Spec = "Mirror Maiden";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
+                           this.muse.auArray = [
+                              { au: 'base', emblem: '/versions/mirror.jpg', check: false },
+                              { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: true }
+                           ]
+                           break
+                     }
+                     break
                   case 'lisa':
-                     this.muse.Title = "Genshin Impact";
                      this.muse.Reg = "Teyvat, Mondstat";
                      switch (au) {
                         case 'base':
                            this.muse.Name = "Lisa Minci";
                            this.muse.SubDom = "Soft Mommy";
+                           this.muse.Title = "";
                            this.muse.Spec = "Human";
                            this.muse.Desc = "A totally normal librarian who enjoys resting and relaxation, teasing, and a penchant for action and violence when her peace is threatened, almost to the point of sadism. ";
                            this.muse.DescLewd = "Fantasizes of being a mindless slave/drone to greater evils and let herself be used, just for peace of mind.";
@@ -776,48 +842,11 @@ export default defineComponent({
                            break
                         case 'mirror':
                            this.muse.Name = "???";
+                           this.muse.Title = "Mirror Maiden";
                            this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
                            this.muse.Spec = "Mirror Maiden";
-                           this.muse.Desc = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. ";
-                           this.muse.DescLewd = "Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                           this.muse.auArray = [
-                              { au: 'base', emblem: '/versions/mirror.jpg', check: false },
-                              { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: true }
-                           ]
-                           break
-                     }
-                     break
-                  case 'mira':
-                     this.muse.Name = "None";
-                     this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                     this.muse.Title = "Genshin Impact";
-                     this.muse.Spec = "Mirror Maiden";
-                     this.muse.Reg = "Teyvat";
-                     this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
-                     this.muse.DescLewd = "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
-                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-                     break
-                  case 'lumi':
-                     this.muse.Title = "Genshin Impact";
-                     this.muse.Reg = "Teyvat";
-                     switch (au) {
-                        case 'base':
-                           this.muse.Name = "Lumine";
-                           this.muse.SubDom = "Submissive unless suficiently aroused";
-                           this.muse.Spec = "Traveler";
-                           this.muse.Desc = "A girl who's come from far, far away, many many years ago, to look for her brother. She found him allied with the evil Fatui, and told her to see the world, and so she has, helping every other person who crosses her way, fighting monsters and foes, and dealing with far too much archon bullshit.";
-                           this.muse.DescLewd = "The pressures of being the Traveler, always helping, always going everywhere, tires her out to the point she'd rather just do nothing but masturbate to the unfairly hot women of Teyvat.";
-                           this.muse.auArray = [
-                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
-                              { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: false }
-                           ]
-                           break
-                        case 'mirror':
-                           this.muse.Name = "???";
-                           this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                           this.muse.Spec = "Mirror Maiden";
-                           this.muse.Desc = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. ";
-                           this.muse.DescLewd = "Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: true }
@@ -826,14 +855,14 @@ export default defineComponent({
                      }
                      break
                   case 'saria':
-                     this.muse.Title = "Genshin Impact";
                      this.muse.Reg = "Teyvat, Mondstat";
                      switch (au) {
                         case 'base':
                            this.muse.Name = "Rosaria";
+                           this.muse.Title = "";
                            this.muse.SubDom = "Degenerate Tease or Mommy";
                            this.muse.Spec = "Human";
-                           this.muse.Desc = "An utterly terrible yet loyal nun of the Church of Favonius. While she's grateful and indebted to it due to giving her a chance at a better life, she has no focus or interest on the actual religion of it, and uses her self-percieved wickedness she came with to do the more insidious tasks for the sake of them.	";
+                           this.muse.Desc = "An utterly terrible yet loyal nun of the Church of Favonius. While she's grateful and indebted to it due to giving her a chance at a better life, she has no focus or interest on the actual religion of it, and uses her self-percieved wickedness she came with to do the more insidious tasks for the sake of them. ";
                            this.muse.DescLewd = "Such a thing is quite taxing on her, and so besides smoking, she unwinds by doing all sorts of filthy unchurchlike things with every man and woman that catches her by.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
@@ -842,10 +871,11 @@ export default defineComponent({
                            break
                         case 'mirror':
                            this.muse.Name = "???";
+                           this.muse.Title = "Mirror Maiden";
                            this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
                            this.muse.Spec = "Mirror Maiden";
-                           this.muse.Desc = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. ";
-                           this.muse.DescLewd = "Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: true }
@@ -854,11 +884,11 @@ export default defineComponent({
                      }
                      break
                   case 'yelan':
-                     this.muse.Title = "Genshin Impact";
                      this.muse.Reg = "Liyue, Mondstat";
                      switch (au) {
                         case 'base':
                            this.muse.Name = "Yelan";
+                           this.muse.Title = "";
                            this.muse.SubDom = "Whatever gets her what she wants";
                            this.muse.Spec = "Human";
                            this.muse.Desc = "A woman of many ways, mysterious as she is easygoing. She's an intelligence agent with many affiliations, a tragic tale, and an endless amount of dedication to whatever task is given, if still needing to take the most pragmatical route to conserve energy. ";
@@ -869,17 +899,28 @@ export default defineComponent({
                            ]
                            break
                         case 'mirror':
+                           this.muse.Title = "Mirror Maiden";
                            this.muse.Name = "???";
                            this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
                            this.muse.Spec = "Mirror Maiden";
-                           this.muse.Desc = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. ";
-                           this.muse.DescLewd = "Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'mirror', emblem: '/versions/Mirror_Maiden_Icon.png', check: true },
                            ]
                            break
                      }
+                     break
+                  case 'mira':
+                     this.muse.Name = "None";
+                     this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
+                     this.muse.Title = "Mirror Maiden";
+                     this.muse.Spec = "Mirror Maiden";
+                     this.muse.Reg = "Teyvat";
+                     this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
+                     this.muse.DescLewd = "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      break
                };
                break
@@ -888,7 +929,7 @@ export default defineComponent({
                   case 'mei':
                      this.muse.Name = "Mei Hatsume";
                      this.muse.SubDom = "Dom when hyperfocused, Subby when taken out of focus";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Support Student";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "The greatest engineer in quirked history, she's brilliant, bombastic, and can't remember silly things like names, hygiene, or shame. All she needs in her world are her babies, and what girls may take an interest in her and her babies. ";
@@ -896,180 +937,157 @@ export default defineComponent({
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      break
                   case 'tsu':
-                     this.muse.Name = "Tsuyu Asui (Froppy)";
+                     this.muse.Name = "Tsuyu Asui";
                      this.muse.SubDom = "Whatever strikes the mood";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Hero Student - Froppy";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A hero in training with big dreams, a long tongue, and zero ability to hold either in. She is adored by many, and her quirks (pun intended) are charming to many, just as she adores her classmates. ";
                      this.muse.DescLewd = "She has enough sense not to bring up how often she wants to wrap and tongue-fuck her female classmates daily...unless they ask.";
-                     switch (au) {
-                        case 'base':
-                           this.muse.Spec = "Human (Quirked), Frog";
-                           this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true },]
-                           break
-                     }
+                     this.muse.Spec = "Human (Quirked), Frog";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true }]
                      break
                   case 'mina':
-                     this.muse.Name = "Mina Ashido (Pinky)";
+                     this.muse.Name = "Mina Ashido";
                      this.muse.SubDom = "YES";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Hero Student - Pinky";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A funky, spunky, alien-looking gal with a good heart, and a gooder sense of fun. She will spend her days scheming over her friends love lives, organize games, and save the world dancing away. ";
                      this.muse.DescLewd = "With all her boundless energy come hours upon hours of sex, and she's specifically tailored her hero suit to attract that attention. Midnight is her icon for a reason.";
-                     switch (au) {
-                        case 'base':
-                           this.muse.Spec = "Human (Quirked), Alien";
-                           this.muse.auArray = [
-                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
-                           ]
-                           break
-                     }
+                     this.muse.Spec = "Human (Quirked), Alien";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true }]
                      break
                   case 'momo':
-                     this.muse.Name = "Momo Yaoyorozu (Creati)";
+                     this.muse.Name = "Momo Yaoyorozu";
                      this.muse.SubDom = "Shyly submissive until gaining confidence to engage Mommy Momo mode";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Hero Student - Creati";
                      this.muse.Nat = "Regal";
                      this.muse.Reg = "Japan, Musatafu";
-                     switch (au) {
-                        case 'base':
-                           this.muse.Spec = "Human (Quirked)";
-                           this.muse.auArray = [
-                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
-                           ]
-                           break
-                     }
+                     this.muse.Spec = "Human (Quirked)";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true }]
                      this.muse.Desc = "A girl born of wealth with a genuine heart of gold and a mind that holds great knowledge. Despite her dazzling intellect, astonishing quirk, and stunning beauty, her confidence needs some serious work. But she will always stand by the side of her friends. ";
-                     this.muse.DescLewd = "Headmistress Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
-                     
+                     this.muse.DescLewd = "Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
                      break
                   case 'toru':
-                     this.muse.Name = "Tooru Hagakure (Invisible Girl)";
+                     this.muse.Name = "Tooru Hagakure";
                      this.muse.SubDom = "Casual Switch";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Hero Student - Invisible Girl";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A girl born invisible, pushing herself to be loud and bright and seen. Thanks to her friends and training, she has become more visible than ever at UA, thus aiming as a hero to look out for others who might be left unseen. ";
                      this.muse.DescLewd = "People watching is her hobby, which has often veered into very perverted situations...not that she minds the show, or interrupts, or even leaves. Also has developed a nudist streak.";
-
                      break
                   case 'kendo':
-                     this.muse.Name = "Itsuka Kendo (Battle Fist)";
+                     this.muse.Name = "Itsuka Kendo";
                      this.muse.SubDom = "Submissive to any request, but dominant if requested";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "UA Hero Student - Battle Fist";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A martial artist with a big brain, big heart, and bigger hands, the class representative of class B is as ruthless with her criticism as her combative disposition. She does however have a tendency to let go for others, neglecting her own wants and needs. ";
                      this.muse.DescLewd = "One can only hope her friend slash crush Setsuna does not take advantage of that...or that she lets herself go along the rather sexualized world of female pro-heroism.";
-
+                     break
+                  case 'kino':
+                     this.muse.Name = "Kinoko Komori";
+                     this.muse.SubDom = "Giddy top, blushy sub";
+                     this.muse.Title = "UA Hero Student - Shemage";
+                     this.muse.Spec = "Human (Quirked)";
+                     this.muse.Reg = "Japan, Musatafu";
+                     this.muse.Desc = "A shy girl who loves her quirk's focus, and is trying to get a little les shy. She's growing more open to her own class, and sometimes lets herself loose in the magic of mushrooms, becoming quite the fun gal. ";
+                     this.muse.DescLewd = "Much like her namesakes she's incredibly hypersexual, but she's not very open about it. Were one of her classmates to ask however..she'd sure show them such wonders. And if they take her in, she couldn't complain at all.";
                      break
                   case 'camie':
-                     this.muse.Name = "Camie Utsushimi (Illus-o-Camie)";
+                     this.muse.Name = "Camie Utsushimi";
                      this.muse.SubDom = "Dominant unless finding something kinky and fun worth subbing for.";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Ketsubutsu Hero Student - Illus-o-Camie";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      this.muse.Desc = "A Ketsubutsu-taught pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
                      this.muse.DescLewd = "Her hero outfit and flirtatiousness bely the fact that she likes to draw in the attention, the only question being, what she will do with that attention. She knows quite well the answer will be 'whatever Camie desires'.";
-
                      break
                   case 'mel':
                      this.muse.Name = "Melissa Shield";
                      this.muse.SubDom = "Experimental switch, sub-leaning";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "";
                      this.muse.Spec = "Human";
                      this.muse.Reg = "I-Island";
                      this.muse.Desc = "A quirkless american girl who wants to save people, and has decided to do so through her inventions. Despite her outgoing nature, she doesn't have many friends. Something she intends to fix as well. ";
                      this.muse.DescLewd = "She is not blind to how her looks makes others feel. She hopes the acquisition of friends will facilitate experimenting with that.";
-
                      break
                   case 'joke':
-                     this.muse.Name = "Emi Fukukado (Ms. Joke)";
+                     this.muse.Name = "Emi Fukukado";
                      this.muse.SubDom = "Mostly subby, for Midnight";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Pro Hero - Ms. Joke";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A pro-hero who uses the power of comedy to save people! And beat up dead cows. She flirts and laughs and loves, and never quite shuts up, to the chagrin of many. Has a book of jokes on every topic under the rising sun. ";
                      this.muse.DescLewd = "Still wants to meet a hot villainess to happily surrender to, already has a suit, name and theme planned to serve her.";
-
                      break
                   case 'kai':
-                     this.muse.Name = "Kaina Tsutsumi (Lady Nagant)";
+                     this.muse.Name = "Kaina Tsutsumi";
                      this.muse.SubDom = "Dominant";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Pro Hero (Former) - Lady Nagant";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A former hero turned assassin for the Hero Association, Nagant once wanted to truly help people, but was used as a weapon of subterfuge, until she killed her own boss who led her down that path. Free now, as a villain, she sprawls the streets ready to aim and shoot. ";
                      this.muse.DescLewd = "Has an interest in female pro-heroes, and teaching them a tough lesson...however they may need it.";
-
                      break
                   case 'rumi':
-                     this.muse.Name = "Rumi Usagiyama (Miruko)";
+                     this.muse.Name = "Rumi Usagiyama";
                      this.muse.SubDom = "Rough Dommy unless beaten in a fight or romantically approached";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Pro Hero - Miruko";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "An incredibly aggressive, lone wolf rabbit-like woman who kicks ass, in every concievable way. She has made her way to the top three through sheer force of..well, force, hiding a care for others under the spite of her quirk's perception. ";
                      this.muse.DescLewd = "Her viciousness sometimes goes out of hand, and she will get it out through more fighting..or breeding like her quirksake. Any woman nearby is at risk. But if you manage to beat her, you'll have a very willing horny bunny in your grasp";
-                     switch (au) {
-                        case 'base':
-                           this.muse.Spec = "Human (Quirked), Bunny";
-                           this.muse.auArray = [
-                              { au: 'base', emblem: '/versions/mirror.jpg', check: true },
-                           ]
-                           break
-                     }
+                     this.muse.Spec = "Human (Quirked), Bunny";
+                     this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: true }]
                      break
                   case 'yama':
                      this.muse.Name = "Yu Takeyama (Mt. Lady)";
                      this.muse.SubDom = "Submissive Brat";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Pro Hero - Mt. Lady";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A recent pro-hero who seems to be everything wrong with them. Vain, lazy, cocky, lustful, spiteful. Despite this, she has a strong heart that will shine in the worst of times. Even if the rest of times she spends bickering and teasing. ";
                      this.muse.DescLewd = "Often expresses her attraction to her fellow pro-heroes by mockery, argument and teasing, desperate to push them to snap and do as they will with her. Most of them know this and don't want to give her the satisfaction.";
-
                      break
                   case 'nana':
-                     this.muse.Name = "Nana Shimura (???)";
+                     this.muse.Name = "Nana Shimura";
                      this.muse.SubDom = "Dominant unless flustered.";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Pro Hero ";
+                     this.muse.TitleSh = "(KIA)";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
                      this.muse.Desc = "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
                      this.muse.DescLewd = "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
-
                      break
                   case 'fumi':
                      this.muse.Name = "Fuyumi Todoroki";
                      this.muse.SubDom = "Mostly Submissive";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Teacher";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A woman who's spent her life trying to keep things together for her family, or her idea of it. She's a preschool teacher, with a weak quirk, and often percieved as weak herself. But it takes great strength to be kind and want better under her circumstances. ";
                      this.muse.DescLewd = "Something less than wonderful brews beneath her softness, and if pushed, it will no doubt come out.";
-
                      break
                   case 'inko':
                      this.muse.Name = "Inko Midoriya";
                      this.muse.SubDom = "Middle Ground Switch";
-                     this.muse.Title = "Hero Academia";
+                     this.muse.Title = "Mother";
                      this.muse.Spec = "Human (Quirked)";
                      this.muse.Reg = "Japan, Musatafu";
                      this.muse.Desc = "A mother, no longer a lover, at least in her mind. With her son on the dangerous paths of heroism (yet doing well) and a great deal of regret and time left on her own, she listlessly spends her days watching soap operas, and wondering on what could be. ";
                      this.muse.DescLewd = "Few have met the steel behind the tears, when it comes to her heart. Perhaps someone out there may yet be for her.";
-
                      break
                };
                break
             case 4:
                switch (char) {
                   case 'sam':
-                     this.muse.Title = "Metroid";
                      switch (au) {
                         case 'base':
                            this.muse.Name = "Samus Aran";
+                           this.muse.Title = "Metroid";
                            this.muse.SubDom = "Whatever the 'mission' requires";
                            this.muse.Spec = "Human / Chozo / Metroid";
                            this.muse.Reg = "Space";
@@ -1081,12 +1099,13 @@ export default defineComponent({
                            ]
                            break
                         case 'shy':
-                           this.muse.Name = "Blue";
+                           this.muse.Name = "???";
+                           this.muse.Title = "Blue";
                            this.muse.SubDom = "Submissive unless orders";
                            this.muse.Spec = "Shy Gal";
                            this.muse.Reg = "Mushroom Kingdom";
-                           this.muse.Desc = "A shy gal who makes even less noises than the usual, but shows little shyness in offering herself up for pleasure and flirtation. She seems almost thrilled to be in this position of anonimity. ";
-                           this.muse.DescLewd = "";
+                           this.muse.Desc = "NSFW ONLY - ";
+                           this.muse.DescLewd = "A shy gal who makes even less noises than the usual, but shows little shyness in offering herself up for pleasure and flirtation. She seems almost thrilled to be in this position of anonimity. ";
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'shy', emblem: '/versions/shy.png', check: true },
@@ -1410,7 +1429,6 @@ export default defineComponent({
                            this.muse.SubDom = "Sub when approached, Dom when approaching";
                            this.muse.Desc = "A half-genie hero, worthy of said title by her care for others and dedication to helping...even if it is thwarted by annoyances, both villainous and even allied. She rarely holds any ill will regardless, and has helped her foes if need be a good amount of times. ";
                            this.muse.DescLewd = "She is rather aware that she's surrounded by very hot gals, and has given serious thought to fooling around with all of them. Even Risky Boots.";
-
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                            ];
@@ -1470,7 +1488,6 @@ export default defineComponent({
                      this.muse.Desc = "A woman who conceals both her emotions and eyes, hiding beauty and horrors behind both. She is completely loyal to her Master, and is not ultimately cruel, though she is hampered by a great deal of self-consciousness. ";
                      this.muse.DescLewd = "She also hides a lot of care, for those who reciprocate loyalty to her, or those who remind of herself. Only with them will she let her emotions out...all of them. Very enthusiastically.";
                      break
-
                };
                break
             case 5:
@@ -1556,7 +1573,6 @@ export default defineComponent({
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: true },
                               { au: 'mimic', emblem: '/versions/mimic.png', check: false },]
-
                            break
                         case 'mimic':
                            this.muse.Name = "Jägerin";
@@ -1567,7 +1583,6 @@ export default defineComponent({
                            this.muse.auArray = [
                               { au: 'base', emblem: '/versions/mirror.jpg', check: false },
                               { au: 'mimic', emblem: '/versions/mimic.png', check: true },]
-
                            break
                      }
                      break
@@ -1671,7 +1686,6 @@ p {
    width: 1000px;
 }
 
-
 .q-table__top,
 .q-table__bottom,
 thead tr:first-child th {
@@ -1691,11 +1705,9 @@ thead tr:first-child th {
    top: 48px
 }
 
-
 tbody {
    scroll-margin-top: 48px
 }
-
 
 body {
    background-image: url("/images/mirrorbg.jpg");
