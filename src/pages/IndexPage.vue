@@ -25,21 +25,22 @@ export default defineComponent({
       this.muse.RegSh = ""
       this.muse.Desc = ""
       this.muse.DescSh = ""
-      this.muse.auArray = []
+      this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
       this.muse.slideArray = []
-      this.muse.kinksA.partner = ["Human", "GROUP", "MACHINE", "MONSTER", "ANIMAL"]
-      this.muse.kinksA.relation = ["CULTIST", "PET", "SLAVE", "ASSISTANT", "LOVER", "FAMILY"]
-      this.muse.kinksA.clothing = ["NONE", "ANIMAL", "MATERIAL", "UNIFORM", "FASHION"]
-      this.muse.kinksA.bodyMod = ["BREED", "PIERCE", "BRAND", "GROW"]
-      this.muse.kinksA.mindMod = ["CORRUPT", "MINDBREAK", "BRAINWASH", "MINDBLANK", "HIVEMIND"]
-      this.muse.kinksB.transform = ["BIMBO", "GOTH", "MECHA", "TWIN"]
-      this.muse.kinksB.treatment = ["PRAISE", "DEGRADE", "RYONA", "OBJECT", "HUMILIATE"]
-      this.muse.kinksB.consent = ["FREE", "DUB", "NONE", "WATCH", "STEALTH", "EXHIBIT"]
-      this.muse.kinksB.substance = ["FOOD", "SWEAT", "CUM", "PISS", "DRUGS"]
-      this.muse.kinksB.bondage = ["BIND", "HYPNO", "GRAPPLE", "WORLD", "SENSE"]
+      this.muse.kinks.partner = "CHANGE"
+      this.muse.kinks.organ = "CHANGE"
+      this.muse.kinks.clothing = "CHANGE"
+      this.muse.kinks.relation = "CHANGE"
+      this.muse.kinks.consent = "CHANGE"
+      this.muse.kinks.substance = "CHANGE"
+      this.muse.kinks.treatment = "CHANGE"
+      this.muse.kinks.bondage = "CHANGE"
+      this.muse.kinks.mindMod = "CHANGE"
+      this.muse.kinks.bodyMod = "CHANGE"
+      this.muse.kinks.transform = "CHANGE"
 
       this.muse.auArray = [{ au: 'base', emblem: '/versions/mirror.jpg', check: false }]
-      
+
     },
   },
 })
