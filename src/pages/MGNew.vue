@@ -1592,7 +1592,7 @@ export default defineComponent({
                   break;
               }
               break;
-            case "elesa":
+            case "ele":
               this.muse.SubDom = "Electric Switch";
               this.muse.Spec = "Human";
               this.muse.Reg = "Unova";
