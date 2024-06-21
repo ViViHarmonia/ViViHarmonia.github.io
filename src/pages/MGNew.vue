@@ -3299,6 +3299,17 @@ export default defineComponent({
           sfw: "Y",
         },
       ];
+      this.muse.kinks.partner = ""
+      this.muse.kinks.organ = ""
+      this.muse.kinks.clothing = ""
+      this.muse.kinks.relation = ""
+      this.muse.kinks.consent = ""
+      this.muse.kinks.substance = ""
+      this.muse.kinks.treatment = ""
+      this.muse.kinks.bondage = ""
+      this.muse.kinks.mindMod = ""
+      this.muse.kinks.bodyMod = ""
+      this.muse.kinks.transform = ""
     },
   },
   mounted() {
