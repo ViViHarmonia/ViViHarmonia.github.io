@@ -3300,7 +3300,7 @@ export default defineComponent({
    }
 
    .button {
-      font-size: 12px;
+      font-size: 20px;
       padding-left: 4px;
       padding-right: 4px;
    }

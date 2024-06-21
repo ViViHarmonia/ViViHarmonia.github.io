@@ -11,7 +11,7 @@
             virtual-scroll auto-width :rows-per-page-options="[0]" :rows="finalCharArr">
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
-                input-debounce="0" dark outlined dense />
+                input-debounce="0" wrap-cells dark outlined dense />
               <q-toggle v-model="nsfwSwitch" color="black" />
               <span v-show="nsfwSwitch">NSFW</span>
               <span v-show="!nsfwSwitch">SFW</span>
@@ -1973,7 +1973,7 @@ export default defineComponent({
               this.muse.Title = "Mirror Maiden";
               this.muse.Spec = "Mirror Maiden";
               this.muse.Reg = "Teyvat";
-              this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
+              this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
               this.muse.DescLewd = "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
               this.muse.kinks.partner = "La Signora"
               this.muse.kinks.organ = "Mouth, Tits"
@@ -2692,6 +2692,7 @@ export default defineComponent({
               break;
             case "edel":
               this.muse.Title = "";
+              this.muse.Name = "Edelgard von Hresvelg" 
               this.muse.Reg = "Fódlan";
               this.muse.Desc = "A woman with the weight of the world in her shoulders, carrying great and dark secrets, and dedicated to her goals to dangerous heights. She maintains formality and composure, and trusts in others abilities, but forgets to relax, and her trust does not means she lets her own guard down emotionally. ";
               this.muse.DescLewd = "Has a massive crush on her teacher, Byleth, and if she won't fuck Edelgard herself she'll make sure to fuck Byleth instead.";
@@ -3341,11 +3342,6 @@ export default defineComponent({
   opacity: 1 !important;
 }
 
-p {
-  margin: 0px;
-  padding: 0px;
-}
-
 .secret {
   color: black;
   background-color: black;
@@ -3355,21 +3351,6 @@ p {
   color: white;
 }
 
-/*.q-select {
-    text-transform: uppercase;
- }*/
-.card {
-  background: #cf4cc9d9;
-  color: white;
-  width: 100%;
-  max-width: 720px;
-}
-
-.kinklist {
-  background: #8a2a85;
-  width: 820px;
-}
-
 .cardMuse {
   background: #cf4cc9d9;
   color: white;
@@ -3377,17 +3358,10 @@ p {
   width: fit-content;
 }
 
-.cardAllMuse {
-  background: #cf4cc9d9;
-  color: white;
-  max-width: 1240px;
-  width: fit-content;
-}
-
 #muse {
   background: #cf4cc9;
   color: white;
-  width: 100%;
+  width: 700px;
 }
 
 .my-sticky-header-table {
