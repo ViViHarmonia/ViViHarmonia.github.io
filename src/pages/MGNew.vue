@@ -231,7 +231,7 @@ export default defineComponent({
         name: "Rosa",
         state: "base",
         free: "YES",
-        states: ["base", "rocket", "plasma", "ua"],
+        states: ["base""rocket""plasma""ua"],
         uni: "Pokémon",
         avatar: "/museicon/rosa.jpg",
       },
@@ -241,7 +241,7 @@ export default defineComponent({
         name: "Nemona",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/nemona.png",
       },
@@ -251,7 +251,7 @@ export default defineComponent({
         name: "Marnie",
         state: "base",
         free: "YES",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/marnie.jpg",
       },
@@ -261,7 +261,7 @@ export default defineComponent({
         name: "Irida",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/irida.jpg",
       },
@@ -271,7 +271,7 @@ export default defineComponent({
         name: "Iris",
         state: "base",
         free: "NO",
-        states: ["base", "rocket", "plasma"],
+        states: ["base""rocket""plasma"],
         uni: "Pokémon",
         avatar: "/museicon/iris.jpeg",
       },
@@ -281,7 +281,7 @@ export default defineComponent({
         name: "Serena",
         state: "base",
         free: "NO",
-        states: ["base", "rocket", "flare"],
+        states: ["base""rocket""flare"],
         uni: "Pokémon",
         avatar: "/museicon/serena.png",
       },
@@ -291,7 +291,7 @@ export default defineComponent({
         name: "Sabrina",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/sabrina.jpg",
       },
@@ -301,7 +301,7 @@ export default defineComponent({
         name: "Cynthia",
         state: "base",
         free: "YES",
-        states: ["base", "rocket", "galactic"],
+        states: ["base""rocket""galactic"],
         uni: "Pokémon",
         avatar: "/museicon/cyn.jpg",
       },
@@ -311,7 +311,7 @@ export default defineComponent({
         name: "Nessa",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/nesa.png",
       },
@@ -321,7 +321,7 @@ export default defineComponent({
         name: "Jessie",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base""rocket"],
         uni: "Pokémon",
         avatar: "/museicon/jessie.jpg",
       },
@@ -331,7 +331,7 @@ export default defineComponent({
         name: "Elesa",
         state: "base",
         free: "NO",
-        states: ["base", "rocket", "plasma"],
+        states: ["base""rocket""plasma"],
         uni: "Pokémon",
         avatar: "/museicon/ele.gif",
       },
@@ -341,7 +341,7 @@ export default defineComponent({
         name: "Lusamine",
         state: "base",
         free: "NO",
-        states: ["base", "rocket", "aether"],
+        states: ["base""rocket""aether"],
         uni: "Pokémon",
         avatar: "/museicon/lusa.jpg",
       },
@@ -361,7 +361,7 @@ export default defineComponent({
         name: "Lumine",
         state: "base",
         free: "NO",
-        states: ["base", "mirror"],
+        states: ["base""mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/lumi.jpeg",
       },
@@ -371,7 +371,7 @@ export default defineComponent({
         name: "Lisa Minci",
         state: "base",
         free: "NO",
-        states: ["base", "mirror"],
+        states: ["base""mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/lisa.jpg",
       },
@@ -381,7 +381,7 @@ export default defineComponent({
         name: "Rosaria",
         state: "base",
         free: "NO",
-        states: ["base", "mirror"],
+        states: ["base""mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/rosaria.jpg",
       },
@@ -391,7 +391,7 @@ export default defineComponent({
         name: "Yelan",
         state: "base",
         free: "NO",
-        states: ["base", "mirror"],
+        states: ["base""mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/yelan.jpeg",
       },
@@ -562,7 +562,7 @@ export default defineComponent({
         name: "Samus Aran",
         state: "base",
         free: "YES",
-        states: ["base", "shy"],
+        states: ["base""shy"],
         uni: "Metroid",
         avatar: "/museicon/samus.jpg",
       },
@@ -572,7 +572,7 @@ export default defineComponent({
         name: "Bowsette Koopa",
         state: "base",
         free: "YES",
-        states: ["base", "shy"],
+        states: ["base""shy"],
         uni: "Super Mario",
         avatar: "/museicon/bowsette.jpg",
       },
@@ -582,7 +582,7 @@ export default defineComponent({
         name: "Peach Toadstool",
         state: "base",
         free: "NO",
-        states: ["base", "shy", "bow", "shadow"],
+        states: ["base""shy""bow""shadow"],
         uni: "Super Mario",
         avatar: "/museicon/peach.jpg",
       },
@@ -592,7 +592,7 @@ export default defineComponent({
         name: "Rosalina",
         state: "base",
         free: "NO",
-        states: ["base", "shy", "bow"],
+        states: ["base""shy""bow"],
         uni: "Super Mario",
         avatar: "/museicon/rosalina.jpg",
       },
@@ -612,7 +612,7 @@ export default defineComponent({
         name: "Purah",
         state: "base",
         free: "YES",
-        states: ["base", "aoc", "yiga"],
+        states: ["base""aoc""yiga"],
         uni: "Legend of Zelda",
         avatar: "/museicon/purah.jpeg",
       },
@@ -642,7 +642,7 @@ export default defineComponent({
         name: "Tae Takemi",
         state: "base",
         free: "YES",
-        states: ["base", "lust"],
+        states: ["base""lust"],
         uni: "Persona 5",
         avatar: "/museicon/tae.png",
       },
@@ -652,7 +652,7 @@ export default defineComponent({
         name: "Ann Takamaki",
         state: "base",
         free: "NO",
-        states: ["base", "lust"],
+        states: ["base""lust"],
         uni: "Persona 5",
         avatar: "/museicon/ann.png",
       },
@@ -662,7 +662,7 @@ export default defineComponent({
         name: "Sae Nijima",
         state: "base",
         free: "NO",
-        states: ["base", "lust"],
+        states: ["base""lust"],
         uni: "Persona 5",
         avatar: "/museicon/sae1.jpeg",
       },
@@ -793,7 +793,7 @@ export default defineComponent({
         name: "Frieren",
         state: "base",
         free: "NO",
-        states: ["base", "mimic"],
+        states: ["base""mimic"],
         uni: "Sousou no Frieren",
         avatar: "/museicon/frie.jpg",
       },
@@ -987,17 +987,17 @@ export default defineComponent({
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                     { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
                   ];
-                  this.muse.kinks.partner = "CHANGE"
-                  this.muse.kinks.organ = "CHANGE"
-                  this.muse.kinks.clothing = "CHANGE"
-                  this.muse.kinks.relation = "CHANGE"
-                  this.muse.kinks.consent = "CHANGE"
-                  this.muse.kinks.substance = "CHANGE"
-                  this.muse.kinks.treatment = "CHANGE"
-                  this.muse.kinks.bondage = "CHANGE"
-                  this.muse.kinks.mindMod = "CHANGE"
-                  this.muse.kinks.bodyMod = "CHANGE"
-                  this.muse.kinks.transform = "CHANGE"
+                  this.muse.kinks.partner = "Pokephilia"
+                  this.muse.kinks.organ = "Pussy, Cock"
+                  this.muse.kinks.clothing = "Nylon, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Romance"
+                  this.muse.kinks.consent = "Free Use"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Lover'";
@@ -1012,6 +1012,17 @@ export default defineComponent({
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                     { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Team Rocket"
+                  this.muse.kinks.organ = "Pussy, Cock"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Servitude, Romance"
+                  this.muse.kinks.consent = "Free Use"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Grunt 'Princess'";
@@ -1026,6 +1037,17 @@ export default defineComponent({
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
                     { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Team Plasma"
+                  this.muse.kinks.organ = "Pussy, Cock"
+                  this.muse.kinks.clothing = "Nylon"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Free Use, Exhibitionist"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis, Grappling"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Mechanization"
                   break;
                 case "ua":
                   this.muse.Title = "UA Support Student";
@@ -1040,6 +1062,17 @@ export default defineComponent({
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                     { au: "ua", emblem: "/versions/uagirls.png", check: true, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "Machines"
+                  this.muse.kinks.organ = "Mouth, Ass, Cock"
+                  this.muse.kinks.clothing = "YES"
+                  this.muse.kinks.relation = "Servitude, Romance"
+                  this.muse.kinks.consent = "Free Use, Stealth"
+                  this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
               }
               break;
@@ -1057,6 +1090,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Nylon"
+                  this.muse.kinks.relation = "Petplay, Rivalry"
+                  this.muse.kinks.consent = "Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Praise, Ryona"
+                  this.muse.kinks.bondage = "Rope, Grappling"
+                  this.muse.kinks.mindMod = "Mindbreak"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Leader";
@@ -1066,6 +1110,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Team Rocket"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Petplay, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Praise, Ryona"
+                  this.muse.kinks.bondage = "Rope, Grappling"
+                  this.muse.kinks.mindMod = "Mindbreak, Assimilation"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
               }
               break;
@@ -1083,6 +1138,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys, Gangbang"
+                  this.muse.kinks.organ = "Mouth, Pussy"
+                  this.muse.kinks.clothing = "Leather, Fishnet, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Smoking"
+                  this.muse.kinks.treatment = "Degradation, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Mindbreak"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "rocket":
                   this.muse.Title = "Undercover Rocket Grunt";
@@ -1093,6 +1159,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys, Gangbang, Team Rocket"
+                  this.muse.kinks.organ = "Mouth, Pussy"
+                  this.muse.kinks.clothing = "Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Smoking"
+                  this.muse.kinks.treatment = "Degradation, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
               }
               break;
@@ -1111,6 +1188,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Gangbang"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nudity"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Stealth"
+                  this.muse.kinks.substance = "Sweat, Cumplay"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Rope, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Priestess'";
@@ -1120,6 +1208,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nudity, Spandex"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Stealth"
+                  this.muse.kinks.substance = "Sweat, Cumplay"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Rope, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
               }
               break;
@@ -1138,6 +1237,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Dragonfucking"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Nudity, Dress-Up"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Watersports"
+                  this.muse.kinks.treatment = "Ryona"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Princess'";
@@ -1148,6 +1258,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Dragonfucking, Team Rocket"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Nudity, Spandex"
+                  this.muse.kinks.relation = "Enslavement, Servitude"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Watersports"
+                  this.muse.kinks.treatment = "Ryona"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak, Assimilation"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Grunt 'Dragon'";
@@ -1158,6 +1279,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Dragonfucking, Team Plasma"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Nylon"
+                  this.muse.kinks.relation = "Enslavement, Incest"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Watersports"
+                  this.muse.kinks.treatment = "Ryona"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Mechanization"
                   break;
               }
               break;
@@ -1179,6 +1311,17 @@ export default defineComponent({
                         "/versions/team_flare_by_biochao_dezue6u-pre.png", check: false, sfw: "N",
                     },
                   ];
+                  this.muse.kinks.partner = "Toys, Gangbang"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "Nudity, Dress-Up"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "NEUTRAL"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Body Writing"
+                  this.muse.kinks.transform = "Bimbofication, Twinning"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Model' ";
@@ -1193,6 +1336,17 @@ export default defineComponent({
                         "/versions/team_flare_by_biochao_dezue6u-pre.png", check: false, sfw: "N",
                     },
                   ];
+                  this.muse.kinks.partner = "Toys, Gangbang, Team Rocket"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "NEUTRAL"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Body Writing"
+                  this.muse.kinks.transform = "Bimbofication, Twinning"
                   break;
                 case "flare":
                   this.muse.Title = "Flare Admin ";
@@ -1207,6 +1361,17 @@ export default defineComponent({
                         "/versions/team_flare_by_biochao_dezue6u-pre.png", check: true, sfw: "N",
                     },
                   ];
+                  this.muse.kinks.partner = "Toys, Gangbang, Team Flare"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "YES"
+                  this.muse.kinks.relation = "Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "NEUTRAL"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Mechanization"
                   break;
               }
               break;
@@ -1224,6 +1389,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Dub-Con, Stealth, Voyeur"
+                  this.muse.kinks.substance = "Sweating, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis"
+                  this.muse.kinks.mindMod = "Brainwashing, Asimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Commander";
@@ -1233,6 +1409,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys, Team Rocket"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Dub-Con, Stealth, Voyeur"
+                  this.muse.kinks.substance = "Sweating, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis"
+                  this.muse.kinks.mindMod = "Brainwashing, Asimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
               }
               break;
@@ -1251,6 +1438,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia"
+                  this.muse.kinks.organ = "Mouth, Ass, Tits"
+                  this.muse.kinks.clothing = "Nudity, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Cumplay"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption"
+                  this.muse.kinks.bodyMod = "Breeding, Piercing"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
@@ -1262,6 +1460,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                     { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Team Rocket"
+                  this.muse.kinks.organ = "Mouth, Ass, Tits"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Petplay, Servitude, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Cumplay"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Breeding, Piercing"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
                   break;
                 case "galaxy":
                   this.muse.Title = "Galactic Admin";
@@ -1273,6 +1482,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines, Pokephilia, Team Galactic"
+                  this.muse.kinks.organ = "Mouth, Ass, Tits"
+                  this.muse.kinks.clothing = "Nylon"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Incest"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweating, Cumplay, Drugs"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis, Grappling, Environment"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Mechanization"
                   break;
               }
               break;
@@ -1290,6 +1510,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Gangbang"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Nudity, Spandex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Servitude, Romance"
+                  this.muse.kinks.consent = "Dub-Con, Stealth"
+                  this.muse.kinks.substance = "Sweating, Cumplay (Out), Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption"
+                  this.muse.kinks.bodyMod = "Piercing"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Coordinator";
@@ -1299,6 +1530,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Gangbang, Team Rocket"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Petplay, Servitude, Romance"
+                  this.muse.kinks.consent = "Dub-Con, Stealth"
+                  this.muse.kinks.substance = "Sweating, Cumplay (Out), Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Piercing"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
               }
               break;
@@ -1316,6 +1558,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Ass, Tits"
+                  this.muse.kinks.clothing = "Latex, Dress-Up"
+                  this.muse.kinks.relation = "Romance"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Cumplay"
+                  this.muse.kinks.treatment = "Praise, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Rope, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Asimilation"
+                  this.muse.kinks.bodyMod = "Tattoos"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Leader";
@@ -1325,6 +1578,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Team Rocket"
+                  this.muse.kinks.organ = "Ass, Tits"
+                  this.muse.kinks.clothing = "Latex, Dress-Up"
+                  this.muse.kinks.relation = "Servitude, Romance"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Cumplay"
+                  this.muse.kinks.treatment = "Praise, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Rope, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Asimilation"
+                  this.muse.kinks.bodyMod = "Tattoos"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
               }
               break;
@@ -1343,6 +1607,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Gangbang"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Dress-Up"
+                  this.muse.kinks.relation = "NEUTRAL"
+                  this.muse.kinks.consent = "Free Use, Stealth, Exhibition"
+                  this.muse.kinks.substance = "Cumplay (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos"
+                  this.muse.kinks.transform = "Bimbofication, Mechanization"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Agent";
@@ -1353,6 +1628,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Stealth, Exhibition"
+                  this.muse.kinks.substance = "Cumplay (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos"
+                  this.muse.kinks.transform = "Bimbofication, Mechanization"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Admin";
@@ -1363,6 +1649,17 @@ export default defineComponent({
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Gangbang, Team Plasma"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nylon"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Cumplay (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Mechanization"
                   break;
               }
               break;
@@ -1381,6 +1678,17 @@ export default defineComponent({
                     { au: "aether", emblem: "/versions/aether.png", check: false, sfw: "N", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines, Ultra Bestiality"
+                  this.muse.kinks.organ = "Ass, Tits, Cock"
+                  this.muse.kinks.clothing = "Nudity, Spandex, Nylon, Dress-Up"
+                  this.muse.kinks.relation = "Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+                  this.muse.kinks.substance = "YES"
+                  this.muse.kinks.treatment = "YES"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Mechanization, Twinning"
                   break;
                 case "aether":
                   this.muse.Title = "Mother Beast";
@@ -1393,6 +1701,17 @@ export default defineComponent({
                     { au: "aether", emblem: "/versions/aether.png", check: true, sfw: "N", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Ultra Bestiality"
+                  this.muse.kinks.organ = "Ass, Tits, Cock"
+                  this.muse.kinks.clothing = "Nudity, Living Clothes"
+                  this.muse.kinks.relation = "Enslavement, Incest"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "YES"
+                  this.muse.kinks.treatment = "Praise, Degradation, Ryona, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Beastification"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
@@ -1405,6 +1724,17 @@ export default defineComponent({
                     { au: "aether", emblem: "/versions/aether.png", check: false, sfw: "N", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Pokephilia, Team Rocket"
+                  this.muse.kinks.organ = "Ass, Tits, Cock"
+                  this.muse.kinks.clothing = "Latex, Spandex"
+                  this.muse.kinks.relation = "Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+                  this.muse.kinks.substance = "YES"
+                  this.muse.kinks.treatment = "YES"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Mechanization, Twinning"
                   break;
               }
               break;
@@ -1414,18 +1744,20 @@ export default defineComponent({
               this.muse.Title = "Blackthorn Gym Leader";
               this.muse.Spec = "Human";
               this.muse.Reg = "Johto";
-              this.muse.Desc =
-                "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
-              this.muse.DescLewd =
-                "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
+              this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
+              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y",},];
+              this.muse.kinks.partner = "Dragonfucking"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Sweating, Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
           }
           break;
@@ -1445,6 +1777,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Monsterfucking (Churls)"
+                  this.muse.kinks.organ = "Tits, Pussy, Cock"
+                  this.muse.kinks.clothing = "NEUTRAL"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Free Use, Voyeur, Stealth, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Watersports"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Tentacles, Rope, Chains, Grappling"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak, Asimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "YES"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -1457,6 +1800,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
+              this.muse.kinks.partner = "La Signora"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cum (Outside)"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+              this.muse.kinks.bodyMod = "Fatui Brands"
+              this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1474,6 +1828,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys, Monsterfucking (Churls), Gangbang"
+                  this.muse.kinks.organ = "Tits"
+                  this.muse.kinks.clothing = "Nudity, Nylon"
+                  this.muse.kinks.relation = "Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Free Use, Voyeur, Stealth"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Brainwashing"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Twinning"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -1486,6 +1851,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
+              this.muse.kinks.partner = "La Signora"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cum (Outside)"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+              this.muse.kinks.bodyMod = "Fatui Brands"
+              this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1503,6 +1879,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Gangbang"
+                  this.muse.kinks.organ = "Mouth, Cock"
+                  this.muse.kinks.clothing = "Leather, Fishnet"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Free Use, Stealth, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Cumplay Watersports, Alcohol, Smoking"
+                  this.muse.kinks.treatment = "Degradation, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Grappling, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -1515,6 +1902,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
+              this.muse.kinks.partner = "La Signora"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cum (Outside)"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+              this.muse.kinks.bodyMod = "Fatui Brands"
+              this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1532,6 +1930,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Toys"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "YES"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+                  this.muse.kinks.substance = "Sweating, Cumplay (Outside), Watersports, Alcohol"
+                  this.muse.kinks.treatment = "Praise, Degradation, Objectification"
+                  this.muse.kinks.bondage = "Threads, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication"
                   break;
                 case "mirror":
                   this.muse.Title = "Mirror Maiden";
@@ -1544,111 +1953,124 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
+              this.muse.kinks.partner = "La Signora"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cum (Outside)"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+              this.muse.kinks.bodyMod = "Fatui Brands"
+              this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
             case "mira":
               this.muse.Name = "None";
-              this.muse.SubDom =
-                "Wicked and Dominant, Subservient Slave only to la Signora";
+              this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
               this.muse.Title = "Mirror Maiden";
               this.muse.Spec = "Mirror Maiden";
               this.muse.Reg = "Teyvat";
-              this.muse.Desc =
-                "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
-              this.muse.DescLewd =
-                "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "Beautiful minions of the Fatui, with a wicked disposition to others, a loving one to their sisters, and a subservient one to their masters. *They will accept only from their Mistress the diminishing treatment they give to non-Fatui partners*. Most of them look alike, though some a bit different, familiar. Always looking for new recruits. ";
+              this.muse.DescLewd = "Said recruits are always unwilling..at first. The Maidens always get them to understand in the end. And they get to keep their appearances on hold to show or discard if it helps them get more recruits.";
+              this.muse.kinks.partner = "La Signora"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cum (Outside)"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+              this.muse.kinks.bodyMod = "Fatui Brands"
+              this.muse.kinks.transform = "Twinning"
               break;
           }
           break;
-        case 3:
+        case 3: 
           switch (char) {
             case "mei":
               this.muse.Name = "Mei Hatsume";
-              this.muse.SubDom =
-                "Dom when hyperfocused, Subby when taken out of focus";
+              this.muse.SubDom = "Dom when hyperfocused, Subby when taken out of focus";
               this.muse.Title = "UA Support Student";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "The greatest engineer in quirked history, she's brilliant, bombastic, and can't remember silly things like names, hygiene, or shame. All she needs in her world are her babies, and what girls may take an interest in her and her babies. ";
-              this.muse.DescLewd =
-                "Is more into machines than humans, would roboticize every hot girl she meets if she could.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "The greatest engineer in quirked history, she's brilliant, bombastic, and can't remember silly things like names, hygiene, or shame. All she needs in her world are her babies, and what girls may take an interest in her and her babies. ";
+              this.muse.DescLewd = "Is more into machines than humans, would roboticize every hot girl she meets if she could.";
+              this.muse.kinks.partner = "Machines"
+              this.muse.kinks.organ = "Tits"
+              this.muse.kinks.clothing = "Nudity"
+              this.muse.kinks.relation = "Servitude"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Sweating, Cumplay (Inside), Watersports"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Tentacles, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "Mechanization"
               break;
             case "tsu":
               this.muse.Name = "Tsuyu Asui";
               this.muse.SubDom = "Whatever strikes the mood";
               this.muse.Title = "UA Hero Student - Froppy";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A hero in training with big dreams, a long tongue, and zero ability to hold either in. She is adored by many, and her quirks (pun intended) are charming to many, just as she adores her classmates. ";
-              this.muse.DescLewd =
-                "She has enough sense not to bring up how often she wants to wrap and tongue-fuck her female classmates daily...unless they ask.";
+              this.muse.Desc = "A hero in training with big dreams, a long tongue, and zero ability to hold either in. She is adored by many, and her quirks (pun intended) are charming to many, just as she adores her classmates. ";
+              this.muse.DescLewd = "She has enough sense not to bring up how often she wants to wrap and tongue-fuck her female classmates daily...unless they ask.";
               this.muse.Spec = "Human (Quirked), Frog";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: true,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.kinks.partner = "Toys, Monsterfucking (Noumu)"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Latex, Dress-Up"
+              this.muse.kinks.relation = "NEUTRAL"
+              this.muse.kinks.consent = "Free Use, Exhibition"
+              this.muse.kinks.substance = "Sweating, Cumplay (Outside), Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling"
+              this.muse.kinks.mindMod = "Brainwashing"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "Gothification"
               break;
             case "mina":
               this.muse.Name = "Mina Ashido";
               this.muse.SubDom = "YES";
               this.muse.Title = "UA Hero Student - Pinky";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A funky, spunky, alien-looking gal with a good heart, and a gooder sense of fun. She will spend her days scheming over her friends love lives, organize games, and save the world dancing away. ";
-              this.muse.DescLewd =
-                "With all her boundless energy come hours upon hours of sex, and she's specifically tailored her hero suit to attract that attention. Midnight is her icon for a reason.";
+              this.muse.Desc = "A funky, spunky, alien-looking gal with a good heart, and a gooder sense of fun. She will spend her days scheming over her friends love lives, organize games, and save the world dancing away. ";
+              this.muse.DescLewd = "With all her boundless energy come hours upon hours of sex, and she's specifically tailored her hero suit to attract that attention. Midnight is her icon for a reason.";
               this.muse.Spec = "Human (Quirked), Alien";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: true,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
+              this.muse.kinks.organ = "Ass, Pussy, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Cumplay, Watersports, Drugs"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Tentacles, Rope, Environment"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication, Gothification"
               break;
             case "momo":
               this.muse.Name = "Momo Yaoyorozu";
-              this.muse.SubDom =
-                "Shyly submissive until gaining confidence to engage Mommy Momo mode";
+              this.muse.SubDom = "Shyly submissive until gaining confidence to engage Mommy Momo mode";
               this.muse.Title = "UA Hero Student - Creati";
               this.muse.Nat = "Regal";
               this.muse.Reg = "Japan, Musatafu";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: true,
-                  sfw: "Y",
-                },
-              ];
-              this.muse.Desc =
-                "A girl born of wealth with a genuine heart of gold and a mind that holds great knowledge. Despite her dazzling intellect, astonishing quirk, and stunning beauty, her confidence needs some serious work. But she will always stand by the side of her friends. ";
-              this.muse.DescLewd =
-                "Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
+              this.muse.Desc = "A girl born of wealth with a genuine heart of gold and a mind that holds great knowledge. Despite her dazzling intellect, astonishing quirk, and stunning beauty, her confidence needs some serious work. But she will always stand by the side of her friends. ";
+              this.muse.DescLewd = "Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
+              this.muse.kinks.partner = "Toys, Machines, Monsterfucking (Noumu)"
+              this.muse.kinks.organ = "Tits, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Servitude, Romance, Incest"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth, Exhibition"
+              this.muse.kinks.substance = "Lactation, Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Rope, Chains, Grappling, Environment "
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "YES"
               break;
             case "toru":
               this.muse.Name = "Tooru Hagakure";
@@ -1656,22 +2078,39 @@ export default defineComponent({
               this.muse.Title = "UA Hero Student - Invisible Girl";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A girl born invisible, pushing herself to be loud and bright and seen. Thanks to her friends and training, she has become more visible than ever at UA, thus aiming as a hero to look out for others who might be left unseen. ";
-              this.muse.DescLewd =
-                "People watching is her hobby, which has often veered into very perverted situations...not that she minds the show, or interrupts, or even leaves. Also has developed a nudist streak.";
+              this.muse.Desc = "A girl born invisible, pushing herself to be loud and bright and seen. Thanks to her friends and training, she has become more visible than ever at UA, thus aiming as a hero to look out for others who might be left unseen. ";
+              this.muse.DescLewd = "People watching is her hobby, which has often veered into very perverted situations...not that she minds the show, or interrupts, or even leaves. Also has developed a nudist streak.";
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "Nudity"
+              this.muse.kinks.relation = "Romance"
+              this.muse.kinks.consent = "Voyeur, Stealth, Exhibition"
+              this.muse.kinks.substance = "Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification"
+              this.muse.kinks.bondage = "Tentacles, Rope, Chains, Grappling"
+              this.muse.kinks.mindMod = "Mindbreak"
+              this.muse.kinks.bodyMod = "Piercings"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
             case "kendo":
               this.muse.Name = "Itsuka Kendo";
-              this.muse.SubDom =
-                "Submissive to any request, but dominant if requested";
+              this.muse.SubDom = "Submissive to any request, but dominant if requested";
               this.muse.Title = "UA Hero Student - Battle Fist";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A martial artist with a big brain, big heart, and bigger hands, the class representative of class B is as ruthless with her criticism as her combative disposition. She does however have a tendency to let go for others, neglecting her own wants and needs. ";
-              this.muse.DescLewd =
-                "One can only hope her friend slash crush Setsuna does not take advantage of that...or that she lets herself go along the rather sexualized world of female pro-heroism.";
+              this.muse.Desc = "A martial artist with a big brain, big heart, and bigger hands, the class representative of class B is as ruthless with her criticism as her combative disposition. She does however have a tendency to let go for others, neglecting her own wants and needs. ";
+              this.muse.DescLewd = "One can only hope her friend slash crush Setsuna does not take advantage of that...or that she lets herself go along the rather sexualized world of female pro-heroism.";
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
+              this.muse.kinks.organ = "Pussy, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Stealth"
+              this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Hypnosis, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
               break;
             case "kino":
               this.muse.Name = "Kinoko Komori";
@@ -1679,30 +2118,39 @@ export default defineComponent({
               this.muse.Title = "UA Hero Student - Shemage";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A shy girl who loves her quirk's focus, and is trying to get a little les shy. She's growing more open to her own class, and sometimes lets herself loose in the magic of mushrooms, becoming quite the fun gal. ";
-              this.muse.DescLewd =
-                "Much like her namesakes she's incredibly hypersexual, but she's not very open about it. Were one of her classmates to ask however..she'd sure show them such wonders. And if they take her in, she couldn't complain at all.";
+              this.muse.Desc = "A shy girl who loves her quirk's focus, and is trying to get a little les shy. She's growing more open to her own class, and sometimes lets herself loose in the magic of mushrooms, becoming quite the fun gal. ";
+              this.muse.DescLewd = "Much like her namesakes she's incredibly hypersexual, but she's not very open about it. Were one of her classmates to ask however..she'd sure show them such wonders. And if they take her in, she couldn't complain at all.";
+              this.muse.kinks.partner = "Toys, Monsterfucking (Noumu)"
+              this.muse.kinks.organ = "Ass, Tits, Cock"
+              this.muse.kinks.clothing = "Nudity, Spandex"
+              this.muse.kinks.relation = "NEUTRAL"
+              this.muse.kinks.consent = "Voyeur, Stealth"
+              this.muse.kinks.substance = "Watersports, Shrooms"
+              this.muse.kinks.treatment = "NEUTRAL"
+              this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Asimilation"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
             case "camie":
               this.muse.Name = "Camie Utsushimi";
-              this.muse.SubDom =
-                "Dominant unless finding something kinky and fun worth subbing for.";
+              this.muse.SubDom = "Dominant unless finding something kinky and fun worth subbing for.";
               this.muse.Title = "Ketsubutsu Hero Student - Illus-o-Camie";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
-              this.muse.Desc =
-                "A Ketsubutsu-taught pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
-              this.muse.DescLewd =
-                "Her hero outfit and flirtatiousness bely the fact that she likes to draw in the attention, the only question being, what she will do with that attention. She knows quite well the answer will be 'whatever Camie desires'.";
+              this.muse.Desc = "A Ketsubutsu-taught pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
+              this.muse.DescLewd = "Her hero outfit and flirtatiousness bely the fact that she likes to draw in the attention, the only question being, what she will do with that attention. She knows quite well the answer will be 'whatever Camie desires'.";
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
+              this.muse.kinks.organ = "Tits, Pussy, Cock"
+              this.muse.kinks.clothing = "Nudity, Latex, Leather, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement"
+              this.muse.kinks.consent = "Free Use, Exhibition"
+              this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "Tentacles, Rope, Chains, Hypnosis"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding, Piercing"
+              this.muse.kinks.transform = "Bimbofication, Twinning"
               break;
             case "mel":
               this.muse.Name = "Melissa Shield";
@@ -1710,10 +2158,19 @@ export default defineComponent({
               this.muse.Title = "";
               this.muse.Spec = "Human";
               this.muse.Reg = "I-Island";
-              this.muse.Desc =
-                "A quirkless american girl who wants to save people, and has decided to do so through her inventions. Despite her outgoing nature, she doesn't have many friends. Something she intends to fix as well. ";
-              this.muse.DescLewd =
-                "She is not blind to how her looks makes others feel. She hopes the acquisition of friends will facilitate experimenting with that.";
+              this.muse.Desc = "A quirkless american girl who wants to save people, and has decided to do so through her inventions. Despite her outgoing nature, she doesn't have many friends. Something she intends to fix as well. ";
+              this.muse.DescLewd = "She is not blind to how her looks makes others feel. She hopes the acquisition of friends will facilitate experimenting with that.";
+              this.muse.kinks.partner = "Machines, Gangbang"
+              this.muse.kinks.organ = "Mouth, Tits, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Petplay, Servitude"
+              this.muse.kinks.consent = "Free Use, Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Degradation, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Rope, Chains, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication, Mechanization"
               break;
             case "joke":
               this.muse.Name = "Emi Fukukado";
@@ -1721,10 +2178,19 @@ export default defineComponent({
               this.muse.Title = "Pro Hero - Ms. Joke";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A pro-hero who uses the power of comedy to save people! And beat up dead cows. She flirts and laughs and loves, and never quite shuts up, to the chagrin of many. Has a book of jokes on every topic under the rising sun. ";
-              this.muse.DescLewd =
-                "Still wants to meet a hot villainess to happily surrender to, already has a suit, name and theme planned to serve her.";
+              this.muse.Desc = "A pro-hero who uses the power of comedy to save people! And beat up dead cows. She flirts and laughs and loves, and never quite shuts up, to the chagrin of many. Has a book of jokes on every topic under the rising sun. ";
+              this.muse.DescLewd = "Still wants to meet a hot villainess to happily surrender to, already has a suit, name and theme planned to serve her.";
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
+              this.muse.kinks.organ = "Mouth"
+              this.muse.kinks.clothing = "Latex, Spandex, Nylon"
+              this.muse.kinks.relation = "Petplay, Romance"
+              this.muse.kinks.consent = "Free Use, Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweat, Cum (Inside), Watersports"
+              this.muse.kinks.treatment = "Praise, Degradation"
+              this.muse.kinks.bondage = "Tentacles, Rope, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "Gothification"
               break;
             case "kai":
               this.muse.Name = "Kaina Tsutsumi";
@@ -1732,30 +2198,39 @@ export default defineComponent({
               this.muse.Title = "Pro Hero (Former) - Lady Nagant";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A former hero turned assassin for the Hero Association, Nagant once wanted to truly help people, but was used as a weapon of subterfuge, until she killed her own boss who led her down that path. Free now, as a villain, she sprawls the streets ready to aim and shoot. ";
-              this.muse.DescLewd =
-                "Has an interest in female pro-heroes, and teaching them a tough lesson...however they may need it.";
+              this.muse.Desc = "A former hero turned assassin for the Hero Association, Nagant once wanted to truly help people, but was used as a weapon of subterfuge, until she killed her own boss who led her down that path. Free now, as a villain, she sprawls the streets ready to aim and shoot. ";
+              this.muse.DescLewd = "Has an interest in female pro-heroes, and teaching them a tough lesson...however they may need it.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Pussy, Cock"
+              this.muse.kinks.clothing = "Latex, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement"
+              this.muse.kinks.consent = "Non-Con, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cum (Outside), Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Humiliation"
+              this.muse.kinks.bondage = "Grappling"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
             case "rumi":
               this.muse.Name = "Rumi Usagiyama";
-              this.muse.SubDom =
-                "Rough Dommy unless beaten in a fight or romantically approached";
+              this.muse.SubDom = "Rough Dommy unless beaten in a fight or romantically approached";
               this.muse.Title = "Pro Hero - Miruko";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "An incredibly aggressive, lone wolf rabbit-like woman who kicks ass, in every concievable way. She has made her way to the top three through sheer force of..well, force, hiding a care for others under the spite of her quirk's perception. ";
-              this.muse.DescLewd =
-                "Her viciousness sometimes goes out of hand, and she will get it out through more fighting..or breeding like her quirksake. Any woman nearby is at risk. But if you manage to beat her, you'll have a very willing horny bunny in your grasp";
+              this.muse.Desc = "An incredibly aggressive, lone wolf rabbit-like woman who kicks ass, in every concievable way. She has made her way to the top three through sheer force of..well, force, hiding a care for others under the spite of her quirk's perception. ";
+              this.muse.DescLewd = "Her viciousness sometimes goes out of hand, and she will get it out through more fighting..or breeding like her quirksake. Any woman nearby is at risk. But if you manage to beat her, you'll have a very willing horny bunny in your grasp";
               this.muse.Spec = "Human (Quirked), Bunny";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: true,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.kinks.partner = "Monsterfucking (Noumu)"
+              this.muse.kinks.organ = "Tits, Cock"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Servitude, Romance"
+              this.muse.kinks.consent = "Non-Con, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Humiliation"
+              this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
             case "yama":
               this.muse.Name = "Yu Takeyama (Mt. Lady)";
@@ -1763,10 +2238,19 @@ export default defineComponent({
               this.muse.Title = "Pro Hero - Mt. Lady";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A recent pro-hero who seems to be everything wrong with them. Vain, lazy, cocky, lustful, spiteful. Despite this, she has a strong heart that will shine in the worst of times. Even if the rest of times she spends bickering and teasing. ";
-              this.muse.DescLewd =
-                "Often expresses her attraction to her fellow pro-heroes by mockery, argument and teasing, desperate to push them to snap and do as they will with her. Most of them know this and don't want to give her the satisfaction.";
+              this.muse.Desc = "A recent pro-hero who seems to be everything wrong with them. Vain, lazy, cocky, lustful, spiteful. Despite this, she has a strong heart that will shine in the worst of times. Even if the rest of times she spends bickering and teasing. ";
+              this.muse.DescLewd = "Often expresses her attraction to her fellow pro-heroes by mockery, argument and teasing, desperate to push them to snap and do as they will with her. Most of them know this and don't want to give her the satisfaction.";
+              this.muse.kinks.partner = "Monsterfucking (Noumu), Bestiality"
+              this.muse.kinks.organ = "Ass, Tits"
+              this.muse.kinks.clothing = "Latex, Leather, Nylon, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+              this.muse.kinks.consent = "Dub-Con, Non-Con, Stealth, Exhibition"
+              this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "YES"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication"
               break;
             case "nana":
               this.muse.Name = "Nana Shimura";
@@ -1775,18 +2259,19 @@ export default defineComponent({
               this.muse.TitleSh = "(KIA)";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
-              this.muse.Desc =
-                "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
-              this.muse.DescLewd =
-                "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
+              this.muse.Desc = "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
+              this.muse.DescLewd = "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Ass, Tits"
+              this.muse.kinks.clothing = "Nudity"
+              this.muse.kinks.relation = "Romance"
+              this.muse.kinks.consent = "Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "NEUTRAL"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
             case "fumi":
               this.muse.Name = "Fuyumi Todoroki";
@@ -1794,10 +2279,19 @@ export default defineComponent({
               this.muse.Title = "Teacher";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A woman who's spent her life trying to keep things together for her family, or her idea of it. She's a preschool teacher, with a weak quirk, and often percieved as weak herself. But it takes great strength to be kind and want better under her circumstances. ";
-              this.muse.DescLewd =
-                "Something less than wonderful brews beneath her softness, and if pushed, it will no doubt come out.";
+              this.muse.Desc = "A woman who's spent her life trying to keep things together for her family, or her idea of it. She's a preschool teacher, with a weak quirk, and often percieved as weak herself. But it takes great strength to be kind and want better under her circumstances. ";
+              this.muse.DescLewd = "Something less than wonderful brews beneath her softness, and if pushed, it will no doubt come out.";
+              this.muse.kinks.partner = "Toys"
+              this.muse.kinks.organ = "Tits, Pussy, Cock"
+              this.muse.kinks.clothing = "Latex, Nylon, Dress-Up"
+              this.muse.kinks.relation = "Servitude, Romance, Incest"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+              this.muse.kinks.substance = "Lactation, Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Degradation"
+              this.muse.kinks.bondage = "Rope, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+              this.muse.kinks.transform = "Gothification"
               break;
             case "inko":
               this.muse.Name = "Inko Midoriya";
@@ -1805,14 +2299,23 @@ export default defineComponent({
               this.muse.Title = "Mother";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc =
-                "A mother, no longer a lover, at least in her mind. With her son on the dangerous paths of heroism (yet doing well) and a great deal of regret and time left on her own, she listlessly spends her days watching soap operas, and wondering on what could be. ";
-              this.muse.DescLewd =
-                "Few have met the steel behind the tears, when it comes to her heart. Perhaps someone out there may yet be for her.";
+              this.muse.Desc = "A mother, no longer a lover, at least in her mind. With her son on the dangerous paths of heroism (yet doing well) and a great deal of regret and time left on her own, she listlessly spends her days watching soap operas, and wondering on what could be. ";
+              this.muse.DescLewd = "Few have met the steel behind the tears, when it comes to her heart. Perhaps someone out there may yet be for her.";
+              this.muse.kinks.partner = "Toys"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Romance"
+              this.muse.kinks.consent = "Stealth"
+              this.muse.kinks.substance = "Lactation, Cumplay"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "NEUTRAL"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "NEUTRAL"
               break;
           }
           break;
-        case 4:
+        case 4: //yet to finish kinks
           switch (char) {
             case "sam":
               switch (au) {
@@ -1828,6 +2331,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines, Aliens (Monsters, Beasts)"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Latex, Living, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Romance, Incest"
+                  this.muse.kinks.consent = "Free Use, Dub-Con, Non-Con, Stealth"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cum (Inside), Watersports"
+                  this.muse.kinks.treatment = "Praise, Ryona"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Grappling, Environment"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "Breeding, Tattoos"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -1841,6 +2355,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Masks"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Objectification"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1858,6 +2383,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Princesses, Gangbang"
+                  this.muse.kinks.organ = "Tits, Cock"
+                  this.muse.kinks.clothing = "Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Cum (Inside)"
+                  this.muse.kinks.treatment = "Praise, Degradation"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Bimbofication"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -1871,6 +2407,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Tits, Cock"
+                  this.muse.kinks.clothing = "Masks"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Objectification"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1890,6 +2437,17 @@ export default defineComponent({
                     { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
                     { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "Princesses, Koopas, Gangbang"
+                  this.muse.kinks.organ = "YES"
+                  this.muse.kinks.clothing = "Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Romance"
+                  this.muse.kinks.consent = "Free Use, Voyeur, Stealth, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "NEUTRAL"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "YES"
                   break;
                 case "bow":
                   this.muse.Name = "Peachy Koopa";
@@ -1905,6 +2463,17 @@ export default defineComponent({
                     { au: "bow", emblem: "/versions/bow.jpg", check: true, sfw: "N", },
                     { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "Queen Bowsette"
+                  this.muse.kinks.organ = "YES"
+                  this.muse.kinks.clothing = "Latex"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -1920,6 +2489,17 @@ export default defineComponent({
                     { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
                     { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Masks"
+                  this.muse.kinks.relation = "Servitude"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Objectification"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Twinning"
                   break;
                 case "shadow":
                   this.muse.Name = "Peach Amanita";
@@ -1935,6 +2515,17 @@ export default defineComponent({
                     { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
                     { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: true, sfw: "Y", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "YES"
+                  this.muse.kinks.clothing = "Nudity, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Romance"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports, Shadow"
+                  this.muse.kinks.treatment = "NEUTRAL"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Gothification"
                   break;
               }
               break;
@@ -1953,6 +2544,17 @@ export default defineComponent({
                     { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
                     { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines, Aliens (Monsters, Beasts)"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Spandex, Latex, Living, Dress-Up"
+                  this.muse.kinks.relation = "Enslavement, Servitude, Romance, Incest"
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay"
+                  this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Tentacles, Rope, Hypnosis, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
                   break;
                 case "bow":
                   this.muse.Title = "Koopa Slave";
@@ -1967,6 +2569,17 @@ export default defineComponent({
                     { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
                     { au: "bow", emblem: "/versions/bow.jpg", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Queen Bowsette"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Latex"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Chains, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "shy":
                   this.muse.Title = "Cyan";
@@ -1990,10 +2603,19 @@ export default defineComponent({
               this.muse.Title = "Farmgirl (Hero)";
               this.muse.Spec = "Hylian";
               this.muse.Reg = "Hyrule";
-              this.muse.Desc =
-                "A farmer who believes herself to be the hero of Hyrule, winning over hearts with a sweet smile. She will befriend anyone, as she keeps getting lost and finding herself anywhere. ";
-              this.muse.DescLewd =
-                "Fantasizes about taking care of the animals with her body, as well as being defeated by the monsters, only to take the upper hand after loooong long hours of fun sex with them.";
+              this.muse.Desc = "A farmer who believes herself to be the hero of Hyrule, winning over hearts with a sweet smile. She will befriend anyone, as she keeps getting lost and finding herself anywhere. ";
+              this.muse.DescLewd = "Fantasizes about taking care of the animals with her body, as well as being defeated by the monsters, only to take the upper hand after loooong long hours of fun sex with them.";
+              this.muse.kinks.partner = "Monsterfucking, Bestiality"
+              this.muse.kinks.organ = "Tits, Pussy"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement"
+              this.muse.kinks.consent = "Free Use, Stealth"
+              this.muse.kinks.substance = "Sweat"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Rope, Grappling, Environment"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding, Body writing"
+              this.muse.kinks.transform = "Twinning"
               break;
             case "pura":
               this.muse.Name = "Purah";
@@ -2010,6 +2632,17 @@ export default defineComponent({
                     { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: false, sfw: "Y", },
                     { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "Piercing"
+                  this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
                   break;
                 case "aoc":
                   this.muse.Spec = "Sheikah Hylian";
@@ -2021,6 +2654,17 @@ export default defineComponent({
                     { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: true, sfw: "Y", },
                     { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing"
+                  this.muse.kinks.bodyMod = "Piercing"
+                  this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
                   break;
                 case "yiga":
                   this.muse.Spec = "Yiga Hylian";
@@ -2032,46 +2676,65 @@ export default defineComponent({
                     { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: false, sfw: "Y", },
                     { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines, Monsterfucking"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos"
+                  this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
                   break;
               }
               break;
             case "edel":
               this.muse.Title = "";
               this.muse.Reg = "Fódlan";
-              this.muse.Desc =
-                "A woman with the weight of the world in her shoulders, carrying great and dark secrets, and dedicated to her goals to dangerous heights. She maintains formality and composure, and trusts in others abilities, but forgets to relax, and her trust does not means she lets her own guard down emotionally. ";
-              this.muse.DescLewd =
-                "Has a massive crush on her teacher, Byleth, and if she won't fuck Edelgard herself she'll make sure to fuck Byleth instead.";
+              this.muse.Desc = "A woman with the weight of the world in her shoulders, carrying great and dark secrets, and dedicated to her goals to dangerous heights. She maintains formality and composure, and trusts in others abilities, but forgets to relax, and her trust does not means she lets her own guard down emotionally. ";
+              this.muse.DescLewd = "Has a massive crush on her teacher, Byleth, and if she won't fuck Edelgard herself she'll make sure to fuck Byleth instead.";
               this.muse.Spec = "Human";
               this.muse.SubDom = "Whatever Byleth requires";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: true,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "Nylon, Latex"
+              this.muse.kinks.relation = "Servitude, Romance"
+              this.muse.kinks.consent = "Dub-Con, Stealth"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Rope, Chains, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "Tattoos/Body writing"
+              this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
               break;
             case "luci":
               this.muse.Name = "Lucifer Morningstar";
               this.muse.SubDom = "Absolutely Dominant";
-              this.muse.SubDomSh =
-                " unless genuinely romantically approached, or left powerless";
+              this.muse.SubDomSh = " unless genuinely romantically approached, or left powerless";
               this.muse.Title = "CEO of Hell";
               this.muse.Spec = "Demon ";
               this.muse.SpecSh = "(Fallen Angel)";
               this.muse.Reg = "Hell";
-              this.muse.Desc =
-                "A smooth-talking woman who's done the best of her situation. Despite her charm, she's a black-hearted queen with only a few soft spots, fine dining, drinking, worship. She flusters if her authority is upended. ";
-              this.muse.DescLewd =
-                "She's very weak outside of actual hell, and secretly likes it when she is abused on her weakness. She will repay when returning to hell, however.";
+              this.muse.Desc = "A smooth-talking woman who's done the best of her situation. Despite her charm, she's a black-hearted queen with only a few soft spots, fine dining, drinking, worship. She flusters if her authority is upended. ";
+              this.muse.DescLewd = "She's very weak outside of actual hell, and secretly likes it when she is abused on her weakness. She will repay when returning to hell, however.";
+              this.muse.kinks.partner = "Monsterfucking, Bestiality, Gangbang"
+              this.muse.kinks.organ = "Mouth, Cock"
+              this.muse.kinks.clothing = "Leather, Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Dub-Con, Non-Con, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Degradation, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Tentacles, Chains, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Gothification"
               break;
             case "tae":
               this.muse.Spec = "Human";
               this.muse.Reg = "Japan, Yongen-Jaya";
-              this.muse.SubDom =
-                "Dominant unless experimentation requires otherwise";
+              this.muse.SubDom = "Dominant unless experimentation requires otherwise";
               this.muse.Name = "Tae Takemi";
               switch (au) {
                 case "base":
@@ -2082,6 +2745,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines"
+                  this.muse.kinks.organ = "Mouth, Cock"
+                  this.muse.kinks.clothing = "Latex, Fishnet, Leather"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Stealth"
+                  this.muse.kinks.substance = "YES"
+                  this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Brainwashing"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+                  this.muse.kinks.transform = "Gothification, Mechanization"
                   break;
                 case "lust":
                   this.muse.Title = "Medic";
@@ -2091,6 +2765,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Machines"
+                  this.muse.kinks.organ = "Mouth, Cock"
+                  this.muse.kinks.clothing = "Latex, Fishnet, Leather"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Stealth"
+                  this.muse.kinks.substance = "YES"
+                  this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Brainwashing"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+                  this.muse.kinks.transform = "Gothification, Mechanization"
                   break;
               }
               break;
@@ -2101,13 +2786,24 @@ export default defineComponent({
               this.muse.Spec = "Human";
               switch (au) {
                 case "base":
-                  this.muse.Title = "Persona";
+                  this.muse.Title = "";
                   this.muse.Desc = "A fiery girl who works as a model, and goes to school like an average girl. She loves sweets, her girlfriend Shiho, and hates injustice. Feels strongly about how she's perceived by others, be it her womanhood, her sexuality, her race, or her body. And she's perfectly willing to take control and show them all wrong. ";
                   this.muse.DescLewd = "Though at times, she just wants to give in to everyone's perception of her as a bimbo and a slut, and drag her girlfriend down with her.";
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Tits, Pussy, Cock"
+                  this.muse.kinks.clothing = "Nudity, Latex, Dress-Up"
+                  this.muse.kinks.relation = "Servitude, Romance"
+                  this.muse.kinks.consent = "Voyeur, Stealth"
+                  this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Praise"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "NEUTRAL"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "lust":
                   this.muse.Spec = " / Cognition, Shadow";
@@ -2118,6 +2814,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Monsterfucking (Shadows), Gangbang"
+                  this.muse.kinks.organ = "Tits, Pussy, Cock"
+                  this.muse.kinks.clothing = "Nudity, Latex, Dress-Up"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Romance"
+                  this.muse.kinks.consent = "Free Use, Dub-Con, Exhibition"
+                  this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "YES"
+                  this.muse.kinks.bondage = "YES"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
               }
               break;
@@ -2135,6 +2842,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Nylon, Fishnet"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Rope, Chains, Hypnosis, Grappling, Environment"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
                   break;
                 case "lust":
                   this.muse.Title = "Miss Fortune";
@@ -2146,31 +2864,42 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Ass"
+                  this.muse.kinks.clothing = "Nylon, Fishnet"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Incest"
+                  this.muse.kinks.consent = "Dub-Con, Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Rope, Chains, Hypnosis, Grappling, Environment"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
                   break;
               }
               break;
             case "moni":
               this.muse.Name = "Monika";
               this.muse.NameSh = ".chr";
-              this.muse.SubDom =
-                "She'll take charge if necessary, but if you want otherwise she's up for it.";
+              this.muse.SubDom = "She'll take charge if necessary, but if you want otherwise she's up for it.";
               this.muse.Title = "Literature Club President";
               this.muse.Spec = "Human ";
               this.muse.SpecSh = "Character File";
               this.muse.Reg = "Close. ";
               this.muse.RegSh = "In your computer, DDLC.exe";
-              this.muse.Desc =
-                "The smartest, kindest, most beautiful girl in school, who's decided you are her soulmate, and is distraught by you focusing on the other members of her Literature Club. She will happily use her dedication to make sure you only look at her. ";
-              this.muse.DescLewd =
-                "Though, she does find the girls rather attractive herself...she wouldn't mind them around, if they acknowledge her as the head girlfriend. She'll make sure they love her too. She has her ways.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "The smartest, kindest, most beautiful girl in school, who's decided you are her soulmate, and is distraught by you focusing on the other members of her Literature Club. She will happily use her dedication to make sure you only look at her. ";
+              this.muse.DescLewd = "Though, she does find the girls rather attractive herself...she wouldn't mind them around, if they acknowledge her as the head girlfriend. She'll make sure they love her too. She has her ways.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "Nylon, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Dub-Con, Voyeur, Stealth, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding, Love Marks"
+              this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
               break;
             case "roty":
               this.muse.Name = "Rottytops";
@@ -2178,45 +2907,48 @@ export default defineComponent({
               this.muse.Title = "";
               this.muse.Spec = "Zombie";
               this.muse.Reg = "Zombie Caravan";
-              this.muse.Desc =
-                "A cheerful zombie who enjoys cosplay and teasing, Rotty is Shantae's bestest undead friend. Despite genuinely caring for Shantae, she's conniving, tricky and naughty in every single way. It's part of her charm, and sorely wishes to 'corrupt' Shantae. ";
-              this.muse.DescLewd =
-                "Preferably by dating her, kissing her, eating her out, and doing all sorts of fun stuff to her body.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "A cheerful zombie who enjoys cosplay and teasing, Rotty is Shantae's bestest undead friend. Despite genuinely caring for Shantae, she's conniving, tricky and naughty in every single way. It's part of her charm, and sorely wishes to 'corrupt' Shantae. ";
+              this.muse.DescLewd = "Preferably by dating her, kissing her, eating her out, and doing all sorts of fun stuff to her body.";
+              this.muse.kinks.partner = "Machines"
+              this.muse.kinks.organ = "YES"
+              this.muse.kinks.clothing = "Nudity, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Voyeur, Stealth, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+              this.muse.kinks.bodyMod = "Piercings, Branding, Splitting"
+              this.muse.kinks.transform = "YES, Zombiefication"
               break;
             case "shan":
               this.muse.Reg = "Scuttle Town";
-              switch (au) {
-                case "base":
-                  this.muse.Title = "Half-Genie Hero";
-                  this.muse.Name = "Shantae";
-                  this.muse.Spec = "Genie/Human";
-                  this.muse.SubDom = "Sub when approached, Dom when approaching";
-                  this.muse.Desc = "A half-genie hero, worthy of said title by her care for others and dedication to helping...even if it is thwarted by annoyances, both villainous and even allied. She rarely holds any ill will regardless, and has helped her foes if need be a good amount of times. ";
-                  this.muse.DescLewd = "She is rather aware that she's surrounded by very hot gals, and has given serious thought to fooling around with all of them. Even Risky Boots.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                  ];
-                  break;
-              }
+              this.muse.Title = "Half-Genie Hero";
+              this.muse.Name = "Shantae";
+              this.muse.Spec = "Genie/Human";
+              this.muse.SubDom = "Sub when approached, Dom when approaching";
+              this.muse.Desc = "A half-genie hero, worthy of said title by her care for others and dedication to helping...even if it is thwarted by annoyances, both villainous and even allied. She rarely holds any ill will regardless, and has helped her foes if need be a good amount of times. ";
+              this.muse.DescLewd = "She is rather aware that she's surrounded by very hot gals, and has given serious thought to fooling around with all of them. Even Risky Boots.";
+              this.muse.kinks.partner = "Machines, Monsterfucking"
+              this.muse.kinks.organ = "Ass, Tits"
+              this.muse.kinks.clothing = "Nylon, Satin, Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Servitude, Romance"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Degradation, Objectification, Humiliation"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
               break;
             case "junko":
               this.muse.Name = "Junko Enoshima";
-              this.muse.SubDom =
-                "Dominant unless submission causes her despair";
+              this.muse.SubDom = "Dominant unless submission causes her despair";
               this.muse.Title = "Ultimate Despair";
               this.muse.Spec = "Human";
               this.muse.Reg = "Japan";
               this.muse.Desc = "NSFW ONLY - ";
-              this.muse.DescLewd =
-                "The ultimate fashionista, but ultimately just a girl who turns despair into pleasure for herself, she wants nothing but to share what she feels with everyone in the world. She's twisted, switches between states of self constantly, and her victory and defeat taste equally good to someone as utterly despairful as herself. There's nothing to hide anymore.";
+              this.muse.DescLewd = "The ultimate fashionista, but ultimately just a girl who turns despair into pleasure for herself, she wants nothing but to share what she feels with everyone in the world. She's twisted, switches between states of self constantly, and her victory and defeat taste equally good to someone as utterly despairful as herself. There's nothing to hide anymore.";
               this.muse.auArray = [
                 {
                   au: "base",
@@ -2225,6 +2957,17 @@ export default defineComponent({
                   sfw: "N",
                 },
               ];
+              this.muse.kinks.partner = "YES"
+              this.muse.kinks.organ = "YES"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Incest"
+              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "YES"
               break;
             case "nami":
               this.muse.Name = "Chiaki Nanami";
@@ -2233,38 +2976,39 @@ export default defineComponent({
               this.muse.Spec = "Human";
               this.muse.SpecSh = ", then Program";
               this.muse.Reg = "Japan";
-              this.muse.Desc =
-                "The ultimate gamer, all but for dating sims. She's rather soft-spoken, and gentle, to the point of even second-guessing her own statements and ideas. But ultimately she is well-meaning and easy to get along with by everyone. ";
-              this.muse.DescLewd =
-                "Recently she's really been getting into lewd games...with all the kinks they teach. Still as bad at them as in dating sims however.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "The ultimate gamer, all but for dating sims. She's rather soft-spoken, and gentle, to the point of even second-guessing her own statements and ideas. But ultimately she is well-meaning and easy to get along with by everyone. ";
+              this.muse.DescLewd = "Recently she's really been getting into lewd games...with all the kinks they teach. Still as bad at them as in dating sims however.";
+              this.muse.kinks.partner = "Machines, Monsterfucking, Gangbang"
+              this.muse.kinks.organ = "Tits"
+              this.muse.kinks.clothing = "Nylon, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+              this.muse.kinks.consent = "Dub-Con, Stealth"
+              this.muse.kinks.substance = "Lactation, Cum (Inside), Watersports"
+              this.muse.kinks.treatment = "NEUTRAL"
+              this.muse.kinks.bondage = "NEUTRAL"
+              this.muse.kinks.mindMod = "YES"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "YES"
               break;
             case "layer":
               this.muse.Name = "Layer";
-              this.muse.SubDom =
-                "Subby until she gains confidence in the relationship";
+              this.muse.SubDom = "Subby until she gains confidence in the relationship";
               this.muse.Title = "Operator";
               this.muse.Spec = "Reploid";
               this.muse.Reg = "Galápagos Islands";
-              this.muse.Desc =
-                "The picture of a professional and capable Navigator Reploid..until romance comes into play. At which point she'll become a flustered, shy disaster. Good thing her bangs cover her eyes...even if her top doesn't cover the bottom of her chest.";
-              this.muse.DescLewd =
-                "Gaining enough confidence in her romantic situation unlocks her confident mommy side...but it's a slow burn to get there. Before however? She'll let her interest do whatever they want to her.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
+              this.muse.Desc = "The picture of a professional and capable Navigator Reploid..until romance comes into play. At which point she'll become a flustered, shy disaster. Good thing her bangs cover her eyes...even if her top doesn't cover the bottom of her chest.";
+              this.muse.DescLewd = "Gaining enough confidence in her romantic situation unlocks her confident mommy side...but it's a slow burn to get there. Before however? She'll let her interest do whatever they want to her.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Tits"
+              this.muse.kinks.clothing = "Nylon, Dress-Up"
+              this.muse.kinks.relation = "Servitude, Romance"
+              this.muse.kinks.consent = "Free Use, Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Tentacles, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "Bimbofication, Mechanization"
               break;
             case "ruler":
               this.muse.Name = "";
@@ -2274,18 +3018,19 @@ export default defineComponent({
               this.muse.Spec = "Heroic Spirit ";
               this.muse.SpecSh = " (Heavenly)";
               this.muse.Reg = "???";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
-              this.muse.Desc =
-                "A woman who enjoys food and battle, turned human heroic spirit, and grown into a Heaven Heroic Spirit. While much more composed due to her growth, flashes of her battle-hungry (and general appetite hungry) self still shine through at times. Currently she is enjoying the world once more, this time as the greatest casino dealer. ";
-              this.muse.DescLewd =
-                "Another kind of hunger has awakened in her more mature form, and she will feed on it kindly if finding a victor, or harshly if finding a cheater.";
+              this.muse.Desc = "A woman who enjoys food and battle, turned human heroic spirit, and grown into a Heaven Heroic Spirit. While much more composed due to her growth, flashes of her battle-hungry (and general appetite hungry) self still shine through at times. Currently she is enjoying the world once more, this time as the greatest casino dealer. ";
+              this.muse.DescLewd = "Another kind of hunger has awakened in her more mature form, and she will feed on it kindly if finding a victor, or harshly if finding a cheater.";
+              this.muse.kinks.partner = "Bestiality"
+              this.muse.kinks.organ = "Mouth, Tits"
+              this.muse.kinks.clothing = "Nylon, Fishnet, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth, Exhibition"
+              this.muse.kinks.substance = "NEUTRAL"
+              this.muse.kinks.treatment = "Praise, Ryona"
+              this.muse.kinks.bondage = "Rope, Chains, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "NEUTRAL"
+              this.muse.kinks.bodyMod = "Breeding, Tattoos/Body writing"
+              this.muse.kinks.transform = "Twinning"
               break;
             case "ridem":
               this.muse.Name = "";
@@ -2294,19 +3039,40 @@ export default defineComponent({
               this.muse.Title = "Rider";
               this.muse.Spec = "Heroic Spirit";
               this.muse.Reg = "???";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "Y",
-                },
-              ];
-              this.muse.Desc =
-                "A woman who conceals both her emotions and eyes, hiding beauty and horrors behind both. She is completely loyal to her Master, and is not ultimately cruel, though she is hampered by a great deal of self-consciousness. ";
-              this.muse.DescLewd =
-                "She also hides a lot of care, for those who reciprocate loyalty to her, or those who remind of herself. Only with them will she let her emotions out...all of them. Very enthusiastically.";
+              this.muse.Desc = "A woman who conceals both her emotions and eyes, hiding beauty and horrors behind both. She is completely loyal to her Master, and is not ultimately cruel, though she is hampered by a great deal of self-consciousness. ";
+              this.muse.DescLewd = "She also hides a lot of care, for those who reciprocate loyalty to her, or those who remind of herself. Only with them will she let her emotions out...all of them. Very enthusiastically.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Pussy, Cock"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Enslavement, Servitude, Romance"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+              this.muse.kinks.substance = "Sweating, Cumplay (Inside), Watersports"
+              this.muse.kinks.treatment = "Praise"
+              this.muse.kinks.bondage = "Snakes, Chains, Hypnosis, Grappling, Sense Deprivation"
+              this.muse.kinks.mindMod = "Mindbreak"
+              this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+              this.muse.kinks.transform = "Mechanization"
               break;
+            case "brdgt":
+              this.muse.Name = "Bridget";
+              this.muse.SubDom = "Swinging Switch";
+              this.muse.Title = "Bounty Huntress";
+              this.muse.Spec = "Human";
+              this.muse.Reg = "England";
+              this.muse.Desc = "A very prolific bounty hunter who's recently accepted herself as a huntress. She's a bit of an airhead and a show-off, and extremely polite, though her bounties see a rougher side of her, that doesn't detracts from her loveliness much. ";
+              this.muse.DescLewd = "Accepting herself has massively increased her sexual interest, and she's looking forward to becoming both a sexy cock-y domme, and an absolute slut to be railed. So long as her gender's acknowledged, she'd happily go either way. She's always been ambitious!";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Ass, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Petplay, Romance"
+              this.muse.kinks.consent = "Free Use, Stealth"
+              this.muse.kinks.substance = "Cumplay, Watersports, Estrogen"
+              this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Rope, Hypnosis, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "NEUTRAL"
+              this.muse.kinks.transform = "Bimbofication"
+              break;  
           }
           break;
         case 5:
@@ -2318,26 +3084,39 @@ export default defineComponent({
               this.muse.Spec = "Human";
               this.muse.SpecSh = " (Makima's Puppy, Power's Cow)";
               this.muse.Reg = "Japan";
-              this.muse.Desc =
-                "A hot mess and nervous wreck of a girl who's found some level of safety and ease in following the commands of her fellow coworkers and superiors, particularly Makima and Power. ";
-              this.muse.DescLewd =
-                "She enjoy being their pet, what bodily additions they've made her get, and wants everyone to drink her milk, and know she's owned. Really really likes it when Power yells at her.";
+              this.muse.Desc = "A hot mess and nervous wreck of a girl who's found some level of safety and ease in following the commands of her fellow coworkers and superiors, particularly Makima and Power. ";
+              this.muse.DescLewd = "She enjoy being their pet, what bodily additions they've made her get, and wants everyone to drink her milk, and know she's owned. Really really likes it when Power yells at her.";
+              this.muse.kinks.partner = "Monsterfucking"
+              this.muse.kinks.organ = "Tits, Cock"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance"
+              this.muse.kinks.consent = "Free Use, Exhibition"
+              this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Rope, Chains, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication"
               break;
             case "marin":
               this.muse.SubDom = "YES";
               this.muse.Title = "";
               this.muse.Reg = "Japan";
-              switch (au) {
-                case "base":
-                  this.muse.Name = "Marin Kitagawa";
-                  this.muse.Spec = "Human";
-                  this.muse.Desc = "A girl who loves what she loves, and isn't ashamed of it. In this case, it's eroges, and cosplay, and her beloved Shizuku-tan (who she has cosplayed, from an eroge). For all her lack of shame in body and tastes, she gets quite flustered at romantic affairs. ";
-                  this.muse.DescLewd = "She will shamelessly endorse and enjoy the most degenerate, girl-degrading stuff, having internalized a lot of stuff from her porn.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                  ];
-                  break;
-              }
+              this.muse.Name = "Marin Kitagawa";
+              this.muse.Spec = "Human"; 
+              this.muse.Desc = "A girl who loves what she loves, and isn't ashamed of it. In this case, it's eroges, and cosplay, and her beloved Shizuku-tan (who she has cosplayed, from an eroge). For all her lack of shame in body and tastes, she gets quite flustered at romantic affairs. ";
+              this.muse.DescLewd = "She will shamelessly endorse and enjoy the most degenerate, girl-degrading stuff, having internalized a lot of stuff from her porn.";
+              this.muse.kinks.partner = "YES"
+              this.muse.kinks.organ = "Pussy, Cock"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Romance"
+              this.muse.kinks.consent = "YES"
+              this.muse.kinks.substance = "Cumplay, Watersports"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
               break;
             case "lucy":
               this.muse.Name = "Lucyna Kushinada";
@@ -2345,43 +3124,60 @@ export default defineComponent({
               this.muse.Title = "";
               this.muse.Spec = "Human (Enhanced)";
               this.muse.Reg = "Night City, California";
-              this.muse.Desc =
-                "An introverted netrunner who uses her looks for her advantage, as innocent or seductive as is needed to survive. She dreams of one day reaching the Moon and escaping the prison that is the city she lives in. ";
-              this.muse.DescLewd =
-                "Sometimes she fantasizes of taking over AND rule from the moon, make the world her bitch, starting with one short, loud girl who she'd love to pick up and break.";
+              this.muse.Desc = "An introverted netrunner who uses her looks for her advantage, as innocent or seductive as is needed to survive. She dreams of one day reaching the Moon and escaping the prison that is the city she lives in. ";
+              this.muse.DescLewd = "Sometimes she fantasizes of taking over AND rule from the moon, make the world her bitch, starting with one short, loud girl who she'd love to pick up and break.";
+              this.muse.kinks.partner = "Machines, Gangbang"
+              this.muse.kinks.organ = "NEUTRAL"
+              this.muse.kinks.clothing = "Latex, Leather, Nylon, Living, Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Servitude"
+              this.muse.kinks.consent = "NEUTRAL"
+              this.muse.kinks.substance = "Sweat, Cumplay, Watersports, Smoking"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Brainwashing"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "YES"
               break;
             case "yor":
               this.muse.TitleSh = "Thorn Princess";
               this.muse.Reg = "Ostonia";
-              switch (au) {
-                case "base":
-                  this.muse.Name = "Yor Forger nee Briar";
-                  this.muse.SubDom = "Dommy Mommy until genuinely cared and adored for";
-                  this.muse.Spec = "Human";
-                  this.muse.Desc = "The greatest assassin and mother, Yor took up killing to provide for her brother, and now her family. She's terrible at lying and cooking, but she gives her all for who she cares for. There are no more secrets between her and her 'fake' husband. ";
-                  this.muse.DescLewd = "He's okay with her sleeping around, so long as she does it in secret. She finds it thrilling, and has fooled around with her coworkers, his coworkers, Eden parents, and even some survivors of her missions.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                  ];
-                  break;
-              }
+              this.muse.Name = "Yor Forger nee Briar";
+              this.muse.SubDom = "Dommy Mommy until genuinely cared and adored for";
+              this.muse.Spec = "Human";
+              this.muse.Desc = "The greatest assassin and mother, Yor took up killing to provide for her brother, and now her family. She's terrible at lying and cooking, but she gives her all for who she cares for. There are no more secrets between her and her 'fake' husband. ";
+              this.muse.DescLewd = "He's okay with her sleeping around, so long as she does it in secret. She finds it thrilling, and has fooled around with her coworkers, his coworkers, Eden parents, and even some survivors of her missions.";
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Ass, Tits"
+              this.muse.kinks.clothing = "Latex, Leather, Living, Dress-Up"
+              this.muse.kinks.relation = "Enslavement, Servitude, Romance, Incest"
+              this.muse.kinks.consent = "Dub-Con, Stealth"
+              this.muse.kinks.substance = "Lactation, Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Ryona, Objectification"
+              this.muse.kinks.bondage = "Chains, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Bimbofication"
               break;
             case "stock":
               this.muse.Title = "";
               this.muse.Reg = "Japanifornia, Daten City";
-              switch (au) {
-                case "base":
-                  this.muse.Name = "Stocking Anarchy";
-                  this.muse.SubDom = "Dominant unless given the right motivation";
-                  this.muse.Spec = "Angel";
-                  this.muse.SpecSh = " or Demon";
-                  this.muse.Desc = "A relatively professional ghost-destroying angel, Stocking adores sweets and mocks sex, in defiance of her loose and sweet-hating sister. She perfectly combines gothic and sweet lolita styles, just as well as she is both sweetness and seriousness. ";
-                  this.muse.DescLewd = "Despite often making fun of Scanty and Kneesocks for their incestual, BDSM-heavy life, she herself is aroused by those things as well. And she will do anything for sweets.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                  ];
-                  break;
-              }
+              this.muse.Name = "Stocking Anarchy";
+              this.muse.SubDom = "Dominant unless given the right motivation";
+              this.muse.Spec = "Angel";
+              this.muse.SpecSh = " or Demon";
+              this.muse.Desc = "A relatively professional ghost-destroying angel, Stocking adores sweets and mocks sex, in defiance of her loose and sweet-hating sister. She perfectly combines gothic and sweet lolita styles, just as well as she is both sweetness and seriousness. ";
+              this.muse.DescLewd = "Despite often making fun of Scanty and Kneesocks for their incestual, BDSM-heavy life, she herself is aroused by those things as well. And she will do anything for sweets.";
+              this.muse.kinks.partner = "YES"
+              this.muse.kinks.organ = "Mouth, Cock"
+              this.muse.kinks.clothing = "Frills, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement, Romance, Incest"
+              this.muse.kinks.consent = "Dub-Con, Non-Con, Exhibition"
+              this.muse.kinks.substance = "Foodplay, Sweat, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Tentacles, Rope, Chains, Environment"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Gothification"
               break;
             case "frie":
               this.muse.Title = "";
@@ -2397,6 +3193,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "mimic", emblem: "/versions/mimic.png", check: false, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Monsterfucking (Mimics, Demons)"
+                  this.muse.kinks.organ = "Mouth"
+                  this.muse.kinks.clothing = "Nudity"
+                  this.muse.kinks.relation = "Petplay, Enslavement"
+                  this.muse.kinks.consent = "Free Use, Voyeur"
+                  this.muse.kinks.substance = "Cumplay (Outside), Watersports"
+                  this.muse.kinks.treatment = "Praise, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Mindbreak"
+                  this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
+                  this.muse.kinks.transform = "Bimbofication, Gothification"
                   break;
                 case "mimic":
                   this.muse.Name = "Frieren?";
@@ -2409,24 +3216,39 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mimic", emblem: "/versions/mimic.png", check: true, sfw: "N", },
                   ];
+                  this.muse.kinks.partner = "Monsterfucking (Mimics, Demons)"
+                  this.muse.kinks.organ = "Mouth"
+                  this.muse.kinks.clothing = "Living Clothes"
+                  this.muse.kinks.relation = "Enslavement, Incest"
+                  this.muse.kinks.consent = "Non-Con, Stealth"
+                  this.muse.kinks.substance = "Lactation, Cumplay (Inside), Watersports, Aphrodisiacs"
+                  this.muse.kinks.treatment = "Ryona, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Brainwashing"
+                  this.muse.kinks.bodyMod = "Breeding"
+                  this.muse.kinks.transform = "Mimicry"
                   break;
               }
               break;
             case "fern":
               this.muse.Title = "";
               this.muse.Reg = "N/A: Traveling";
-              switch (au) {
-                case "base":
-                  this.muse.Name = "Fern";
-                  this.muse.SubDom = "Resigned bottom, frustrated top";
-                  this.muse.Spec = "Human";
-                  this.muse.Desc = "A young girl being taught by Frieren, though half the time she's taking care of her over poor habits. She tries to embody the simple enjoyment of magic by itself, though she's quick to frustrate and anger. ";
-                  this.muse.DescLewd = "Unfortunately dragged along commonly to her master's sex-periments, usually having to play nice until it's done. Thankfully used to taking her frustrations out on her in private, in control.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                  ];
-                  break;
-              }
+              this.muse.Name = "Fern";
+              this.muse.SubDom = "Resigned bottom, frustrated top";
+              this.muse.Spec = "Human";
+              this.muse.Desc = "A young girl being taught by Frieren, though half the time she's taking care of her over poor habits. She tries to embody the simple enjoyment of magic by itself, though she's quick to frustrate and anger. ";
+              this.muse.DescLewd = "Unfortunately dragged along commonly to her master's sex-periments, usually having to play nice until it's done. Thankfully used to taking her frustrations out on her in private, in control.";
+              this.muse.kinks.partner = "Monsterfucking"
+              this.muse.kinks.organ = "Tits, Cock"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Servitude, Incest"
+              this.muse.kinks.consent = "Dub-Con, Stealth, Exhibition"
+              this.muse.kinks.substance = "Lactation, Sweating, Cumplay (/Inside), Watersports"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "Tentacles, Grappling"
+              this.muse.kinks.mindMod = "Mindbreak"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "Bimbofication, Gothification"
               break;
             case "paru":
               this.muse.Name = "Paru Amano";
@@ -2436,6 +3258,17 @@ export default defineComponent({
               this.muse.Reg = "Japan";
               this.muse.Desc = "An easygoing woman working at Starry's after dropping out of high school, and doing vtubing on the side. Despite her sweetness and ease, she's actually somewhat insecure about presence, as she's not super active as a vtuber, and outside of that she works behind the scenes. ";
               this.muse.DescLewd = "She's incredibly aroused and perverted though, and is not shy in using her assets to get off, feeling quite confident in the throes of lust.";
+              this.muse.kinks.partner = "Gangbang, Machine"
+              this.muse.kinks.organ = "Tits, Cock"
+              this.muse.kinks.clothing = "Latex, Leather, Fishnet"
+              this.muse.kinks.relation = "Enslavement, Servitude"
+              this.muse.kinks.consent = "Free Use, Dub-Con, Stealth, Exhibition"
+              this.muse.kinks.substance = "Cumplay, Watersports, Smoking"
+              this.muse.kinks.treatment = "Praise, Degradation, Objectification, Humiliation"
+              this.muse.kinks.bondage = "Tentacles, Chains, Grappling"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "Piercing, Tattoos"
+              this.muse.kinks.transform = "Gothification, Twinning"
               break;
           }
           break;
