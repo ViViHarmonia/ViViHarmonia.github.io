@@ -32,9 +32,9 @@
             </template>
             <template v-slot:body-cell-actions="props">
               <q-td :props="props">
-                <q-btn class="button" @click="museProfileOpen(props.row.sect, props.row.code, props.row.state)"
+                <q-btn class="buttonTable" @click="museProfileOpen(props.row.sect, props.row.code, props.row.state)"
                   label="Desc." />
-                <q-btn class="button" v-show="nsfwSwitch"
+                <q-btn class="buttonTable" v-show="nsfwSwitch"
                   @click="museProfileOpen(props.row.sect, props.row.code, props.row.state); descKinkSwitch = true"
                   label="Kinks" />
               </q-td>
@@ -3327,6 +3327,12 @@ export default defineComponent({
 .button {
   background: white;
   color: black;
+}
+  
+.buttonTable {
+  background: white;
+  color: black;
+  margin: 2px;
 }
 
 .button[disabled] {
