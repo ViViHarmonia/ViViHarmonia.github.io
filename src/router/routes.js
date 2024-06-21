@@ -4,7 +4,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/MirrorGirls.vue') }
+      { path: '', component: () => import('pages/MGNew.vue') }
     ]
   },
   {
@@ -15,10 +15,10 @@ const routes = [
     ]
   },
   {
-    path: '/new',
+    path: '/old',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/MGNew.vue') }
+      { path: '', component: () => import('pages/MirrorGirls.vue') }
     ]
   },
 

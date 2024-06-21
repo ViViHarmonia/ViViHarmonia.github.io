@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-center">
           <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table" hide-bottom
-            virtual-scroll auto-width :rows-per-page-options="[0]" :rows="finalCharArr">
+            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr">
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
                 input-debounce="0" wrap-cells dark outlined dense />
@@ -18,7 +18,7 @@
             </template>
             <template v-slot:body-cell-icon="props">
               <q-td :props="props">
-                <q-avatar size="64px" rounded class="shadow-10">
+                <q-avatar rounded class="iconMuseTable">
                   <img :src="props.row.avatar" />
                 </q-avatar>
               </q-td>
@@ -231,7 +231,7 @@ export default defineComponent({
         name: "Rosa",
         state: "base",
         free: "YES",
-        states: ["base","rocket","plasma","ua"],
+        states: ["base", "rocket", "plasma", "ua"],
         uni: "Pokémon",
         avatar: "/museicon/rosa.jpg",
       },
@@ -241,7 +241,7 @@ export default defineComponent({
         name: "Nemona",
         state: "base",
         free: "NO",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/nemona.png",
       },
@@ -251,7 +251,7 @@ export default defineComponent({
         name: "Marnie",
         state: "base",
         free: "YES",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/marnie.jpg",
       },
@@ -261,7 +261,7 @@ export default defineComponent({
         name: "Irida",
         state: "base",
         free: "NO",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/irida.jpg",
       },
@@ -271,7 +271,7 @@ export default defineComponent({
         name: "Iris",
         state: "base",
         free: "NO",
-        states: ["base","rocket","plasma"],
+        states: ["base", "rocket", "plasma"],
         uni: "Pokémon",
         avatar: "/museicon/iris.jpeg",
       },
@@ -281,7 +281,7 @@ export default defineComponent({
         name: "Serena",
         state: "base",
         free: "NO",
-        states: ["base","rocket","flare"],
+        states: ["base", "rocket", "flare"],
         uni: "Pokémon",
         avatar: "/museicon/serena.png",
       },
@@ -291,7 +291,7 @@ export default defineComponent({
         name: "Sabrina",
         state: "base",
         free: "NO",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/sabrina.jpg",
       },
@@ -301,7 +301,7 @@ export default defineComponent({
         name: "Cynthia",
         state: "base",
         free: "YES",
-        states: ["base","rocket","galactic"],
+        states: ["base", "rocket", "galactic"],
         uni: "Pokémon",
         avatar: "/museicon/cyn.jpg",
       },
@@ -311,7 +311,7 @@ export default defineComponent({
         name: "Nessa",
         state: "base",
         free: "NO",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/nesa.png",
       },
@@ -321,7 +321,7 @@ export default defineComponent({
         name: "Jessie",
         state: "base",
         free: "NO",
-        states: ["base","rocket"],
+        states: ["base", "rocket"],
         uni: "Pokémon",
         avatar: "/museicon/jessie.jpg",
       },
@@ -331,7 +331,7 @@ export default defineComponent({
         name: "Elesa",
         state: "base",
         free: "NO",
-        states: ["base","rocket","plasma"],
+        states: ["base", "rocket", "plasma"],
         uni: "Pokémon",
         avatar: "/museicon/ele.gif",
       },
@@ -341,7 +341,7 @@ export default defineComponent({
         name: "Lusamine",
         state: "base",
         free: "NO",
-        states: ["base","rocket","aether"],
+        states: ["base", "rocket", "aether"],
         uni: "Pokémon",
         avatar: "/museicon/lusa.jpg",
       },
@@ -361,7 +361,7 @@ export default defineComponent({
         name: "Lumine",
         state: "base",
         free: "NO",
-        states: ["base","mirror"],
+        states: ["base", "mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/lumi.jpeg",
       },
@@ -371,7 +371,7 @@ export default defineComponent({
         name: "Lisa Minci",
         state: "base",
         free: "NO",
-        states: ["base","mirror"],
+        states: ["base", "mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/lisa.jpg",
       },
@@ -381,7 +381,7 @@ export default defineComponent({
         name: "Rosaria",
         state: "base",
         free: "NO",
-        states: ["base","mirror"],
+        states: ["base", "mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/rosaria.jpg",
       },
@@ -391,7 +391,7 @@ export default defineComponent({
         name: "Yelan",
         state: "base",
         free: "NO",
-        states: ["base","mirror"],
+        states: ["base", "mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/yelan.jpeg",
       },
@@ -562,7 +562,7 @@ export default defineComponent({
         name: "Samus Aran",
         state: "base",
         free: "YES",
-        states: ["base","shy"],
+        states: ["base", "shy"],
         uni: "Metroid",
         avatar: "/museicon/samus.jpg",
       },
@@ -572,7 +572,7 @@ export default defineComponent({
         name: "Bowsette Koopa",
         state: "base",
         free: "YES",
-        states: ["base","shy"],
+        states: ["base", "shy"],
         uni: "Super Mario",
         avatar: "/museicon/bowsette.jpg",
       },
@@ -582,7 +582,7 @@ export default defineComponent({
         name: "Peach Toadstool",
         state: "base",
         free: "NO",
-        states: ["base","shy","bow","shadow"],
+        states: ["base", "shy", "bow", "shadow"],
         uni: "Super Mario",
         avatar: "/museicon/peach.jpg",
       },
@@ -592,7 +592,7 @@ export default defineComponent({
         name: "Rosalina",
         state: "base",
         free: "NO",
-        states: ["base","shy","bow"],
+        states: ["base", "shy", "bow"],
         uni: "Super Mario",
         avatar: "/museicon/rosalina.jpg",
       },
@@ -612,7 +612,7 @@ export default defineComponent({
         name: "Purah",
         state: "base",
         free: "YES",
-        states: ["base","aoc","yiga"],
+        states: ["base", "aoc", "yiga"],
         uni: "Legend of Zelda",
         avatar: "/museicon/purah.jpeg",
       },
@@ -642,7 +642,7 @@ export default defineComponent({
         name: "Tae Takemi",
         state: "base",
         free: "YES",
-        states: ["base","lust"],
+        states: ["base", "lust"],
         uni: "Persona 5",
         avatar: "/museicon/tae.png",
       },
@@ -652,7 +652,7 @@ export default defineComponent({
         name: "Ann Takamaki",
         state: "base",
         free: "NO",
-        states: ["base","lust"],
+        states: ["base", "lust"],
         uni: "Persona 5",
         avatar: "/museicon/ann.png",
       },
@@ -662,7 +662,7 @@ export default defineComponent({
         name: "Sae Nijima",
         state: "base",
         free: "NO",
-        states: ["base","lust"],
+        states: ["base", "lust"],
         uni: "Persona 5",
         avatar: "/museicon/sae1.jpeg",
       },
@@ -793,7 +793,7 @@ export default defineComponent({
         name: "Frieren",
         state: "base",
         free: "NO",
-        states: ["base","mimic"],
+        states: ["base", "mimic"],
         uni: "Sousou no Frieren",
         avatar: "/museicon/frie.jpg",
       },
@@ -1746,7 +1746,7 @@ export default defineComponent({
               this.muse.Reg = "Johto";
               this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
               this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
-              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y",},];
+              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },];
               this.muse.kinks.partner = "Dragonfucking"
               this.muse.kinks.organ = "NEUTRAL"
               this.muse.kinks.clothing = "NEUTRAL"
@@ -1800,17 +1800,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
-              this.muse.kinks.partner = "La Signora"
-              this.muse.kinks.organ = "Mouth, Tits"
-              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-              this.muse.kinks.substance = "Cum (Outside)"
-              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-              this.muse.kinks.bodyMod = "Fatui Brands"
-              this.muse.kinks.transform = "Twinning"
+                  this.muse.kinks.partner = "La Signora"
+                  this.muse.kinks.organ = "Mouth, Tits"
+                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Cum (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "Fatui Brands"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1851,17 +1851,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
-              this.muse.kinks.partner = "La Signora"
-              this.muse.kinks.organ = "Mouth, Tits"
-              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-              this.muse.kinks.substance = "Cum (Outside)"
-              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-              this.muse.kinks.bodyMod = "Fatui Brands"
-              this.muse.kinks.transform = "Twinning"
+                  this.muse.kinks.partner = "La Signora"
+                  this.muse.kinks.organ = "Mouth, Tits"
+                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Cum (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "Fatui Brands"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1902,17 +1902,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
-              this.muse.kinks.partner = "La Signora"
-              this.muse.kinks.organ = "Mouth, Tits"
-              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-              this.muse.kinks.substance = "Cum (Outside)"
-              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-              this.muse.kinks.bodyMod = "Fatui Brands"
-              this.muse.kinks.transform = "Twinning"
+                  this.muse.kinks.partner = "La Signora"
+                  this.muse.kinks.organ = "Mouth, Tits"
+                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Cum (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "Fatui Brands"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1953,17 +1953,17 @@ export default defineComponent({
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
                   ];
-              this.muse.kinks.partner = "La Signora"
-              this.muse.kinks.organ = "Mouth, Tits"
-              this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-              this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-              this.muse.kinks.substance = "Cum (Outside)"
-              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-              this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-              this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-              this.muse.kinks.bodyMod = "Fatui Brands"
-              this.muse.kinks.transform = "Twinning"
+                  this.muse.kinks.partner = "La Signora"
+                  this.muse.kinks.organ = "Mouth, Tits"
+                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Cum (Outside)"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "Fatui Brands"
+                  this.muse.kinks.transform = "Twinning"
                   break;
               }
               break;
@@ -1989,7 +1989,7 @@ export default defineComponent({
               break;
           }
           break;
-        case 3: 
+        case 3:
           switch (char) {
             case "mei":
               this.muse.Name = "Mei Hatsume";
@@ -2692,7 +2692,7 @@ export default defineComponent({
               break;
             case "edel":
               this.muse.Title = "";
-              this.muse.Name = "Edelgard von Hresvelg" 
+              this.muse.Name = "Edelgard von Hresvelg"
               this.muse.Reg = "Fódlan";
               this.muse.Desc = "A woman with the weight of the world in her shoulders, carrying great and dark secrets, and dedicated to her goals to dangerous heights. She maintains formality and composure, and trusts in others abilities, but forgets to relax, and her trust does not means she lets her own guard down emotionally. ";
               this.muse.DescLewd = "Has a massive crush on her teacher, Byleth, and if she won't fuck Edelgard herself she'll make sure to fuck Byleth instead.";
@@ -3073,7 +3073,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "Bimbofication"
-              break;  
+              break;
           }
           break;
         case 5:
@@ -3104,7 +3104,7 @@ export default defineComponent({
               this.muse.Title = "";
               this.muse.Reg = "Japan";
               this.muse.Name = "Marin Kitagawa";
-              this.muse.Spec = "Human"; 
+              this.muse.Spec = "Human";
               this.muse.Desc = "A girl who loves what she loves, and isn't ashamed of it. In this case, it's eroges, and cosplay, and her beloved Shizuku-tan (who she has cosplayed, from an eroge). For all her lack of shame in body and tastes, she gets quite flustered at romantic affairs. ";
               this.muse.DescLewd = "She will shamelessly endorse and enjoy the most degenerate, girl-degrading stuff, having internalized a lot of stuff from her porn.";
               this.muse.kinks.partner = "YES"
@@ -3319,6 +3319,18 @@ export default defineComponent({
 });
 </script>
 <style>
+@media screen and (min-width: 980px) {
+  .iconMuseTable {
+    font-size: 64px;
+  }
+  .buttonTable {
+    font-size: 14px;
+  }
+  .my-sticky-header-table {
+    width: 1000px;
+  }
+}
+
 .cardHolder {
   margin-bottom: 12px;
   padding: 0 4%;
@@ -3329,7 +3341,7 @@ export default defineComponent({
   background: white;
   color: black;
 }
-  
+
 .buttonTable {
   background: white;
   color: black;
@@ -3366,7 +3378,6 @@ export default defineComponent({
 
 .my-sticky-header-table {
   height: 500px;
-  width: 1000px;
 }
 
 .q-table__top,
