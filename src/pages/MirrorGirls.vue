@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-center">
           <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table" hide-bottom
-            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr" :grid="$q.screen.lt.md">
+            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr" :grid="$q.screen.lt.sm">
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
                 input-debounce="0" dark outlined dense />
