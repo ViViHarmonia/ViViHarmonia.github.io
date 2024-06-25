@@ -11,10 +11,10 @@
             virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr">
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
-                input-debounce="0" wrap-cells dark outlined dense />
+                input-debounce="0" dark outlined dense />
               <q-toggle v-model="nsfwSwitch" color="black" />
-              <span v-show="nsfwSwitch">NSFW</span>
-              <span v-show="!nsfwSwitch">SFW</span>
+              <span v-show="nsfwSwitch">N</span>
+              <span>SFW</span>
             </template>
             <template v-slot:body-cell-icon="props">
               <q-td :props="props">
