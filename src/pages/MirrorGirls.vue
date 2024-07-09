@@ -637,6 +637,7 @@ export default defineComponent({
         uni: "Helltaker",
         avatar: "/museicon/lucifer.jpg",
       },
+      //{ code: "azaz", sect: 4, name:"Azazel",state: "base", free: "NO", states:[ "base" ], uni: "Helltaker", avatar: "/museicon/", }, UNFINISHED
       {
         code: "tae",
         sect: 4,
@@ -818,6 +819,8 @@ export default defineComponent({
         uni: "Bocchi the Rock!",
         avatar: "/museicon/paru.jpg",
       },
+      //{ code: "clare", sect: 5, name:"Claire François",state: "base", free: "NO", states:[ "base" ], uni: "In Love With the Villainess", avatar: "/museicon/", }, UNFINISHED
+      //{ code: "utena", sect: 5, name:"Utena Hiiragi",state: "base", free: "NO", states:[ "base" ], uni: "Gushing Over Magical Girls", avatar: "/museicon/", }, UNFINISHED
       //{ code: "beni", sect: 5, name:"",state: "base", free: "NO", states:[ "base" ], uni: "", avatar: "/museicon/kobeni.jpeg", }, DORMANT
     ],
     finalCharArr: [],
@@ -2733,6 +2736,26 @@ export default defineComponent({
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Gothification"
               break;
+            case "azaz":
+              this.muse.Name = "Azazel";
+              this.muse.SubDom = "Eager submissive";
+              this.muse.Spec = "Angel";
+              this.muse.SpecSh = "(Soon to be Fallen)";
+              this.muse.Reg = "Hell";
+              this.muse.Desc = "An angel who's too curious for her own good, and too gay to function. Despite talking high and mighty of purity, God, heaven angels and whatnot, in reality she prioritizes knowledge, research, and understanding at a higher rate than any of these. ";
+              this.muse.DescLewd = "This will be her downfall, and her turn to fallen angel is a certainty. The only question is how much will she accept herself..and how much damage she'll cause to others.";
+              this.muse.kinks.partner = "Monsterfucking, Bestiality, Gangbang"
+              this.muse.kinks.organ = "Mouth"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Servitude, Romance"
+              this.muse.kinks.consent = "Voyeur"
+              this.muse.kinks.substance = "Sweat, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification, Humiliation"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Corruption, Mindbreak"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "Gothification, Mechanization"
+              break;
             case "tae":
               this.muse.Spec = "Human";
               this.muse.Reg = "Japan, Yongen-Jaya";
@@ -3272,6 +3295,46 @@ export default defineComponent({
               this.muse.kinks.bodyMod = "Piercing, Tattoos"
               this.muse.kinks.transform = "Gothification, Twinning"
               break;
+            case "clare":
+              this.muse.Name = "Claire François";
+              this.muse.SubDom = "Powerful top, flustered tsundere if caught offguard";
+              this.muse.Spec = "Human";
+              this.muse.Reg = "Bauer Kingdom";
+              this.muse.RegSh = ", Earth";
+              this.muse.Desc = "A fiery, strong-willed girl who's proud to be a noble, without taking it and it's intended purpose for granted. She does her utmost at all she tries, and tries to project confidence. ";
+              this.muse.DescLewd = "Despite secretly being very vulnerable, she does have somewhat of a sadistic, dominating streak, and if she found enough strength in herself or faith in those drawn to her, she's willing to make a mess of them.";
+              this.muse.kinks.partner = "Toys"
+              this.muse.kinks.organ = "Mouth, Pussy"
+              this.muse.kinks.clothing = "Nudity, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Servitude, Romance, Incest,"
+              this.muse.kinks.consent = "Dub-Con, Voyeur, Stealth"
+              this.muse.kinks.substance = "Lactation"
+              this.muse.kinks.treatment = "Praise, Objectification"
+              this.muse.kinks.bondage = "Rope, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Corruption"
+              this.muse.kinks.bodyMod = "Tattoos/Body writing"
+              this.muse.kinks.transform = "Bimbofication"
+              break
+            case "utena":
+              this.muse.Name = "Utena Hiiragi";
+              this.muse.SubDom = "Deranged dominant";
+              this.muse.Title = "Magia Baiser";
+              this.muse.Spec = "Human";
+              this.muse.Reg = "Japan";
+              this.muse.Desc = "NSFW ONLY - ";
+              this.muse.DescLewd = "A sullen plain girl who loves magical girls and...is enthusiastic about BDSM. She has found a ground in common in putting her current locals through sexual villainous scenarios, to see them overcome them. Though things are more complicated than that usually, she's happy to indulge in her girls and her tastes.";
+              this.muse.kinks.partner = "Toys/Machines, Monsterfucking"
+              this.muse.kinks.organ = "Tits, Ass"
+              this.muse.kinks.clothing = "Latex, Dress-Up"
+              this.muse.kinks.relation = "Petplay, Enslavement"
+              this.muse.kinks.consent = "Dub-Con, Non-Con, Voyeur, Exhibition"
+              this.muse.kinks.substance = "YES"
+              this.muse.kinks.treatment = "YES"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "YES"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "NEUTRAL"
+              break
           }
           break;
       }
