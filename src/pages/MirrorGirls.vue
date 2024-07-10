@@ -8,7 +8,8 @@
         </div>
         <div class="row justify-center">
           <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table" hide-bottom
-            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr" :grid="$q.screen.lt.sm">
+            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr"
+            :grid="$q.screen.lt.sm">
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
                 input-debounce="0" dark outlined dense />
@@ -53,8 +54,8 @@
             <div class="row justify-start align-center">
               <div class="col align-center">
                 <q-toggle v-model="nsfwSwitch" color="black" />
-              <span v-show="nsfwSwitch">N</span>
-              <span>SFW</span>
+                <span v-show="nsfwSwitch">N</span>
+                <span>SFW</span>
                 <q-toggle v-model="descKinkSwitch" color="purple" v-show="nsfwSwitch" />
                 <span v-show="descKinkSwitch && nsfwSwitch">Kinks</span>
                 <span v-show="!descKinkSwitch && nsfwSwitch">Bio</span>
@@ -216,7 +217,7 @@ export default defineComponent({
       { name: "franchise", label: "Universe", align: "center", field: "uni" },
       { name: "actions", label: "", align: "end", field: "" },
     ],
-    kinklist: ["Partner:","Assets:","Clothing:","Relation:","Consent:","Substance:","Treatment:","Bondage:","Mind Mod.:","Body Mod.:","Transform:"],
+    kinklist: ["Partner:", "Assets:", "Clothing:", "Relation:", "Consent:", "Substance:", "Treatment:", "Bondage:", "Mind Mod.:", "Body Mod.:", "Transform:"],
     museSectLst: [
       { label: "All", value: 0 },
       { label: "Pokémon", value: 1 },
@@ -637,7 +638,7 @@ export default defineComponent({
         uni: "Helltaker",
         avatar: "/museicon/lucifer.jpg",
       },
-      //{ code: "azaz", sect: 4, name:"Azazel",state: "base", free: "NO", states:[ "base" ], uni: "Helltaker", avatar: "/museicon/", }, UNFINISHED
+      { code: "azaz", sect: 4, name: "Azazel", state: "base", free: "NO", states: ["base"], uni: "Helltaker", avatar: "/museicon/azazel.jpg", },
       {
         code: "tae",
         sect: 4,
@@ -819,8 +820,8 @@ export default defineComponent({
         uni: "Bocchi the Rock!",
         avatar: "/museicon/paru.jpg",
       },
-      //{ code: "clare", sect: 5, name:"Claire François",state: "base", free: "NO", states:[ "base" ], uni: "In Love With the Villainess", avatar: "/museicon/", }, UNFINISHED
-      //{ code: "utena", sect: 5, name:"Utena Hiiragi",state: "base", free: "NO", states:[ "base" ], uni: "Gushing Over Magical Girls", avatar: "/museicon/", }, UNFINISHED
+      { code: "clare", sect: 5, name: "Claire François", state: "base", free: "YES", states: ["base"], uni: "In Love With the Villainess", avatar: "/museicon/claire.jpg", },
+      { code: "utena", sect: 5, name: "Utena Hiiragi", state: "base", free: "YES", states: ["base"], uni: "Gushing Over Magical Girls", avatar: "/museicon/utena.jpg", },
       //{ code: "beni", sect: 5, name:"",state: "base", free: "NO", states:[ "base" ], uni: "", avatar: "/museicon/kobeni.jpeg", }, DORMANT
     ],
     finalCharArr: [],
@@ -837,6 +838,8 @@ export default defineComponent({
       RegSh: "",
       Desc: "",
       DescLewd: "",
+      MetaTupper: "",
+      Universe: "",
       auArray: [],
       slideArray: [],
       kinks: {
@@ -3387,9 +3390,11 @@ export default defineComponent({
   .iconMuseTable {
     font-size: 64px;
   }
+
   .buttonTable {
     font-size: 14px;
   }
+
   .my-sticky-header-table {
     width: 1000px;
   }
