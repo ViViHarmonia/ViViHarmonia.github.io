@@ -862,12 +862,24 @@ export default defineComponent({
       },
       {
         code: "utena",
-        sect: 5, name: "Utena Hiiragi",
+        sect: 5, 
+        name: "Utena Hiiragi",
         state: "base",
         free: "YES",
         states: ["base"],
         uni: "Gushing Over Magical Girls",
         avatar: "/museicon/utena.jpg",
+      },
+      
+      {
+        code: "ursa",
+        sect: 5, 
+        name: "Ursula Callistis",
+        state: "base",
+        free: "YES",
+        states: ["base"],
+        uni: "Little Witch Academia",
+        avatar: "/museicon/ursula.jpg",
       },
       //{ code: "beni", sect: 5, name:"",state: "base", free: "NO", states:[ "base" ], uni: "", avatar: "/museicon/kobeni.jpeg", }, DORMANT
     ],
@@ -1241,6 +1253,7 @@ export default defineComponent({
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
+                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang"
                   this.muse.kinks.organ = "NEUTRAL"
@@ -1261,6 +1274,7 @@ export default defineComponent({
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
+                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "NEUTRAL"
@@ -1273,6 +1287,27 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  break;
+                case "galaxy":
+                  this.muse.Title = "Galactic Scientist";
+                  this.muse.Desc = "NSFW ONLY - ";
+                  this.muse.DescLewd = "A girl brought from the past to use her expertise to handle the mythological matters of the team. Thoroughly brainwashed and extracted of her knowledge, she is now a scientist only in name, as she's not too technologically savvy yet, but knows her lore.  She's caught the eye of Admin Cynthia, as an archaeologist and historian.";
+                  this.muse.auArray = [
+                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
+                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
+                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
+                  ];
+                  this.muse.kinks.partner = "Machines, Pokephilia, Team Galactic"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nudity, Nylon"
+                  this.muse.kinks.relation = "Enslavement"
+                  this.muse.kinks.consent = "Non-Con, Stealth"
+                  this.muse.kinks.substance = "Sweat, Cumplay, Drugs"
+                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+                  this.muse.kinks.bondage = "Tentacles, Rope, Chains, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "YES"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "YES"
                   break;
               }
               break;
@@ -1817,16 +1852,16 @@ export default defineComponent({
               this.muse.Reg = "Sinnoh";
               this.muse.Name = "Gardenia Natane";
               this.muse.Spec = "Human";
+              this.muse.SubDom = "Enthusiastic submissive";
               switch (au) {
                 case "base":
                   this.muse.Title = "Eterna Gym Leader";
-                  this.muse.SubDom = "Enthusiastic submissive";
                   this.muse.Desc = "A bright and optimistic lady who adores grass types, fears ghost types, and always seeks out new challenges, Gardenia is always ready for a battle, a trade, or a chat. ";
                   this.muse.DescLewd = "Her adoration of grass types can definitely get too far, as their usual agressive reactions to a stranger/bad news draw a very lustful reaction out of her when she's the victim.";
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    //{ au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    //{ au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
+                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
+                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
                   this.muse.kinks.partner = "Pokephilia"
                   this.muse.kinks.organ = "NEUTRAL"
@@ -1842,44 +1877,42 @@ export default defineComponent({
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
-                  this.muse.SubDom = "Vicious Dommy, Power Bottom.";
                   this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "Offered quite a bit of endorsement for her help in studying mythos (as well as promises that they wouldn't use it for as dangerous goals as Team Galactic), she joined on contract, though contact with their uniforms and culture and the myriad of Sonia's inventions degraded her until she accepted to join in full. She no longer has qualms about whether her knowledge is used for great evil, only how it'll serve team Rocket, her beloved.";
+                  this.muse.DescLewd = "Dawn approached her in assisting her with aphrodisiac and calming pheromones, to rebrand her recently acquired Team Rocket into something much more positive..and arousing. Claiming it'd popularize the effects of grass type pokemons, she accepted.";
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
                     { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
                   ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
-                  this.muse.kinks.organ = "Mouth, Ass, Tits"
-                  this.muse.kinks.clothing = "Latex, Spandex"
-                  this.muse.kinks.relation = "Petplay, Servitude, Incest"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nudity, Spandex"
+                  this.muse.kinks.relation = "Petplay, Servitude"
                   this.muse.kinks.consent = "Dub-Con, Exhibition"
-                  this.muse.kinks.substance = "Lactation, Cumplay"
-                  this.muse.kinks.treatment = "Praise"
-                  this.muse.kinks.bondage = "Hypnosis, Grappling, Sense Deprivation"
-                  this.muse.kinks.mindMod = "Corruption, Assimilation"
+                  this.muse.kinks.substance = "Watersports, Drugs"
+                  this.muse.kinks.treatment = "Ryona, Objectification"
+                  this.muse.kinks.bondage = "Tentacles, Rope, Hypnosis, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Breeding, Piercing"
-                  this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+                  this.muse.kinks.transform = "NEUTRAL"
                   break;
                 case "galaxy":
-                  this.muse.Title = "Galactic Admin";
-                  this.muse.SubDom = "Ready to obey, and destroy";
+                  this.muse.Title = "Galactic Grunt";
                   this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "Unknowingly and accidentally helped with the archaeological/mythos side of things, realizing how much she had helped the team broke her, choosing to use their tech to be brainwashed. Now she's happily loyal, without those pesky morals that gave her guilt, and all she had to give away was her life and pride. The errors that led to her assistance were entirely staged to wrack her with guilt, and the pleasure she gets when obeying from the brainwashing helped ensure she'd never leave.";
+                  this.muse.DescLewd = "Captured and thoroughly brainwashed, her mind switched her love of nature and plant types to machines and steel and electric types. Now a lowly grunt, she is allowed to keep her name, appearence, and tastes, if only for the entertainment of the higher ups, seeing such a nature-loving woman get aroused and obedient at machines with no feelings or heart.";
                   this.muse.auArray = [
                     { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
                     { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
                     { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
                   ];
-                  this.muse.kinks.partner = "Machines, Pokephilia, Team Galactic"
-                  this.muse.kinks.organ = "Mouth, Ass, Tits"
-                  this.muse.kinks.clothing = "Nylon"
-                  this.muse.kinks.relation = "Petplay, Enslavement, Incest"
+                  this.muse.kinks.partner = "Machines, Team Galactic"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Nudity, Nylon"
+                  this.muse.kinks.relation = "Petplay, Enslavement"
                   this.muse.kinks.consent = "Non-Con, Exhibition"
-                  this.muse.kinks.substance = "Lactation, Sweating, Cumplay, Drugs"
+                  this.muse.kinks.substance = "Sweating, Watersports, Drugs"
                   this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis, Grappling, Environment"
+                  this.muse.kinks.bondage = "Tentacles, Chains, Hypnosis, Environment, Sense Deprivation"
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Mechanization"
@@ -3499,6 +3532,33 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "NEUTRAL"
+              break
+            case "ursa":
+              this.muse.Name = "Ursula Callistis"; 
+              this.muse.NameSh = " Chariot du Nord";
+              this.muse.SubDom = "Service switch, eyes on her.";
+              this.muse.Title = "Luna Nova Astronomy Teacher";
+              this.muse.Spec = "Human (Witch)";
+              this.muse.Reg = "London, Luna Nova";
+              this.muse.Desc = "A clumsy, nervous woman new to teaching at Luna Nova, who seems to know a lot about short time idol and former student Shiny Chariot. She cares truly for her students and her subject, particularly Akko, the only student from a non-magical family. ";
+              this.muse.DescLewd = "She actually IS Chariot, trying to guide Akko to fulfill the fate she failed. She yearns some for the adoration of a captive audience, and is tempted to show a little more of her body to get said looks onto her, though her self-esteem needs some work and stops her from doing so.";
+              this.muse.kinks.partner = "Toys/Machines, Monsterfucking, Gangbang"
+              this.muse.kinks.organ = "Mouth, Ass"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Servitude, Romance"
+              this.muse.kinks.consent = "Dub-Con, Exhibition"
+              this.muse.kinks.substance = "Sweating, Cumplay, Watersports"
+              this.muse.kinks.treatment = "Praise, Objectification"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "Bimbofication, Gothification"
+              this.muse.auArray = [{
+                au: "base",
+                emblem: "/versions/mirror.jpg",
+                check: false,
+                sfw: "Y",
+              },];
               break
           }
           break;
