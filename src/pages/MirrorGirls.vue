@@ -26,17 +26,26 @@
             </template>
             <template v-slot:body-cell-state="props">
               <q-td :props="props">
-                <q-select v-model="props.row.state" :options="props.row.states" fill-input input-debounce="0" dark
+                <q-btn v-for="variant in props.row.states " circle flat padding="xs"
+                  :disabled="props.row.state == auListDataBring(variant).au"
+                  v-show="checkSFW(auListDataBring(variant).sfw)"
+                  @click="props.row.state = auListDataBring(variant).au">
+                  <q-avatar circle size="40px">
+                    <img :src="auListDataBring(variant).emblem" />
+                  </q-avatar>
+                </q-btn>
+                <!--<q-select v-model="props.row.state" :options="props.row.states" fill-input input-debounce="0" dark
                   outlined dense v-if="props.row.states.length > 1"></q-select>
-                <div v-else>{{ props.row.state }}</div>
+                <div v-else>{{ props.row.state }}</div>-->
               </q-td>
             </template>
             <template v-slot:body-cell-actions="props">
               <q-td :props="props">
-                <q-btn class="buttonTable" @click="museProfileOpen(props.row.sect, props.row.code, props.row.state)"
+                <q-btn class="buttonTable"
+                  @click="museProfileOpen(props.row.sect, props.row.code, props.row.state, props.row.states)"
                   label="Desc." />
                 <q-btn class="buttonTable" v-show="nsfwSwitch"
-                  @click="museProfileOpen(props.row.sect, props.row.code, props.row.state); descKinkSwitch = true"
+                  @click="museProfileOpen(props.row.sect, props.row.code, props.row.state, props.row.states); descKinkSwitch = true"
                   label="Kinks" />
               </q-td>
             </template>
@@ -94,11 +103,11 @@
             <div class="row text-body2 justify-start items-center" v-if="muse.auArray.length != 1">
               <div class="col-xs-2"><b>Variants:</b></div>
               <div class="col-xs-12">
-                <q-btn v-for=" variant in muse.auArray " :key="variant.au" circle flat padding="xs"
-                  :disabled="variant.check" v-show="checkSFW(variant.sfw)"
-                  @click="museProfileOpen(currentAreaCode, currentMuseCode, variant.au)">
+                <q-btn v-for="variant in muse.auArray " circle flat padding="xs"
+                  :disabled="currentAU == auListDataBring(variant).au" v-show="checkSFW(auListDataBring(variant).sfw)"
+                  @click="museProfileOpen(currentAreaCode, currentMuseCode, auListDataBring(variant).au, currentmuseAULst)">
                   <q-avatar circle size="40px">
-                    <img :src="variant.emblem" />
+                    <img :src="auListDataBring(variant).emblem" />
                   </q-avatar>
                 </q-btn>
               </div>
@@ -204,6 +213,7 @@ export default defineComponent({
     currentMuseCode: "",
     currentAreaCode: 0,
     currentAU: "",
+    currentmuseAULst: [],
     museColumns: [
       { name: "icon", label: "", align: "start", field: "avatar" },
       {
@@ -225,6 +235,28 @@ export default defineComponent({
       { label: "MHA", value: 3 },
       { label: "Games", value: 4 },
       { label: "Series", value: 5 },
+    ],
+    museAULst: [
+      { au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", },
+      { au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", },
+      { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", },
+      { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", },
+      { au: "plasma", emblem: "/versions/Team_Plasma.png", sfw: "N", },
+      {
+        au: "flare", emblem:
+          "/versions/team_flare_by_biochao_dezue6u-pre.png", sfw: "N",
+      },
+      { au: "aether", emblem: "/versions/aether.png", sfw: "N", },
+      { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", },
+      { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", },
+      { au: "shy", emblem: "/versions/shy.png", sfw: "N", },
+      { au: "bow", emblem: "/versions/bow.jpg", sfw: "N", },
+      { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", sfw: "Y", },
+      { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", sfw: "Y", },
+      { au: "yiga", emblem: "/versions/Yiga_Eye.png", sfw: "N", },
+      { au: "lust", emblem: "/versions/annemblem.jpg", sfw: "N", },
+      { au: "mimic", emblem: "/versions/mimic.png", sfw: "N", },
+
     ],
     allCharArr: [
       {
@@ -263,7 +295,7 @@ export default defineComponent({
         name: "Irida",
         state: "base",
         free: "NO",
-        states: ["base", "rocket"],
+        states: ["base", "rocket", "galaxy"],
         uni: "Pokémon",
         avatar: "/museicon/irida.jpg",
       },
@@ -303,7 +335,7 @@ export default defineComponent({
         name: "Cynthia",
         state: "base",
         free: "YES",
-        states: ["base", "rocket", "galactic"],
+        states: ["base", "rocket", "galaxy"],
         uni: "Pokémon",
         avatar: "/museicon/cyn.jpg",
       },
@@ -363,7 +395,7 @@ export default defineComponent({
         name: "Gardenia",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["base", "rocket", "galaxy"],
         uni: "Pokémon",
         avatar: "/museicon/gardenia.jpg",
       },
@@ -371,9 +403,9 @@ export default defineComponent({
         code: "mars",
         sect: 1,
         name: "Mars",
-        state: "base",
+        state: "galaxy",
         free: "NO",
-        states: ["base"],
+        states: ["galaxy"],
         uni: "Pokémon",
         avatar: "/museicon/mars.png",
       },
@@ -381,9 +413,9 @@ export default defineComponent({
         code: "ggrunt",
         sect: 1,
         name: "Team Galactic Grunt (♀)",
-        state: "base",
+        state: "galaxy",
         free: "NO",
-        states: ["base"],
+        states: ["galaxy"],
         uni: "Pokémon",
         avatar: "/museicon/galacticgrunt.png",
       },
@@ -433,7 +465,7 @@ export default defineComponent({
         name: "Mirror Maidens",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["mirror"],
         uni: "Genshin Impact",
         avatar: "/museicon/mirror.jpeg",
       },
@@ -443,7 +475,7 @@ export default defineComponent({
         name: "Mei Hatsume",
         state: "base",
         free: "YES",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/mei.jpeg",
       },
@@ -453,7 +485,7 @@ export default defineComponent({
         name: "Tsuyu Asui",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/tsuyu.jpeg",
       },
@@ -463,7 +495,7 @@ export default defineComponent({
         name: "Mina Ashido",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/mina.jpeg",
       },
@@ -473,7 +505,7 @@ export default defineComponent({
         name: "Momo Yaoyorozu",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/momo.jpeg",
       },
@@ -484,7 +516,7 @@ export default defineComponent({
         name: "Itsuka Kendo",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/kendo.jpeg",
       },
@@ -494,7 +526,7 @@ export default defineComponent({
         name: "Kinoko Komori",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/kinoko.png",
       },
@@ -504,7 +536,7 @@ export default defineComponent({
         name: "Melissa Shield",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/melissa.jpeg",
       },
@@ -514,7 +546,7 @@ export default defineComponent({
         name: "Camie Utsushimi",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/camie.jpeg",
       },
@@ -524,7 +556,7 @@ export default defineComponent({
         name: "Emi Fukukado",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/msjoke.jpeg",
       },
@@ -534,7 +566,7 @@ export default defineComponent({
         name: "Rumi Usagiyama",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/miruko.jpeg",
       },
@@ -544,7 +576,7 @@ export default defineComponent({
         name: "Yu Takeyama",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/mtlady.jpeg",
       },
@@ -554,7 +586,7 @@ export default defineComponent({
         name: "Nana Shimura",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/nana.jpeg",
       },
@@ -564,7 +596,7 @@ export default defineComponent({
         name: "Kaina Tsutsumi",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/nagant.jpeg",
       },
@@ -574,7 +606,7 @@ export default defineComponent({
         name: "Fuyumi Todoroki",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/fuyumi.jpeg",
       },
@@ -584,7 +616,7 @@ export default defineComponent({
         name: "Inko Midoriya",
         state: "base",
         free: "NO",
-        states: ["base"],
+        states: ["ua"],
         uni: "Hero Academia",
         avatar: "/museicon/inko.png",
       },
@@ -714,9 +746,9 @@ export default defineComponent({
         code: "junko",
         sect: 4,
         name: "Junko Enoshima",
-        state: "base",
+        state: "baseN",
         free: "YES",
-        states: ["base"],
+        states: ["baseN"],
         uni: "Danganronpa",
         avatar: "/museicon/junko.jpg",
       },
@@ -862,7 +894,7 @@ export default defineComponent({
       },
       {
         code: "utena",
-        sect: 5, 
+        sect: 5,
         name: "Utena Hiiragi",
         state: "base",
         free: "YES",
@@ -870,10 +902,10 @@ export default defineComponent({
         uni: "Gushing Over Magical Girls",
         avatar: "/museicon/utena.jpg",
       },
-      
+
       {
         code: "ursa",
-        sect: 5, 
+        sect: 5,
         name: "Ursula Callistis",
         state: "base",
         free: "YES",
@@ -929,18 +961,56 @@ export default defineComponent({
       if (value == false) {
         this.descKinkSwitch = false;
       }
+      this.dataFill()
     }
   },
   methods: {
+    auListDataBring(au) {
+      for (var i = 0; i < this.museAULst.length; i++) {
+        if (this.museAULst[i].au == au) {
+          return this.museAULst[i]
+        }
+      }
+    },
     dataFill() {
+      this.finalCharArr = [];
+      var tempNSFWchk = "";
       if (this.museSect.value == 0) {
-        this.finalCharArr = this.allCharArr;
-      } else {
-        this.finalCharArr = [];
-        for (var i = 0; i < this.allCharArr.length; i++) {
-          if (this.allCharArr[i].sect == this.museSect.value) {
-            this.finalCharArr.push(this.allCharArr[i]);
+        if (this.nsfwSwitch == false) {
+          for (var i = 0; i < this.allCharArr.length; i++) {
+            for (var j = 0; j < this.museAULst.length; j++) {
+              if (this.museAULst[j].au == this.allCharArr[i].states[0]) {
+                tempNSFWchk = this.museAULst[j].sfw
+              }
+            }
+            if (tempNSFWchk == "Y") {
+              this.finalCharArr.push(this.allCharArr[i]);
+            }
           }
+        } else {
+          this.finalCharArr = this.allCharArr;
+        }
+      } else {
+        for (var k = 0; k < this.allCharArr.length; k++) {
+          if (this.nsfwSwitch == false) {
+
+            for (var j = 0; j < this.museAULst.length; j++) {
+              if (this.museAULst[j].au == this.allCharArr[k].states[0]) {
+                tempNSFWchk = this.museAULst[j].sfw
+              }
+            }
+            if (tempNSFWchk == "Y") {
+              if (this.allCharArr[k].sect == this.museSect.value) {
+                this.finalCharArr.push(this.allCharArr[k]);
+              }
+            }
+
+          } else {
+            if (this.allCharArr[k].sect == this.museSect.value) {
+              this.finalCharArr.push(this.allCharArr[k]);
+            }
+          }
+
         }
       }
     },
@@ -1028,11 +1098,23 @@ export default defineComponent({
           break;
       }
       if (auCheck == false) {
-        this.currentAU = "base";
+        for (var i = 0; i < this.finalCharArr.length; i++) {
+          if (this.finalCharArr[i].code == newCode) {
+            for (var j = 0; j < this.finalCharArr[i].states.length; j++) {
+              this.currentAU = this.finalCharArr[i].states[0]
+            }
+          }
+        }
       }
-      this.museProfileOpen(newSect, newCode, this.currentAU);
+      var auList = [];
+      for (var i = 0; i < this.finalCharArr.length; i++) {
+          if (this.finalCharArr[i].code == newCode) {
+            auList = finalCharArr[i].states
+          }
+        }
+      this.museProfileOpen(newSect, newCode, this.currentAU, auList);
     },
-    museProfileOpen(area, char, au) {
+    museProfileOpen(area, char, au, aus) {
       this.cleanData();
       switch (area) {
         case 1:
@@ -1047,12 +1129,6 @@ export default defineComponent({
                   this.muse.SubDom = "Submissive unless love requires dominance.";
                   this.muse.Desc = "A buntailed, peppy, flexible Unova Pokemon trainer, with a Paldean mother and Galarian the other, who loves to love, and always tries to see the bright side of life and people. Recently come into contact with her distant cousins Nemona and Marnie. ";
                   this.muse.DescLewd = "As expected of a former Team Plasma Grunt, she's eager to please, and quick to treat degradation and harm as 'love bites'.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                    { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia"
                   this.muse.kinks.organ = "Pussy, Cock"
                   this.muse.kinks.clothing = "Nylon, Dress-Up"
@@ -1072,12 +1148,6 @@ export default defineComponent({
                   this.muse.SubDom = "Submissive unless mission requires dominance.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A loyal member of Team Rocket's most arousing division. She remains highly peppy, cheerful, and loving, even if her love is Team Rocket. She intends to share her beloved with every cute and hot girl in the world, by whatever means are asked of her, hence her grunt codename.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                    { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
                   this.muse.kinks.organ = "Pussy, Cock"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1097,12 +1167,6 @@ export default defineComponent({
                   this.muse.SubDom = "Broken Submissive.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A permanent long-time member of team Plasma, despite the royalty name she's treated as the lowest of the low, and has lost all notion of ever leaving, genuinely believing the way she's treated is only fair, be it as the team's slut, or the humiliating, arousing punishments for failure. At times she wonders what it would've been to leave, but then she's fucked and used all over and lets go of such silly notions. She is Team Plasma property, nothing else matters.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
-                    { au: "ua", emblem: "/versions/uagirls.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Plasma"
                   this.muse.kinks.organ = "Pussy, Cock"
                   this.muse.kinks.clothing = "Nylon"
@@ -1122,12 +1186,6 @@ export default defineComponent({
                   this.muse.SubDom = "Worshipful in either direction";
                   this.muse.Desc = "A quirkless support student with greater focus on metallurgy and the arts, who's been assigned to support student Setsuna Tokage, and does so earnestly with a massive crush on her. But secretly, she's always wanted to try and be somewhat of an actual pro hero. WIth armor and sword. ";
                   this.muse.DescLewd = "She's endlessly fascinated by quirks and outfits, to the point of spending much mental power into how they can be used towards sexy shenanigans. She DOES adore Midnight after all.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                    { au: "ua", emblem: "/versions/uagirls.png", check: true, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Machines"
                   this.muse.kinks.organ = "Mouth, Ass, Cock"
                   this.muse.kinks.clothing = "YES"
@@ -1152,10 +1210,6 @@ export default defineComponent({
                   this.muse.Title = "Paldean Champion";
                   this.muse.Desc = "A very hyperactive girl who enjoys Pokemon battling above all else. It has led her to be a Champion-ranked student, though making her ability to relate to others much harder. Has come out of her shell a little through Juliana and Penny, and now her cousin Rosa. ";
                   this.muse.DescLewd = "She treats sex as roughly and dedicated as Pokémon battling. She has fucked and broken many girls she defeats, and intends to do the same for her new friends, longer, harder, tighter. Make them hers for good.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Nylon"
@@ -1172,10 +1226,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Leader";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A rapidly risen leader of Team Hypno Rocket, aptly so given her thirst for competition and sex. She makes sure to take care of any girl under her care, treating them as already defeated and thus hers to play with. Had designs of starting her own evil team of the same occupations and goals, but joined Team Hypno Rocket to not start from scratch.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1200,10 +1250,6 @@ export default defineComponent({
                   this.muse.SubDom = "Submissive unless irritated sufficiently. Like a Morpeko.";
                   this.muse.Desc = "A punk-ish girl who seems tough, hiding a truly shy and sweet disposition, with troubles smiling and otherwise expressing herself concisely. She has a legion of fans that cause ruckus, and two cousins that tease her endlessly, both of which she is eternally grateful to. ";
                   this.muse.DescLewd = "When she snaps, she truly embraces that toughness all see, and will use every filthy fantasy on whoever brought it on her. On the other hand, if she breaks, she'll take anything you do to her.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Toys, Gangbang"
                   this.muse.kinks.organ = "Mouth, Pussy"
                   this.muse.kinks.clothing = "Leather, Fishnet, Dress-Up"
@@ -1221,10 +1267,6 @@ export default defineComponent({
                   this.muse.SubDom = "Completely submissive until ordered otherwise.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A former trainer put in a deep trance of hypnosis, left as a drooling mess (from either end). With a snap of her fingers, she may go back to her former self, be put in a state of dominance, or go back to her true happy mindless self. She was more aware than she let on before her hypnosis. She just wanted to have someone else take care of her, and let her emote more, or be more comfortable with her state.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Toys, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "Mouth, Pussy"
                   this.muse.kinks.clothing = "Latex, Dress-Up"
@@ -1250,11 +1292,6 @@ export default defineComponent({
                   this.muse.Title = "Pokemon Trainer?";
                   this.muse.Desc = "A girl thrown into the leadership of the Pearl Clan too soon, she overcompensates with a tough attitude and disposition, hiding a rather soft self. She's been flung forward in time now, to modern day Sinnoh. While happy to explore the vast world in front of her, she can't help but wonder what to do without having to lead. ";
                   this.muse.DescLewd = "Sometimes she too wishes to step down and be just one more person worshiping, as well as forget the breaking of her life's theology..or find a new one.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity"
@@ -1271,11 +1308,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Grunt 'Priestess'";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A girl flung forward in time to a confusing future, comforted by her new one and only religion: Team Hypno Rocket!! Hierarchy-wise she really is just grunt level, but her fervor and worship really earned her the special little codename. Part of her sometimes screams at her about the criminal, sometimes 'evil' actions of the team, but the comfort of worship and mindlessness soothe her too much to dwell on it too long.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity, Spandex"
@@ -1292,11 +1324,6 @@ export default defineComponent({
                   this.muse.Title = "Galactic Scientist";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A girl brought from the past to use her expertise to handle the mythological matters of the team. Thoroughly brainwashed and extracted of her knowledge, she is now a scientist only in name, as she's not too technologically savvy yet, but knows her lore.  She's caught the eye of Admin Cynthia, as an archaeologist and historian.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Pokephilia, Team Galactic"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity, Nylon"
@@ -1321,11 +1348,6 @@ export default defineComponent({
                   this.muse.Title = "Opelucid Gym Leader, Unovan Champion";
                   this.muse.Desc = "A very wild girl who loves dragons, and Pokémon, but is rather clueless and slow to trust and learn when it comes to anything outside of that. After a great journey, she managed to become the Champion of Unova, a title which often swings between her and her claimed sister Rosa. ";
                   this.muse.DescLewd = "It is her earnest hope to be taken by a dragon as a mate and utterly ruined, only existing as a dragon's slave. Or perhaps commanded by one to execute their dominance on other victims.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Dragonfucking"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Nudity, Dress-Up"
@@ -1342,11 +1364,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Grunt 'Princess'";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Where Rosa goes so does she, so it was only a matter of time she cornered her sister and joined. While she still has a greater interest in dragons and championship, she has no problem helping in the newly found 'family business', even if she doesn't have many opportunities to show she too can be sexy. The codename is entirely sarcastic, as those who face her will instead find a dragon, and yet she's very pampered in-team.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Dragonfucking, Team Rocket"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Nudity, Spandex"
@@ -1363,11 +1380,6 @@ export default defineComponent({
                   this.muse.Title = "Plasma Grunt 'Dragon'";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Kidnapped as part of a recruitment plan, and set up as Rosa's counterpart. Her spirit broke..only towards the favor of Team Plasma. Outside of that, she is brutal and cruel to all who lie in her way, or rather, in Team Plasma's way. And she takes what she wants from her sister grunt, as any proper dragon would do to a princess";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Dragonfucking, Team Plasma"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Nylon"
@@ -1392,14 +1404,7 @@ export default defineComponent({
                   this.muse.SubDom = "Casual Switch.";
                   this.muse.Desc = "A fashionable young lady, who's very kind and polite, until she actually snaps. Rather lost in her way, she takes the time while trying to find her future by trying on all kinds of clothes...or tasting all sorts of lips. She IS Kalosian, after all. ";
                   this.muse.DescLewd = "It's not rare to find her only partially dressed, or wearing sexual parodies that barely count as clothes. This too is fashion after all!";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    {
-                      au: "flare", emblem:
-                        "/versions/team_flare_by_biochao_dezue6u-pre.png", check: false, sfw: "N",
-                    },
-                  ];
+
                   this.muse.kinks.partner = "Toys, Gangbang"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Nudity, Dress-Up"
@@ -1417,14 +1422,7 @@ export default defineComponent({
                   this.muse.SubDom = "Cheerily, teasingly Submissive";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Infiltrated Team Rocket by wearing their uniform. On being caught, she claimed she loved the uniform so much she wanted to feel like part of its team. After several hours of hands-on tutoring by 'her superiors', workplace training videos, and physical training regimes, she can finally shine the uniform's true nature of a loyal Team Rocket member. Said tutoring involved lengthy groping, said training regimes growingly obscene poses and motions, and said workplace training videos were hypnotic. She has forgotten entirely she was ever here undercover, and she is 100% a Team Rocket member now and forever.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    {
-                      au: "flare", emblem:
-                        "/versions/team_flare_by_biochao_dezue6u-pre.png", check: false, sfw: "N",
-                    },
-                  ];
+
                   this.muse.kinks.partner = "Toys, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1442,14 +1440,7 @@ export default defineComponent({
                   this.muse.SubDom = "Switch but always haughty.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Hired to model their attires as they were designed, she ultimately fell in love with their ideas of beauty and fame, which her continued (and growingly enthusiastic) modelling of their outfits and goals granted her within. Her career may be less known, but in the end, beauty will win. And she IS beauty. Some of the outfits were treated to lower personal morals, and increase pleasure based on team Flare approval. She knows now, but doesn't mind, as she asked her current outfits to have ten times the potency of her trial ones.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    {
-                      au: "flare", emblem:
-                        "/versions/team_flare_by_biochao_dezue6u-pre.png", check: true, sfw: "N",
-                    },
-                  ];
+
                   this.muse.kinks.partner = "Toys, Gangbang, Team Flare"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "YES"
@@ -1474,10 +1465,7 @@ export default defineComponent({
                   this.muse.Title = "Saffron Gym Leader";
                   this.muse.Desc = "A confident woman who's grown a little conceited in her psychic powers, and embraced the cockiness in it, dressing, speaking, and behaving the part of a powerful villain, even when doing good for others. Despite it, shimmers of the sweet kid she couldn't be sometimes shine through. ";
                   this.muse.DescLewd = "She's obsessed with control, and she'll use whatever she's got, be it her looks or her psychic powers, to make sure they go as she wishes. You have no choice in the matter.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
+
                   this.muse.kinks.partner = "Toys"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1494,10 +1482,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Commander";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Finding her wicked disposition and power praised and endorsed by the team, she joined truly of her own voalition, and uses her own psychic powers towards getting more members. Some people say the growing sexualization of the female members' outfits is due to her own fetishes, but none dare ever ask. She knows they intend to, though, and she'll never say.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Toys, Team Rocket"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1522,11 +1506,6 @@ export default defineComponent({
                   this.muse.SubDom = "Mostly Dommy Mommy.";
                   this.muse.Desc = "An adventuring archaeologist who's stumbled upon the title of champion. While not the greatest fan of battling, the title serves her well for clearance into important sites, and her team is prepared to deal with the blow of legendaries' actions. ";
                   this.muse.DescLewd = "She's well aware of the reputation and trauma her prowess does to others, and sometimes she revels in it, playing up her mystery and dominance. Other times? She surprises them with her tenderness. She enjoys either, and the arousing events they lead to.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia"
                   this.muse.kinks.organ = "Mouth, Ass, Tits"
                   this.muse.kinks.clothing = "Nudity, Dress-Up"
@@ -1544,11 +1523,6 @@ export default defineComponent({
                   this.muse.SubDom = "Vicious Dommy, Power Bottom.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Offered quite a bit of endorsement for her help in studying mythos (as well as promises that they wouldn't use it for as dangerous goals as Team Galactic), she joined on contract, though contact with their uniforms and culture and the myriad of Sonia's inventions degraded her until she accepted to join in full. She no longer has qualms about whether her knowledge is used for great evil, only how it'll serve team Rocket, her beloved.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
                   this.muse.kinks.organ = "Mouth, Ass, Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1566,11 +1540,6 @@ export default defineComponent({
                   this.muse.SubDom = "Ready to obey, and destroy";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Unknowingly and accidentally helped with the archaeological/mythos side of things, realizing how much she had helped the team broke her, choosing to use their tech to be brainwashed. Now she's happily loyal, without those pesky morals that gave her guilt, and all she had to give away was her life and pride. The errors that led to her assistance were entirely staged to wrack her with guilt, and the pleasure she gets when obeying from the brainwashing helped ensure she'd never leave.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Pokephilia, Team Galactic"
                   this.muse.kinks.organ = "Mouth, Ass, Tits"
                   this.muse.kinks.clothing = "Nylon"
@@ -1595,10 +1564,7 @@ export default defineComponent({
                   this.muse.Title = "Hulbury Gym Leader / Model";
                   this.muse.Desc = "A model and gym leader from Galar who much like the sea, is calm until battle comes and she becomes the storm. She worries about holding onto her modelling career alongside the gym, but she continues to shine on. She always has time for Sonia though! ";
                   this.muse.DescLewd = "She absolutely adores Sonia and would do anything for her, go as far as she asks. She's taken to masturbate to her at her own pool, hoping the waters hide her own fluids shed from thinking about her closest gal pal.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
+
                   this.muse.kinks.partner = "Gangbang"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Nudity, Spandex, Dress-Up"
@@ -1615,10 +1581,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Coordinator";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "She entered by Sonia's invitations, and her own secret sensual experiments on her left her suggestible enough to dedicate herself. Team Rocket has helped her greatly in managing her time for gym, modelling, and Rocket missions. And she always has time to assist her Sonia in the lab, grateful she got her here.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Gangbang, Team Rocket"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1643,10 +1605,7 @@ export default defineComponent({
                   this.muse.Title = "Rocket Agent";
                   this.muse.Desc = "A longtime member of Team Rocket, coming from her own mother being a part of it. While adoring the fashion, the high life of crime, and even the evil plots, the goals of the organization, her position, and the fact she was unable to become a nurse still chafe at her to date, promising one day to rise the ranks and make the organization better anew. ";
                   this.muse.DescLewd = "She's quite confident in her looks, and does her best to wear as little as possible. She doesn't mind people having a look, but rare are those she permits to touch.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
+
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Ass, Tits"
                   this.muse.kinks.clothing = "Latex, Dress-Up"
@@ -1663,10 +1622,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Leader";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A woman who's finally taken center stage in her life and at the top, where she belongs, helping command Team Rocket into a more positive, albeit arousing, direction. Her charm has aided her greatly in both recruitment and reworking Rocket's public perception.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Team Rocket"
                   this.muse.kinks.organ = "Ass, Tits"
                   this.muse.kinks.clothing = "Latex, Dress-Up"
@@ -1691,11 +1646,6 @@ export default defineComponent({
                   this.muse.Title = "Nimbasa Gym Leader / Model";
                   this.muse.Desc = "An enthusiastic gym leader and supermodel, who's happy to do her best for others and let them shine through, with their own spark. ";
                   this.muse.DescLewd = "She's proudly led many through the pipeline from model to whore, accompanying them all the while in the dark side of fashion and beauty. ";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Dress-Up"
@@ -1712,11 +1662,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Agent";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The actual fashion designer for Team Rocket's new uniforms. She was not originally asked to make them so..arousing, visually or wear-wise. But it went incredibly well, so they accept and ask of her to make them even sluttier.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1733,11 +1678,6 @@ export default defineComponent({
                   this.muse.Title = "Plasma Admin";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Asked to be their fashion ambassador, and given Plasma-made earbuds for her looks. Said buds assaulted her brain every so often to break her mental defenses down, until it left her vulnerable enough to give herself to them. She still does modelling, sponsored by Team Plasma, and turning them into recruitment rallies, blasting the same waves that broke her to the audience.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "plasma", emblem: "/versions/Team_Plasma.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Gangbang, Team Plasma"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nylon"
@@ -1762,11 +1702,6 @@ export default defineComponent({
                   this.muse.SubDom = "Mommy Dommy, you decide if gentle or cruel.";
                   this.muse.Desc = "President of the Aether Foundation, who's too busy and lost in her obsessions to care for her daughter or son. Despite this she is not an unlikeable person, and too many are drawn to her to stop her influence. ";
                   this.muse.DescLewd = "She knows how great she looks and is not afraid to use it to her benefit, as well as simply to relax after a hard day of work...or even to punish and manipulate people into doing her bidding, believing her fully.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "aether", emblem: "/versions/aether.png", check: false, sfw: "N", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Ultra Bestiality"
                   this.muse.kinks.organ = "Ass, Tits, Cock"
                   this.muse.kinks.clothing = "Nudity, Spandex, Nylon, Dress-Up"
@@ -1785,11 +1720,6 @@ export default defineComponent({
                   this.muse.SubDom = "Cruel Mother";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A deranged woman who's lost herself in the feeling that her beloved Ultra Beast has given her, intent on sharing this gift with the world, starting with her unruly children, who too can become better themselves and truly hers if they accept a Beast too, or their Mother's one.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "aether", emblem: "/versions/aether.png", check: true, sfw: "N", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Ultra Bestiality"
                   this.muse.kinks.organ = "Ass, Tits, Cock"
                   this.muse.kinks.clothing = "Nudity, Living Clothes"
@@ -1808,11 +1738,6 @@ export default defineComponent({
                   this.muse.SubDom = "Kind Dommy Mommy";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Joined Team Rocket under false pretenses to undermine them and get out of her way, but was given hypnosis to truly join them..and therapy to acknowledge the issues with her Ultra Beast obsession. After apologies to her daughter (who was already a member), she works hard to make up to her and the world by being very truly kind.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "aether", emblem: "/versions/aether.png", check: false, sfw: "N", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
                   this.muse.kinks.organ = "Ass, Tits, Cock"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1835,7 +1760,6 @@ export default defineComponent({
               this.muse.Reg = "Johto";
               this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
               this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
-              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },];
               this.muse.kinks.partner = "Dragonfucking"
               this.muse.kinks.organ = "NEUTRAL"
               this.muse.kinks.clothing = "NEUTRAL"
@@ -1858,11 +1782,6 @@ export default defineComponent({
                   this.muse.Title = "Eterna Gym Leader";
                   this.muse.Desc = "A bright and optimistic lady who adores grass types, fears ghost types, and always seeks out new challenges, Gardenia is always ready for a battle, a trade, or a chat. ";
                   this.muse.DescLewd = "Her adoration of grass types can definitely get too far, as their usual agressive reactions to a stranger/bad news draw a very lustful reaction out of her when she's the victim.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity"
@@ -1879,11 +1798,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Scientist";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Dawn approached her in assisting her with aphrodisiac and calming pheromones, to rebrand her recently acquired Team Rocket into something much more positive..and arousing. Claiming it'd popularize the effects of grass type pokemons, she accepted.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: true, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity, Spandex"
@@ -1900,11 +1814,6 @@ export default defineComponent({
                   this.muse.Title = "Galactic Grunt";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Captured and thoroughly brainwashed, her mind switched her love of nature and plant types to machines and steel and electric types. Now a lowly grunt, she is allowed to keep her name, appearence, and tastes, if only for the entertainment of the higher ups, seeing such a nature-loving woman get aroused and obedient at machines with no feelings or heart.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "rocket", emblem: "/versions/hypnorocket.png", check: false, sfw: "N", },
-                    { au: "galaxy", emblem: "/versions/galactic.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Team Galactic"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nudity, Nylon"
@@ -1927,7 +1836,6 @@ export default defineComponent({
               this.muse.Reg = "Sinnoh";
               this.muse.Desc = "A rare Team Galactic Commander that lacks any sort of cruelty, though she can be quite hot-headed, she is merely loyal to the organization and the cause, truly aiming to make a better world than the one she's in. ";
               this.muse.DescLewd = "If you refuse Team Galactic too much, her temper may override her lack of cruelty. Accept them into your heart, and she will show you the wonders of the team and it's members.";
-              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },];
               this.muse.kinks.partner = "Machines, Team Galactic"
               this.muse.kinks.organ = "Ass, Cock"
               this.muse.kinks.clothing = "Nylon"
@@ -1948,7 +1856,6 @@ export default defineComponent({
               this.muse.Reg = "Sinnoh";
               this.muse.Desc = "NSFW ONLY - ";
               this.muse.DescLewd = "Servants and minions to the great Team Galactic, unaware of the height of their goals or true mission, but too enamoured with the organization to look into. And you can be one too. They'll certainly help, through whatever means necessary.";
-              this.muse.auArray = [{ au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "N", },];
               this.muse.kinks.partner = "Machines, Team Galactic"
               this.muse.kinks.organ = "NEUTRAL"
               this.muse.kinks.clothing = "Nylon"
@@ -1975,10 +1882,6 @@ export default defineComponent({
                   this.muse.Spec = "???";
                   this.muse.Desc = "A girl who's come from far, far away, many many years ago, to look for her brother. She found him allied with the evil Fatui, and told her to see the world, and so she has, helping every other person who crosses her way, fighting monsters and foes, and dealing with far too much archon bullshit. ";
                   this.muse.DescLewd = "The pressures of being the Traveler, always helping, always going everywhere, tires her out to the point she'd rather just do nothing but masturbate to the unfairly hot women of Teyvat.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Monsterfucking (Churls)"
                   this.muse.kinks.organ = "Tits, Pussy, Cock"
                   this.muse.kinks.clothing = "NEUTRAL"
@@ -1998,10 +1901,6 @@ export default defineComponent({
                   this.muse.Spec = "Mirror Maiden";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "La Signora"
                   this.muse.kinks.organ = "Mouth, Tits"
                   this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
@@ -2026,10 +1925,6 @@ export default defineComponent({
                   this.muse.Spec = "Human";
                   this.muse.Desc = "A totally normal librarian who enjoys resting and relaxation, teasing, and a penchant for action and violence when her peace is threatened, almost to the point of sadism. ";
                   this.muse.DescLewd = "Fantasizes of being a mindless slave/drone to greater evils and let herself be used, just for peace of mind.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Toys, Monsterfucking (Churls), Gangbang"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Nudity, Nylon"
@@ -2049,10 +1944,6 @@ export default defineComponent({
                   this.muse.Spec = "Mirror Maiden";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "La Signora"
                   this.muse.kinks.organ = "Mouth, Tits"
                   this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
@@ -2077,10 +1968,6 @@ export default defineComponent({
                   this.muse.Spec = "Human";
                   this.muse.Desc = "An utterly terrible yet loyal nun of the Church of Favonius. While she's grateful and indebted to it due to giving her a chance at a better life, she has no focus or interest on the actual religion of it, and uses her self-percieved wickedness she came with to do the more insidious tasks for the sake of them. ";
                   this.muse.DescLewd = "Such a thing is quite taxing on her, and so besides smoking, she unwinds by doing all sorts of filthy unchurchlike things with every man and woman that catches her by.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Gangbang"
                   this.muse.kinks.organ = "Mouth, Cock"
                   this.muse.kinks.clothing = "Leather, Fishnet"
@@ -2100,10 +1987,6 @@ export default defineComponent({
                   this.muse.Spec = "Mirror Maiden";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "La Signora"
                   this.muse.kinks.organ = "Mouth, Tits"
                   this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
@@ -2128,10 +2011,6 @@ export default defineComponent({
                   this.muse.Spec = "Human";
                   this.muse.Desc = "A woman of many ways, mysterious as she is easygoing. She's an intelligence agent with many affiliations, a tragic tale, and an endless amount of dedication to whatever task is given, if still needing to take the most pragmatical route to conserve energy. ";
                   this.muse.DescLewd = "Depending on her role, her personage changes. The Lady of the Yanshang Teahouse, is an utter tease, a confident goddess people should kneel for, and a very gallant rewarder of those who's gambles go well.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Toys"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "YES"
@@ -2151,10 +2030,6 @@ export default defineComponent({
                   this.muse.Spec = "Mirror Maiden";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "La Signora"
                   this.muse.kinks.organ = "Mouth, Tits"
                   this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
@@ -2529,10 +2404,6 @@ export default defineComponent({
                   this.muse.Reg = "Space";
                   this.muse.Desc = "A capable yet sensibly muted warrior who unwinds through sex, and carries on her mission to the end, but has trouble emoting, connecting, or sensing. ";
                   this.muse.DescLewd = "She'd happily surrender to an evil alien force if it returned her the ability to feel joy and pleasure and love.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Aliens (Monsters, Beasts)"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Latex, Living, Dress-Up"
@@ -2553,10 +2424,6 @@ export default defineComponent({
                   this.muse.Reg = "Around";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A shy gal who makes even less noises than the usual, but shows little shyness in offering herself up for pleasure and flirtation. She seems almost thrilled to be in this position of anonimity. ";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Masks"
@@ -2581,10 +2448,6 @@ export default defineComponent({
                   this.muse.Spec = "Koopa/Human";
                   this.muse.Desc = "A newfound boisterous girl with a thirst for cute princesses and world domination. Despite her added human, she's still strong, brash, possessive...and weak to the beauty of princesses. Her dream is all princesses to adore her, and fall for her charms to be hers. ";
                   this.muse.DescLewd = "Though sometimes, she'd like to see what it'd be like if the princesses turned the tables on her.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Princesses, Gangbang"
                   this.muse.kinks.organ = "Tits, Cock"
                   this.muse.kinks.clothing = "Latex, Dress-Up"
@@ -2605,10 +2468,6 @@ export default defineComponent({
                   this.muse.Spec = "Shy Gal";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The very leader of the shy gals, going undercover to see what they get up to, and doing it many more times to enjoy the supposed anonimity of the mask to take a break from being bossy and the top. Actually, every shy gal knows it's her, but it's alright by them. The masks will ensure she does as they do, after all...";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Tits, Cock"
                   this.muse.kinks.clothing = "Masks"
@@ -2633,12 +2492,6 @@ export default defineComponent({
                   this.muse.Reg = "Mushroom Kingdom";
                   this.muse.Desc = "A bubbly princess with great enthusiasm and love for the people of her kingdom. She may be a princess, but she doesn't always stay in the sidelines. Loves to bake, and dress-up, and do all sorts of sports. She either happily enjoys activities with people, or stubbornly refuses.  ";
                   this.muse.DescLewd = "Often, her stubbornness is just in order to invite further pressuring and convincing, as well as playing the part of a good kidnapped princess corrupted. If well convinced, she could assist in corrupting and kidnapping fellow princesses";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
-                    { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Princesses, Koopas, Gangbang"
                   this.muse.kinks.organ = "YES"
                   this.muse.kinks.clothing = "Dress-Up"
@@ -2659,12 +2512,6 @@ export default defineComponent({
                   this.muse.Reg = "Dark World, Mushroom Kingdom";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The Koopa King/Queen's happy little slave, fucked into utter blissful submission after a succesful moon wedding. While legally and technically a wife, Peach knows well from her treatment and the comings of other princesses that she's nothing but Bowsette's slave...and it couldn't have gotten her happier.  Currently acts as though nothing happened, but observant folk can tell she's a little messier when being rescued than when taken, and the flashes of a very familiar emblem as a tattoo on her body.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: true, sfw: "N", },
-                    { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "Queen Bowsette"
                   this.muse.kinks.organ = "YES"
                   this.muse.kinks.clothing = "Latex"
@@ -2685,12 +2532,6 @@ export default defineComponent({
                   this.muse.Reg = "Around";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A pink spunky shy gal, who's bashful in a very endearing way, as though hoping you'd catch her and do as you wish to her body. She is permitted the sounds of her giggles, melodious and seductive as they are, as well as her soft moans, which are quite frequent. She too finds freedom in the anonimity of the mask, and sometimes she forgets she's a princess at all...or her name, or her face. Surely, doing it again won't be a danger?";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
-                    { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: false, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Masks"
@@ -2711,12 +2552,6 @@ export default defineComponent({
                   this.muse.Reg = "Rogueport, Mushroom Kingdom";
                   this.muse.Desc = "A dark queen who took over the world many years ago, now possessing Princess Peach to have a second hand at it. The fusion has completed between them, making her agreeable enough to talk, and cordial enough to not destroy it all. ";
                   this.muse.DescLewd = "She's also physical enough to appreciate pleasures of the flesh. She is neither Peach nor the original Shadow queen in full, carrying now all of Peach's lighter traits..and darker sides, including her sexual tastes.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
-                    { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", check: true, sfw: "Y", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "YES"
                   this.muse.kinks.clothing = "Nudity, Dress-Up"
@@ -2741,11 +2576,6 @@ export default defineComponent({
                   this.muse.Spec = "Human/Goddess";
                   this.muse.Desc = "The mother of all stars, Rosalina is a greatly capable mechanic and mother, traveling space for centuries and seeing her babies turn into planets and galaxies. ";
                   this.muse.DescLewd = "But even a mother and goddess has needs, and space gets very cold and lonely. Hence her frequent visits to the Mushroom Kingdom, or how she sometimes adopts people as their mother yet does lewd activities with them.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Aliens (Monsters, Beasts)"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Spandex, Latex, Living, Dress-Up"
@@ -2766,11 +2596,6 @@ export default defineComponent({
                   this.muse.Spec = "Human/Goddess";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The former mother of all stars, lowered to a pathetic slut after Bowser destroyed her space station and decided to kidnap her on the way. While less of a frequent visitor than Peachy (given Bow's long time love of the Mushroom Princess) she's no less loyal to her monarch. ";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: false, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Queen Bowsette"
                   this.muse.kinks.organ = "Cock"
                   this.muse.kinks.clothing = "Latex"
@@ -2791,11 +2616,6 @@ export default defineComponent({
                   this.muse.Spec = "Shy Gal";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A particularly clingy shy gal, who does her best to stick to you while happily offering her holes. Something is rather ethereal about her, leading to being treated as a rare and lucky find. She's rather a glutton for semen, and the more she drinks the bigger her boobs grow.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "shy", emblem: "/versions/shy.png", check: true, sfw: "N", },
-                    { au: "bow", emblem: "/versions/bow.jpg", check: false, sfw: "N", },
-                  ];
                   break;
               }
               break;
@@ -2829,11 +2649,6 @@ export default defineComponent({
                   this.muse.Title = "Sheikah Scientist";
                   this.muse.Desc = "A pre-Calamity science who aged herself to match the hero and princess (though not without error), she strives to work her way up to the wisdom of the ancient sheikah scientists. Her latest look has drawn much attention. ";
                   this.muse.DescLewd = "Ultimately, her eagerness for science is just a tad higher than her ethics, and the only reason she's stuck by the royal family is due to finding a connection with Zelda. Otherwise, she would do anything and anyone if it'd take her tech to greater heights.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: false, sfw: "Y", },
-                    { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
@@ -2851,11 +2666,6 @@ export default defineComponent({
                   this.muse.Title = "Sheikah Scientist";
                   this.muse.Desc = "A very eccentric researcher, older sister to Impa, and working for the royal family of Hyrule. She has found a likeminded soul in Zelda, and does her best to get the tech up to speed to her and the champions' needs, even if sometimes she forgets the world around for her. ";
                   this.muse.DescLewd = "It is a great tragedy that all her efforts will not come to help, and she'll have to wait a century to see the world truly safe AND Zelda well and at ease.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: true, sfw: "Y", },
-                    { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
@@ -2873,11 +2683,6 @@ export default defineComponent({
                   this.muse.Title = "Yiga Researcher";
                   this.muse.Desc = "A woman who defected from the modern Sheikah for refusing technology, and joined up the Yiga to get them back on track for their original ideology. Despite being ruthless and deeply anti-royalty, under her care the Yiga are much less cruel overall, and more affable to non-Hylian Royalty and Sheikah. ";
                   this.muse.DescLewd = "She has no intent to harm or destroy the princess, and would much rather kidnap her, keep her to herself, and perhaps use the ancient sheikah tech to brainwash her into an obedient puppet for Ganon...and herself";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", check: false, sfw: "Y", },
-                    { au: "yiga", emblem: "/versions/Yiga_Eye.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines, Monsterfucking"
                   this.muse.kinks.organ = "NEUTRAL"
                   this.muse.kinks.clothing = "Nylon, Latex, Dress-Up"
@@ -2964,10 +2769,6 @@ export default defineComponent({
                   this.muse.Title = "Doctor";
                   this.muse.Desc = "An excellent, innovative doctor, who got her reputation ruined by standard medical arrogance of others. She has become a black-alley doctor, and while the things she's accused for tend to be fake, she has a sadistic side to her that would put those accusations to shame. ";
                   this.muse.DescLewd = "Sometimes she takes advantage of patients' unconscious or unwell state to have her way with them, or test even more dangerous, lascivious products on them.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines"
                   this.muse.kinks.organ = "Mouth, Cock"
                   this.muse.kinks.clothing = "Latex, Fishnet, Leather"
@@ -2984,10 +2785,6 @@ export default defineComponent({
                   this.muse.Title = "Medic";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A disgraced doctor hired by the Phantom Whores, after being sufficiently perverted in the metaverse. She works undercover at Shujin to provide spaces and tools for sexual recreation, test fertility and arousal drugs, and overall assist in Ann and company's mission. While not active in the cognitive world, her real life contributions make her a worthy Phantom Whore.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Machines"
                   this.muse.kinks.organ = "Mouth, Cock"
                   this.muse.kinks.clothing = "Latex, Fishnet, Leather"
@@ -3012,10 +2809,6 @@ export default defineComponent({
                   this.muse.Title = "";
                   this.muse.Desc = "A fiery girl who works as a model, and goes to school like an average girl. She loves sweets, her girlfriend Shiho, and hates injustice. Feels strongly about how she's perceived by others, be it her womanhood, her sexuality, her race, or her body. And she's perfectly willing to take control and show them all wrong. ";
                   this.muse.DescLewd = "Though at times, she just wants to give in to everyone's perception of her as a bimbo and a slut, and drag her girlfriend down with her.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Tits, Pussy, Cock"
                   this.muse.kinks.clothing = "Nudity, Latex, Dress-Up"
@@ -3033,10 +2826,6 @@ export default defineComponent({
                   this.muse.Title = "Panther or Kitten";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "After Ann and Shiho fused with the cognitive versions of themselves in Kamoshida's palace, Ann became every bit the slut she was seen as, but her persona kept her fiery dominance and hatred of Kamoshida. After his defeat, this new Ann has decided to kick the world's libido into high gear, seducing shadows in the cognitive world to turn everyone into perverts, alongside her slutty bunny girlfriend Shiho.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Monsterfucking (Shadows), Gangbang"
                   this.muse.kinks.organ = "Tits, Pussy, Cock"
                   this.muse.kinks.clothing = "Nudity, Latex, Dress-Up"
@@ -3061,10 +2850,6 @@ export default defineComponent({
                   this.muse.Title = "Prosecutor";
                   this.muse.Desc = "A fierce prosecutor who's eternally overworked, undervalued, and ready to strike. She cares deeply for her sister Makoto, but having to care for her as a mother has greatly twisted and strained their relationship. ";
                   this.muse.DescLewd = "She sees the law as a game of chance that she must manipulate in her favor, and intends to place everyone beneath her heel, with her sister to serve her instead.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Nylon, Fishnet"
@@ -3083,10 +2868,6 @@ export default defineComponent({
                   this.muse.SubDomSh = "..though she cheats to always win and dominate.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The twisted true self of a prosecutor, fed up with the gambles of the law and intending to make it her own. With assistance from the Phantom Whores, she fused with her non-cognitive self, and made it to the top of the legal ladder through trickery and perversion, letting the PW's perverted actions and goals slide, as they provide pleasure for her as well, in real life or in the metaverse. The shadows of those who stand against perversion, or use it for their own without the enjoyment of the other, are let to suffer and wander her casino forever, their real selves too lost to commit further crimes against lust.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "lust", emblem: "/versions/annemblem.jpg", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Nylon, Fishnet"
@@ -3172,14 +2953,6 @@ export default defineComponent({
               this.muse.Reg = "Japan";
               this.muse.Desc = "NSFW ONLY - ";
               this.muse.DescLewd = "The ultimate fashionista, but ultimately just a girl who turns despair into pleasure for herself, she wants nothing but to share what she feels with everyone in the world. She's twisted, switches between states of self constantly, and her victory and defeat taste equally good to someone as utterly despairful as herself. There's nothing to hide anymore.";
-              this.muse.auArray = [
-                {
-                  au: "base",
-                  emblem: "/versions/mirror.jpg",
-                  check: false,
-                  sfw: "N",
-                },
-              ];
               this.muse.kinks.partner = "YES"
               this.muse.kinks.organ = "YES"
               this.muse.kinks.clothing = "Dress-Up"
@@ -3412,10 +3185,6 @@ export default defineComponent({
                   this.muse.Spec = "Elf";
                   this.muse.Desc = "An ancient elf who loves magic, hates demons, and is otherwise a mess. Despite being the world's greatest mage, she has rookie mistakes, and can't resist mimics. She's still getting the hang of human lifespans. ";
                   this.muse.DescLewd = "While elves have a low sex drive, she IS interested in the topic, and having fun with it. Just as magic, she looks for objects and tomes about it, and she's the greatest layer, even if she has some gaps.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: true, sfw: "Y", },
-                    { au: "mimic", emblem: "/versions/mimic.png", check: false, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Monsterfucking (Mimics, Demons)"
                   this.muse.kinks.organ = "Mouth"
                   this.muse.kinks.clothing = "Nudity"
@@ -3435,10 +3204,6 @@ export default defineComponent({
                   this.muse.SpecSh = " / Mimic";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Once a great mage, she is now a monster of sorts herself. Her outfit can change to what she wills, even if it'll always be a little tight. She goes around breeding women for new mimic eggs, and alluring travelers into some more advanced mimics. Demons love the new Frieren, and she quite loves herself too. None know if she's still Frieren but too fallen into pleasure to retrieve, or a mimic that's copied her form and mannerisms. Not even herself.";
-                  this.muse.auArray = [
-                    { au: "base", emblem: "/versions/mirror.jpg", check: false, sfw: "Y", },
-                    { au: "mimic", emblem: "/versions/mimic.png", check: true, sfw: "N", },
-                  ];
                   this.muse.kinks.partner = "Monsterfucking (Mimics, Demons)"
                   this.muse.kinks.organ = "Mouth"
                   this.muse.kinks.clothing = "Living Clothes"
@@ -3534,7 +3299,7 @@ export default defineComponent({
               this.muse.kinks.transform = "NEUTRAL"
               break
             case "ursa":
-              this.muse.Name = "Ursula Callistis"; 
+              this.muse.Name = "Ursula Callistis";
               this.muse.NameSh = " Chariot du Nord";
               this.muse.SubDom = "Service switch, eyes on her.";
               this.muse.Title = "Luna Nova Astronomy Teacher";
@@ -3553,12 +3318,6 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "Bimbofication, Gothification"
-              this.muse.auArray = [{
-                au: "base",
-                emblem: "/versions/mirror.jpg",
-                check: false,
-                sfw: "Y",
-              },];
               break
           }
           break;
@@ -3566,6 +3325,8 @@ export default defineComponent({
       this.museDialog = true;
       this.currentMuseCode = char;
       this.currentAreaCode = area;
+      this.currentmuseAULst = aus
+      this.muse.auArray = aus
       this.currentAU = au;
     },
     cleanData() {
@@ -3581,14 +3342,7 @@ export default defineComponent({
       this.muse.RegSh = "";
       this.muse.Desc = "";
       this.muse.DescLewd = "";
-      this.muse.auArray = [
-        {
-          au: "base",
-          emblem: "/versions/mirror.jpg",
-          check: false,
-          sfw: "Y",
-        },
-      ];
+      this.muse.auArray = [];
       this.muse.kinks.partner = ""
       this.muse.kinks.organ = ""
       this.muse.kinks.clothing = ""
