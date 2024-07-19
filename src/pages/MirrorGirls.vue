@@ -62,7 +62,7 @@
           <div class="col-xs-12 col-md-5">
             <div class="row justify-start align-center">
               <div class="col align-center">
-                <q-toggle v-model="nsfwSwitch" color="black" />
+                <q-toggle v-model="nsfwSwitch" color="black" v-show="nsfwSwitchSafe" />
                 <span v-show="nsfwSwitch">N</span>
                 <span>SFW</span>
                 <q-toggle v-model="descKinkSwitch" color="purple" v-show="nsfwSwitch" />
@@ -208,7 +208,9 @@ export default defineComponent({
     museSect: { label: "All", value: 0 },
     museDialog: false,
     nsfwSwitch: false,
+    nsfwSwitchSafe: true,
     descKinkSwitch: false,
+    switchCharAlert: false,
     museDataCheck: 1,
     currentMuseCode: "",
     currentAreaCode: 0,
@@ -953,15 +955,53 @@ export default defineComponent({
       if (value == false) {
         this.descKinkSwitch = false;
       }
+      if (value == true) {
+        if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
+          this.nsfwSwitchSafe = false
+        }
+      }
+    },
+    switchCharAlert(value) {
+      if (value == true) {
+        if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
+          this.nsfwSwitchSafe = false
+        } else {
+          this.nsfwSwitchSafe = true
+        }
+      }
     },
     museSect() {
       this.dataFill();
     },
     nsfwSwitch(value) {
+      var tempCharStateSFW = ""
+      var dialogtempCSSFW = ""
+      this.dataFill()
       if (value == false) {
         this.descKinkSwitch = false;
+        for (var i = 0; i < this.finalCharArr.length; i++) {
+          tempCharStateSFW = this.auListDataBring(this.finalCharArr[i].state).sfw
+          if (tempCharStateSFW = "N") {
+            this.finalCharArr[i].state = this.finalCharArr[i].states[0]
+          }
+        }
+        if (this.museDialog == true) {
+          for (var i = 0; i < this.finalCharArr.length; i++) {
+            if (this.finalCharArr[i].code == this.currentMuseCode) {
+              dialogtempCSSFW = this.auListDataBring(this.currentAU).sfw
+              if (dialogtempCSSFW = "N") {
+                for (var j = 0; j < this.currentmuseAULst; j++) {
+                  if (this.auListDataBring(this.currentmuseAULst[j]).sfw == "Y") {
+                    this.currentAU = this.currentmuseAULst[j]
+                    this.museProfileOpen(this.currentAreaCode, this.currentMuseCode, this.currentAU, this.currentmuseAULst)
+                  }
+                }
+
+              }
+            }
+          }
+        }
       }
-      this.dataFill()
     }
   },
   methods: {
@@ -1108,11 +1148,12 @@ export default defineComponent({
       }
       var auList = [];
       for (var i = 0; i < this.finalCharArr.length; i++) {
-          if (this.finalCharArr[i].code == newCode) {
-            auList = finalCharArr[i].states
-          }
+        if (this.finalCharArr[i].code == newCode) {
+          auList = this.finalCharArr[i].states
         }
+      }
       this.museProfileOpen(newSect, newCode, this.currentAU, auList);
+      this.switchCharAlert = false
     },
     museProfileOpen(area, char, au, aus) {
       this.cleanData();
@@ -3322,12 +3363,14 @@ export default defineComponent({
           }
           break;
       }
-      this.museDialog = true;
       this.currentMuseCode = char;
       this.currentAreaCode = area;
       this.currentmuseAULst = aus
       this.muse.auArray = aus
       this.currentAU = au;
+
+      this.switchCharAlert = true
+      this.museDialog = true;
     },
     cleanData() {
       this.muse.Name = "";
