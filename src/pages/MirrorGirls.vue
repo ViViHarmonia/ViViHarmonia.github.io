@@ -7,9 +7,33 @@
           and such information, canon or personal.
         </div>
         <div class="row justify-center">
+          <q-layout class="shadow-2 rounded-borders " view="hHh Lpr lff" container
+            style="height: 500px; min-width: 300px;" v-if="$q.screen.lt.sm">
+            <q-header class="scrollheader" elevated>
+              <q-toolbar>
+                <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
+                  input-debounce="0" dark outlined dense />
+                <q-toggle v-model="nsfwSwitch" color="black" />
+                <span v-show="nsfwSwitch">N</span>
+                <span>SFW</span>
+              </q-toolbar>
+            </q-header>
+            <q-scroll-area visible class="bg-grey-10 text-white rounded-borders"
+              style="height: 500px; min-width: 300px;">
+              <div class="cardHolder q-pt-sm">
+                <div class="row flex-center">
+                  <q-btn v-for="(char, c) in finalCharArr" square padding="xs" flat
+                    @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
+                    <q-avatar rounded size="60px">
+                      <img :src="char.avatar">
+                    </q-avatar>
+                  </q-btn>
+                </div>
+              </div>
+            </q-scroll-area>
+          </q-layout>
           <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table" hide-bottom
-            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr"
-            :grid="$q.screen.lt.sm">
+            virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr" v-else>
             <template v-slot:top>
               <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
                 input-debounce="0" dark outlined dense />
@@ -30,13 +54,10 @@
                   :disabled="props.row.state == auListDataBring(variant).au"
                   v-show="checkSFW(auListDataBring(variant).sfw)"
                   @click="props.row.state = auListDataBring(variant).au">
-                  <q-avatar circle size="40px">
+                  <q-avatar circle class="aubutton">
                     <img :src="auListDataBring(variant).emblem" />
                   </q-avatar>
                 </q-btn>
-                <!--<q-select v-model="props.row.state" :options="props.row.states" fill-input input-debounce="0" dark
-                  outlined dense v-if="props.row.states.length > 1"></q-select>
-                <div v-else>{{ props.row.state }}</div>-->
               </q-td>
             </template>
             <template v-slot:body-cell-actions="props">
@@ -100,8 +121,8 @@
                 {{ muse.SubDom }}<span class="secret">{{ muse.SubDomSh }}</span>
               </div>
             </div>
-            <div class="row text-body2 justify-start items-center" v-if="muse.auArray.length != 1">
-              <div class="col-xs-2"><b>Variants:</b></div>
+            <div class="row text-body2 justify-start items-center">
+              <div class="col-xs-2"><b>Universes:</b></div>
               <div class="col-xs-12">
                 <q-btn v-for="variant in muse.auArray " circle flat padding="xs"
                   :disabled="currentAU == auListDataBring(variant).au" v-show="checkSFW(auListDataBring(variant).sfw)"
@@ -110,6 +131,12 @@
                     <img :src="auListDataBring(variant).emblem" />
                   </q-avatar>
                 </q-btn>
+              </div>
+              <div class="row text-body2 justify-start">
+                <div class="col-xs-12"><b>Current Universe:</b></div>
+                <div class="col-xs-12">
+                  <span>{{ auListDataBring(currentAU).name }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -120,6 +147,9 @@
                   }}</span>
               </div>
               <div class="col-xs-12" v-show="descKinkSwitch">
+                <div class="row text-body2 justify-start">
+                  <div class="col-xs-4"><b>KINKS: </b></div>
+                </div>
                 <div class="row text-body2 justify-start">
                   <div class="col-xs-4"><b>Partner: </b></div>
                   <div class="col-xs-8">{{ muse.kinks.partner }}</div>
@@ -200,7 +230,6 @@
 </template>
 <script>
 import { defineComponent } from "vue";
-import { ref } from "vue";
 export default defineComponent({
   //cuando haces click en boton de AU, ventana pierde focus hasta que hagas click de nuevo
   name: "MirrorGirls",
@@ -210,7 +239,6 @@ export default defineComponent({
     nsfwSwitch: false,
     nsfwSwitchSafe: true,
     descKinkSwitch: false,
-    switchCharAlert: false,
     museDataCheck: 1,
     currentMuseCode: "",
     currentAreaCode: 0,
@@ -224,9 +252,9 @@ export default defineComponent({
         align: "center",
         field: "name",
       },
-      { name: "state", label: "State", align: "center", field: "" },
       { name: "free", label: "Free", align: "center", field: "free" },
-      { name: "franchise", label: "Universe", align: "center", field: "uni" },
+      { name: "franchise", label: "Current Uni.", align: "center", field: "uni" },
+      { name: "state", label: "Universes", align: "center", field: "" },
       { name: "actions", label: "", align: "end", field: "" },
     ],
     kinklist: ["Partner:", "Assets:", "Clothing:", "Relation:", "Consent:", "Substance:", "Treatment:", "Bondage:", "Mind Mod.:", "Body Mod.:", "Transform:"],
@@ -239,25 +267,25 @@ export default defineComponent({
       { label: "Series", value: 5 },
     ],
     museAULst: [
-      { au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", },
-      { au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", },
-      { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", },
-      { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", },
-      { au: "plasma", emblem: "/versions/Team_Plasma.png", sfw: "N", },
+      { au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", name: "Source" },
+      { au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", name: "Source (Lewd)" },
+      { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", name: "Team (Hypno) Rocket" },
+      { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", name: "New Team Galactic" },
+      { au: "plasma", emblem: "/versions/Team_Plasma.png", sfw: "N", name: "Team Plasma" },
       {
         au: "flare", emblem:
-          "/versions/team_flare_by_biochao_dezue6u-pre.png", sfw: "N",
+          "/versions/team_flare_by_biochao_dezue6u-pre.png", sfw: "N", name: "Team Flare"
       },
-      { au: "aether", emblem: "/versions/aether.png", sfw: "N", },
-      { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", },
-      { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", },
-      { au: "shy", emblem: "/versions/shy.png", sfw: "N", },
-      { au: "bow", emblem: "/versions/bow.jpg", sfw: "N", },
-      { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", sfw: "Y", },
-      { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", sfw: "Y", },
-      { au: "yiga", emblem: "/versions/Yiga_Eye.png", sfw: "N", },
-      { au: "lust", emblem: "/versions/annemblem.jpg", sfw: "N", },
-      { au: "mimic", emblem: "/versions/mimic.png", sfw: "N", },
+      { au: "aether", emblem: "/versions/aether.png", sfw: "N", name: "Ultra Beast" },
+      { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", name: "New Mirror Maidens" },
+      { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", name: "UA Heroine University" },
+      { au: "shy", emblem: "/versions/shy.png", sfw: "N", name: "Shy Gal" },
+      { au: "bow", emblem: "/versions/bow.jpg", sfw: "N", name: "Koopa Slave" },
+      { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", sfw: "Y", name: "Shadow Fusion" },
+      { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", sfw: "Y", name: "Pre-Calamity" },
+      { au: "yiga", emblem: "/versions/Yiga_Eye.png", sfw: "N", name: "Yiga" },
+      { au: "lust", emblem: "/versions/annemblem.jpg", sfw: "N", name: "Phantom Thieves of Lust" },
+      { au: "mimic", emblem: "/versions/mimic.png", sfw: "N", name: "Mimic" },
 
     ],
     allCharArr: [
@@ -465,7 +493,7 @@ export default defineComponent({
         code: "mira",
         sect: 2,
         name: "Mirror Maidens",
-        state: "base",
+        state: "mirror",
         free: "NO",
         states: ["mirror"],
         uni: "Genshin Impact",
@@ -475,7 +503,7 @@ export default defineComponent({
         code: "mei",
         sect: 3,
         name: "Mei Hatsume",
-        state: "base",
+        state: "ua",
         free: "YES",
         states: ["ua"],
         uni: "Hero Academia",
@@ -485,7 +513,7 @@ export default defineComponent({
         code: "tsu",
         sect: 3,
         name: "Tsuyu Asui",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -495,7 +523,7 @@ export default defineComponent({
         code: "mina",
         sect: 3,
         name: "Mina Ashido",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -505,7 +533,7 @@ export default defineComponent({
         code: "momo",
         sect: 3,
         name: "Momo Yaoyorozu",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -516,7 +544,7 @@ export default defineComponent({
         code: "kendo",
         sect: 3,
         name: "Itsuka Kendo",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -526,7 +554,7 @@ export default defineComponent({
         code: "kino",
         sect: 3,
         name: "Kinoko Komori",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -536,7 +564,7 @@ export default defineComponent({
         code: "mel",
         sect: 3,
         name: "Melissa Shield",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -546,7 +574,7 @@ export default defineComponent({
         code: "camie",
         sect: 3,
         name: "Camie Utsushimi",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -556,7 +584,7 @@ export default defineComponent({
         code: "joke",
         sect: 3,
         name: "Emi Fukukado",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -566,7 +594,7 @@ export default defineComponent({
         code: "rumi",
         sect: 3,
         name: "Rumi Usagiyama",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -576,7 +604,7 @@ export default defineComponent({
         code: "yama",
         sect: 3,
         name: "Yu Takeyama",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -586,7 +614,7 @@ export default defineComponent({
         code: "nana",
         sect: 3,
         name: "Nana Shimura",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -596,7 +624,7 @@ export default defineComponent({
         code: "kai",
         sect: 3,
         name: "Kaina Tsutsumi",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -606,7 +634,7 @@ export default defineComponent({
         code: "fumi",
         sect: 3,
         name: "Fuyumi Todoroki",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -616,7 +644,7 @@ export default defineComponent({
         code: "inko",
         sect: 3,
         name: "Inko Midoriya",
-        state: "base",
+        state: "ua",
         free: "NO",
         states: ["ua"],
         uni: "Hero Academia",
@@ -900,7 +928,7 @@ export default defineComponent({
         name: "Utena Hiiragi",
         state: "base",
         free: "YES",
-        states: ["base"],
+        states: ["baseN"],
         uni: "Gushing Over Magical Girls",
         avatar: "/museicon/utena.jpg",
       },
@@ -955,20 +983,6 @@ export default defineComponent({
       if (value == false) {
         this.descKinkSwitch = false;
       }
-      if (value == true) {
-        if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
-          this.nsfwSwitchSafe = false
-        }
-      }
-    },
-    switchCharAlert(value) {
-      if (value == true) {
-        if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
-          this.nsfwSwitchSafe = false
-        } else {
-          this.nsfwSwitchSafe = true
-        }
-      }
     },
     museSect() {
       this.dataFill();
@@ -981,24 +995,15 @@ export default defineComponent({
         this.descKinkSwitch = false;
         for (var i = 0; i < this.finalCharArr.length; i++) {
           tempCharStateSFW = this.auListDataBring(this.finalCharArr[i].state).sfw
-          if (tempCharStateSFW = "N") {
+          if (tempCharStateSFW == "N") {
             this.finalCharArr[i].state = this.finalCharArr[i].states[0]
           }
         }
         if (this.museDialog == true) {
-          for (var i = 0; i < this.finalCharArr.length; i++) {
-            if (this.finalCharArr[i].code == this.currentMuseCode) {
-              dialogtempCSSFW = this.auListDataBring(this.currentAU).sfw
-              if (dialogtempCSSFW = "N") {
-                for (var j = 0; j < this.currentmuseAULst; j++) {
-                  if (this.auListDataBring(this.currentmuseAULst[j]).sfw == "Y") {
-                    this.currentAU = this.currentmuseAULst[j]
-                    this.museProfileOpen(this.currentAreaCode, this.currentMuseCode, this.currentAU, this.currentmuseAULst)
-                  }
-                }
-
-              }
-            }
+          dialogtempCSSFW = this.auListDataBring(this.currentAU).sfw
+          if (dialogtempCSSFW = "N") {
+            this.currentAU = this.currentmuseAULst[0]
+            this.museProfileOpen(this.currentAreaCode, this.currentMuseCode, this.currentAU, this.currentmuseAULst)
           }
         }
       }
@@ -1153,7 +1158,6 @@ export default defineComponent({
         }
       }
       this.museProfileOpen(newSect, newCode, this.currentAU, auList);
-      this.switchCharAlert = false
     },
     museProfileOpen(area, char, au, aus) {
       this.cleanData();
@@ -3368,8 +3372,11 @@ export default defineComponent({
       this.currentmuseAULst = aus
       this.muse.auArray = aus
       this.currentAU = au;
-
-      this.switchCharAlert = true
+      if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
+        this.nsfwSwitchSafe = false
+      } else {
+        this.nsfwSwitchSafe = true
+      }
       this.museDialog = true;
     },
     cleanData() {
@@ -3417,10 +3424,32 @@ export default defineComponent({
   .my-sticky-header-table {
     width: 1000px;
   }
+
+  .aubutton {
+    font-size: 40px;
+
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .iconMuseTable {
+    font-size: 50px;
+  }
+
+  .buttonTable {
+    font-size: 10px;
+  }
+
+  .aubutton {
+    font-size: 32px;
+
+  }
+
 }
 
 .cardHolder {
   margin-bottom: 12px;
+  margin-top: 60px;
   padding: 0 4%;
   gap: 12px;
 }
@@ -3445,6 +3474,10 @@ export default defineComponent({
 .secret {
   color: black;
   background-color: black;
+}
+
+.scrollheader {
+  background-color: #5a0a58;
 }
 
 .secret:hover {
