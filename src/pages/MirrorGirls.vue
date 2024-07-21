@@ -48,6 +48,11 @@
                 </q-avatar>
               </q-td>
             </template>
+            <template v-slot:body-cell-universe="props">
+              <q-td :props="props">
+                <div>{{ auListDataBring(props.row.state).name }}</div>
+              </q-td>
+            </template>
             <template v-slot:body-cell-state="props">
               <q-td :props="props">
                 <q-btn v-for="variant in props.row.states " circle flat padding="xs"
@@ -253,7 +258,7 @@ export default defineComponent({
         field: "name",
       },
       { name: "free", label: "Free", align: "center", field: "free" },
-      { name: "franchise", label: "Current Uni.", align: "center", field: "uni" },
+      { name: "universe", label: "Current Uni.", align: "center", field: "uni" },
       { name: "state", label: "Universes", align: "center", field: "" },
       { name: "actions", label: "", align: "end", field: "" },
     ],
@@ -269,23 +274,48 @@ export default defineComponent({
     museAULst: [
       { au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", name: "Source" },
       { au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", name: "Source (Lewd)" },
+      { au: "pokemon", emblem: "/versions/Poké_Ball_icon.svg.png", sfw: "Y", name: "Pokémon" },
       { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", name: "Team (Hypno) Rocket" },
-      { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", name: "New Team Galactic" },
+      { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", name: "Team Galactic" },
       { au: "plasma", emblem: "/versions/Team_Plasma.png", sfw: "N", name: "Team Plasma" },
-      {
-        au: "flare", emblem:
-          "/versions/team_flare_by_biochao_dezue6u-pre.png", sfw: "N", name: "Team Flare"
-      },
+      { au: "flare", emblem: "/versions/team_flare_by_biochao.png", sfw: "N", name: "Team Flare" },
       { au: "aether", emblem: "/versions/aether.png", sfw: "N", name: "Ultra Beast" },
+
+      { au: "genshin", emblem: "/versions/paimon.png", sfw: "Y", name: "Genshin Impact" },
       { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", name: "New Mirror Maidens" },
       { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", name: "UA Heroine University" },
+
+      { au: "samus", emblem: "/versions/samus.png", sfw: "Y", name: "Metroid" },
+      { au: "mario", emblem: "/versions/Mario_emblem.svg.png", sfw: "Y", name: "Super Mario" },
       { au: "shy", emblem: "/versions/shy.png", sfw: "N", name: "Shy Gal" },
       { au: "bow", emblem: "/versions/bow.jpg", sfw: "N", name: "Koopa Slave" },
       { au: "shadow", emblem: "/versions/PMTTYD_Staff_Credits_45.png", sfw: "Y", name: "Shadow Fusion" },
+      { au: "zelda", emblem: "/versions/triforce-logo.png", sfw: "Y", name: "The Legend of Zelda" },
       { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", sfw: "Y", name: "Pre-Calamity" },
       { au: "yiga", emblem: "/versions/Yiga_Eye.png", sfw: "N", name: "Yiga" },
-      { au: "lust", emblem: "/versions/annemblem.jpg", sfw: "N", name: "Phantom Thieves of Lust" },
+      { au: "emblem", emblem: "/versions/falchion.png", sfw: "Y", name: "Fire Emblem" },
+
+      { au: "helltaker", emblem: "/versions/helltaker.png", sfw: "Y", name: "Helltaker" },
+      { au: "persona", emblem: "/versions/annemblem.jpg", sfw: "Y", name: "Persona 5 (♀)" },
+      { au: "lust", emblem: "/versions/lovers.png", sfw: "N", name: "Phantom Thieves of Lust" },
+      { au: "ddlc", emblem: "/versions/Ddlc_logo.png", sfw: "Y", name: "Doki Doki Literature Club" },
+      { au: "dangan", emblem: "/versions/dr.jpg", sfw: "Y", name: "DanganRonpa" },
+      { au: "danganR", emblem: "/versions/dr.jpg", sfw: "N", name: "DanganRonpa" },
+      { au: "shantae", emblem: "/versions/shantaesmash.png", sfw: "Y", name: "Shantae" },
+      { au: "fate", emblem: "/versions/chaldea.png", sfw: "Y", name: "Fate" },
+      { au: "mmx", emblem: "/versions/Maverick_Hunter_Mark.png", sfw: "Y", name: "Mega Man X" },
+      { au: "gear", emblem: "/versions/ggstrive.png", sfw: "Y", name: "Guilty Gear" },
+
+      { au: "dressup", emblem: "/versions/marin.jpg", sfw: "Y", name: "Dress-Up Darling" },
+      { au: "cyberpunk", emblem: "/versions/edgerunner.jpg", sfw: "Y", name: "Cyberpunk Edgerunners" },
+      { au: "spyxfam", emblem: "/versions/spyxfam.png", sfw: "Y", name: "Spy X Family" },
+      { au: "p&swg", emblem: "/versions/p&swg.png", sfw: "Y", name: "Panty & Stocking w/Garterbelt" },
+      { au: "frieren", emblem: "/versions/frierendemonkillspell.png", sfw: "Y", name: "Sousou no Frieren" },
       { au: "mimic", emblem: "/versions/mimic.png", sfw: "N", name: "Mimic" },
+      { au: "bocchi", emblem: "/versions/kessokuband.png", sfw: "Y", name: "Bocchi the Rock" },
+      { au: "iltv", emblem: "/versions/reilaire.png", sfw: "Y", name: "In Love With the Villainess" },
+      { au: "baiser", emblem: "/versions/shinyrod.png", sfw: "N", name: "Gushing Over Magical Girls" },
+      { au: "lwa", emblem: "/versions/enormetastar.png", sfw: "Y", name: "Little Witch Academia" },
 
     ],
     allCharArr: [
@@ -293,140 +323,126 @@ export default defineComponent({
         code: "rosa",
         sect: 1,
         name: "Rosa",
-        state: "base",
+        state: "pokemon",
         free: "YES",
-        states: ["base", "rocket", "plasma", "ua"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "plasma", "ua"],
         avatar: "/museicon/rosa.jpg",
       },
       {
         code: "nem",
         sect: 1,
         name: "Nemona",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/nemona.png",
       },
       {
         code: "marn",
         sect: 1,
         name: "Marnie",
-        state: "base",
+        state: "pokemon",
         free: "YES",
-        states: ["base", "rocket"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/marnie.jpg",
       },
       {
         code: "ida",
         sect: 1,
         name: "Irida",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "galaxy"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "galaxy"],
         avatar: "/museicon/irida.jpg",
       },
       {
         code: "iris",
         sect: 1,
         name: "Iris",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "plasma"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "plasma"],
         avatar: "/museicon/iris.jpeg",
       },
       {
         code: "sere",
         sect: 1,
         name: "Serena",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "flare"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "flare"],
         avatar: "/museicon/serena.png",
       },
       {
         code: "brina",
         sect: 1,
         name: "Sabrina",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/sabrina.jpg",
       },
       {
         code: "cyn",
         sect: 1,
         name: "Cynthia",
-        state: "base",
+        state: "pokemon",
         free: "YES",
-        states: ["base", "rocket", "galaxy"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "galaxy"],
         avatar: "/museicon/cyn.jpg",
       },
       {
         code: "nesa",
         sect: 1,
         name: "Nessa",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/nesa.png",
       },
       {
         code: "jess",
         sect: 1,
         name: "Jessie",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/jessie.jpg",
       },
       {
         code: "ele",
         sect: 1,
         name: "Elesa",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "plasma"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "plasma"],
         avatar: "/museicon/ele.gif",
       },
       {
         code: "lusa",
         sect: 1,
         name: "Lusamine",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "aether"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "aether"],
         avatar: "/museicon/lusa.jpg",
       },
       {
         code: "clair",
         sect: 1,
         name: "Clair",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base"],
-        uni: "Pokémon",
+        states: ["pokemon"],
         avatar: "/museicon/clair.jpg",
       },
       {
         code: "garde",
         sect: 1,
         name: "Gardenia",
-        state: "base",
+        state: "pokemon",
         free: "NO",
-        states: ["base", "rocket", "galaxy"],
-        uni: "Pokémon",
+        states: ["pokemon", "rocket", "galaxy"],
         avatar: "/museicon/gardenia.jpg",
       },
       {
@@ -436,7 +452,6 @@ export default defineComponent({
         state: "galaxy",
         free: "NO",
         states: ["galaxy"],
-        uni: "Pokémon",
         avatar: "/museicon/mars.png",
       },
       {
@@ -446,47 +461,42 @@ export default defineComponent({
         state: "galaxy",
         free: "NO",
         states: ["galaxy"],
-        uni: "Pokémon",
         avatar: "/museicon/galacticgrunt.png",
       },
       {
         code: "lumi",
         sect: 2,
         name: "Lumine",
-        state: "base",
+        state: "genshin",
         free: "NO",
-        states: ["base", "mirror"],
-        uni: "Genshin Impact",
+        states: ["genshin", "mirror"],
         avatar: "/museicon/lumi.jpeg",
       },
       {
         code: "lisa",
         sect: 2,
         name: "Lisa Minci",
-        state: "base",
+        state: "genshin",
         free: "NO",
-        states: ["base", "mirror"],
-        uni: "Genshin Impact",
+        states: ["genshin", "mirror"],
         avatar: "/museicon/lisa.jpg",
       },
       {
         code: "saria",
         sect: 2,
         name: "Rosaria",
-        state: "base",
+        state: "genshin",
         free: "NO",
-        states: ["base", "mirror"],
-        uni: "Genshin Impact",
+        states: ["genshin", "mirror"],
         avatar: "/museicon/rosaria.jpg",
       },
       {
         code: "yelan",
         sect: 2,
         name: "Yelan",
-        state: "base",
+        state: "genshin",
         free: "NO",
-        states: ["base", "mirror"],
-        uni: "Genshin Impact",
+        states: ["genshin", "mirror"],
         avatar: "/museicon/yelan.jpeg",
       },
       {
@@ -496,7 +506,6 @@ export default defineComponent({
         state: "mirror",
         free: "NO",
         states: ["mirror"],
-        uni: "Genshin Impact",
         avatar: "/museicon/mirror.jpeg",
       },
       {
@@ -506,7 +515,6 @@ export default defineComponent({
         state: "ua",
         free: "YES",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/mei.jpeg",
       },
       {
@@ -516,7 +524,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/tsuyu.jpeg",
       },
       {
@@ -526,7 +533,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/mina.jpeg",
       },
       {
@@ -536,10 +542,9 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/momo.jpeg",
       },
-      //{ code: "toru", sect: 3, name:"Tooru Hagakure",state: "base", free: "NO", states:[ "base" ], uni: "Hero Academia", avatar: "/museicon/tooru.jpeg", }, DORMANT
+      //{ code: "toru", sect: 3, name:"Tooru Hagakure",state: "ua", free: "NO", states:[ "ua" ], avatar: "/museicon/tooru.jpeg", }, DORMANT
       {
         code: "kendo",
         sect: 3,
@@ -547,7 +552,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/kendo.jpeg",
       },
       {
@@ -557,7 +561,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/kinoko.png",
       },
       {
@@ -567,7 +570,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/melissa.jpeg",
       },
       {
@@ -577,7 +579,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/camie.jpeg",
       },
       {
@@ -587,7 +588,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/msjoke.jpeg",
       },
       {
@@ -597,7 +597,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/miruko.jpeg",
       },
       {
@@ -607,7 +606,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/mtlady.jpeg",
       },
       {
@@ -617,7 +615,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/nana.jpeg",
       },
       {
@@ -627,7 +624,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/nagant.jpeg",
       },
       {
@@ -637,7 +633,6 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/fuyumi.jpeg",
       },
       {
@@ -647,289 +642,268 @@ export default defineComponent({
         state: "ua",
         free: "NO",
         states: ["ua"],
-        uni: "Hero Academia",
         avatar: "/museicon/inko.png",
       },
       {
         code: "sam",
         sect: 4,
         name: "Samus Aran",
-        state: "base",
+        state: "samus",
         free: "YES",
-        states: ["base", "shy"],
-        uni: "Metroid",
+        states: ["samus", "shy"],
         avatar: "/museicon/samus.jpg",
       },
       {
         code: "bow",
         sect: 4,
         name: "Bowsette Koopa",
-        state: "base",
+        state: "mario",
         free: "YES",
-        states: ["base", "shy"],
-        uni: "Super Mario",
+        states: ["mario", "shy"],
         avatar: "/museicon/bowsette.jpg",
       },
       {
         code: "pich",
         sect: 4,
         name: "Peach Toadstool",
-        state: "base",
+        state: "mario",
         free: "NO",
-        states: ["base", "shy", "bow", "shadow"],
-        uni: "Super Mario",
+        states: ["mario", "shy", "bow", "shadow"],
         avatar: "/museicon/peach.jpg",
       },
       {
         code: "lina",
         sect: 4,
         name: "Rosalina",
-        state: "base",
+        state: "mario",
         free: "NO",
-        states: ["base", "shy", "bow"],
-        uni: "Super Mario",
+        states: ["mario", "shy", "bow"],
         avatar: "/museicon/rosalina.jpg",
       },
       {
         code: "lin",
         sect: 4,
         name: "Linkle",
-        state: "base",
+        state: "zelda",
         free: "YES",
-        states: ["base"],
-        uni: "Legend of Zelda",
+        states: ["zelda"],
         avatar: "/museicon/linkle.jpeg",
       },
       {
         code: "pura",
         sect: 4,
         name: "Purah",
-        state: "base",
+        state: "zelda",
         free: "YES",
-        states: ["base", "aoc", "yiga"],
-        uni: "Legend of Zelda",
+        states: ["zelda", "aoc", "yiga"],
         avatar: "/museicon/purah.jpeg",
       },
       {
         code: "edel",
         sect: 4,
         name: "Edelgard von Hresvelg",
-        state: "base",
+        state: "emblem",
         free: "NO",
-        states: ["base"],
-        uni: "Fire Emblem",
+        states: ["emblem"],
         avatar: "/museicon/edelgard.jpg",
       },
       {
         code: "luci",
         sect: 4,
         name: "Lucifer Morningstar",
-        state: "base",
+        state: "helltaker",
         free: "YES",
-        states: ["base"],
-        uni: "Helltaker",
+        states: ["helltaker"],
         avatar: "/museicon/lucifer.jpg",
       },
-      { code: "azaz", sect: 4, name: "Azazel", state: "base", free: "NO", states: ["base"], uni: "Helltaker", avatar: "/museicon/azazel.jpg", },
+      {
+        code: "azaz",
+        sect: 4,
+        name: "Azazel",
+        state: "helltaker",
+        free: "NO",
+        states: ["helltaker"],
+        avatar: "/museicon/azazel.jpg",
+      },
       {
         code: "tae",
         sect: 4,
         name: "Tae Takemi",
-        state: "base",
+        state: "persona",
         free: "YES",
-        states: ["base", "lust"],
-        uni: "Persona 5",
+        states: ["persona", "lust"],
         avatar: "/museicon/tae.png",
       },
       {
         code: "ann",
         sect: 4,
         name: "Ann Takamaki",
-        state: "base",
+        state: "persona",
         free: "NO",
-        states: ["base", "lust"],
-        uni: "Persona 5",
+        states: ["persona", "lust"],
         avatar: "/museicon/ann.png",
       },
       {
         code: "sae",
         sect: 4,
         name: "Sae Nijima",
-        state: "base",
+        state: "persona",
         free: "NO",
-        states: ["base", "lust"],
-        uni: "Persona 5",
+        states: ["persona", "lust"],
         avatar: "/museicon/sae1.jpeg",
       },
-      //{ code: "roty", sect: 4, name:"",state: "base", free: "NO", states:[ "base" ], uni: "Shantae", avatar: "/museicon/rotty.png", }, DORMANT
+      //{ code: "roty", sect: 4, name:"",state: "shantae", free: "NO", states:[ "shantae" ], avatar: "/museicon/rotty.png", }, DORMANT
       {
         code: "moni",
         sect: 4,
         name: "Monika",
-        state: "base",
+        state: "ddlc",
         free: "YES",
-        states: ["base"],
-        uni: "Doki Doki Literature Club",
+        states: ["ddlc"],
         avatar: "/museicon/monika.png",
       },
       {
         code: "junko",
         sect: 4,
         name: "Junko Enoshima",
-        state: "baseN",
+        state: "danganR",
         free: "YES",
-        states: ["baseN"],
-        uni: "Danganronpa",
+        states: ["danganR"],
         avatar: "/museicon/junko.jpg",
       },
       {
         code: "nami",
         sect: 4,
         name: "Chiaki Nanami",
-        state: "base",
+        state: "dangan",
         free: "YES",
-        states: ["base"],
-        uni: "Danganronpa",
+        states: ["dangan"],
         avatar: "/museicon/chiaki.jpg",
       },
       {
         code: "shan",
         sect: 4,
         name: "Shantae",
-        state: "base",
+        state: "shantae",
         free: "NO",
-        states: ["base"],
-        uni: "Shantae",
+        states: ["shantae"],
         avatar: "/museicon/shantae.jpeg",
       },
       {
         code: "ruler",
         sect: 4,
         name: "Artoria Pendragon",
-        state: "base",
+        state: "fate",
         free: "NO",
-        states: ["base"],
-        uni: "Fate",
+        states: ["fate"],
         avatar: "/museicon/ruler.jpeg",
       },
       {
         code: "ridem",
         sect: 4,
         name: "Medusa",
-        state: "base",
+        state: "fate",
         free: "NO",
-        states: ["base"],
-        uni: "Fate",
+        states: ["fate"],
         avatar: "/museicon/riderM.jpg",
       },
       {
         code: "layer",
         sect: 4,
         name: "Layer",
-        state: "base",
+        state: "mmx",
         free: "YES",
-        states: ["base"],
-        uni: "Megaman X",
+        states: ["mmx"],
         avatar: "/museicon/layer.jpeg",
       },
       {
         code: "brdgt",
         sect: 4,
         name: "Bridget ",
-        state: "base",
+        state: "gear",
         free: "YES",
-        states: ["base"],
-        uni: "Guilty Gear",
+        states: ["gear"],
         avatar: "/museicon/bridge.png",
       },
       {
         code: "marin",
         sect: 5,
         name: "Marin Kitagawa",
-        state: "base",
+        state: "dressup",
         free: "YES",
-        states: ["base"],
-        uni: "Dress-Up Darling",
+        states: ["dressup"],
         avatar: "/museicon/marin.jpg",
       },
       {
         code: "lucy",
         sect: 5,
         name: "Lucynda Kushinada",
-        state: "base",
+        state: "cyberpunk",
         free: "NO",
-        states: ["base"],
-        uni: "Cyberpunk Edgerunners",
+        states: ["cyberpunk"],
         avatar: "/museicon/lucynda.png",
       },
       {
         code: "yor",
         sect: 5,
         name: "Yor Forger neé Briar",
-        state: "base",
+        state: "spyxfam",
         free: "YES",
-        states: ["base"],
-        uni: "Spy X Family",
+        states: ["spyxfam"],
         avatar: "/museicon/yor.png",
       },
       {
         code: "stock",
         sect: 5,
         name: "Stocking",
-        state: "base",
+        state: "p&swg",
         free: "YES",
-        states: ["base"],
-        uni: "Panty & Stocking w/Garterbelt",
+        states: ["p&swg"],
         avatar: "/museicon/stock.jpg",
       },
       {
         code: "frie",
         sect: 5,
         name: "Frieren",
-        state: "base",
+        state: "frieren",
         free: "NO",
-        states: ["base", "mimic"],
-        uni: "Sousou no Frieren",
+        states: ["frieren", "mimic"],
         avatar: "/museicon/frie.jpg",
       },
       {
         code: "fern",
         sect: 5,
         name: "Fern",
-        state: "base",
+        state: "frieren",
         free: "NO",
-        states: ["base"],
-        uni: "Sousou no Frieren",
+        states: ["frieren"],
         avatar: "/museicon/fern.jpg",
       },
       {
         code: "paru",
         sect: 5,
         name: "PA-san",
-        state: "base",
+        state: "bocchi",
         free: "YES",
-        states: ["base"],
-        uni: "Bocchi the Rock!",
+        states: ["bocchi"],
         avatar: "/museicon/paru.jpg",
       },
       {
         code: "clare",
         sect: 5,
         name: "Claire François",
-        state: "base",
+        state: "iltv",
         free: "YES",
-        states: ["base"],
-        uni: "In Love With the Villainess",
+        states: ["iltv"],
         avatar: "/museicon/claire.jpg",
       },
       {
         code: "utena",
         sect: 5,
         name: "Utena Hiiragi",
-        state: "base",
+        state: "baiser",
         free: "YES",
-        states: ["baseN"],
-        uni: "Gushing Over Magical Girls",
+        states: ["baiser"],
         avatar: "/museicon/utena.jpg",
       },
 
@@ -937,13 +911,12 @@ export default defineComponent({
         code: "ursa",
         sect: 5,
         name: "Ursula Callistis",
-        state: "base",
+        state: "lwa",
         free: "YES",
-        states: ["base"],
-        uni: "Little Witch Academia",
+        states: ["lwa"],
         avatar: "/museicon/ursula.jpg",
       },
-      //{ code: "beni", sect: 5, name:"",state: "base", free: "NO", states:[ "base" ], uni: "", avatar: "/museicon/kobeni.jpeg", }, DORMANT
+      //{ code: "beni", sect: 5, name:"",state: "", free: "NO", states:[ "" ], avatar: "/museicon/kobeni.jpeg", }, DORMANT
     ],
     finalCharArr: [],
     muse: {
@@ -1167,7 +1140,7 @@ export default defineComponent({
             case "rosa":
               this.muse.Spec = "Human";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Pokemon Trainer";
                   this.muse.Reg = "Unova";
                   this.muse.Name = "Rosa Whitley";
@@ -1251,7 +1224,7 @@ export default defineComponent({
               this.muse.Reg = "Paldea";
               this.muse.Name = "Nemona Victoria";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Paldean Champion";
                   this.muse.Desc = "A very hyperactive girl who enjoys Pokemon battling above all else. It has led her to be a Champion-ranked student, though making her ability to relate to others much harder. Has come out of her shell a little through Juliana and Penny, and now her cousin Rosa. ";
                   this.muse.DescLewd = "She treats sex as roughly and dedicated as Pokémon battling. She has fucked and broken many girls she defeats, and intends to do the same for her new friends, longer, harder, tighter. Make them hers for good.";
@@ -1290,7 +1263,7 @@ export default defineComponent({
               this.muse.Spec = "Human";
               this.muse.Reg = "Galar";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Spikemuth Gym Leader";
                   this.muse.SubDom = "Submissive unless irritated sufficiently. Like a Morpeko.";
                   this.muse.Desc = "A punk-ish girl who seems tough, hiding a truly shy and sweet disposition, with troubles smiling and otherwise expressing herself concisely. She has a legion of fans that cause ruckus, and two cousins that tease her endlessly, both of which she is eternally grateful to. ";
@@ -1333,7 +1306,7 @@ export default defineComponent({
               this.muse.Reg = "Sinnoh";
               this.muse.RegSh = " (Hisui)";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Pokemon Trainer?";
                   this.muse.Desc = "A girl thrown into the leadership of the Pearl Clan too soon, she overcompensates with a tough attitude and disposition, hiding a rather soft self. She's been flung forward in time now, to modern day Sinnoh. While happy to explore the vast world in front of her, she can't help but wonder what to do without having to lead. ";
                   this.muse.DescLewd = "Sometimes she too wishes to step down and be just one more person worshiping, as well as forget the breaking of her life's theology..or find a new one.";
@@ -1389,7 +1362,7 @@ export default defineComponent({
               this.muse.Reg = "Unova";
               this.muse.Name = "Iris Magenta";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Opelucid Gym Leader, Unovan Champion";
                   this.muse.Desc = "A very wild girl who loves dragons, and Pokémon, but is rather clueless and slow to trust and learn when it comes to anything outside of that. After a great journey, she managed to become the Champion of Unova, a title which often swings between her and her claimed sister Rosa. ";
                   this.muse.DescLewd = "It is her earnest hope to be taken by a dragon as a mate and utterly ruined, only existing as a dragon's slave. Or perhaps commanded by one to execute their dominance on other victims.";
@@ -1444,7 +1417,7 @@ export default defineComponent({
               this.muse.Spec = "Human";
               this.muse.Name = "Serena Yvonne";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Pokemon Trainer";
                   this.muse.SubDom = "Casual Switch.";
                   this.muse.Desc = "A fashionable young lady, who's very kind and polite, until she actually snaps. Rather lost in her way, she takes the time while trying to find her future by trying on all kinds of clothes...or tasting all sorts of lips. She IS Kalosian, after all. ";
@@ -1506,7 +1479,7 @@ export default defineComponent({
               this.muse.SubDom = "In Control.";
               this.muse.Name = "Sabrina";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Saffron Gym Leader";
                   this.muse.Desc = "A confident woman who's grown a little conceited in her psychic powers, and embraced the cockiness in it, dressing, speaking, and behaving the part of a powerful villain, even when doing good for others. Despite it, shimmers of the sweet kid she couldn't be sometimes shine through. ";
                   this.muse.DescLewd = "She's obsessed with control, and she'll use whatever she's got, be it her looks or her psychic powers, to make sure they go as she wishes. You have no choice in the matter.";
@@ -1546,7 +1519,7 @@ export default defineComponent({
               this.muse.Name = "Cynthia Shirona";
               this.muse.Spec = "Human";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Sinnoh Champion / Archaeologist";
                   this.muse.SubDom = "Mostly Dommy Mommy.";
                   this.muse.Desc = "An adventuring archaeologist who's stumbled upon the title of champion. While not the greatest fan of battling, the title serves her well for clearance into important sites, and her team is prepared to deal with the blow of legendaries' actions. ";
@@ -1605,7 +1578,7 @@ export default defineComponent({
               this.muse.Reg = "Galar";
               this.muse.Name = "Nessa Rurina";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Hulbury Gym Leader / Model";
                   this.muse.Desc = "A model and gym leader from Galar who much like the sea, is calm until battle comes and she becomes the storm. She worries about holding onto her modelling career alongside the gym, but she continues to shine on. She always has time for Sonia though! ";
                   this.muse.DescLewd = "She absolutely adores Sonia and would do anything for her, go as far as she asks. She's taken to masturbate to her at her own pool, hoping the waters hide her own fluids shed from thinking about her closest gal pal.";
@@ -1646,7 +1619,7 @@ export default defineComponent({
               this.muse.Name = "Jessie Musashi";
               this.muse.SubDom = "Cocky Top, Bratty Bottom";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Rocket Agent";
                   this.muse.Desc = "A longtime member of Team Rocket, coming from her own mother being a part of it. While adoring the fashion, the high life of crime, and even the evil plots, the goals of the organization, her position, and the fact she was unable to become a nurse still chafe at her to date, promising one day to rise the ranks and make the organization better anew. ";
                   this.muse.DescLewd = "She's quite confident in her looks, and does her best to wear as little as possible. She doesn't mind people having a look, but rare are those she permits to touch.";
@@ -1687,7 +1660,7 @@ export default defineComponent({
               this.muse.Reg = "Unova";
               this.muse.Name = "Elesa Kamitsure";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Nimbasa Gym Leader / Model";
                   this.muse.Desc = "An enthusiastic gym leader and supermodel, who's happy to do her best for others and let them shine through, with their own spark. ";
                   this.muse.DescLewd = "She's proudly led many through the pipeline from model to whore, accompanying them all the while in the dark side of fashion and beauty. ";
@@ -1741,7 +1714,7 @@ export default defineComponent({
               this.muse.Reg = "Alola";
               this.muse.Name = "Lusamine";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Aether President";
                   this.muse.Spec = "Human";
                   this.muse.SubDom = "Mommy Dommy, you decide if gentle or cruel.";
@@ -1823,7 +1796,7 @@ export default defineComponent({
               this.muse.Spec = "Human";
               this.muse.SubDom = "Enthusiastic submissive";
               switch (au) {
-                case "base":
+                case "pokemon":
                   this.muse.Title = "Eterna Gym Leader";
                   this.muse.Desc = "A bright and optimistic lady who adores grass types, fears ghost types, and always seeks out new challenges, Gardenia is always ready for a battle, a trade, or a chat. ";
                   this.muse.DescLewd = "Her adoration of grass types can definitely get too far, as their usual agressive reactions to a stranger/bad news draw a very lustful reaction out of her when she's the victim.";
@@ -1920,7 +1893,7 @@ export default defineComponent({
             case "lumi":
               this.muse.Reg = "Teyvat";
               switch (au) {
-                case "base":
+                case "genshin":
                   this.muse.Name = "Lumine";
                   this.muse.Title = "Traveler";
                   this.muse.SubDom = "Submissive unless suficiently aroused";
@@ -1963,7 +1936,7 @@ export default defineComponent({
             case "lisa":
               this.muse.Reg = "Teyvat, Mondstat";
               switch (au) {
-                case "base":
+                case "genshin":
                   this.muse.Name = "Lisa Minci";
                   this.muse.SubDom = "Soft Mommy";
                   this.muse.Title = "";
@@ -2006,7 +1979,7 @@ export default defineComponent({
             case "saria":
               this.muse.Reg = "Teyvat, Mondstat";
               switch (au) {
-                case "base":
+                case "genshin":
                   this.muse.Name = "Rosaria";
                   this.muse.Title = "";
                   this.muse.SubDom = "Degenerate Tease or Mommy";
@@ -2049,7 +2022,7 @@ export default defineComponent({
             case "yelan":
               this.muse.Reg = "Liyue, Mondstat";
               switch (au) {
-                case "base":
+                case "genshin":
                   this.muse.Name = "Yelan";
                   this.muse.Title = "";
                   this.muse.SubDom = "Whatever gets her what she wants";
@@ -2437,11 +2410,11 @@ export default defineComponent({
               break;
           }
           break;
-        case 4: //yet to finish kinks
+        case 4:
           switch (char) {
             case "sam":
               switch (au) {
-                case "base":
+                case "samus":
                   this.muse.Name = "Samus Aran";
                   this.muse.Title = "Bounty Hunter";
                   this.muse.SubDom = "Whatever the 'mission' requires";
@@ -2485,7 +2458,7 @@ export default defineComponent({
               break;
             case "bow":
               switch (au) {
-                case "base":
+                case "mario":
                   this.muse.Name = "Bowsette Koopa";
                   this.muse.Title = "Koopa Queen";
                   this.muse.Reg = "Dark World";
@@ -2529,7 +2502,7 @@ export default defineComponent({
               break;
             case "pich":
               switch (au) {
-                case "base":
+                case "mario":
                   this.muse.Name = "Peach Toadstool";
                   this.muse.Title = "Mushroom Princess";
                   this.muse.SubDom = "Submissive unless her partner wants a taste";
@@ -2613,7 +2586,7 @@ export default defineComponent({
               break;
             case "lina":
               switch (au) {
-                case "base":
+                case "mario":
                   this.muse.Title = "Mother of all Stars";
                   this.muse.Reg = "Comet Observatory";
                   this.muse.Name = "Rosalina Estela";
@@ -2689,7 +2662,7 @@ export default defineComponent({
               this.muse.SubDom = "Dominant unless coerced by greater power.";
               this.muse.Reg = "Hyrule";
               switch (au) {
-                case "base":
+                case "zelda":
                   this.muse.Spec = "Sheikah Hylian";
                   this.muse.Title = "Sheikah Scientist";
                   this.muse.Desc = "A pre-Calamity science who aged herself to match the hero and princess (though not without error), she strives to work her way up to the wisdom of the ancient sheikah scientists. Her latest look has drawn much attention. ";
@@ -2810,7 +2783,7 @@ export default defineComponent({
               this.muse.SubDom = "Dominant unless experimentation requires otherwise";
               this.muse.Name = "Tae Takemi";
               switch (au) {
-                case "base":
+                case "persona":
                   this.muse.Title = "Doctor";
                   this.muse.Desc = "An excellent, innovative doctor, who got her reputation ruined by standard medical arrogance of others. She has become a black-alley doctor, and while the things she's accused for tend to be fake, she has a sadistic side to her that would put those accusations to shame. ";
                   this.muse.DescLewd = "Sometimes she takes advantage of patients' unconscious or unwell state to have her way with them, or test even more dangerous, lascivious products on them.";
@@ -2850,7 +2823,7 @@ export default defineComponent({
               this.muse.SubDom = "Whatever she feels like";
               this.muse.Spec = "Human";
               switch (au) {
-                case "base":
+                case "persona":
                   this.muse.Title = "";
                   this.muse.Desc = "A fiery girl who works as a model, and goes to school like an average girl. She loves sweets, her girlfriend Shiho, and hates injustice. Feels strongly about how she's perceived by others, be it her womanhood, her sexuality, her race, or her body. And she's perfectly willing to take control and show them all wrong. ";
                   this.muse.DescLewd = "Though at times, she just wants to give in to everyone's perception of her as a bimbo and a slut, and drag her girlfriend down with her.";
@@ -2890,7 +2863,7 @@ export default defineComponent({
               this.muse.Reg = "Japan, Yongen-Jaya";
               this.muse.Name = "Sae Nijima";
               switch (au) {
-                case "base":
+                case "persona":
                   this.muse.SubDom = "Dominant unless tired";
                   this.muse.Title = "Prosecutor";
                   this.muse.Desc = "A fierce prosecutor who's eternally overworked, undervalued, and ready to strike. She cares deeply for her sister Makoto, but having to care for her as a mother has greatly twisted and strained their relationship. ";
@@ -3224,7 +3197,7 @@ export default defineComponent({
               this.muse.Title = "";
               this.muse.Reg = "N/A: Traveling";
               switch (au) {
-                case "base":
+                case "frieren":
                   this.muse.Name = "Frieren";
                   this.muse.SubDom = "Experimental Switch";
                   this.muse.Spec = "Elf";
@@ -3429,6 +3402,12 @@ export default defineComponent({
     font-size: 40px;
 
   }
+
+  .button {
+    background: white;
+    color: black;
+    font-size: 14px
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -3445,6 +3424,11 @@ export default defineComponent({
 
   }
 
+  .button {
+    background: white;
+    color: black;
+    font-size: 10px
+  }
 }
 
 .cardHolder {
@@ -3454,10 +3438,6 @@ export default defineComponent({
   gap: 12px;
 }
 
-.button {
-  background: white;
-  color: black;
-}
 
 .buttonTable {
   background: white;
