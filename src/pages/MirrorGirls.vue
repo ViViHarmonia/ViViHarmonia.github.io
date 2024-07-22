@@ -172,7 +172,7 @@
             <div class="row text-body2 justify-start">
               <div class="col-xs-12" v-show="!descKinkSwitch">
                 <div class="row text-body2 justify-start">
-                  <div class="col" v-show="muse.Desc !='NSFW ONLY - '">
+                  <div class="col" v-show="muse.Desc != 'NSFW ONLY - '">
                     {{ muse.Desc }}<span class="secret" v-show="nsfwSwitch">{{ muse.DescLewd
                       }}</span>
                   </div>
@@ -316,6 +316,12 @@ export default defineComponent({
       { au: "lwa", emblem: "/versions/enormetastar.png", sfw: "Y", name: "Little Witch Academia" },
 
     ],
+    universes: {
+      title: "",
+      description: "",
+      muses: [],
+      musesTitles: [],
+    },
     allCharArr: [
       {
         code: "rosa",
@@ -777,6 +783,15 @@ export default defineComponent({
         free: "YES",
         states: ["dangan"],
         avatar: "/museicon/chiaki.jpg",
+      },
+      {
+        code: "mikan",
+        sect: 4,
+        name: "Mikan Tsumiki",
+        state: "dangan",
+        free: "NO",
+        states: ["dangan"],
+        avatar: "/museicon/mikan.jpg",
       },
       {
         code: "shan",
@@ -3112,6 +3127,27 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "YES"
+              this.muse.MetaTupper = "YES"
+              break;
+            case "mikan":
+              this.muse.Name = "Mikan Tsumiki";
+              this.muse.SubDom = "Filthy submissive, possessive dom";
+              this.muse.Title = "Ultimate Nurse";
+              this.muse.Spec = "Human";
+              this.muse.Reg = "Japan";
+              this.muse.Desc = "The ultimate nurse, a nervous wreck of a clumsy gal who can't handle much. A lifetime of abuse and experience at medicine means that she's confident in her healing, and her reading of people's thoughts, yet her self-esteem immediately assumes she's wrong at the latter if it's positive stuff about her. ";
+              this.muse.DescLewd = "Her clumsiness is intended to appease, and she cannot handle the thought of not being abused, used and harassed. If given even the slightest bit of affection, she'll cling hard and mindlessly, and she lets loose all her ugly feelings and needs if sufficiently annoyed. ";
+              this.muse.kinks.partner = "Toys, Bestiality, Gangbang"
+              this.muse.kinks.organ = "YES"
+              this.muse.kinks.clothing = "NEUTRAL"
+              this.muse.kinks.relation = "Petplay, Enslavement, Servitude, Romance"
+              this.muse.kinks.consent = "Free-Use, Exhibition"
+              this.muse.kinks.substance = "YES"
+              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+              this.muse.kinks.bondage = "YES"
+              this.muse.kinks.mindMod = "YES"
+              this.muse.kinks.bodyMod = "YES"
+              this.muse.kinks.transform = "NEUTRAL"
               this.muse.MetaTupper = "YES"
               break;
             case "layer":
