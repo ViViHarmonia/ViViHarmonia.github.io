@@ -1225,7 +1225,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "NEUTRAL"
-                  this.muse.MetaTupper = "NO"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
