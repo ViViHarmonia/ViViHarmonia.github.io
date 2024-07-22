@@ -84,39 +84,61 @@
     @keyup.up="slideKeyboard(1)" @keyup.x="museDialog = false">
     <q-card id="muse">
       <q-card-section class="q-pa-xs flex-center">
-        <div class="row q-pa-sm flex-center">
-          <div class="col-xs-12 col-md-5">
-            <div class="row justify-start align-center">
-              <div class="col align-center">
-                <q-toggle v-model="nsfwSwitch" color="black" v-show="nsfwSwitchSafe" />
-                <span v-show="nsfwSwitch">N</span>
-                <span>SFW</span>
-                <q-toggle v-model="descKinkSwitch" color="purple" v-show="nsfwSwitch" />
-                <span v-show="descKinkSwitch && nsfwSwitch">Kinks</span>
-                <span v-show="!descKinkSwitch && nsfwSwitch">Bio</span>
+        <div class="row items-center q-pa-xs">
+          <div class="col-md-5 col-xs-12">
+            <div class="row justify-between items-center">
+              <div class="col align-start">
+                <div class="row items-center justify-start">
+                  <q-toggle v-model="nsfwSwitch" color="black" v-show="nsfwSwitchSafe" />
+                  <span v-show="nsfwSwitch">N</span>
+                  <span>SFW</span>
+                </div>
+              </div>
+              <div class="col align-end">
+                <div class="row justify-end q-pr-md">
+                  <q-avatar circle size="35px">
+                    <img :src="discord(muse.MetaTupper)" />
+                  </q-avatar>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="col-md-7 col-xs-12">
+            <div class="row justify-between items-center">
+              <div class="col align-start">
+                <div class="row text-body2 items-center justify-start">
+                  <span><b>Free Play: </b>{{ muse.FreePlay }}</span>
+                </div>
+              </div>
+              <div class="col align-end">
+                <div class="row justify-end items-center q-pr-sm">
+                  <span v-show="descKinkSwitch && nsfwSwitch">Kinks</span>
+                  <span v-show="!descKinkSwitch && nsfwSwitch">Bio</span>
+                  <q-toggle v-model="descKinkSwitch" color="purple" v-show="nsfwSwitch" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row q-px-sm flex-center">
+          <div class="col-xs-12 col-md-5">
             <div class="row text-body2 justify-start">
-              <div class="col-xs-4"><b>Title:</b></div>
-              <div class="col-xs-8">
+              <div class="col-md-4 col-sm-2 col-xs-3"><b>Title:</b></div>
+              <div class="col-md-8 col-sm-4 col-xs-9">
                 {{ muse.Title }}<span class="secret">{{ muse.TitleSh }}</span>
               </div>
-            </div>
-            <div class="row text-body2 justify-start">
-              <div class="col-xs-4"><b>Name:</b></div>
-              <div class="col-xs-8">
+              <div class="col-md-4 col-sm-2 col-xs-3"><b>Name:</b></div>
+              <div class="col-md-8 col-sm-4 col-xs-9">
                 {{ muse.Name }}<span class="secret">{{ muse.NameSh }}</span>
               </div>
             </div>
             <div class="row text-body2 justify-start">
-              <div class="col-xs-4"><b>Species:</b></div>
-              <div class="col-xs-8">
+              <div class="col-md-4 col-sm-2 col-xs-3"><b>Species:</b></div>
+              <div class="col-md-8 col-sm-4 col-xs-9">
                 {{ muse.Spec }}<span class="secret">{{ muse.SpecSh }}</span>
               </div>
-            </div>
-            <div class="row text-body2 justify-start">
-              <div class="col-xs-4"><b>Region:</b></div>
-              <div class="col-xs-8">
+              <div class="col-md-4 col-sm-2 col-xs-3"><b>Region:</b></div>
+              <div class="col-md-8 col-sm-4 col-xs-9">
                 {{ muse.Reg }}<span class="secret">{{ muse.RegSh }}</span>
               </div>
             </div>
@@ -127,7 +149,7 @@
               </div>
             </div>
             <div class="row text-body2 justify-start items-center">
-              <div class="col-xs-2"><b>Universes:</b></div>
+              <div class="col-xs-3"><b>Universes:</b></div>
               <div class="col-xs-12">
                 <q-btn v-for="variant in muse.auArray " circle flat padding="xs"
                   :disabled="currentAU == auListDataBring(variant).au" v-show="checkSFW(auListDataBring(variant).sfw)"
@@ -137,67 +159,32 @@
                   </q-avatar>
                 </q-btn>
               </div>
-              <div class="row text-body2 justify-start">
-                <div class="col-xs-12"><b>Current Universe:</b></div>
-                <div class="col-xs-12">
-                  <span>{{ auListDataBring(currentAU).name }}</span>
-                </div>
+
+            </div>
+            <div class="row text-body2 justify-start">
+              <div class="col-md-4 col-sm-2 col-xs-3"><b>Current U.:</b></div>
+              <div class="col-md-8 col-sm-auto col-xs-9">
+                <span>{{ auListDataBring(currentAU).name }}</span>
               </div>
             </div>
           </div>
           <div class="col-xs-12 col-md-7">
             <div class="row text-body2 justify-start">
               <div class="col-xs-12" v-show="!descKinkSwitch">
-                <span><b>Bio: </b></span>{{ muse.Desc }}<span class="secret" v-show="nsfwSwitch">{{ muse.DescLewd
-                  }}</span>
+                <div class="row text-body2 justify-start">
+                  <div class="col" v-show="muse.Desc !='NSFW ONLY - '">
+                    {{ muse.Desc }}<span class="secret" v-show="nsfwSwitch">{{ muse.DescLewd
+                      }}</span>
+                  </div>
+                  <div class="col" v-show="muse.Desc == 'NSFW ONLY - '">
+                    {{ muse.DescLewd }}
+                  </div>
+                </div>
               </div>
               <div class="col-xs-12" v-show="descKinkSwitch">
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>KINKS: </b></div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Partner: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.partner }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Assets: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.organ }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Clothing: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.clothing }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Relation: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.relation }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Consent: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.consent }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Substance: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.substance }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Treatment: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.treatment }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Bondage: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.bondage }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Mind Mod.: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.mindMod }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Body Mod.: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.bodyMod }}</div>
-                </div>
-                <div class="row text-body2 justify-start">
-                  <div class="col-xs-4"><b>Transform: </b></div>
-                  <div class="col-xs-8">{{ muse.kinks.transform }}</div>
+                <div class="row text-body2 justify-start" v-for="(category, c) in muse.kinks">
+                  <div class="col-xs-4"><b>{{ kinklistlbl[c] }}</b></div>
+                  <div class="col-xs-8">{{ category }}</div>
                 </div>
               </div>
             </div>
@@ -244,7 +231,6 @@ export default defineComponent({
     nsfwSwitch: false,
     nsfwSwitchSafe: true,
     descKinkSwitch: false,
-    museDataCheck: 1,
     currentMuseCode: "",
     currentAreaCode: 0,
     currentAU: "",
@@ -262,7 +248,19 @@ export default defineComponent({
       { name: "state", label: "Universes", align: "center", field: "" },
       { name: "actions", label: "", align: "end", field: "" },
     ],
-    kinklist: ["Partner:", "Assets:", "Clothing:", "Relation:", "Consent:", "Substance:", "Treatment:", "Bondage:", "Mind Mod.:", "Body Mod.:", "Transform:"],
+    kinklistlbl: {
+      partner: "Partner:",
+      organ: "Assets:",
+      clothing: "Clothing:",
+      relation: "Relation:",
+      consent: "Consent:",
+      substance: "Substance:",
+      treatment: "Treatment:",
+      bondage: "Bondage:",
+      mindMod: "Mind Mod.:",
+      bodyMod: "Body Mod.:",
+      transform: "Transform:",
+    },
     museSectLst: [
       { label: "All", value: 0 },
       { label: "Pokémon", value: 1 },
@@ -272,8 +270,8 @@ export default defineComponent({
       { label: "Series", value: 5 },
     ],
     museAULst: [
-      { au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", name: "Source" },
-      { au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", name: "Source (Lewd)" },
+      //{ au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", name: "Source" },
+      //{ au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", name: "Source (Lewd)" },
       { au: "pokemon", emblem: "/versions/Poké_Ball_icon.svg.png", sfw: "Y", name: "Pokémon" },
       { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", name: "Team (Hypno) Rocket" },
       { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", name: "Team Galactic" },
@@ -933,9 +931,8 @@ export default defineComponent({
       Desc: "",
       DescLewd: "",
       MetaTupper: "",
-      Universe: "",
+      FreePlay: "",
       auArray: [],
-      slideArray: [],
       kinks: {
         partner: "",
         organ: "",
@@ -989,6 +986,16 @@ export default defineComponent({
           return this.museAULst[i]
         }
       }
+    },
+    discord(value) {
+      var imgurl = ""
+      if (value == "YES") {
+        imgurl = "/icons/discord-logo.png"
+
+      } else {
+        imgurl = "/icons/discord-logoNO.png"
+      }
+      return imgurl
     },
     dataFill() {
       this.finalCharArr = [];
@@ -1158,6 +1165,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Lover'";
@@ -1177,6 +1185,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Grunt 'Princess'";
@@ -1196,6 +1205,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "ua":
                   this.muse.Title = "UA Support Student";
@@ -1215,6 +1225,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -1239,6 +1250,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Leader";
@@ -1255,6 +1267,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak, Assimilation"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1279,6 +1292,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Mindbreak"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Undercover Rocket Grunt";
@@ -1296,6 +1310,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1321,6 +1336,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Priestess'";
@@ -1337,6 +1353,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "galaxy":
                   this.muse.Title = "Galactic Scientist";
@@ -1353,6 +1370,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "YES"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1377,6 +1395,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Princess'";
@@ -1393,6 +1412,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak, Assimilation"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Grunt 'Dragon'";
@@ -1409,6 +1429,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1434,6 +1455,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Body Writing"
                   this.muse.kinks.transform = "Bimbofication, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Grunt 'Model' ";
@@ -1452,6 +1474,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Body Writing"
                   this.muse.kinks.transform = "Bimbofication, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "flare":
                   this.muse.Title = "Flare Admin ";
@@ -1470,6 +1493,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1495,6 +1519,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing, Asimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Commander";
@@ -1511,6 +1536,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing, Asimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1535,6 +1561,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption"
                   this.muse.kinks.bodyMod = "Breeding, Piercing"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
@@ -1552,6 +1579,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Breeding, Piercing"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "galaxy":
                   this.muse.Title = "Galactic Admin";
@@ -1569,6 +1597,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1594,6 +1623,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption"
                   this.muse.kinks.bodyMod = "Piercing"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Coordinator";
@@ -1610,6 +1640,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Piercing"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1635,6 +1666,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Asimilation"
                   this.muse.kinks.bodyMod = "Tattoos"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "NO"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Leader";
@@ -1651,6 +1683,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Asimilation"
                   this.muse.kinks.bodyMod = "Tattoos"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1675,6 +1708,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos"
                   this.muse.kinks.transform = "Bimbofication, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Agent";
@@ -1691,6 +1725,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Assimilation"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos"
                   this.muse.kinks.transform = "Bimbofication, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "plasma":
                   this.muse.Title = "Plasma Admin";
@@ -1707,6 +1742,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1731,6 +1767,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Mechanization, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "aether":
                   this.muse.Title = "Mother Beast";
@@ -1749,6 +1786,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Beastification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
@@ -1767,6 +1805,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Mechanization, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1789,6 +1828,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "garde":
               this.muse.Reg = "Sinnoh";
@@ -1811,6 +1851,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
                   this.muse.kinks.bodyMod = "Breeding, Piercing"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
                   this.muse.Title = "Rocket Scientist";
@@ -1827,9 +1868,10 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Breeding, Piercing"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "galaxy":
-                  this.muse.Title = "Galactic Grunt";
+                  this.muse.Title = "Galactic Grunt 'Mecha'";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Captured and thoroughly brainwashed, her mind switched her love of nature and plant types to machines and steel and electric types. Now a lowly grunt, she is allowed to keep her name, appearence, and tastes, if only for the entertainment of the higher ups, seeing such a nature-loving woman get aroused and obedient at machines with no feelings or heart.";
                   this.muse.kinks.partner = "Machines, Team Galactic"
@@ -1843,6 +1885,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "YES"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -1865,6 +1908,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
               this.muse.kinks.bodyMod = "Tattoos/Body Writing"
               this.muse.kinks.transform = "Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "ggrunt":
               this.muse.Name = "???";
@@ -1885,6 +1929,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Mechanization, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
           }
           break;
@@ -1911,6 +1956,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak, Asimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "YES"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -1930,6 +1976,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Fatui Brands"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -1954,6 +2001,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -1973,6 +2021,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Fatui Brands"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -1997,6 +2046,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "mirror":
                   this.muse.Name = "???";
@@ -2016,6 +2066,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Fatui Brands"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2040,6 +2091,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "mirror":
                   this.muse.Title = "Mirror Maiden";
@@ -2059,6 +2111,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Fatui Brands"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2081,6 +2134,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
               this.muse.kinks.bodyMod = "Fatui Brands"
               this.muse.kinks.transform = "Twinning"
+              this.muse.MetaTupper = "YES"
               break;
           }
           break;
@@ -2105,6 +2159,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Brainwashing"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "tsu":
               this.muse.Name = "Tsuyu Asui";
@@ -2125,6 +2180,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Brainwashing"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "mina":
               this.muse.Name = "Mina Ashido";
@@ -2145,6 +2201,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication, Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "momo":
               this.muse.Name = "Momo Yaoyorozu";
@@ -2166,6 +2223,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "YES"
+              this.muse.MetaTupper = "YES"
               break;
             case "toru":
               this.muse.Name = "Tooru Hagakure";
@@ -2186,6 +2244,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak"
               this.muse.kinks.bodyMod = "Piercings"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "kendo":
               this.muse.Name = "Itsuka Kendo";
@@ -2206,6 +2265,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "kino":
               this.muse.Name = "Kinoko Komori";
@@ -2226,6 +2286,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Asimilation"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "camie":
               this.muse.Name = "Camie Utsushimi";
@@ -2246,6 +2307,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding, Piercing"
               this.muse.kinks.transform = "Bimbofication, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "mel":
               this.muse.Name = "Melissa Shield";
@@ -2266,6 +2328,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication, Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "joke":
               this.muse.Name = "Emi Fukukado";
@@ -2286,6 +2349,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "kai":
               this.muse.Name = "Kaina Tsutsumi";
@@ -2306,6 +2370,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "rumi":
               this.muse.Name = "Rumi Usagiyama";
@@ -2326,6 +2391,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "yama":
               this.muse.Name = "Yu Takeyama (Mt. Lady)";
@@ -2346,6 +2412,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication"
+              this.muse.MetaTupper = "YES"
               break;
             case "nana":
               this.muse.Name = "Nana Shimura";
@@ -2367,6 +2434,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "NEUTRAL"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
             case "fumi":
               this.muse.Name = "Fuyumi Todoroki";
@@ -2387,6 +2455,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
               this.muse.kinks.transform = "Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "inko":
               this.muse.Name = "Inko Midoriya";
@@ -2407,6 +2476,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "NEUTRAL"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break;
           }
           break;
@@ -2433,6 +2503,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "Breeding, Tattoos"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -2453,6 +2524,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -2477,6 +2549,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Bimbofication"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -2497,6 +2570,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -2521,6 +2595,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "YES"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "bow":
                   this.muse.Name = "Peachy Koopa";
@@ -2541,6 +2616,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "shy":
                   this.muse.Name = "???";
@@ -2561,6 +2637,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "shadow":
                   this.muse.Name = "Peach Amanita";
@@ -2581,6 +2658,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -2605,6 +2683,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "bow":
                   this.muse.Title = "Koopa Slave";
@@ -2625,6 +2704,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "shy":
                   this.muse.Title = "Cyan";
@@ -2634,6 +2714,18 @@ export default defineComponent({
                   this.muse.Spec = "Shy Gal";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A particularly clingy shy gal, who does her best to stick to you while happily offering her holes. Something is rather ethereal about her, leading to being treated as a rare and lucky find. She's rather a glutton for semen, and the more she drinks the bigger her boobs grow.";
+                  this.muse.kinks.partner = "NEUTRAL"
+                  this.muse.kinks.organ = "Cock"
+                  this.muse.kinks.clothing = "Masks"
+                  this.muse.kinks.relation = "Servitude "
+                  this.muse.kinks.consent = "Free Use, Exhibition"
+                  this.muse.kinks.substance = "Cumplay, Watersports"
+                  this.muse.kinks.treatment = "Objectification"
+                  this.muse.kinks.bondage = "Hypnosis, Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+                  this.muse.kinks.bodyMod = "NEUTRAL"
+                  this.muse.kinks.transform = "Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -2656,6 +2748,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding, Body writing"
               this.muse.kinks.transform = "Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "pura":
               this.muse.Name = "Purah";
@@ -2678,6 +2771,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "Piercing"
                   this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "aoc":
                   this.muse.Spec = "Sheikah Hylian";
@@ -2695,6 +2789,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing"
                   this.muse.kinks.bodyMod = "Piercing"
                   this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "yiga":
                   this.muse.Spec = "Yiga Hylian";
@@ -2712,6 +2807,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos"
                   this.muse.kinks.transform = "Gothification, Mechanization, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -2734,6 +2830,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "Tattoos/Body writing"
               this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "luci":
               this.muse.Name = "Lucifer Morningstar";
@@ -2756,6 +2853,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "azaz":
               this.muse.Name = "Azazel";
@@ -2776,6 +2874,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Gothification, Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "tae":
               this.muse.Spec = "Human";
@@ -2798,6 +2897,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
                   this.muse.kinks.transform = "Gothification, Mechanization"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "lust":
                   this.muse.Title = "Medic";
@@ -2814,6 +2914,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
                   this.muse.kinks.transform = "Gothification, Mechanization"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2838,6 +2939,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "NEUTRAL"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "lust":
                   this.muse.Spec = " / Cognition, Shadow";
@@ -2855,6 +2957,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
                   this.muse.kinks.bodyMod = "YES"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2879,6 +2982,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "lust":
                   this.muse.Title = "Miss Fortune";
@@ -2897,6 +3001,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "NEUTRAL"
                   this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2922,6 +3027,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding, Love Marks"
               this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "roty":
               this.muse.Name = "Rottytops";
@@ -2942,6 +3048,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "Piercings, Branding, Splitting"
               this.muse.kinks.transform = "YES, Zombiefication"
+              this.muse.MetaTupper = "YES"
               break;
             case "shan":
               this.muse.Reg = "Scuttle Town";
@@ -2962,6 +3069,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "Bimbofication, Gothification, Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "junko":
               this.muse.Name = "Junko Enoshima";
@@ -2982,6 +3090,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "YES"
+              this.muse.MetaTupper = "YES"
               break;
             case "nami":
               this.muse.Name = "Chiaki Nanami";
@@ -3003,6 +3112,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "YES"
+              this.muse.MetaTupper = "YES"
               break;
             case "layer":
               this.muse.Name = "Layer";
@@ -3023,6 +3133,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "Bimbofication, Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "ruler":
               this.muse.Name = "";
@@ -3045,6 +3156,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "NEUTRAL"
               this.muse.kinks.bodyMod = "Breeding, Tattoos/Body writing"
               this.muse.kinks.transform = "Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "ridem":
               this.muse.Name = "";
@@ -3066,6 +3178,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak"
               this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
               this.muse.kinks.transform = "Mechanization"
+              this.muse.MetaTupper = "YES"
               break;
             case "brdgt":
               this.muse.Name = "Bridget";
@@ -3086,6 +3199,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "NEUTRAL"
               this.muse.kinks.transform = "Bimbofication"
+              this.muse.MetaTupper = "YES"
               break;
           }
           break;
@@ -3111,6 +3225,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication"
+              this.muse.MetaTupper = "YES"
               break;
             case "marin":
               this.muse.SubDom = "YES";
@@ -3131,6 +3246,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication, Gothification, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "lucy":
               this.muse.Name = "Lucyna Kushinada";
@@ -3151,6 +3267,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Brainwashing"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "YES"
+              this.muse.MetaTupper = "YES"
               break;
             case "yor":
               this.muse.TitleSh = "Thorn Princess";
@@ -3171,6 +3288,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Bimbofication"
+              this.muse.MetaTupper = "YES"
               break;
             case "stock":
               this.muse.Title = "";
@@ -3192,6 +3310,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "frie":
               this.muse.Title = "";
@@ -3214,6 +3333,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Corruption, Mindbreak"
                   this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
+                  this.muse.MetaTupper = "YES"
                   break;
                 case "mimic":
                   this.muse.Name = "Frieren?";
@@ -3233,6 +3353,7 @@ export default defineComponent({
                   this.muse.kinks.mindMod = "Brainwashing"
                   this.muse.kinks.bodyMod = "Breeding"
                   this.muse.kinks.transform = "Mimicry"
+                  this.muse.MetaTupper = "YES"
                   break;
               }
               break;
@@ -3255,6 +3376,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "Bimbofication, Gothification"
+              this.muse.MetaTupper = "YES"
               break;
             case "paru":
               this.muse.Name = "Paru Amano";
@@ -3275,6 +3397,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption, Mindbreak"
               this.muse.kinks.bodyMod = "Piercing, Tattoos"
               this.muse.kinks.transform = "Gothification, Twinning"
+              this.muse.MetaTupper = "YES"
               break;
             case "clare":
               this.muse.Name = "Claire François";
@@ -3295,6 +3418,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Corruption"
               this.muse.kinks.bodyMod = "Tattoos/Body writing"
               this.muse.kinks.transform = "Bimbofication"
+              this.muse.MetaTupper = "YES"
               break
             case "utena":
               this.muse.Name = "Utena Hiiragi";
@@ -3315,6 +3439,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "YES"
               this.muse.kinks.bodyMod = "YES"
               this.muse.kinks.transform = "NEUTRAL"
+              this.muse.MetaTupper = "YES"
               break
             case "ursa":
               this.muse.Name = "Ursula Callistis";
@@ -3336,6 +3461,7 @@ export default defineComponent({
               this.muse.kinks.mindMod = "Mindbreak, Brainwashing"
               this.muse.kinks.bodyMod = "Breeding"
               this.muse.kinks.transform = "Bimbofication, Gothification"
+              this.muse.MetaTupper = "YES"
               break
           }
           break;
@@ -3345,6 +3471,17 @@ export default defineComponent({
       this.currentmuseAULst = aus
       this.muse.auArray = aus
       this.currentAU = au;
+      for (var i = 0; i < this.finalCharArr.length; i++) {
+        if (this.finalCharArr[i].code == char) {
+          if (au == this.finalCharArr[i].states[0]) {
+            console.log(au)
+            this.muse.FreePlay = this.finalCharArr[i].free
+          } else {
+            console.log("au")
+            this.muse.FreePlay = "Already AU"
+          }
+        }
+      }
       if (this.auListDataBring(this.currentmuseAULst[0]).sfw == "N") {
         this.nsfwSwitchSafe = false
       } else {
@@ -3366,6 +3503,8 @@ export default defineComponent({
       this.muse.Desc = "";
       this.muse.DescLewd = "";
       this.muse.auArray = [];
+      this.muse.MetaTupper = "";
+      this.muse.MetaTupper = "";
       this.muse.kinks.partner = ""
       this.muse.kinks.organ = ""
       this.muse.kinks.clothing = ""
@@ -3377,6 +3516,7 @@ export default defineComponent({
       this.muse.kinks.mindMod = ""
       this.muse.kinks.bodyMod = ""
       this.muse.kinks.transform = ""
+      this.muse.MetaTupper = "YES"
     },
   },
   mounted() {
