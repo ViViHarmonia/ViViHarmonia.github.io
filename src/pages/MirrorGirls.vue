@@ -258,7 +258,7 @@
         </div>
         <div class="row q-px-sm q-pb-sm justify-start" v-if="uniDlgInfo == true">
           <div class="row">
-            <div class="col-xs-auto" v-for="(char, c) in finalCharAu">
+            <div class="col-xs-auto" v-for="(char, c) in charArrAu">
               <div class="row justify-center">
                 <q-btn square padding="xs" flat @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
                   <q-avatar rounded class="iconMuseTable">
@@ -375,7 +375,7 @@ export default defineComponent({
       muses: [],
       museDivs: [],
     },
-    finalCharAu: [],
+    charArrAu: [],
     allCharArr: [
       {
         code: "rosa",
@@ -1060,7 +1060,7 @@ export default defineComponent({
       this.universes.description = ""
       this.universes.muses = []
       this.universes.musesTitles = []
-      this.finalCharAu = []
+      this.charArrAu = []
       switch (value) {
         case 'rocket':
           this.universes.title = this.museAULst[1].name;
@@ -1109,7 +1109,7 @@ export default defineComponent({
               tempObjMuse = this.allCharArr[j]
               tempObjMuse.groupPos = this.universes.musesTitles[i]
               tempObjMuse.state = value != 'rainbow' ? tempAU : tempAU[i];
-              this.finalCharAu.push(tempObjMuse)
+              this.charArrAu.push(tempObjMuse)
             }
           }
         }
