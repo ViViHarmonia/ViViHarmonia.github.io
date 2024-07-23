@@ -40,6 +40,7 @@
               <q-toggle v-model="nsfwSwitch" color="black" />
               <span v-show="nsfwSwitch">N</span>
               <span>SFW</span>
+              <q-btn class="buttonTable" @click="uniDialog = true" label="Universes" />
             </template>
             <template v-slot:body-cell-icon="props">
               <q-td :props="props">
@@ -159,7 +160,6 @@
                   </q-avatar>
                 </q-btn>
               </div>
-
             </div>
             <div class="row text-body2 justify-start">
               <div class="col-md-4 col-sm-2 col-xs-3"><b>Current U.:</b></div>
@@ -219,6 +219,60 @@
       </q-card-section>
     </q-card>
   </q-dialog>
+  <q-dialog v-model="uniDialog" @keyup.x="uniDialog = false">
+    <q-card id="muse">
+      <q-card-section class="q-pa-xs flex-center">
+        <div class="row justify-between items-center q-pl-none q-pr-sm">
+          <div class="col align-start">
+            <div class="row justify-start items-center">
+              <q-toggle v-model="nsfwSwitch" color="black" />
+              <span v-show="nsfwSwitch">N</span>
+              <span>SFW</span>
+            </div>
+          </div>
+          <div class="col align-end">
+            <div class="row justify-end items-center">
+              <q-btn class="button" size="10px" dense flat @click="uniDialog = false">
+                <q-icon size="1rem" name="close" />
+              </q-btn>
+            </div>
+          </div>
+        </div>
+        <div class="row text-body2 text-center items-center justify-center q-pt-sm">
+          Various Alternate Universes of characters, and
+          their stories.
+        </div>
+        <div class="row flex-center q-pa-sm">
+          <q-btn circle padding="xs" flat @click="universeShow(verse)" v-for="verse in museAUcardLst"
+            v-show="checkSFW(auListDataBring(verse).sfw)">
+            <q-avatar circle size="40px">
+              <img :src="auListDataBring(verse).emblem">
+            </q-avatar>
+          </q-btn>
+        </div>
+        <div class="row text-subtitle2 q-pa-sm justify-center" v-if="uniDlgInfo == true"> {{ universes.title }}</div>
+        <div class="row text-body2 q-pa-sm justify-start" v-if="uniDlgInfo == true"> {{ universes.description }}
+        </div>
+        <div class="row text-body2 q-px-sm justify-start" v-if="uniDlgInfo == true">
+          <b>Muses Involved:</b>
+        </div>
+        <div class="row q-px-sm q-pb-sm justify-start" v-if="uniDlgInfo == true">
+          <div class="row">
+            <div class="col-xs-auto" v-for="(char, c) in finalCharAu">
+              <div class="row justify-center">
+                <q-btn square padding="xs" flat @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
+                  <q-avatar rounded class="iconMuseTable">
+                    <img :src="char.avatar">
+                  </q-avatar>
+                </q-btn>
+              </div>
+              <div class="row justify-center" v-if="groupPos != ''"> {{ char.groupPos }}</div>
+            </div>
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -228,6 +282,8 @@ export default defineComponent({
   data: () => ({
     museSect: { label: "All", value: 0 },
     museDialog: false,
+    uniDialog: false,
+    uniDlgInfo: false,
     nsfwSwitch: false,
     nsfwSwitchSafe: true,
     descKinkSwitch: false,
@@ -269,20 +325,20 @@ export default defineComponent({
       { label: "Games", value: 4 },
       { label: "Series", value: 5 },
     ],
+    museAUcardLst: ["rocket", "rainbow", "shy", "lust", "mirror", "ua"],
     museAULst: [
       //{ au: "base", emblem: "/versions/mirror.jpg", sfw: "Y", name: "Source" },
       //{ au: "baseN", emblem: "/versions/mirror.jpg", sfw: "N", name: "Source (Lewd)" },
       { au: "pokemon", emblem: "/versions/Poké_Ball_icon.svg.png", sfw: "Y", name: "Pokémon" },
       { au: "rocket", emblem: "/versions/hypnorocket.png", sfw: "N", name: "Team (Hypno) Rocket" },
+      { au: "rainbow", emblem: "/versions/Team_Rainbow_Rocket_logo_USUL.png", sfw: "N", name: "Team Rainbow Rocket" },
       { au: "galaxy", emblem: "/versions/galactic.jpg", sfw: "N", name: "Team Galactic" },
       { au: "plasma", emblem: "/versions/Team_Plasma.png", sfw: "N", name: "Team Plasma" },
       { au: "flare", emblem: "/versions/team_flare_by_biochao.png", sfw: "N", name: "Team Flare" },
       { au: "aether", emblem: "/versions/aether.png", sfw: "N", name: "Ultra Beast" },
-
       { au: "genshin", emblem: "/versions/paimon.png", sfw: "Y", name: "Genshin Impact" },
       { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", name: "New Mirror Maidens" },
       { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", name: "UA Heroine University" },
-
       { au: "samus", emblem: "/versions/samus.png", sfw: "Y", name: "Metroid" },
       { au: "mario", emblem: "/versions/Mario_emblem.svg.png", sfw: "Y", name: "Super Mario" },
       { au: "shy", emblem: "/versions/shy.png", sfw: "N", name: "Shy Gal" },
@@ -292,10 +348,9 @@ export default defineComponent({
       { au: "aoc", emblem: "/versions/HWAoC_Purah_Icon.png", sfw: "Y", name: "Pre-Calamity" },
       { au: "yiga", emblem: "/versions/Yiga_Eye.png", sfw: "N", name: "Yiga" },
       { au: "emblem", emblem: "/versions/falchion.png", sfw: "Y", name: "Fire Emblem" },
-
       { au: "helltaker", emblem: "/versions/helltaker.png", sfw: "Y", name: "Helltaker" },
-      { au: "persona", emblem: "/versions/annemblem.jpg", sfw: "Y", name: "Persona 5 (♀)" },
-      { au: "lust", emblem: "/versions/lovers.png", sfw: "N", name: "Phantom Thieves of Lust" },
+      { au: "persona", emblem: "/versions/pt.jpg", sfw: "Y", name: "Persona 5" },
+      { au: "lust", emblem: "/versions/annemblem.jpg", sfw: "N", name: "Phantom Thieves of Lust" },
       { au: "ddlc", emblem: "/versions/Ddlc_logo.png", sfw: "Y", name: "Doki Doki Literature Club" },
       { au: "dangan", emblem: "/versions/dr.jpg", sfw: "Y", name: "DanganRonpa" },
       { au: "danganR", emblem: "/versions/dr.jpg", sfw: "N", name: "DanganRonpa" },
@@ -303,7 +358,6 @@ export default defineComponent({
       { au: "fate", emblem: "/versions/chaldea.png", sfw: "Y", name: "Fate" },
       { au: "mmx", emblem: "/versions/Maverick_Hunter_Mark.png", sfw: "Y", name: "Mega Man X" },
       { au: "gear", emblem: "/versions/ggstrive.png", sfw: "Y", name: "Guilty Gear" },
-
       { au: "dressup", emblem: "/versions/marin.jpg", sfw: "Y", name: "Dress-Up Darling" },
       { au: "cyberpunk", emblem: "/versions/edgerunner.jpg", sfw: "Y", name: "Cyberpunk Edgerunners" },
       { au: "spyxfam", emblem: "/versions/spyxfam.png", sfw: "Y", name: "Spy X Family" },
@@ -314,14 +368,14 @@ export default defineComponent({
       { au: "iltv", emblem: "/versions/reilaire.png", sfw: "Y", name: "In Love With the Villainess" },
       { au: "baiser", emblem: "/versions/shinyrod.png", sfw: "N", name: "Gushing Over Magical Girls" },
       { au: "lwa", emblem: "/versions/enormetastar.png", sfw: "Y", name: "Little Witch Academia" },
-
     ],
     universes: {
       title: "",
       description: "",
       muses: [],
-      musesTitles: [],
+      museDivs: [],
     },
+    finalCharAu: [],
     allCharArr: [
       {
         code: "rosa",
@@ -919,7 +973,6 @@ export default defineComponent({
         states: ["baiser"],
         avatar: "/museicon/utena.jpg",
       },
-
       {
         code: "ursa",
         sect: 5,
@@ -1002,11 +1055,71 @@ export default defineComponent({
         }
       }
     },
+    universeShow(value) {
+      this.universes.title = ""
+      this.universes.description = ""
+      this.universes.muses = []
+      this.universes.musesTitles = []
+      this.finalCharAu = []
+      switch (value) {
+        case 'rocket':
+          this.universes.title = this.museAULst[1].name;
+          this.universes.description = "A girls-only rebrand of Team Rocket, brought about by a takeover Dawn, focused on acquisition and training of Pokemon trainers, leaders, champions, etc. Takes a more hypnotic, sexual approach to both.";
+          this.universes.muses = [["jess"], ["brina"], ["nesa", "nem"], ["cyn", "lusa", "garde"], ["rosa", "sere", "ele"], ["ida", "iris", "marn"]]
+          this.universes.musesTitles = ["Leader", "Commander", "Coordinator", "Scientist", "Agent", "Grunt"]
+          break
+        case 'rainbow':
+          this.universes.title = this.museAULst[2].name;
+          this.universes.description = "The accumulation of all other evil groups in the Pokemon Universe, and the girls who have joined them and/or achieved the team's goals, willingly or otherwise."
+          this.universes.muses = [["mars", "cyn", "garde", "ggrunt"], ["ele", "rosa", "iris"], ["sere"], ["lusa"]]
+          this.universes.musesTitles = ["Galactic", "Plasma", "Flare", "Aether"]
+          break
+        case 'shy':
+          this.universes.title = this.museAULst[12].name + " Group";
+          this.universes.description = "A group of volunteer girls wearing the same mask, and similar outfits, making no noise but for light grunts and moans, watching from the dark depths of the mask's eyes. No official comment on the notion the masks mess with the mind and self.";
+          this.universes.muses = [["pich"], ["lina"], ["bow"], ["sam"]]
+          this.universes.musesTitles = ["Pink", "Cyan", "Yellow", "Blue"]
+          break
+        case 'lust':
+          this.universes.title = this.museAULst[21].name;
+          this.universes.description = "A girls-only variant of the Phantom Thieves and allies that failed to pursue justice and fell victims to others' lustful cognitions of them, or their own twisted but arousing desires. Now they aim to make Tokyo as filthy as they've become.";
+          this.universes.muses = [["sae"], ["ann"], ["tae"]]
+          this.universes.musesTitles = ["Chief", "Founder", "Medic"]
+          break
+        case 'mirror':
+          this.universes.title = this.museAULst[8].name;
+          this.universes.description = "A group of assimilated illusionist women who work out of Teyvat, formerly allied with the Fatui. After La Signora's bare survival and escape of her execution, they remain loyal to her first, Fatui second. ";
+          this.universes.muses = [["mira"], ["lumi", "lisa", "saria", "yelan"]]
+          this.universes.musesTitles = ["Reflection", "Sister"]
+          break
+        case 'ua':
+          this.universes.title = this.museAULst[9].name;
+          this.universes.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
+          this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel"], ["kai", "nana"]]
+          this.universes.musesTitles = ["Staff", "Student", "Guest"]
+          break
+      }
+      var tempAU = value != 'rainbow' ? value : ["galaxy", "plasma", "flare", "aether"];
+      var tempObjMuse;
+      for (var i = 0; i < this.universes.muses.length; i++) {
+        for (var k = 0; k < this.universes.muses[i].length; k++) {
+          for (var j = 0; j < this.allCharArr.length; j++) {
+            if (this.allCharArr[j].code == this.universes.muses[i][k]) {
+              tempObjMuse = {}
+              tempObjMuse = this.allCharArr[j]
+              tempObjMuse.groupPos = this.universes.musesTitles[i]
+              tempObjMuse.state = value != 'rainbow' ? tempAU : tempAU[i];
+              this.finalCharAu.push(tempObjMuse)
+            }
+          }
+        }
+      }
+      this.uniDlgInfo = true
+    },
     discord(value) {
       var imgurl = ""
       if (value == "YES") {
         imgurl = "/icons/discord-logo.png"
-
       } else {
         imgurl = "/icons/discord-logoNO.png"
       }
@@ -1033,7 +1146,6 @@ export default defineComponent({
       } else {
         for (var k = 0; k < this.allCharArr.length; k++) {
           if (this.nsfwSwitch == false) {
-
             for (var j = 0; j < this.museAULst.length; j++) {
               if (this.museAULst[j].au == this.allCharArr[k].states[0]) {
                 tempNSFWchk = this.museAULst[j].sfw
@@ -1044,13 +1156,11 @@ export default defineComponent({
                 this.finalCharArr.push(this.allCharArr[k]);
               }
             }
-
           } else {
             if (this.allCharArr[k].sect == this.museSect.value) {
               this.finalCharArr.push(this.allCharArr[k]);
             }
           }
-
         }
       }
     },
@@ -1140,9 +1250,7 @@ export default defineComponent({
       if (auCheck == false) {
         for (var i = 0; i < this.finalCharArr.length; i++) {
           if (this.finalCharArr[i].code == newCode) {
-            for (var j = 0; j < this.finalCharArr[i].states.length; j++) {
-              this.currentAU = this.finalCharArr[i].states[0]
-            }
+            this.currentAU = this.finalCharArr[i].state
           }
         }
       }
@@ -1183,7 +1291,7 @@ export default defineComponent({
                   this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
-                  this.muse.Title = "Rocket Grunt 'Lover'";
+                  this.muse.Title = "Rocket Agent 'Lover'";
                   this.muse.Reg = "Unova";
                   this.muse.Name = "Rosa Whitley";
                   this.muse.SubDom = "Submissive unless mission requires dominance.";
@@ -1458,7 +1566,6 @@ export default defineComponent({
                   this.muse.SubDom = "Casual Switch.";
                   this.muse.Desc = "A fashionable young lady, who's very kind and polite, until she actually snaps. Rather lost in her way, she takes the time while trying to find her future by trying on all kinds of clothes...or tasting all sorts of lips. She IS Kalosian, after all. ";
                   this.muse.DescLewd = "It's not rare to find her only partially dressed, or wearing sexual parodies that barely count as clothes. This too is fashion after all!";
-
                   this.muse.kinks.partner = "Toys, Gangbang"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Nudity, Dress-Up"
@@ -1473,11 +1580,10 @@ export default defineComponent({
                   this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
-                  this.muse.Title = "Rocket Grunt 'Model' ";
+                  this.muse.Title = "Rocket Agent 'Model' ";
                   this.muse.SubDom = "Cheerily, teasingly Submissive";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Infiltrated Team Rocket by wearing their uniform. On being caught, she claimed she loved the uniform so much she wanted to feel like part of its team. After several hours of hands-on tutoring by 'her superiors', workplace training videos, and physical training regimes, she can finally shine the uniform's true nature of a loyal Team Rocket member. Said tutoring involved lengthy groping, said training regimes growingly obscene poses and motions, and said workplace training videos were hypnotic. She has forgotten entirely she was ever here undercover, and she is 100% a Team Rocket member now and forever.";
-
                   this.muse.kinks.partner = "Toys, Gangbang, Team Rocket"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1496,7 +1602,6 @@ export default defineComponent({
                   this.muse.SubDom = "Switch but always haughty.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "Hired to model their attires as they were designed, she ultimately fell in love with their ideas of beauty and fame, which her continued (and growingly enthusiastic) modelling of their outfits and goals granted her within. Her career may be less known, but in the end, beauty will win. And she IS beauty. Some of the outfits were treated to lower personal morals, and increase pleasure based on team Flare approval. She knows now, but doesn't mind, as she asked her current outfits to have ten times the potency of her trial ones.";
-
                   this.muse.kinks.partner = "Toys, Gangbang, Team Flare"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "YES"
@@ -1522,7 +1627,6 @@ export default defineComponent({
                   this.muse.Title = "Saffron Gym Leader";
                   this.muse.Desc = "A confident woman who's grown a little conceited in her psychic powers, and embraced the cockiness in it, dressing, speaking, and behaving the part of a powerful villain, even when doing good for others. Despite it, shimmers of the sweet kid she couldn't be sometimes shine through. ";
                   this.muse.DescLewd = "She's obsessed with control, and she'll use whatever she's got, be it her looks or her psychic powers, to make sure they go as she wishes. You have no choice in the matter.";
-
                   this.muse.kinks.partner = "Toys"
                   this.muse.kinks.organ = "Tits"
                   this.muse.kinks.clothing = "Latex, Spandex"
@@ -1626,7 +1730,6 @@ export default defineComponent({
                   this.muse.Title = "Hulbury Gym Leader / Model";
                   this.muse.Desc = "A model and gym leader from Galar who much like the sea, is calm until battle comes and she becomes the storm. She worries about holding onto her modelling career alongside the gym, but she continues to shine on. She always has time for Sonia though! ";
                   this.muse.DescLewd = "She absolutely adores Sonia and would do anything for her, go as far as she asks. She's taken to masturbate to her at her own pool, hoping the waters hide her own fluids shed from thinking about her closest gal pal.";
-
                   this.muse.kinks.partner = "Gangbang"
                   this.muse.kinks.organ = "Ass"
                   this.muse.kinks.clothing = "Nudity, Spandex, Dress-Up"
@@ -1669,7 +1772,6 @@ export default defineComponent({
                   this.muse.Title = "Rocket Agent";
                   this.muse.Desc = "A longtime member of Team Rocket, coming from her own mother being a part of it. While adoring the fashion, the high life of crime, and even the evil plots, the goals of the organization, her position, and the fact she was unable to become a nurse still chafe at her to date, promising one day to rise the ranks and make the organization better anew. ";
                   this.muse.DescLewd = "She's quite confident in her looks, and does her best to wear as little as possible. She doesn't mind people having a look, but rare are those she permits to touch.";
-
                   this.muse.kinks.partner = "NEUTRAL"
                   this.muse.kinks.organ = "Ass, Tits"
                   this.muse.kinks.clothing = "Latex, Dress-Up"
@@ -1726,7 +1828,7 @@ export default defineComponent({
                   this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
-                  this.muse.Title = "Rocket Agent";
+                  this.muse.Title = "Rocket Agent 'Seamstress'";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "The actual fashion designer for Team Rocket's new uniforms. She was not originally asked to make them so..arousing, visually or wear-wise. But it went incredibly well, so they accept and ask of her to make them even sluttier.";
                   this.muse.kinks.partner = "Pokephilia, Gangbang, Team Rocket"
@@ -3576,7 +3678,6 @@ export default defineComponent({
 
   .aubutton {
     font-size: 40px;
-
   }
 
   .button {
@@ -3597,7 +3698,6 @@ export default defineComponent({
 
   .aubutton {
     font-size: 32px;
-
   }
 
   .button {
@@ -3613,7 +3713,6 @@ export default defineComponent({
   padding: 0 4%;
   gap: 12px;
 }
-
 
 .buttonTable {
   background: white;
