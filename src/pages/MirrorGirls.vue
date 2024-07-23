@@ -20,7 +20,7 @@
             </q-header>
             <q-scroll-area visible class="bg-grey-10 text-white rounded-borders"
               style="height: 500px; min-width: 300px;">
-              <div class="cardHolder q-pt-sm">
+              <div class="museScrollArea q-pt-sm">
                 <div class="row flex-center">
                   <q-btn v-for="(char, c) in finalCharArr" square padding="xs" flat
                     @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
@@ -31,6 +31,11 @@
                 </div>
               </div>
             </q-scroll-area>
+            <q-footer elevated class="scrollheader">
+              <q-toolbar>
+                <q-btn class="buttonTable" @click="uniDialog = true" label="Universes" />
+              </q-toolbar>
+            </q-footer>
           </q-layout>
           <q-table row-key="name" :columns="museColumns" flat bordered dark class="my-sticky-header-table" hide-bottom
             virtual-scroll auto-width wrap-cells :rows-per-page-options="[0]" :rows="finalCharArr" v-else>
@@ -3768,7 +3773,12 @@ export default defineComponent({
 }
 
 .cardHolder {
-  margin-bottom: 12px;
+  padding: 0 4%;
+  gap: 12px;
+}
+
+.museScrollArea {
+  margin-bottom: 60px;
   margin-top: 60px;
   padding: 0 4%;
   gap: 12px;
