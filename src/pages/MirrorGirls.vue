@@ -40,6 +40,7 @@
               <q-toggle v-model="nsfwSwitch" color="black" />
               <span v-show="nsfwSwitch">N</span>
               <span>SFW</span>
+              <q-space />
               <q-btn class="buttonTable" @click="uniDialog = true" label="Universes" />
             </template>
             <template v-slot:body-cell-icon="props">
@@ -219,7 +220,7 @@
       </q-card-section>
     </q-card>
   </q-dialog>
-  <q-dialog v-model="uniDialog" @keyup.x="uniDialog = false">
+  <q-dialog v-model="uniDialog" @keyup.x="uniDialog = false; uniState = ''">
     <q-card id="muse">
       <q-card-section class="q-pa-xs flex-center">
         <div class="row justify-between items-center q-pl-none q-pr-sm">
@@ -232,19 +233,18 @@
           </div>
           <div class="col align-end">
             <div class="row justify-end items-center">
-              <q-btn class="button" size="10px" dense flat @click="uniDialog = false">
+              <q-btn class="button" size="10px" dense flat @click="uniDialog = false; uniState = ''">
                 <q-icon size="1rem" name="close" />
               </q-btn>
             </div>
           </div>
         </div>
         <div class="row text-body2 text-center items-center justify-center q-pt-sm">
-          Various Alternate Universes of characters, and
-          their stories.
+          Various Alternate Universes of characters, and their stories.
         </div>
         <div class="row flex-center q-pa-sm">
-          <q-btn circle padding="xs" flat @click="universeShow(verse)" v-for="verse in museAUcardLst"
-            v-show="checkSFW(auListDataBring(verse).sfw)">
+          <q-btn circle padding="xs" flat @click="universeShow(verse); uniState = verse" v-for="verse in museAUcardLst"
+            v-show="checkSFW(auListDataBring(verse).sfw)" :disabled="verse == uniState">
             <q-avatar circle size="40px">
               <img :src="auListDataBring(verse).emblem">
             </q-avatar>
@@ -256,18 +256,48 @@
         <div class="row text-body2 q-px-sm justify-start" v-if="uniDlgInfo == true">
           <b>Muses Involved:</b>
         </div>
-        <div class="row q-px-sm q-pb-sm justify-start" v-if="uniDlgInfo == true">
+        <div class="row q-px-sm q-pb-sm justify-center" v-if="uniDlgInfo == true">
           <div class="row">
-            <div class="col-xs-auto" v-for="(char, c) in charArrAu">
-              <div class="row justify-center">
-                <q-btn square padding="xs" flat @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
-                  <q-avatar rounded class="iconMuseTable">
-                    <img :src="char.avatar">
-                  </q-avatar>
-                </q-btn>
-              </div>
-              <div class="row justify-center" v-if="groupPos != ''"> {{ char.groupPos }}</div>
-            </div>
+            <q-layout class="shadow-2 rounded-borders " container style="height:210px; min-width: 540px;">
+              <q-scroll-area visible class="bg-purple-11 text-white rounded-borders"
+                style="height:210px; min-width: 540px;">
+                <div class="q-px-sm" v-if="uniState == 'shy' || uniState == 'lust'">
+                  <div class="row justify-center q-pt-sm">
+                    <div class="col-xs-2" v-for="(char, c) in charArrAu">
+                      <div class="row justify-center">
+                        <q-btn square padding="xs" flat
+                          @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
+                          <q-avatar rounded class="iconMuseTable">
+                            <img :src="char.avatar">
+                          </q-avatar>
+                        </q-btn>
+                      </div>
+                      <div class="row justify-center" v-if="groupPos != ''"> {{ char.groupPos }}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="q-px-sm" v-else>
+                  <div class="row q-px-sm q-py-xs" v-for="position in universes.museDivs">
+                    <div class="col">
+                      <div class="row justify-center">
+                        {{ position }}
+                      </div>
+                      <div class="row flex-center">
+                        <div class="col-auto" v-for="(char, c) in charArrAu">
+                          <q-btn square padding="xs" flat v-if="char.groupPos == position"
+                            @click="museProfileOpen(char.sect, char.code, char.state, char.states)">
+                            <q-avatar rounded class="iconMuseTable">
+                              <img :src="char.avatar">
+                            </q-avatar>
+                          </q-btn>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </q-scroll-area>
+            </q-layout>
+
           </div>
         </div>
       </q-card-section>
@@ -284,6 +314,7 @@ export default defineComponent({
     museDialog: false,
     uniDialog: false,
     uniDlgInfo: false,
+    uniState: "",
     nsfwSwitch: false,
     nsfwSwitchSafe: true,
     descKinkSwitch: false,
@@ -1022,12 +1053,27 @@ export default defineComponent({
         this.descKinkSwitch = false;
       }
     },
+    uniDialog(value) {
+      if (value == false) {
+        this.uniState = ""
+        this.universes.title = ""
+        this.universes.description = ""
+        this.universes.muses = []
+        this.universes.museDivs = []
+        this.charArrAu = []
+        this.uniDlgInfo = false
+        for (var i = 0; i < this.finalCharArr.length; i++) {
+          this.finalCharArr[i].state = this.finalCharArr[i].states[0]
+        }
+      }
+    },
     museSect() {
       this.dataFill();
     },
     nsfwSwitch(value) {
       var tempCharStateSFW = ""
-      var dialogtempCSSFW = ""
+      var dlgMuseTempCSSFW = ""
+      var dlgUniTempCSSFW = ""
       this.dataFill()
       if (value == false) {
         this.descKinkSwitch = false;
@@ -1038,10 +1084,17 @@ export default defineComponent({
           }
         }
         if (this.museDialog == true) {
-          dialogtempCSSFW = this.auListDataBring(this.currentAU).sfw
-          if (dialogtempCSSFW = "N") {
+          dlgMuseTempCSSFW = this.auListDataBring(this.currentAU).sfw
+          if (dlgMuseTempCSSFW = "N") {
             this.currentAU = this.currentmuseAULst[0]
             this.museProfileOpen(this.currentAreaCode, this.currentMuseCode, this.currentAU, this.currentmuseAULst)
+          }
+        }
+        if (this.uniDialog == true) {
+          dlgUniTempCSSFW = this.auListDataBring(this.uniState).sfw
+          if (dlgUniTempCSSFW = "N") {
+            this.uniState = "ua"
+            this.universeShow(this.uniState)
           }
         }
       }
@@ -1059,44 +1112,44 @@ export default defineComponent({
       this.universes.title = ""
       this.universes.description = ""
       this.universes.muses = []
-      this.universes.musesTitles = []
+      this.universes.museDivs = []
       this.charArrAu = []
       switch (value) {
         case 'rocket':
           this.universes.title = this.museAULst[1].name;
           this.universes.description = "A girls-only rebrand of Team Rocket, brought about by a takeover Dawn, focused on acquisition and training of Pokemon trainers, leaders, champions, etc. Takes a more hypnotic, sexual approach to both.";
           this.universes.muses = [["jess"], ["brina"], ["nesa", "nem"], ["cyn", "lusa", "garde"], ["rosa", "sere", "ele"], ["ida", "iris", "marn"]]
-          this.universes.musesTitles = ["Leader", "Commander", "Coordinator", "Scientist", "Agent", "Grunt"]
+          this.universes.museDivs = ["Leader", "Commander", "Coordinator", "Scientist", "Agent", "Grunt"]
           break
         case 'rainbow':
           this.universes.title = this.museAULst[2].name;
-          this.universes.description = "The accumulation of all other evil groups in the Pokemon Universe, and the girls who have joined them and/or achieved the team's goals, willingly or otherwise."
+          this.universes.description = "An organization made of all villainous teams in the Pokemon Universe, here displaying girls not part of Team Rocket in their universe. Including those that in another time and place stood against said teams, made to join, willingly or not."
           this.universes.muses = [["mars", "cyn", "garde", "ggrunt"], ["ele", "rosa", "iris"], ["sere"], ["lusa"]]
-          this.universes.musesTitles = ["Galactic", "Plasma", "Flare", "Aether"]
+          this.universes.museDivs = ["Galactic", "Plasma", "Flare", "Aether"]
           break
         case 'shy':
           this.universes.title = this.museAULst[12].name + " Group";
           this.universes.description = "A group of volunteer girls wearing the same mask, and similar outfits, making no noise but for light grunts and moans, watching from the dark depths of the mask's eyes. No official comment on the notion the masks mess with the mind and self.";
           this.universes.muses = [["pich"], ["lina"], ["bow"], ["sam"]]
-          this.universes.musesTitles = ["Pink", "Cyan", "Yellow", "Blue"]
+          this.universes.museDivs = ["Pink", "Cyan", "Yellow", "Blue"]
           break
         case 'lust':
           this.universes.title = this.museAULst[21].name;
           this.universes.description = "A girls-only variant of the Phantom Thieves and allies that failed to pursue justice and fell victims to others' lustful cognitions of them, or their own twisted but arousing desires. Now they aim to make Tokyo as filthy as they've become.";
           this.universes.muses = [["sae"], ["ann"], ["tae"]]
-          this.universes.musesTitles = ["Chief", "Founder", "Medic"]
+          this.universes.museDivs = ["Chief", "Founder", "Medic"]
           break
         case 'mirror':
           this.universes.title = this.museAULst[8].name;
           this.universes.description = "A group of assimilated illusionist women who work out of Teyvat, formerly allied with the Fatui. After La Signora's bare survival and escape of her execution, they remain loyal to her first, Fatui second. ";
           this.universes.muses = [["mira"], ["lumi", "lisa", "saria", "yelan"]]
-          this.universes.musesTitles = ["Reflection", "Sister"]
+          this.universes.museDivs = ["Reflection", "Sister"]
           break
         case 'ua':
           this.universes.title = this.museAULst[9].name;
           this.universes.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
           this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel"], ["kai", "nana"]]
-          this.universes.musesTitles = ["Staff", "Student", "Guest"]
+          this.universes.museDivs = ["Staff", "Student", "Guest"]
           break
       }
       var tempAU = value != 'rainbow' ? value : ["galaxy", "plasma", "flare", "aether"];
@@ -1107,7 +1160,7 @@ export default defineComponent({
             if (this.allCharArr[j].code == this.universes.muses[i][k]) {
               tempObjMuse = {}
               tempObjMuse = this.allCharArr[j]
-              tempObjMuse.groupPos = this.universes.musesTitles[i]
+              tempObjMuse.groupPos = this.universes.museDivs[i]
               tempObjMuse.state = value != 'rainbow' ? tempAU : tempAU[i];
               this.charArrAu.push(tempObjMuse)
             }
@@ -1179,85 +1232,92 @@ export default defineComponent({
       var newCode = "";
       var newSect = "";
       var auCheck = false;
-      switch (move) {
-        case 1:
-          for (var i = 0; i < this.finalCharArr.length; i++) {
-            if (this.currentMuseCode == this.finalCharArr[i].code) {
-              if (i - 1 < 0) {
-                newCode =
-                  this.finalCharArr[this.finalCharArr.length - 1].code;
-                newSect =
-                  this.finalCharArr[this.finalCharArr.length - 1].sect;
-                for (
-                  var j = 0;
-                  j <
-                  this.finalCharArr[this.finalCharArr.length - 1].states
-                    .length;
-                  j++
-                ) {
-                  if (
-                    this.finalCharArr[this.finalCharArr.length - 1].states[
-                    j
-                    ] == this.currentAU
-                  ) {
-                    auCheck = true;
-                  }
-                }
-              } else {
-                newCode = this.finalCharArr[i - 1].code;
-                newSect = this.finalCharArr[i - 1].sect;
-                for (
-                  var j = 0;
-                  j < this.finalCharArr[i - 1].states.length;
-                  j++
-                ) {
-                  if (this.finalCharArr[i - 1].states[j] == this.currentAU) {
-                    auCheck = true;
-                  }
-                }
-              }
-            }
-          }
-          break;
-        case 2:
-          for (var i = 0; i < this.finalCharArr.length; i++) {
-            if (this.currentMuseCode == this.finalCharArr[i].code) {
-              if (i + 1 > this.finalCharArr.length - 1) {
-                newCode = this.finalCharArr[0].code;
-                newSect = this.finalCharArr[0].sect;
-                for (var j = 0; j < this.finalCharArr[0].states.length; j++) {
-                  if (this.finalCharArr[0].states[j] == this.currentAU) {
-                    auCheck = true;
-                  }
-                }
-              } else {
-                newCode = this.finalCharArr[i + 1].code;
-                newSect = this.finalCharArr[i + 1].sect;
-                for (
-                  var j = 0;
-                  j < this.finalCharArr[i + 1].states.length;
-                  j++
-                ) {
-                  if (this.finalCharArr[i + 1].states[j] == this.currentAU) {
-                    auCheck = true;
-                  }
-                }
-              }
-            }
-          }
-          break;
+      var tempArrayChar = []
+      if (this.charArrAu != []) {
+        tempArrayChar = this.charArrAu
+      } else {
+        tempArrayChar = this.finalCharArr
       }
+      if (muse)
+        switch (move) {
+          case 1:
+            for (var i = 0; i < tempArrayChar.length; i++) {
+              if (this.currentMuseCode == tempArrayChar[i].code) {
+                if (i - 1 < 0) {
+                  newCode =
+                    tempArrayChar[tempArrayChar.length - 1].code;
+                  newSect =
+                    tempArrayChar[tempArrayChar.length - 1].sect;
+                  for (
+                    var j = 0;
+                    j <
+                    tempArrayChar[tempArrayChar.length - 1].states
+                      .length;
+                    j++
+                  ) {
+                    if (
+                      tempArrayChar[tempArrayChar.length - 1].states[
+                      j
+                      ] == this.currentAU
+                    ) {
+                      auCheck = true;
+                    }
+                  }
+                } else {
+                  newCode = tempArrayChar[i - 1].code;
+                  newSect = tempArrayChar[i - 1].sect;
+                  for (
+                    var j = 0;
+                    j < tempArrayChar[i - 1].states.length;
+                    j++
+                  ) {
+                    if (tempArrayChar[i - 1].states[j] == this.currentAU) {
+                      auCheck = true;
+                    }
+                  }
+                }
+              }
+            }
+            break;
+          case 2:
+            for (var i = 0; i < tempArrayChar.length; i++) {
+              if (this.currentMuseCode == tempArrayChar[i].code) {
+                if (i + 1 > tempArrayChar.length - 1) {
+                  newCode = tempArrayChar[0].code;
+                  newSect = tempArrayChar[0].sect;
+                  for (var j = 0; j < tempArrayChar[0].states.length; j++) {
+                    if (tempArrayChar[0].states[j] == this.currentAU) {
+                      auCheck = true;
+                    }
+                  }
+                } else {
+                  newCode = tempArrayChar[i + 1].code;
+                  newSect = tempArrayChar[i + 1].sect;
+                  for (
+                    var j = 0;
+                    j < tempArrayChar[i + 1].states.length;
+                    j++
+                  ) {
+                    if (tempArrayChar[i + 1].states[j] == this.currentAU) {
+                      auCheck = true;
+                    }
+                  }
+                }
+              }
+            }
+            break;
+        }
       if (auCheck == false) {
-        for (var i = 0; i < this.finalCharArr.length; i++) {
-          if (this.finalCharArr[i].code == newCode) {
-            this.currentAU = this.finalCharArr[i].state
+        for (var i = 0; i < tempArrayChar.length; i++) {
+          if (tempArrayChar[i].code == newCode) {
+            this.currentAU = tempArrayChar[i].state
           }
         }
       }
       var auList = [];
-      for (var i = 0; i < this.finalCharArr.length; i++) {
-        if (this.finalCharArr[i].code == newCode) {
-          auList = this.finalCharArr[i].states
+      for (var i = 0; i < tempArrayChar.length; i++) {
+        if (tempArrayChar[i].code == newCode) {
+          auList = tempArrayChar[i].states
         }
       }
       this.museProfileOpen(newSect, newCode, this.currentAU, auList);
