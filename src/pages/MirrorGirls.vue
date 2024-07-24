@@ -537,7 +537,7 @@ export default defineComponent({
         name: "Clair",
         state: "pokemon",
         free: "NO",
-        states: ["pokemon"],
+        states: ["pokemon", "rocket"],
         avatar: "/museicon/clair.jpg",
       },
       {
@@ -1139,7 +1139,7 @@ export default defineComponent({
         case 'rocket':
           this.universes.title = this.museAULst[1].name;
           this.universes.description = "A girls-only rebrand of Team Rocket, brought about by a takeover Dawn, focused on acquisition and training of Pokemon trainers, leaders, champions, etc. Takes a more hypnotic, sexual approach to both.";
-          this.universes.muses = [["jess"], ["brina"], ["nesa", "nem"], ["cyn", "lusa", "garde"], ["rosa", "sere", "ele"], ["ida", "iris", "marn"]]
+          this.universes.muses = [["jess"], ["brina"], ["nesa", "nem", "clair"], ["cyn", "lusa", "garde"], ["rosa", "sere", "ele"], ["ida", "iris", "marn"]]
           this.universes.museDivs = ["Leader", "Commander", "Coordinator", "Scientist", "Agent", "Grunt"]
           this.hierarchyUni = true
           break
@@ -1174,7 +1174,7 @@ export default defineComponent({
         case 'ua':
           this.universes.title = this.museAULst[9].name;
           this.universes.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
-          this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel","rosa"], ["kai", "nana"]]
+          this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel", "rosa"], ["kai", "nana"]]
           this.universes.museDivs = ["Staff", "Student", "Guest"]
           this.hierarchyUni = true
           break
@@ -1260,80 +1260,79 @@ export default defineComponent({
       var newSect = "";
       var auCheck = false;
       var tempArrayChar = []
-      if (this.charArrAu != []) {
+      if (this.uniDialog == true) {
         tempArrayChar = this.charArrAu
       } else {
         tempArrayChar = this.finalCharArr
       }
-      if (muse)
-        switch (move) {
-          case 1:
-            for (var i = 0; i < tempArrayChar.length; i++) {
-              if (this.currentMuseCode == tempArrayChar[i].code) {
-                if (i - 1 < 0) {
-                  newCode =
-                    tempArrayChar[tempArrayChar.length - 1].code;
-                  newSect =
-                    tempArrayChar[tempArrayChar.length - 1].sect;
-                  for (
-                    var j = 0;
-                    j <
-                    tempArrayChar[tempArrayChar.length - 1].states
-                      .length;
-                    j++
+      switch (move) {
+        case 1:
+          for (var i = 0; i < tempArrayChar.length; i++) {
+            if (this.currentMuseCode == tempArrayChar[i].code) {
+              if (i - 1 < 0) {
+                newCode =
+                  tempArrayChar[tempArrayChar.length - 1].code;
+                newSect =
+                  tempArrayChar[tempArrayChar.length - 1].sect;
+                for (
+                  var j = 0;
+                  j <
+                  tempArrayChar[tempArrayChar.length - 1].states
+                    .length;
+                  j++
+                ) {
+                  if (
+                    tempArrayChar[tempArrayChar.length - 1].states[
+                    j
+                    ] == this.currentAU
                   ) {
-                    if (
-                      tempArrayChar[tempArrayChar.length - 1].states[
-                      j
-                      ] == this.currentAU
-                    ) {
-                      auCheck = true;
-                    }
+                    auCheck = true;
                   }
-                } else {
-                  newCode = tempArrayChar[i - 1].code;
-                  newSect = tempArrayChar[i - 1].sect;
-                  for (
-                    var j = 0;
-                    j < tempArrayChar[i - 1].states.length;
-                    j++
-                  ) {
-                    if (tempArrayChar[i - 1].states[j] == this.currentAU) {
-                      auCheck = true;
-                    }
+                }
+              } else {
+                newCode = tempArrayChar[i - 1].code;
+                newSect = tempArrayChar[i - 1].sect;
+                for (
+                  var j = 0;
+                  j < tempArrayChar[i - 1].states.length;
+                  j++
+                ) {
+                  if (tempArrayChar[i - 1].states[j] == this.currentAU) {
+                    auCheck = true;
                   }
                 }
               }
             }
-            break;
-          case 2:
-            for (var i = 0; i < tempArrayChar.length; i++) {
-              if (this.currentMuseCode == tempArrayChar[i].code) {
-                if (i + 1 > tempArrayChar.length - 1) {
-                  newCode = tempArrayChar[0].code;
-                  newSect = tempArrayChar[0].sect;
-                  for (var j = 0; j < tempArrayChar[0].states.length; j++) {
-                    if (tempArrayChar[0].states[j] == this.currentAU) {
-                      auCheck = true;
-                    }
+          }
+          break;
+        case 2:
+          for (var i = 0; i < tempArrayChar.length; i++) {
+            if (this.currentMuseCode == tempArrayChar[i].code) {
+              if (i + 1 > tempArrayChar.length - 1) {
+                newCode = tempArrayChar[0].code;
+                newSect = tempArrayChar[0].sect;
+                for (var j = 0; j < tempArrayChar[0].states.length; j++) {
+                  if (tempArrayChar[0].states[j] == this.currentAU) {
+                    auCheck = true;
                   }
-                } else {
-                  newCode = tempArrayChar[i + 1].code;
-                  newSect = tempArrayChar[i + 1].sect;
-                  for (
-                    var j = 0;
-                    j < tempArrayChar[i + 1].states.length;
-                    j++
-                  ) {
-                    if (tempArrayChar[i + 1].states[j] == this.currentAU) {
-                      auCheck = true;
-                    }
+                }
+              } else {
+                newCode = tempArrayChar[i + 1].code;
+                newSect = tempArrayChar[i + 1].sect;
+                for (
+                  var j = 0;
+                  j < tempArrayChar[i + 1].states.length;
+                  j++
+                ) {
+                  if (tempArrayChar[i + 1].states[j] == this.currentAU) {
+                    auCheck = true;
                   }
                 }
               }
             }
-            break;
-        }
+          }
+          break;
+      }
       if (auCheck == false) {
         for (var i = 0; i < tempArrayChar.length; i++) {
           if (tempArrayChar[i].code == newCode) {
@@ -2016,24 +2015,45 @@ export default defineComponent({
             case "clair":
               this.muse.Name = "Clair Ibuki";
               this.muse.SubDom = "Cocky Top, Flustered Bottom";
-              this.muse.Title = "Blackthorn Gym Leader";
               this.muse.Spec = "Human";
               this.muse.Reg = "Johto";
-              this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
-              this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
-              this.muse.kinks.partner = "Dragonfucking"
-              this.muse.kinks.organ = "NEUTRAL"
-              this.muse.kinks.clothing = "NEUTRAL"
-              this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
-              this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-              this.muse.kinks.substance = "Sweating, Watersports"
-              this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-              this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
-              this.muse.kinks.mindMod = "Mindbreak"
-              this.muse.kinks.bodyMod = "YES"
-              this.muse.kinks.transform = "NEUTRAL"
-              this.muse.MetaTupper = "YES"
-              break;
+              switch (au) {
+                case "pokemon":
+                  this.muse.Title = "Blackthorn Gym Leader";
+                  this.muse.Desc = "A woman with the confidence to stand with and against dragons in the home of the Dragon Tamers. She herself is like a dragon in many ways, and so often is weakened to not being seen as imposing. ";
+                  this.muse.DescLewd = "She likes to play the part sometimes of the cockiness and cruelty of dragons, and snatch and play around with victims, though many can attest if you are in fact not allured by this, it's easy to turn the tables on her";
+                  this.muse.kinks.partner = "Dragonfucking"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "NEUTRAL"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Watersports"
+                  this.muse.kinks.treatment = "YES"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
+                  break
+                case "rocket":
+                  this.muse.Title = "Rocket Coordinator";
+                  this.muse.Desc = "NSFW ONLY - ";
+                  this.muse.DescLewd = "Jessie challenged her to a battle, after she mocked a Team Rocket Leaf unjustly. Once pathetically crushed, Jessie still praised her, saying they could use a woman like her as a Coordinator, and she could play her cockiness and cruelty with those beneath, so she happily accepted...even though in said position, she's constantly in over her head, and easily taken advantage of by higher-ups and astute grunts/agents.";
+                  this.muse.kinks.partner = "Dragonfucking, Team Rocket"
+                  this.muse.kinks.organ = "NEUTRAL"
+                  this.muse.kinks.clothing = "Latex"
+                  this.muse.kinks.relation = "Petplay, Enslavement, Servitude"
+                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+                  this.muse.kinks.substance = "Sweating, Watersports"
+                  this.muse.kinks.treatment = "YES"
+                  this.muse.kinks.bondage = "Grappling, Environment, Sense Deprivation"
+                  this.muse.kinks.mindMod = "Mindbreak, Assimilation"
+                  this.muse.kinks.bodyMod = "YES"
+                  this.muse.kinks.transform = "NEUTRAL"
+                  this.muse.MetaTupper = "YES"
+                  break;
+              }
+              break
             case "garde":
               this.muse.Reg = "Sinnoh";
               this.muse.Name = "Gardenia Natane";
@@ -3699,10 +3719,8 @@ export default defineComponent({
       for (var i = 0; i < this.finalCharArr.length; i++) {
         if (this.finalCharArr[i].code == char) {
           if (au == this.finalCharArr[i].states[0]) {
-            console.log(au)
             this.muse.FreePlay = this.finalCharArr[i].free
           } else {
-            console.log("au")
             this.muse.FreePlay = "Already AU"
           }
         }
