@@ -1463,7 +1463,7 @@ export default defineComponent({
                   this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
-                  this.muse.Title = "Rocket Leader";
+                  this.muse.Title = "Rocket Coordinator";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A rapidly risen leader of Team Hypno Rocket, aptly so given her thirst for competition and sex. She makes sure to take care of any girl under her care, treating them as already defeated and thus hers to play with. Had designs of starting her own evil team of the same occupations and goals, but joined Team Hypno Rocket to not start from scratch.";
                   this.muse.kinks.partner = "Pokephilia, Team Rocket"
@@ -1505,7 +1505,7 @@ export default defineComponent({
                   this.muse.MetaTupper = "YES"
                   break;
                 case "rocket":
-                  this.muse.Title = "Undercover Rocket Grunt";
+                  this.muse.Title = "Droneified Rocket Grunt";
                   this.muse.SubDom = "Completely submissive until ordered otherwise.";
                   this.muse.Desc = "NSFW ONLY - ";
                   this.muse.DescLewd = "A former trainer put in a deep trance of hypnosis, left as a drooling mess (from either end). With a snap of her fingers, she may go back to her former self, be put in a state of dominance, or go back to her true happy mindless self. She was more aware than she let on before her hypnosis. She just wanted to have someone else take care of her, and let her emote more, or be more comfortable with her state.";
