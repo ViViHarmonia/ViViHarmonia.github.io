@@ -1174,7 +1174,7 @@ export default defineComponent({
         case 'ua':
           this.universes.title = this.museAULst[9].name;
           this.universes.description = "A girls-only college ran by Headmistress Midnight to teach all the trades of being a hero...though it often ends with rather horny heroines, and unlocked sapphic tendencies.";
-          this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel"], ["kai", "nana"]]
+          this.universes.muses = [["fumi", "inko", "yama", "rumi", "joke"], ["momo", "mina", "tsu", "kendo", "kino", "camie", "mei", "mel","rosa"], ["kai", "nana"]]
           this.universes.museDivs = ["Staff", "Student", "Guest"]
           this.hierarchyUni = true
           break
