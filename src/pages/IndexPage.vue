@@ -25,25 +25,20 @@ export default defineComponent({
       this.muse.RegSh = "";
       this.muse.Desc = "";
       this.muse.DescLewd = "";
-      this.muse.kinks.partner = ""
-      this.muse.kinks.organ = ""
-      this.muse.kinks.clothing = ""
-      this.muse.kinks.relation = ""
-      this.muse.kinks.consent = ""
-      this.muse.kinks.substance = ""
-      this.muse.kinks.treatment = ""
-      this.muse.kinks.bondage = ""
-      this.muse.kinks.mindMod = ""
-      this.muse.kinks.bodyMod = ""
-      this.muse.kinks.transform = ""
-      this.muse.auArray = [
-        {
-          au: "base",
-          emblem: "/versions/mirror.jpg",
-          check: false,
-          sfw: "Y",
-        },
-      ];
+      this.muse.auArray = [];
+      this.muse.FreePlay = "";
+      this.muse.MetaTupper = "YES"
+      this.muse.kinks.partner = "NEUTRAL"
+      this.muse.kinks.organ = "NEUTRAL"
+      this.muse.kinks.clothing = "NEUTRAL"
+      this.muse.kinks.relation = "NEUTRAL"
+      this.muse.kinks.consent = "NEUTRAL"
+      this.muse.kinks.substance = "NEUTRAL"
+      this.muse.kinks.treatment = "NEUTRAL"
+      this.muse.kinks.bondage = "NEUTRAL"
+      this.muse.kinks.mindMod = "NEUTRAL"
+      this.muse.kinks.bodyMod = "NEUTRAL"
+      this.muse.kinks.transform = "NEUTRAL"
 
     },
   },

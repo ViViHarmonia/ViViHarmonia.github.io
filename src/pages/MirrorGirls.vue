@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-center">
           <q-layout class="shadow-2 rounded-borders " view="hHh Lpr lff" container
-            style="height: 500px; min-width: 300px;" v-if="$q.screen.lt.sm">
+            style="height: 500px; min-width: 300px;" v-if="$q.screen.lt.md || formatSwitch">
             <q-header class="scrollheader" elevated>
               <q-toolbar>
                 <q-select v-model="museSect" :options="museSectLst" option-label="label" option-value="value"
@@ -16,6 +16,8 @@
                 <q-toggle v-model="nsfwSwitch" color="black" />
                 <span v-show="nsfwSwitch">N</span>
                 <span>SFW</span>
+                <q-toggle v-model="formatSwitch" color="purple-11" v-show="!$q.screen.lt.md" />
+                <span v-show="!$q.screen.lt.md">Detailed/Simple</span>
               </q-toolbar>
             </q-header>
             <q-scroll-area visible class="bg-grey-10 text-white rounded-borders"
@@ -34,6 +36,7 @@
             <q-footer elevated class="scrollheader">
               <q-toolbar>
                 <q-btn class="buttonTable" @click="uniDialog = true" label="Universes" />
+                <q-btn class="buttonTable" @click="ruleDialog = true" label="Rules" />
               </q-toolbar>
             </q-footer>
           </q-layout>
@@ -45,8 +48,11 @@
               <q-toggle v-model="nsfwSwitch" color="black" />
               <span v-show="nsfwSwitch">N</span>
               <span>SFW</span>
+              <q-toggle v-model="formatSwitch" color="pink" />
+              <span>Detailed/Simple</span>
               <q-space />
               <q-btn class="buttonTable" @click="uniDialog = true" label="Universes" />
+              <q-btn class="buttonTable" @click="ruleDialog = true" label="Rules" />
             </template>
             <template v-slot:body-cell-icon="props">
               <q-td :props="props">
@@ -89,7 +95,7 @@
   </div>
   <q-dialog v-model="museDialog" @keyup.left="museSwitch(1)" @keyup.right="museSwitch(2)" @keyup.down="slideKeyboard(2)"
     @keyup.up="slideKeyboard(1)" @keyup.x="museDialog = false">
-    <q-card id="muse">
+    <q-card class="card">
       <q-card-section class="q-pa-xs flex-center">
         <div class="row items-center q-pa-xs">
           <div class="col-md-5 col-xs-12">
@@ -155,24 +161,40 @@
                 {{ muse.SubDom }}<span class="secret">{{ muse.SubDomSh }}</span>
               </div>
             </div>
-            <div class="row text-body2 justify-start items-center">
-              <div class="col-xs-3"><b>Universes:</b></div>
-              <div class="col-xs-12">
-                <q-btn v-for="variant in muse.auArray " circle flat padding="xs"
-                  :disabled="currentAU == auListDataBring(variant).au" v-show="checkSFW(auListDataBring(variant).sfw)"
-                  @click="museProfileOpen(currentAreaCode, currentMuseCode, auListDataBring(variant).au, currentmuseAULst)">
+            <div v-if="muse.auArray.length == 1 && uniDialog == false || uniDialog == true && uniState == 'rainbow'">
+              <div class="row text-body2 justify-start"><b>Universe:</b>
+              </div>
+              <div class="row text-body2 justify-start items-center">
+                <div class="col-xs-3">
                   <q-avatar circle size="40px">
-                    <img :src="auListDataBring(variant).emblem" />
+                    <img :src="auListDataBring(currentAU).emblem" />
                   </q-avatar>
-                </q-btn>
+                </div>
+                <div class="col-xs-9">{{ auListDataBring(currentAU).name }}</div>
               </div>
             </div>
-            <div class="row text-body2 justify-start">
-              <div class="col-md-4 col-sm-2 col-xs-3"><b>Current U.:</b></div>
-              <div class="col-md-8 col-sm-auto col-xs-9">
-                <span>{{ auListDataBring(currentAU).name }}</span>
+
+            <div v-else>
+              <div class="row text-body2 justify-start">
+                <div class="col-md-4 col-sm-2 col-xs-3"><b>Current U.:</b></div>
+                <div class="col-md-8 col-sm-auto col-xs-9">
+                  <span>{{ auListDataBring(currentAU).name }}</span>
+                </div>
+              </div>
+              <div class="row text-body2 justify-start items-center" v-show="!uniDialog">
+                <div class="col-xs-3"><b>Universes:</b></div>
+                <div class="col-xs-12">
+                  <q-btn v-for="variant in muse.auArray " circle flat padding="xs"
+                    :disabled="currentAU == auListDataBring(variant).au" v-show="checkSFW(auListDataBring(variant).sfw)"
+                    @click="museProfileOpen(currentAreaCode, currentMuseCode, auListDataBring(variant).au, currentmuseAULst)">
+                    <q-avatar circle size="40px">
+                      <img :src="auListDataBring(variant).emblem" />
+                    </q-avatar>
+                  </q-btn>
+                </div>
               </div>
             </div>
+
           </div>
           <div class="col-xs-12 col-md-7">
             <div class="row text-body2 justify-start">
@@ -226,7 +248,7 @@
     </q-card>
   </q-dialog>
   <q-dialog v-model="uniDialog" @keyup.x="uniDialog = false; uniState = ''">
-    <q-card class="au" style="width: var(--uniDlgCardWdth)">
+    <q-card class="card">
       <q-card-section class="q-pa-xs flex-center">
         <div class="row justify-between items-center q-pl-none q-pr-sm">
           <div class="col align-start">
@@ -314,6 +336,60 @@
       </q-card-section>
     </q-card>
   </q-dialog>
+  <q-dialog v-model="ruleDialog" @keyup.x="ruleDialog = false">
+    <q-card class="card">
+      <q-card-section class="q-pa-xs flex-center">
+        <div class="row justify-end q-px-sm q-pt-sm">
+          <div class="col align-end">
+            <div class="row justify-end items-center">
+              <q-btn class="button" size="10px" dense flat @click="ruleDialog = false">
+                <q-icon size="1rem" name="close" />
+              </q-btn>
+            </div>
+          </div>
+        </div>
+        <div class="row flex-center">
+          <div class="col-xs-12 col-md-6">
+            <div class="row text-subtitle2 q-pa-sm justify-center"> ❤ PREFERENCES ❤</div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ❤ English/Spanish RP</div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ❤ Intersex/Futa muses by default, you may ask for
+              cis/trans
+              version</div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ❤ Drawn to women, monsters, or evil groups</div>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="row text-subtitle2 q-pa-sm justify-center"> ✖ LIMITS ✖ </div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ✖ Scat, Excessive pain, Cutting, Needles</div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ✖ Excessive temperature or voltage play</div>
+            <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ✖ Snuff, Human Vore/Unbirth, Drugs</div>
+          </div>
+        </div>
+        
+        <div class="row flex-center">
+          <div class="col-xs-12">
+            <div class="row text-subtitle2 q-pa-sm text-center justify-center"> ✖ WARNINGS ✖ </div>
+            <div class="row text-body2 q-px-md q-pb-xs text-center justify-center"> Minors, i waited till I was 19, so
+              should you
+            </div>
+            <div class="row text-body2 q-px-md q-pb-xs text-center justify-center"> Images for icons and slideshows not
+              my own,
+              nor claim them to be so. </div>
+            <div class="row text-body2 q-px-md q-pb-xs text-center justify-center"> Not officially
+              affiliated with
+              any company, nor pose a canonical representation of the characters. </div>
+            <div class="row text-body2 q-px-md q-pb-xs text-center justify-center"> Mun uses the terms futa/intersex
+              interchangeably,
+              and will use whichever one partner is more comfy with. </div>
+            <div class="row text-body2 q-px-md q-pb-xs text-center justify-center"> All muses strictly over 18 years
+              old. </div>
+            <div class="row text-body2 q-px-md q-pb-md text-center justify-center"> FANTASY RP EXPLORATION =/= PERSONAL
+              ETHICAL BELIEF. If you don't enjoy the kink don't engage with it, i have tons others of them!
+            </div>
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -323,12 +399,14 @@ export default defineComponent({
   //cuando haces click en boton de AU, ventana pierde focus hasta que hagas click de nuevo
   name: "MirrorGirls",
   data: () => ({
+    formatSwitch: false,
     museSect: { label: "All", value: 0 },
     museDialog: false,
     uniDialog: false,
     uniDlgCardWdth: "700px",
     uniDlgInfo: false,
     uniState: "",
+    ruleDialog: false,
     nsfwSwitch: false,
     nsfwSwitchSafe: true,
     descKinkSwitch: false,
@@ -412,8 +490,8 @@ export default defineComponent({
       { au: "mimic", emblem: "/versions/mimic.png", sfw: "N", name: "Mimic" },
       { au: "bocchi", emblem: "/versions/kessokuband.png", sfw: "Y", name: "Bocchi the Rock" },
       { au: "iltv", emblem: "/versions/reilaire.png", sfw: "Y", name: "In Love With the Villainess" },
-      { au: "baiser", emblem: "/versions/shinyrod.png", sfw: "N", name: "Gushing Over Magical Girls" },
-      { au: "lwa", emblem: "/versions/enormetastar.png", sfw: "Y", name: "Little Witch Academia" },
+      { au: "baiser", emblem: "/versions/enormetastar.png", sfw: "N", name: "Gushing Over Magical Girls" },
+      { au: "lwa", emblem: "/versions/shinyrod.png", sfw: "Y", name: "Little Witch Academia" },
     ],
     universes: {
       title: "",
@@ -572,7 +650,7 @@ export default defineComponent({
         sect: 2,
         name: "Lumine",
         state: "genshin",
-        free: "NO",
+        free: "YES",
         states: ["genshin", "mirror"],
         avatar: "/museicon/lumi.jpeg",
       },
@@ -735,7 +813,7 @@ export default defineComponent({
         sect: 3,
         name: "Fuyumi Todoroki",
         state: "ua",
-        free: "NO",
+        free: "YES",
         states: ["ua"],
         avatar: "/museicon/fuyumi.jpeg",
       },
@@ -2182,26 +2260,6 @@ export default defineComponent({
                   this.muse.kinks.transform = "YES"
                   this.muse.MetaTupper = "YES"
                   break;
-                case "mirror":
-                  this.muse.Name = "???";
-                  this.muse.Title = "Mirror Maiden";
-                  this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                  this.muse.Spec = "Mirror Maiden";
-                  this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.kinks.partner = "La Signora"
-                  this.muse.kinks.organ = "Mouth, Tits"
-                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-                  this.muse.kinks.substance = "Cum (Outside)"
-                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-                  this.muse.kinks.bodyMod = "Fatui Brands"
-                  this.muse.kinks.transform = "Twinning"
-                  this.muse.MetaTupper = "NO"
-                  break;
               }
               break;
             case "lisa":
@@ -2227,26 +2285,6 @@ export default defineComponent({
                   this.muse.kinks.transform = "Bimbofication, Twinning"
                   this.muse.MetaTupper = "YES"
                   break;
-                case "mirror":
-                  this.muse.Name = "???";
-                  this.muse.Title = "Mirror Maiden";
-                  this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                  this.muse.Spec = "Mirror Maiden";
-                  this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.kinks.partner = "La Signora"
-                  this.muse.kinks.organ = "Mouth, Tits"
-                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-                  this.muse.kinks.substance = "Cum (Outside)"
-                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-                  this.muse.kinks.bodyMod = "Fatui Brands"
-                  this.muse.kinks.transform = "Twinning"
-                  this.muse.MetaTupper = "NO"
-                  break;
               }
               break;
             case "saria":
@@ -2271,26 +2309,6 @@ export default defineComponent({
                   this.muse.kinks.bodyMod = "Piercing, Tattoos/Body writing"
                   this.muse.kinks.transform = "Bimbofication, Gothification"
                   this.muse.MetaTupper = "YES"
-                  break;
-                case "mirror":
-                  this.muse.Name = "???";
-                  this.muse.Title = "Mirror Maiden";
-                  this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                  this.muse.Spec = "Mirror Maiden";
-                  this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.kinks.partner = "La Signora"
-                  this.muse.kinks.organ = "Mouth, Tits"
-                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-                  this.muse.kinks.substance = "Cum (Outside)"
-                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-                  this.muse.kinks.bodyMod = "Fatui Brands"
-                  this.muse.kinks.transform = "Twinning"
-                  this.muse.MetaTupper = "NO"
                   break;
               }
               break;
@@ -2361,15 +2379,35 @@ export default defineComponent({
               this.muse.MetaTupper = "YES"
               break;
           }
+          if (au == "mirror") {
+            this.muse.Name = "???";
+            this.muse.Title = "Mirror Maiden";
+            this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
+            this.muse.Spec = "Mirror Maiden";
+            this.muse.Desc = "NSFW ONLY - ";
+            this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
+            this.muse.kinks.partner = "La Signora"
+            this.muse.kinks.organ = "Mouth, Tits"
+            this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
+            this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
+            this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
+            this.muse.kinks.substance = "Cum (Outside)"
+            this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
+            this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
+            this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
+            this.muse.kinks.bodyMod = "Fatui Brands"
+            this.muse.kinks.transform = "Twinning"
+            this.muse.MetaTupper = "NO"
+          }
           break;
         case 3:
+          this.muse.Reg = "Japan, Musatafu";
           switch (char) {
             case "mei":
               this.muse.Name = "Mei Hatsume";
               this.muse.SubDom = "Dom when hyperfocused, Subby when taken out of focus";
               this.muse.Title = "UA Support Student";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "The greatest engineer in quirked history, she's brilliant, bombastic, and can't remember silly things like names, hygiene, or shame. All she needs in her world are her babies, and what girls may take an interest in her and her babies. ";
               this.muse.DescLewd = "Is more into machines than humans, would roboticize every hot girl she meets if she could.";
               this.muse.kinks.partner = "Machines"
@@ -2389,7 +2427,6 @@ export default defineComponent({
               this.muse.Name = "Tsuyu Asui";
               this.muse.SubDom = "Whatever strikes the mood";
               this.muse.Title = "UA Hero Student - Froppy";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A hero in training with big dreams, a long tongue, and zero ability to hold either in. She is adored by many, and her quirks (pun intended) are charming to many, just as she adores her classmates. ";
               this.muse.DescLewd = "She has enough sense not to bring up how often she wants to wrap and tongue-fuck her female classmates daily...unless they ask.";
               this.muse.Spec = "Human (Quirked), Frog";
@@ -2410,7 +2447,6 @@ export default defineComponent({
               this.muse.Name = "Mina Ashido";
               this.muse.SubDom = "YES";
               this.muse.Title = "UA Hero Student - Pinky";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A funky, spunky, alien-looking gal with a good heart, and a gooder sense of fun. She will spend her days scheming over her friends love lives, organize games, and save the world dancing away. ";
               this.muse.DescLewd = "With all her boundless energy come hours upon hours of sex, and she's specifically tailored her hero suit to attract that attention. Midnight is her icon for a reason.";
               this.muse.Spec = "Human (Quirked), Alien";
@@ -2432,7 +2468,6 @@ export default defineComponent({
               this.muse.SubDom = "Shyly submissive until gaining confidence to engage Mommy Momo mode";
               this.muse.Title = "UA Hero Student - Creati";
               this.muse.Nat = "Regal";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Spec = "Human (Quirked)";
               this.muse.Desc = "A girl born of wealth with a genuine heart of gold and a mind that holds great knowledge. Despite her dazzling intellect, astonishing quirk, and stunning beauty, her confidence needs some serious work. But she will always stand by the side of her friends. ";
               this.muse.DescLewd = "Midnight has taken her in as a pseudo-daughter and a successor to her spirit, and she intends to work hard on her confidence to live up to it and become the newest Mistress of heroics.";
@@ -2454,7 +2489,6 @@ export default defineComponent({
               this.muse.SubDom = "Casual Switch";
               this.muse.Title = "UA Hero Student - Invisible Girl";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A girl born invisible, pushing herself to be loud and bright and seen. Thanks to her friends and training, she has become more visible than ever at UA, thus aiming as a hero to look out for others who might be left unseen. ";
               this.muse.DescLewd = "People watching is her hobby, which has often veered into very perverted situations...not that she minds the show, or interrupts, or even leaves. Also has developed a nudist streak.";
               this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
@@ -2475,7 +2509,6 @@ export default defineComponent({
               this.muse.SubDom = "Submissive to any request, but dominant if requested";
               this.muse.Title = "UA Hero Student - Battle Fist";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A martial artist with a big brain, big heart, and bigger hands, the class representative of class B is as ruthless with her criticism as her combative disposition. She does however have a tendency to let go for others, neglecting her own wants and needs. ";
               this.muse.DescLewd = "One can only hope her friend slash crush Setsuna does not take advantage of that...or that she lets herself go along the rather sexualized world of female pro-heroism.";
               this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
@@ -2496,7 +2529,6 @@ export default defineComponent({
               this.muse.SubDom = "Giddy top, blushy sub";
               this.muse.Title = "UA Hero Student - Shemage";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A shy girl who loves her quirk's focus, and is trying to get a little les shy. She's growing more open to her own class, and sometimes lets herself loose in the magic of mushrooms, becoming quite the fun gal. ";
               this.muse.DescLewd = "Much like her namesakes she's incredibly hypersexual, but she's not very open about it. Were one of her classmates to ask however..she'd sure show them such wonders. And if they take her in, she couldn't complain at all.";
               this.muse.kinks.partner = "Toys, Monsterfucking (Noumu)"
@@ -2515,10 +2547,9 @@ export default defineComponent({
             case "camie":
               this.muse.Name = "Camie Utsushimi";
               this.muse.SubDom = "Dominant unless finding something kinky and fun worth subbing for.";
-              this.muse.Title = "Ketsubutsu Hero Student - Illus-o-Camie";
+              this.muse.Title = "UA Hero Student - Illus-o-Camie";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
-              this.muse.Desc = "A Ketsubutsu-taught pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
+              this.muse.Desc = "A pro-heroine in training, with a bubbly and absentminded demeanor that's hard to understand at times, but covering for remarkable cleverness of both quirk use and emotional insight. ";
               this.muse.DescLewd = "Her hero outfit and flirtatiousness bely the fact that she likes to draw in the attention, the only question being, what she will do with that attention. She knows quite well the answer will be 'whatever Camie desires'.";
               this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
               this.muse.kinks.organ = "Tits, Pussy, Cock"
@@ -2536,9 +2567,8 @@ export default defineComponent({
             case "mel":
               this.muse.Name = "Melissa Shield";
               this.muse.SubDom = "Experimental switch, sub-leaning";
-              this.muse.Title = "";
+              this.muse.Title = "UA Support Student";
               this.muse.Spec = "Human";
-              this.muse.Reg = "I-Island";
               this.muse.Desc = "A quirkless american girl who wants to save people, and has decided to do so through her inventions. Despite her outgoing nature, she doesn't have many friends. Something she intends to fix as well. ";
               this.muse.DescLewd = "She is not blind to how her looks makes others feel. She hopes the acquisition of friends will facilitate experimenting with that.";
               this.muse.kinks.partner = "Machines, Gangbang"
@@ -2559,7 +2589,6 @@ export default defineComponent({
               this.muse.SubDom = "Mostly subby, for Midnight";
               this.muse.Title = "Pro Hero - Ms. Joke";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A pro-hero who uses the power of comedy to save people! And beat up dead cows. She flirts and laughs and loves, and never quite shuts up, to the chagrin of many. Has a book of jokes on every topic under the rising sun. ";
               this.muse.DescLewd = "Still wants to meet a hot villainess to happily surrender to, already has a suit, name and theme planned to serve her.";
               this.muse.kinks.partner = "Monsterfucking (Noumu), Gangbang"
@@ -2580,7 +2609,6 @@ export default defineComponent({
               this.muse.SubDom = "Dominant";
               this.muse.Title = "Pro Hero (Former) - Lady Nagant";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A former hero turned assassin for the Hero Association, Nagant once wanted to truly help people, but was used as a weapon of subterfuge, until she killed her own boss who led her down that path. Free now, as a villain, she sprawls the streets ready to aim and shoot. ";
               this.muse.DescLewd = "Has an interest in female pro-heroes, and teaching them a tough lesson...however they may need it.";
               this.muse.kinks.partner = "NEUTRAL"
@@ -2600,7 +2628,6 @@ export default defineComponent({
               this.muse.Name = "Rumi Usagiyama";
               this.muse.SubDom = "Rough Dommy unless beaten in a fight or romantically approached";
               this.muse.Title = "Pro Hero - Miruko";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "An incredibly aggressive, lone wolf rabbit-like woman who kicks ass, in every concievable way. She has made her way to the top three through sheer force of..well, force, hiding a care for others under the spite of her quirk's perception. ";
               this.muse.DescLewd = "Her viciousness sometimes goes out of hand, and she will get it out through more fighting..or breeding like her quirksake. Any woman nearby is at risk. But if you manage to beat her, you'll have a very willing horny bunny in your grasp";
               this.muse.Spec = "Human (Quirked), Bunny";
@@ -2622,7 +2649,6 @@ export default defineComponent({
               this.muse.SubDom = "Submissive Brat";
               this.muse.Title = "Pro Hero - Mt. Lady";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A recent pro-hero who seems to be everything wrong with them. Vain, lazy, cocky, lustful, spiteful. Despite this, she has a strong heart that will shine in the worst of times. Even if the rest of times she spends bickering and teasing. ";
               this.muse.DescLewd = "Often expresses her attraction to her fellow pro-heroes by mockery, argument and teasing, desperate to push them to snap and do as they will with her. Most of them know this and don't want to give her the satisfaction.";
               this.muse.kinks.partner = "Monsterfucking (Noumu), Bestiality"
@@ -2644,7 +2670,6 @@ export default defineComponent({
               this.muse.Title = "Pro Hero ";
               this.muse.TitleSh = "(KIA)";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "An old hero, who always puts a smile on her face. Despite coming from a rather dark age, she does not let it put her down, and is training her successor to the quirk she holds, and hoping for him to become something greater, a symbol. ";
               this.muse.DescLewd = "She's very proud of her body, and does enjoy some of the reactions her muscles get. Especially from some of the ladies. Though she's not strong enough to handle a turnabout.";
               this.muse.kinks.partner = "NEUTRAL"
@@ -2665,7 +2690,6 @@ export default defineComponent({
               this.muse.SubDom = "Mostly Submissive";
               this.muse.Title = "Teacher";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A woman who's spent her life trying to keep things together for her family, or her idea of it. She's a preschool teacher, with a weak quirk, and often percieved as weak herself. But it takes great strength to be kind and want better under her circumstances. ";
               this.muse.DescLewd = "Something less than wonderful brews beneath her softness, and if pushed, it will no doubt come out.";
               this.muse.kinks.partner = "Toys"
@@ -2686,7 +2710,6 @@ export default defineComponent({
               this.muse.SubDom = "Middle Ground Switch";
               this.muse.Title = "Mother";
               this.muse.Spec = "Human (Quirked)";
-              this.muse.Reg = "Japan, Musatafu";
               this.muse.Desc = "A mother, no longer a lover, at least in her mind. With her son on the dangerous paths of heroism (yet doing well) and a great deal of regret and time left on her own, she listlessly spends her days watching soap operas, and wondering on what could be. ";
               this.muse.DescLewd = "Few have met the steel behind the tears, when it comes to her heart. Perhaps someone out there may yet be for her.";
               this.muse.kinks.partner = "Toys"
@@ -3746,20 +3769,19 @@ export default defineComponent({
       this.muse.Desc = "";
       this.muse.DescLewd = "";
       this.muse.auArray = [];
-      this.muse.MetaTupper = "";
-      this.muse.MetaTupper = "";
-      this.muse.kinks.partner = ""
-      this.muse.kinks.organ = ""
-      this.muse.kinks.clothing = ""
-      this.muse.kinks.relation = ""
-      this.muse.kinks.consent = ""
-      this.muse.kinks.substance = ""
-      this.muse.kinks.treatment = ""
-      this.muse.kinks.bondage = ""
-      this.muse.kinks.mindMod = ""
-      this.muse.kinks.bodyMod = ""
-      this.muse.kinks.transform = ""
+      this.muse.FreePlay = "";
       this.muse.MetaTupper = "YES"
+      this.muse.kinks.partner = "NEUTRAL"
+      this.muse.kinks.organ = "NEUTRAL"
+      this.muse.kinks.clothing = "NEUTRAL"
+      this.muse.kinks.relation = "NEUTRAL"
+      this.muse.kinks.consent = "NEUTRAL"
+      this.muse.kinks.substance = "NEUTRAL"
+      this.muse.kinks.treatment = "NEUTRAL"
+      this.muse.kinks.bondage = "NEUTRAL"
+      this.muse.kinks.mindMod = "NEUTRAL"
+      this.muse.kinks.bodyMod = "NEUTRAL"
+      this.muse.kinks.transform = "NEUTRAL"
     },
   },
   mounted() {
@@ -3812,15 +3834,10 @@ export default defineComponent({
   }
 }
 
-.au {
+.card {
   background: #cf4cc9;
   color: white;
-}
-
-#muse {
-  background: #cf4cc9;
-  color: white;
-  width: 700px;
+  width: 700px
 }
 
 .cardHolder {
