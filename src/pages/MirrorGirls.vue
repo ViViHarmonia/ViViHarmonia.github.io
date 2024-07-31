@@ -210,7 +210,7 @@
                 </div>
               </div>
               <div class="col-xs-12" v-show="descKinkSwitch">
-                <div class="row text-body2 justify-start" v-for="(category, c) in muse.kinks">
+                <div class="row text-body2 justify-start" v-for="(category, c) in muse.kinks" v-show="category != 'NEUTRAL'">
                   <div class="col-xs-4"><b>{{ kinklistlbl[c] }}</b></div>
                   <div class="col-xs-8">{{ category }}</div>
                 </div>
@@ -364,7 +364,7 @@
             <div class="row text-body2 q-px-sm q-pb-sm justify-start"> ✖ Snuff, Human Vore/Unbirth, Drugs</div>
           </div>
         </div>
-        
+
         <div class="row flex-center">
           <div class="col-xs-12">
             <div class="row text-subtitle2 q-pa-sm text-center justify-center"> ✖ WARNINGS ✖ </div>
@@ -461,6 +461,7 @@ export default defineComponent({
       { au: "flare", emblem: "/versions/team_flare_by_biochao.png", sfw: "N", name: "Team Flare" },
       { au: "aether", emblem: "/versions/aether.png", sfw: "N", name: "Ultra Beast" },
       { au: "genshin", emblem: "/versions/paimon.png", sfw: "Y", name: "Genshin Impact" },
+      { au: "zzz", emblem: "/versions/Zenless_Zone_Zero_logo.png", sfw: "Y", name: "Zenless Zone Zero" },
       { au: "mirror", emblem: "/versions/Mirror_Maiden_Icon.png", sfw: "N", name: "New Mirror Maidens" },
       { au: "ua", emblem: "/versions/uagirls.png", sfw: "Y", name: "UA Heroine University" },
       { au: "samus", emblem: "/versions/samus.png", sfw: "Y", name: "Metroid" },
@@ -689,6 +690,15 @@ export default defineComponent({
         free: "NO",
         states: ["mirror"],
         avatar: "/museicon/mirror.jpeg",
+      },
+      {
+        code: "elen",
+        sect: 2,
+        name: "Ellen Joe",
+        state: "zzz",
+        free: "NO",
+        states: ["zzz"],
+        avatar: "/museicon/ellen.jpg",
       },
       {
         code: "mei",
@@ -2335,26 +2345,6 @@ export default defineComponent({
                   this.muse.kinks.transform = "Bimbofication"
                   this.muse.MetaTupper = "YES"
                   break;
-                case "mirror":
-                  this.muse.Title = "Mirror Maiden";
-                  this.muse.Name = "???";
-                  this.muse.SubDom = "Wicked and Dominant, Subservient Slave only to la Signora";
-                  this.muse.Spec = "Mirror Maiden";
-                  this.muse.Desc = "NSFW ONLY - ";
-                  this.muse.DescLewd = "A woman who willfully gave herself up to the Sisters of the Mirror Maidenhood. While there's still a part of her to remember her life, name, appearance and experiences, most of the time she spends in mindless bliss as yet another Maiden, visually and mentally. Even when she reflects her former appearence and identity, aware of who she was once, she's still utterly loyal, and happy to have done as she did.";
-                  this.muse.kinks.partner = "La Signora"
-                  this.muse.kinks.organ = "Mouth, Tits"
-                  this.muse.kinks.clothing = "Latex, Nylon, Living, Masks"
-                  this.muse.kinks.relation = "Enslavement, Incest/Selfcest"
-                  this.muse.kinks.consent = "Non-Con, Voyeur, Exhibition"
-                  this.muse.kinks.substance = "Cum (Outside)"
-                  this.muse.kinks.treatment = "Degradation, Ryona, Objectification, Humiliation"
-                  this.muse.kinks.bondage = "Hypnosis, Sense Deprivation"
-                  this.muse.kinks.mindMod = "Corruption, Brainwashing, Assimilation"
-                  this.muse.kinks.bodyMod = "Fatui Brands"
-                  this.muse.kinks.transform = "Twinning"
-                  this.muse.MetaTupper = "NO"
-                  break;
               }
               break;
             case "mira":
@@ -2378,6 +2368,28 @@ export default defineComponent({
               this.muse.kinks.transform = "Twinning"
               this.muse.MetaTupper = "YES"
               break;
+            case "elen":
+              this.muse.Name = "Ellen Joe";
+              this.muse.SubDom = "Switch by request";
+              this.muse.Title = "Maid";
+              this.muse.Spec = "Thiren (Shark)";
+              this.muse.Reg = "New Eridu";
+              this.muse.Desc = "A very capable but lax student who works part time as a maid of the Victoria Housekeeping Co. She loves spending time with friends, loves sweets (though she can eat about anything) and despite her resting face she's quite amicable. ";
+              this.muse.DescLewd = "She's not actually bothered about sexual requests, and she's actually quite good at them too, just don't expect a lot of energy and enthusiasm out of her unless you're real special to her.";
+              this.muse.FreePlay = "NO";
+              this.muse.MetaTupper = "YES"
+              this.muse.kinks.partner = "NEUTRAL"
+              this.muse.kinks.organ = "Mouth"
+              this.muse.kinks.clothing = "Dress-Up"
+              this.muse.kinks.relation = "Servitude"
+              this.muse.kinks.consent = "Dub-Con, Stealth"
+              this.muse.kinks.substance = "Cumplay, Watersports"
+              this.muse.kinks.treatment = "NEUTRAL"
+              this.muse.kinks.bondage = "Rope, Grappling, Environment, Sense Deprivation"
+              this.muse.kinks.mindMod = "Mindbreak"
+              this.muse.kinks.bodyMod = "Breeding"
+              this.muse.kinks.transform = "NEUTRAL"
+              break
           }
           if (au == "mirror") {
             this.muse.Name = "???";

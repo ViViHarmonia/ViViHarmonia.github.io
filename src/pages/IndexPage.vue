@@ -25,7 +25,6 @@ export default defineComponent({
       this.muse.RegSh = "";
       this.muse.Desc = "";
       this.muse.DescLewd = "";
-      this.muse.auArray = [];
       this.muse.FreePlay = "";
       this.muse.MetaTupper = "YES"
       this.muse.kinks.partner = "NEUTRAL"
